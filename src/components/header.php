@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../../css/components/header.css">
 </head>
 <body>
-  <div class="header">
+  <div class="header-top">
     <button type="button" class="side-menu-btn">
       <img src="" alt="hamb-btn">
     </button>

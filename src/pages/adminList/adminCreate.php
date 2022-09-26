@@ -1,6 +1,6 @@
 <?php
   $title = "Admin List";                   
-  include "../../components./header.php";                 
+  include "../../components/header.php";                 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +10,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Creation</title>
   <link rel="stylesheet" href="../../../css/pages/adminList/adminCreate.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+
 </head>
 <!--
   SQL query post admin

@@ -2,14 +2,14 @@ body {
   margin: 0;
 }
 
-.header {
+.header-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-right: 20px;
   padding-left: 20px;
-  position: fixed;
+  position: sticky;
   background-color: #313439;
   height: 50px;
-  width: 100vw;
+  max-width: 100%;
 }

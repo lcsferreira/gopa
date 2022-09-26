@@ -50,6 +50,12 @@ body{
 
 .forms .form-input label{
   color: #313439;
+  display: flex;
+  justify-content: space-between;
+}
+
+.forms .form-input label a{
+  color: #03A9F4;
 }
 
 .forms .form-input input{

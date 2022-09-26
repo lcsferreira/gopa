@@ -1,10 +1,6 @@
 <?php
   include_once "../../../config.php"
 ?>
-<?php
-  $title = "Login";                   
-  include "../../components./header.php";                 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
