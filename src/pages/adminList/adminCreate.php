@@ -13,10 +13,7 @@
   <link rel="stylesheet" href="../../../css/components/header.css">
 
 </head>
-<!--
-  SQL query post admin
-  default password 
--->
+
 <body>
   <div class="container">
     <form class="forms" method="POST" action="">
@@ -30,14 +27,16 @@
       </div>
       <div class="form-input">
         <label for="adm-name">Name</label>
-        <input type="text" placeholder="Name">
+        <input type="text" id="adm-name" placeholder="Name">
       </div>
       <div class="form-input">
         <label for="adm-email">Email</label>
-        <input type="text" placeholder="Email">
+        <input type="text" id="adm-email" placeholder="Email">
       </div>
-      <button class="btn-create"type="submit">Create</button>
+      <button class="btn-create"type="button" id="saveadmin">Create</button>
     </form>
   </div>
+  <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="../../ajax/postAdmin.js"></script>
 </body>
 </html>
