@@ -1,7 +1,7 @@
 $(function(){
   $("#saveadmin").on('click', function(){
-      var admName       = $("#adm-name").val();
-      var admEmail       = $("#adm-email").val();
+      var admName = $("#adm-name").val();
+      var admEmail = $("#adm-email").val();
       $.ajax({
         method: "POST",
         url:    "../../ajaxquery/saveadmin_ajax.php",
