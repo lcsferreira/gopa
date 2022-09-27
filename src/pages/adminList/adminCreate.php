@@ -33,11 +33,11 @@
         <label for="adm-email">Email</label>
         <input type="text" id="adm-email" placeholder="Email">
       </div>
-      <button class="btn-create"type="button" id="saveadmin">Create</button>
+      <button class="btn-create" type="button" id="saveadmin" disabled="true">Create</button>
     </form>
   </div>
   <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="../../ajax/postAdmin.js"></script>
-  <script language="JavaScript" src="../../scripts/md5.js"></script>
+  
 </body>
 </html>

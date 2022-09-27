@@ -4,20 +4,20 @@
 <?php
 $name  = $_POST['name'];
 $email  = $_POST['email'];
-$password = $_POST['password'];
+
 /* validate whether user has entered all values. */
-if(!$name || !$email || !$password){
+if(!$name || !$email){
   $result = 2;
 }elseif (!strpos($email, "@") || !strpos($email, ".")) {
   $result = 3;
 }
 else {
   //SQL query to get results from database
-  $sql = "INSERT INTO admin (name, email, password) VALUES (:name, :email, :password)";
+  $sql = "INSERT INTO admin (name, email) VALUES (:name, :email)";
   $stmt = $connection->prepare($sql);
   $stmt->bindParam(':name', $name);
   $stmt->bindParam(':email', $email);
-  $stmt->bindParam(':password', $password);
+
   if($stmt->execute()){
     $result = 1;
   }

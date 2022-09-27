@@ -33,7 +33,7 @@
         <label for="adm-email">Email</label>
         <input type="text" id="adm-email" placeholder="Email">
       </div>
-      <div class="form-input">
+      <div class="form-input-rg">
         <label for="is-active">Active: </label>
         <div id="is-active">
           <label for="active">Yes</label>
@@ -47,5 +47,6 @@
   </div>
   <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="../../ajax/putAdmin.js"></script>
+  <script language="JavaScript" src="../../scripts/md5.js"></script>
 </body>
 </html>
