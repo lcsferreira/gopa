@@ -3,12 +3,15 @@ $(function () {
     var admName = $("#adm-name").val();
     var admEmail = $("#adm-email").val();
 
+    var key = Date.now().toString();
+    key = calcMD5(key);
+
     $.ajax({
-      method: "POST",
-      url: "../../ajaxquery/saveadmin_ajax.php",
-      data: { name: admName, email: admEmail, password: null, key: null },
+      method: "PUT",
+      url: "../../ajaxquery/saveAdminEdited.php",
+      data: { name: admName, email: adEmail, key: key },
       dataType: "json",
-      type: "post",
+      type: "put",
       contentType: "application/x-www-form-urlencoded",
       success: function (result) {
         console.log(result);
