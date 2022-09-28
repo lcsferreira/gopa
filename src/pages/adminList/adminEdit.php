@@ -27,11 +27,15 @@
       </div>
       <div class="form-input">
         <label for="adm-name">Name</label>
-        <input type="text" id="adm-name" placeholder="Name">
+        <input type="text" id="adm-name" placeholder="Name" 
+        <?php echo "value = " + $_GET['admName'] ?>
+        >
       </div>
       <div class="form-input">
         <label for="adm-email">Email</label>
-        <input type="text" id="adm-email" placeholder="Email">
+        <input type="text" id="adm-email" placeholder="Email"
+        <?php echo "value = " + $_GET['admEmail'] ?>
+        >
       </div>
       <div class="form-input-rg">
         <label for="is-active">Active: </label>
