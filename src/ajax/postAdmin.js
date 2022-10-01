@@ -1,4 +1,4 @@
-$(document).done(function () {
+$(document).ready(function () {
   validateInputs();
   postAdmin();
 });
@@ -31,7 +31,7 @@ function postAdmin() {
     request.done(function (response, textStatus, jqXHR) {
       setTimeout(() => {
         window.location.href = "../pages/adminList/adminList.php";
-      }, 2000);
+      }, 1000);
     });
 
     // Callback handler that will be called on failure
