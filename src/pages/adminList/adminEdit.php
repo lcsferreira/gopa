@@ -28,13 +28,20 @@
       <div class="form-input">
         <label for="adm-name">Name</label>
         <input type="text" id="adm-name" placeholder="Name" 
-        <?php echo "value = " + $_GET['admName'] ?>
+        <?php 
+          $name = $_GET['admName'];
+          //display name in input value
+          echo "value='".$name."'";
+        ?>
         >
       </div>
       <div class="form-input">
         <label for="adm-email">Email</label>
         <input type="text" id="adm-email" placeholder="Email"
-        <?php echo "value = " + $_GET['admEmail'] ?>
+        <?php
+          $email = $_GET['admEmail'];
+          //display name in input value
+          echo "value='".$email."'";?>
         >
       </div>
       <div class="form-input-rg">
@@ -50,7 +57,7 @@
     </form>
   </div>
   <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="../../ajax/putAdmin.js"></script>
   <script language="JavaScript" src="../../scripts/md5.js"></script>
+  <script src="../../ajax/adminEdit.js"></script>
 </body>
 </html>

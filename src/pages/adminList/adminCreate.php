@@ -1,7 +1,7 @@
 <?php
   $title = "Admin List";                   
   include "../../components/header.php";                 
-?>
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,17 +27,17 @@
       </div>
       <div class="form-input">
         <label for="adm-name">Name</label>
-        <input type="text" id="adm-name" placeholder="Name">
+        <input type="text" id="adm-name" class="form"placeholder="Name">
       </div>
       <div class="form-input">
         <label for="adm-email">Email</label>
-        <input type="text" id="adm-email" placeholder="Email">
+        <input type="text" id="adm-email" class="form" placeholder="Email">
       </div>
       <button class="btn-create" type="button" id="saveadmin" disabled="true">Create</button>
     </form>
   </div>
-  <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="../../ajax/postAdmin.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="../../ajax/adminCreate.js"></script>
   
 </body>
 </html>

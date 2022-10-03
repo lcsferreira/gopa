@@ -10,9 +10,9 @@
 <body>
   <div class="header-top">
     <button type="button" class="side-menu-btn">
-      <img src="" alt="hamb-btn">
+      <img src="../../assets/hamburguer-menu.svg" alt="hamb-btn">
     </button>
-    <img src="" alt="gopa-logo">
+    <img src="../../assets/gopa-header-logo.svg" alt="gopa-logo">
   </div>
 </body>
 </html>

@@ -4,11 +4,14 @@ $(document).ready(function () {
 });
 
 function validateInputs() {
-  $("#adm-name", "#adm-email").on("input change", function () {
+  $(".form").keyup(function () {
+    console.log($("#adm-email").val());
+    console.log($("#adm-name").val());
+
     if ($("#adm-email").val() !== "" && $("#adm-name").val() !== "") {
-      $("#saveadmin").prop("disabled", false);
+      $("#saveadmin").removeAttr("disabled");
     } else {
-      $("#saveadmin").prop("disabled", true);
+      $("#saveadmin").attr("disabled", "disabled");
     }
   });
 }
@@ -30,7 +33,7 @@ function postAdmin() {
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR) {
       setTimeout(() => {
-        window.location.href = "../pages/adminList/adminList.php";
+        window.location.href = "../adminList/adminList.php";
       }, 1000);
     });
 

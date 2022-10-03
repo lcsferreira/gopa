@@ -2,6 +2,9 @@
   $title = "Admin List";                   
   include "../../components./header.php";                 
 ?>
+<?php
+  include_once "../../../config.php"
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +24,26 @@
       </p>
     </div>
     <div class="admin-list">
+      <?php 
+        $sql = "SELECT * FROM admin";
+        $result = mysqli_query($connection, $sql);
+        $resultCheck = mysqli_num_rows($result);
+        if($resultCheck > 0){
+          echo "<table class='table'>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                  </tr>";
+          while($row = mysqli_fetch_assoc($result)){
+            echo "<tr class='table-row' onclick='document.location = `adminEdit.php?admName=".$row['name']."&admEmail=".$row['email']."`'>
+                    <td>".$row['name']."</td>
+                    <td>".$row['email']."</td>
+                  </tr>";
+            
+          }
+          echo "</table>";
+        }
+      ?>
      <div>
       ADMIN INFO
      </div>

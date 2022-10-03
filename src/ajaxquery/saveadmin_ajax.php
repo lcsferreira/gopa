@@ -5,12 +5,13 @@
   $name  = $_POST['name'];
   $email  = $_POST['email'];
 
-  $sql = "INSERT INTO admin (name, email) VALUES (:name, :email)";
-  $stmt = $connection->prepare($sql);
+  $sql = "INSERT INTO admin (name, email) VALUES (?, ?)";
+  $stmt = mysqli_prepare($connection, $sql);
 
-  $stmt->bindParam(':name', $name);
-  $stmt->bindParam(':email', $email);
-  $stmt->execute();
+  mysqli_stmt_bind_param($stmt, "ss", $name, $email);
+  mysqli_stmt_execute($stmt);
+
+  printf("%d row inserted.\n", mysqli_stmt_affected_rows($stmt));
 
   $connection = null;
 ?>
