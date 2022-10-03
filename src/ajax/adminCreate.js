@@ -5,9 +5,6 @@ $(document).ready(function () {
 
 function validateInputs() {
   $(".form").keyup(function () {
-    console.log($("#adm-email").val());
-    console.log($("#adm-name").val());
-
     if ($("#adm-email").val() !== "" && $("#adm-name").val() !== "") {
       $("#saveadmin").removeAttr("disabled");
     } else {

@@ -1,4 +1,50 @@
-function editAdmin(name, email) {
-  window.location.href =
-    "../adminList/adminEdit.php?name=" + name + "&email=" + email;
+$(document).ready(function () {
+  checkbox();
+  validateInputs();
+  putAdmin();
+});
+
+function checkbox() {
+  $("#is-active").on("click", function () {
+    if ($("#is-active").is(":checked")) {
+      console.log("checked");
+    } else {
+      console.log("not checked");
+    }
+  });
+}
+function validateInputs() {
+  $(".form").keyup(function () {
+    console.log($("#adm-email").val());
+    console.log($("#adm-name").val());
+
+    if ($("#adm-email").val() !== "" && $("#adm-name").val() !== "") {
+      $("#saveadmin").removeAttr("disabled");
+    } else {
+      $("#saveadmin").attr("disabled", "disabled");
+    }
+  });
+}
+
+function putAdmin() {
+  $("#saveadmin").on("click", function () {
+    let admName = $("#adm-name").val();
+    let admEmail = $("#adm-email").val();
+    let isActivated = $("#is-active").is(":checked");
+    let key = null;
+    if (isActivated) {
+      let timestamp = new Date().getTime();
+      key = calcMD5(timestamp);
+    }
+
+    console.log(key);
+    let request = $.ajax({
+      method: "POST",
+      url: "../../ajaxquery/saveAdminEdited.php",
+      data: { name: admName, email: admEmail, key: key },
+      dataType: "text",
+      type: "post",
+      contentType: "application/x-www-form-urlencoded",
+    });
+  });
 }

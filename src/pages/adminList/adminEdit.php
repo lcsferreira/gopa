@@ -16,7 +16,7 @@
 
 <body>
   <div class="container">
-    <form class="forms" method="PUT">
+    <form class="forms" method="POST">
       <div class="form-title">
         <h1>
           Admin Edit
@@ -27,7 +27,7 @@
       </div>
       <div class="form-input">
         <label for="adm-name">Name</label>
-        <input type="text" id="adm-name" placeholder="Name" 
+        <input type="text" class="form" id="adm-name" placeholder="Name" 
         <?php 
           $name = $_GET['admName'];
           //display name in input value
@@ -37,7 +37,7 @@
       </div>
       <div class="form-input">
         <label for="adm-email">Email</label>
-        <input type="text" id="adm-email" placeholder="Email"
+        <input type="text" id="adm-email" class="form" placeholder="Email"
         <?php
           $email = $_GET['admEmail'];
           //display name in input value
@@ -46,18 +46,13 @@
       </div>
       <div class="form-input-rg">
         <label for="is-active">Active: </label>
-        <div id="is-active">
-          <label for="active">Yes</label>
-          <input type="radio" name="is-active" id="active" value="true">
-          <label for="inactive">No</label>
-          <input type="radio" name="is-active" id="inactive" value="false" checked>
-        </div>
+        <input type="checkbox" name="is-active" id="is-active">
       </div>
-      <button class="btn-create"type="button" id="saveadmin">Confirm</button>
+      <button class="btn-create"type="button" id="saveadmin" disabled="false">Confirm</button>
     </form>
   </div>
-  <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script language="JavaScript" src="../../scripts/md5.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script language="JavaScript" src="../../../scripts/md5.js"></script>
   <script src="../../ajax/adminEdit.js"></script>
 </body>
 </html>
