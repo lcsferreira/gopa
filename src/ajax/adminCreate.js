@@ -20,24 +20,11 @@ function postAdmin() {
 
     let request = $.ajax({
       method: "POST",
-      url: "../../ajaxquery/saveadmin_ajax.php",
+      url: "../../ajaxquery/saveAdmin.php",
       data: { name: admName, email: admEmail },
       dataType: "text",
       type: "post",
       contentType: "application/x-www-form-urlencoded",
-    });
-
-    // Callback handler that will be called on success
-    request.done(function (response, textStatus, jqXHR) {
-      setTimeout(() => {
-        window.location.href = "../adminList/adminList.php";
-      }, 1000);
-    });
-
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-      // Log the error to the console
-      console.error("The following error occurred: " + textStatus, errorThrown);
     });
   });
 }

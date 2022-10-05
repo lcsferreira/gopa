@@ -48,7 +48,7 @@
         <label for="is-active">Active: </label>
         <input type="checkbox" name="is-active" id="is-active">
       </div>
-      <button class="btn-create"type="button" id="saveadmin" disabled="false">Confirm</button>
+      <button class="btn-create"type="button" id="saveadmin">Confirm</button>
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>

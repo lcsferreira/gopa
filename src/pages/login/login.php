@@ -19,20 +19,24 @@
       </div>
       <p>Enter with your credentials to login with your acconut</p>
 
-      <form class="form-input" method="POST">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Email@mail.com">
+      <form class="forms" method="POST">
+        <div class="form-input">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Email@mail.com">
+        </div>
+        <div class="form-input">
+          <label for="password">Password <a href="forgotPassword.php">Forgot Password?</a></label>
+          <input type="password" id="password" placeholder="Password">
+        </div>
       </form>
-      <div class="form-input">
-        <label for="password">Password <a href="forgotPassword.php">Forgot Password?</a></label>
-        <input type="password" id="password" placeholder="Password">
-      </div>
-
-      <button type="submit">Login</button>
+        
+      <button type="button" id="login">Login</button>
     </div>
     <div class="col-50">
       <img class="side-img" src="../../../assets/firstAccess.jpg" alt="gopa-img">
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="../../ajax/getLogin.js"></script>
 </body>
 </html>

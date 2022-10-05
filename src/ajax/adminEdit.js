@@ -31,17 +31,15 @@ function putAdmin() {
     let admName = $("#adm-name").val();
     let admEmail = $("#adm-email").val();
     let isActivated = $("#is-active").is(":checked");
-    let key = null;
+    let is_active = 0;
     if (isActivated) {
-      let timestamp = new Date().getTime();
-      key = calcMD5(timestamp);
+      is_active = 1;
     }
 
-    console.log(key);
     let request = $.ajax({
       method: "POST",
       url: "../../ajaxquery/saveAdminEdited.php",
-      data: { name: admName, email: admEmail, key: key },
+      data: { name: admName, email: admEmail, is_active: is_active },
       dataType: "text",
       type: "post",
       contentType: "application/x-www-form-urlencoded",

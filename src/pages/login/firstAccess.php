@@ -1,5 +1,9 @@
 <?php
   include_once "../../../config.php"
+  
+?>
+<?php
+  include "../../ajaxquery/checkFirstAccess.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,20 +25,24 @@
       </div>
       <p>Create your account password</p>
 
-      <form class="form-input" method="POST">
-        <label for="create-password">Create Password</label>
-        <input type="password" id="create-password" placeholder="Password">
+      <form class="forms" method="POST">
+        <div class="form-input">
+          <label for="create-password">Create Password</label>
+          <input type="password" id="create-password" placeholder="Password">
+        </div>
+        <div class="form-input">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" placeholder="Password">
+        </div>
       </form>
-      <div class="form-input">
-        <label for="confirm-password">Confirm Password</label>
-        <input type="password" id="confirm-password" placeholder="Password">
-      </div>
 
-      <button type="submit">Create</button>
+      <button type="button" id="post-password">Create</button>
     </div>
     <div class="col-50">
       <img class="side-img" src="../../../assets/firstAccess.jpg" alt="gopa-img">
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="../../ajax/passwordCreation.js"></script>
 </body>
 </html>
