@@ -35,6 +35,14 @@ function postPassword() {
         type: "post",
         contentType: "application/x-www-form-urlencoded",
       });
+
+      request.done(function (msg) {
+        if (msg == "success") {
+          window.location.href = "/login/login.php";
+        } else {
+          alert("Password creation failed");
+        }
+      });
     }
   });
 }

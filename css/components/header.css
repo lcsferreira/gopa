@@ -13,3 +13,7 @@ body {
   height: 50px;
   max-width: 100%;
 }
+
+.header-top img {
+  max-height: 32px;
+}

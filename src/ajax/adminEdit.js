@@ -44,5 +44,13 @@ function putAdmin() {
       type: "post",
       contentType: "application/x-www-form-urlencoded",
     });
+
+    request.done(function (msg) {
+      if (msg == "success") {
+        window.location.href = "/adminList/adminList.php";
+      } else {
+        alert("Admin updtae failed");
+      }
+    });
   });
 }

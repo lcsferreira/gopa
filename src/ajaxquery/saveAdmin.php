@@ -11,7 +11,15 @@
   mysqli_stmt_bind_param($stmt, "ss", $name, $email);
   mysqli_stmt_execute($stmt);
 
-  printf("%d row inserted.\n", mysqli_stmt_affected_rows($stmt));
+  if(mysqli_stmt_affected_rows($stmt) > 0){
+    echo "success";
+  }else{
+    echo "error creating account";
+  }
 
-  $connection = null;
+  mysqli_stmt_close($stmt);
+
+  mysqli_close($connection);
+
+
 ?>

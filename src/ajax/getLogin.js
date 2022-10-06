@@ -18,5 +18,14 @@ function login() {
       type: "post",
       contentType: "application/x-www-form-urlencoded",
     });
+
+    //redirect to adminList.php if login is successful
+    request.done(function (msg) {
+      if (msg == "success") {
+        window.location.href = "/adminList/adminList.php";
+      } else {
+        alert("Login failed");
+      }
+    });
   });
 }

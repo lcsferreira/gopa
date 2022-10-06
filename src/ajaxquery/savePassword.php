@@ -9,7 +9,15 @@
   $password = $_POST['password'];
   mysqli_stmt_bind_param($stmt, "s", $password);
   mysqli_stmt_execute($stmt);
-  $connection = null;
-  //redirect to login page
+  
+  if(mysqli_stmt_affected_rows($stmt) > 0){
+    echo "success";
+  }else{
+    echo "error creating password";
+  }
+
+  mysqli_stmt_close($stmt);
+
+  mysqli_close($connection);
   
 ?>

@@ -18,11 +18,16 @@ $is_active = $_POST['is_active'];
   $result = mysqli_query($connection, $sql);
   $row = mysqli_fetch_assoc($result);
   $id = $row['id'];
-  printf("firstAccess.php?id=%d", $id);
-  
-  $connection = null;
-  //redirect to admin page
-  //TO-DO: enviar email 
-  
 
+  echo "firstAccess.php?id='$id'";
+  
+  if(mysqli_stmt_affected_rows($stmt) > 0){
+    echo "success";
+  }else{
+    echo "error updating account";
+  }
+
+  mysqli_stmt_close($stmt);
+
+  mysqli_close($connection);
 ?>

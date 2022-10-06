@@ -15,7 +15,7 @@ if($row['password'] === $password){
   session_start();
   $_SESSION['id'] = $row['id'];
   //redirect to dashboard
-  header("Location: ../pages/adminList/adminList.php");
+  echo "success";
 }else{
   echo "wrong email or password";
 }
