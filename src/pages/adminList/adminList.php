@@ -18,12 +18,28 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="main">
+    <div class="modal-delete" id="modalDelete">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Are you sure?</h1>
+        </div>
+        <div class="modal-body">
+          <p>Do you really want to delete these records? This process cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-delete" id="delete"
+          onclick="confirmDelete()">Delete</button>
+          <button type="button" class="btn-cancel" id="cancel" onclick="closeModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
     <div class="title-header">
       <h1>Admin List</h1>
-      <p  align="center" class="bg-a">
-        <a href="../adminList/adminCreate.php" class="btn-create">Create Admin</a>  
-      </p>
+      <button class="btn-create" type="button" onclick="window.location.href='adminCreate.php'">
+        Create Admin
+      </button>
+      </button>
     </div>
     <div class="admin-list">
       <?php 
@@ -56,7 +72,7 @@
                       <button class='btn-edit' onclick='document.location = `adminEdit.php?admId=".$row['id']."`'>
                         <i class='fa fa-pencil'></i>
                       </button>
-                      <button class='btn-delete'>
+                      <button class='btn-delete' onclick='showModalDelete(".$row['id'].")'>
                         <i class='fa fa-trash'></i>
                       </button>
                     </div>
@@ -68,5 +84,7 @@
       ?>
     </div>
   </div>
+  <script src="../../ajax/sidebarMenu.js"></script>
+  <script src="../../ajax/adminDelete.js"></script>
 </body>
 </html>

@@ -1,5 +1,12 @@
 body {
   margin: 0 auto;
+  padding: 0;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+html {
+  height: 100%;
 }
 
 .container {
@@ -24,7 +31,7 @@ body {
   margin-top: 60px;
 }
 
-.title-header .bg-a {
+.title-header .btn-create {
   margin: 0;
   width: 172px;
   height: 35px;
@@ -33,14 +40,17 @@ body {
   justify-content: center;
   border-radius: 4px;
   align-items: center;
-}
-
-.btn-create {
+  cursor: pointer;
+  transition: 0.2s;
   color: white;
   font-size: 16px;
   text-align: center;
   border: none;
   text-decoration: none;
+}
+
+.title-header .btn-create:hover {
+  background-color: #0288d1;
 }
 
 .admin-list {
@@ -60,7 +70,7 @@ body {
   width: 95%;
   justify-content: space-around;
   background-color: white;
-  border: 1px solid #8e9dae;
+  border: 2px solid #8e9dae;
   border-radius: 4px;
   margin-bottom: 20px;
 }
@@ -99,6 +109,7 @@ body {
   cursor: pointer;
   display: flex;
   align-items: center;
+  transition: 0.2s;
 }
 
 .list .object-buttons .btn-delete {
@@ -109,4 +120,24 @@ body {
   cursor: pointer;
   display: flex;
   align-items: center;
+  transition: 0.2s;
+}
+
+.list .object-buttons .btn-edit:hover {
+  color: #036796e5;
+}
+
+.list .object-buttons .btn-delete:hover {
+  color: #a80000;
+}
+
+.modal-delete {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 500px;
+  height: 500px;
+  overflow: auto;
 }

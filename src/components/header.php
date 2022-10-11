@@ -7,9 +7,15 @@
   <title><?php echo $title; ?></title>
 </head>
 <body>
+  <div id="mySidenav" class="sidenav">
+    <a class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="../adminList/adminList.php">Admins</a>
+    <a href="#">Contacts</a>
+    <a href="#">Countries</a>
+  </div>
   <div class="header-top">
-    <button type="button" class="side-menu-btn">
-      <img src="../../../assets/hamburguer-menu.svg" alt="hamb-btn">
+    <button type="button" class="sidemenu-btn" onclick="openNav()">
+      <i class="fa fa-bars"></i>
     </button>
     <img src="../../../assets/gopa-header-logo.svg" alt="gopa-logo">
   </div>
