@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  checkFirstAccess();
   validateInputs();
   postPassword();
 });
@@ -12,6 +13,22 @@ function validateInputs() {
       $("#post-password").removeAttr("disabled");
     } else {
       $("#post-password").attr("disabled", "disabled");
+    }
+  });
+}
+
+function checkFirstAccess() {
+  //get id from url
+  let request = $.ajax({
+    method: "POST",
+    url: "../../ajaxquery/checkFirstAccess.php",
+    type: "post",
+    contentType: "application/x-www-form-urlencoded",
+  });
+
+  request.done(function (msg) {
+    if (msg === "already signed up") {
+      window.location.href = "../login/login.php";
     }
   });
 }
@@ -38,7 +55,7 @@ function postPassword() {
 
       request.done(function (msg) {
         if (msg == "success") {
-          window.location.href = "/login/login.php";
+          window.location.href = "../login/login.php";
         } else {
           alert("Password creation failed");
         }

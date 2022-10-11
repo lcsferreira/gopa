@@ -29,7 +29,7 @@ function postAdmin() {
 
     request.done(function (msg) {
       if (msg == "success") {
-        window.location.href = "/adminList/adminList.php";
+        window.location.href = "../adminList/adminList.php";
       } else {
         alert("Admin creation failed");
       }

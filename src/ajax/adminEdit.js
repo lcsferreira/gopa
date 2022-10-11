@@ -46,10 +46,10 @@ function putAdmin() {
     });
 
     request.done(function (msg) {
-      if (msg == "success") {
-        window.location.href = "/adminList/adminList.php";
+      if (msg.substring(0, 7) == "success") {
+        window.location.href = "../adminList/adminList.php";
       } else {
-        alert("Admin updtae failed");
+        alert("Admin update failed");
       }
     });
   });

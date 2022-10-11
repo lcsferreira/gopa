@@ -18,11 +18,9 @@ $is_active = $_POST['is_active'];
   $result = mysqli_query($connection, $sql);
   $row = mysqli_fetch_assoc($result);
   $id = $row['id'];
-
-  echo "firstAccess.php?id='$id'";
   
   if(mysqli_stmt_affected_rows($stmt) > 0){
-    echo "success";
+    echo "success! firstAccess.php?id='$id'";
   }else{
     echo "error updating account";
   }

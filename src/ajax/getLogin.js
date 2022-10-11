@@ -22,7 +22,7 @@ function login() {
     //redirect to adminList.php if login is successful
     request.done(function (msg) {
       if (msg == "success") {
-        window.location.href = "/adminList/adminList.php";
+        window.location.href = "../adminList/adminList.php";
       } else {
         alert("Login failed");
       }

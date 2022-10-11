@@ -2,6 +2,14 @@
   $title = "Admin List";                   
   include "../../components/header.php";                 
 ?>
+<?php
+  include_once "../../../config.php";
+//select admin values where id = $id
+  $id = $_GET['admId'];
+  $sql = "SELECT * FROM admin WHERE id = '$id'";
+  $result = mysqli_query($connection, $sql);
+  $row = mysqli_fetch_assoc($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +37,7 @@
         <label for="adm-name">Name</label>
         <input type="text" class="form" id="adm-name" placeholder="Name" 
         <?php 
-          $name = $_GET['admName'];
+          $name = $row['name'];
           //display name in input value
           echo "value='".$name."'";
         ?>
@@ -39,14 +47,21 @@
         <label for="adm-email">Email</label>
         <input type="text" id="adm-email" class="form" placeholder="Email"
         <?php
-          $email = $_GET['admEmail'];
+          $email = $row['email'];
           //display name in input value
           echo "value='".$email."'";?>
         >
       </div>
       <div class="form-input-rg">
         <label for="is-active">Active: </label>
-        <input type="checkbox" name="is-active" id="is-active">
+        <input type="checkbox" name="is-active" id="is-active" 
+          <?php
+            $is_active = $row['is_active'];
+            if($is_active == 1){
+              echo "checked";
+            }
+          ?>
+        >
       </div>
       <button class="btn-create"type="button" id="saveadmin">Confirm</button>
     </form>

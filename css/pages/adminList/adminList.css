@@ -1,4 +1,4 @@
-body{
+body {
   margin: 0 auto;
 }
 
@@ -8,14 +8,14 @@ body{
   align-items: center;
   height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #F5FAFD;
+  background-color: #f5fafd;
 }
 
-.title-header h1{
+.title-header h1 {
   margin: 0;
 }
 
-.title-header{
+.title-header {
   display: flex;
   justify-content: space-around;
   align-content: center;
@@ -24,7 +24,7 @@ body{
   margin-top: 60px;
 }
 
-.title-header .bg-a{
+.title-header .bg-a {
   margin: 0;
   width: 172px;
   height: 35px;
@@ -43,6 +43,70 @@ body{
   text-decoration: none;
 }
 
-.admin-list{
+.admin-list {
   margin-top: 60px;
+}
+
+.list {
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.list .list-object {
+  display: flex;
+  width: 95%;
+  justify-content: space-around;
+  background-color: white;
+  border: 1px solid #8e9dae;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.list .list-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.list .user-img {
+  border: none;
+  color: black;
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.list .object-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 30%;
+}
+
+.list .is-active {
+  display: flex;
+  align-items: center;
+}
+
+.list .object-buttons .btn-edit {
+  background-color: white;
+  border: none;
+  color: #03a9f4;
+  font-size: 48px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.list .object-buttons .btn-delete {
+  background-color: white;
+  border: none;
+  color: red;
+  font-size: 48px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }

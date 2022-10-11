@@ -15,6 +15,7 @@
   <title>Admin List</title>
   <link rel="stylesheet" href="../../../css/pages/adminList/adminList.css">
   <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <div class="container">
@@ -30,19 +31,39 @@
         $result = mysqli_query($connection, $sql);
         $resultCheck = mysqli_num_rows($result);
         if($resultCheck > 0){
-          echo "<table class='table'>
-                  <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                  </tr>";
+          echo "<div class='list'>";
           while($row = mysqli_fetch_assoc($result)){
-            echo "<tr class='table-row' onclick='document.location = `adminEdit.php?admName=".$row['name']."&admEmail=".$row['email']."`'>
-                    <td>".$row['name']."</td>
-                    <td>".$row['email']."</td>
-                  </tr>";
+            echo "<div class='list-object'>
+                    <div class='user-img'>
+                      <i class='fa fa-user-o'></i>
+                    </div>
+                    <div class='info-detail'>
+                      <p>".$row['name']."</p>
+                      <p>".$row['email']."</p>
+                    </div>
+                    <div class='is-active'>
+                      <p>
+                        ";
+                          if($row['is_active'] == 1){
+                            echo "Active";
+                          }else{
+                            echo "Inactive";
+                          }
+                    echo 
+                      "</p>
+                    </div>
+                    <div class='object-buttons'>
+                      <button class='btn-edit' onclick='document.location = `adminEdit.php?admId=".$row['id']."`'>
+                        <i class='fa fa-pencil'></i>
+                      </button>
+                      <button class='btn-delete'>
+                        <i class='fa fa-trash'></i>
+                      </button>
+                    </div>
+                  </div>";
             
           }
-          echo "</table>";
+          echo "</div>";
         }
       ?>
     </div>
