@@ -1,3 +1,16 @@
+<?php
+  include_once "../../../config.php";
+?>
+<?php
+//get the session id
+  session_start();
+  $id = $_SESSION['id'];
+  //select the admin name where id = session id
+  $sql = "SELECT name FROM admin WHERE id = '$id'";
+  $result = mysqli_query($connection, $sql);
+  $row = mysqli_fetch_assoc($result);
+  $name = $row['name'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +22,13 @@
 <body>
   <div id="mySidenav" class="sidenav">
     <a class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="../adminList/adminList.php">Admins</a>
-    <a href="#">Contacts</a>
-    <a href="#">Countries</a>
+    <p>
+      Hello, <?php echo $name; ?>
+    </p>
+    <a href="../adminList/adminList.php">Admins List</a>
+    <a href="#">Contacts List</a>
+    <a href="#">Countries list</a>
+    <a href="../login/login.php">Logout</a>
   </div>
   <div class="header-top">
     <button type="button" class="sidemenu-btn" onclick="openNav()">
