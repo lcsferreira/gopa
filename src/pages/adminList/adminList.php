@@ -5,7 +5,13 @@
 <?php
   include_once "../../../config.php"
 ?>
-
+<?php
+  session_start();
+  if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
+    header("location: ../login/login.php");
+    exit();
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,20 +25,9 @@
 </head>
 <body>
   <div class="container" id="main">
-    <div class="modal-delete" id="modalDelete">
-      <div class="modal-content">
-        <div class="modal-header">
-          <i class="fa fa-times-circle fa-5x" aria-hidden="true"></i>
-        </div>
-        <div class="modal-body">
-          <p>Do you really want to delete this admin? This process cannot be undone.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn-delete" id="delete">Delete</button>
-          <button type="button" class="btn-cancel" id="cancel">Cancel</button>
-        </div>
-      </div>
-    </div>
+    <?php
+      include_once "../../components./modalDelete.php";
+    ?>
     <div class="title-header">
       <h1>Admin List</h1>
       <button class="btn-create" type="button" onclick="window.location.href='adminCreate.php'">

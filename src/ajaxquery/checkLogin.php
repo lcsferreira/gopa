@@ -13,6 +13,7 @@ $row = mysqli_fetch_assoc($result);
 if($row['password'] === $password){
   //if email and password are correct, create session
   session_start();
+  $_SESSION['loggedin'] = true;
   $_SESSION['id'] = $row['id'];
   //redirect to dashboard
   echo "success";

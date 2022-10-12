@@ -3,11 +3,13 @@
 ?>
 <?php
   $id = $_POST['id'];
-  $sql = "DELETE FROM admin WHERE id = '$id'";
-  $result = mysqli_query($connection, $sql);
-  if($result){
-    echo "success deleting admin";
+  session_start();
+  //delete admin where id = $id if id is not equal to session id
+  if($id != $_SESSION['id']){
+    $sql = "DELETE FROM admin WHERE id = '$id'";
+    $result = mysqli_query($connection, $sql);
+    echo "success deleing admin";
   }else{
-    echo "Error deleting admin";
+    echo "You cannot delete yourself";
   }
 ?>
