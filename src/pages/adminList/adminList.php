@@ -22,15 +22,14 @@
     <div class="modal-delete" id="modalDelete">
       <div class="modal-content">
         <div class="modal-header">
-          <h1>Are you sure?</h1>
+          <i class="fa fa-times-circle fa-5x" aria-hidden="true"></i>
         </div>
         <div class="modal-body">
-          <p>Do you really want to delete these records? This process cannot be undone.</p>
+          <p>Do you really want to delete this admin? This process cannot be undone.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn-delete" id="delete"
-          onclick="confirmDelete()">Delete</button>
-          <button type="button" class="btn-cancel" id="cancel" onclick="closeModal()">Cancel</button>
+          <button type="button" class="btn-delete" id="delete">Delete</button>
+          <button type="button" class="btn-cancel" id="cancel">Cancel</button>
         </div>
       </div>
     </div>
@@ -72,7 +71,7 @@
                       <button class='btn-edit' onclick='document.location = `adminEdit.php?admId=".$row['id']."`'>
                         <i class='fa fa-pencil'></i>
                       </button>
-                      <button class='btn-delete' onclick='showModalDelete(".$row['id'].")'>
+                      <button class='btn-delete' onclick='showModal(".$row['id'].")'>
                         <i class='fa fa-trash'></i>
                       </button>
                     </div>
@@ -84,6 +83,7 @@
       ?>
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="../../ajax/sidebarMenu.js"></script>
   <script src="../../ajax/adminDelete.js"></script>
 </body>
