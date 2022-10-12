@@ -1,27 +1,48 @@
 $(document).ready(function () {
-  checkbox();
+  $("#email-error").hide();
+  $("#name-error").hide();
   validateInputs();
+  validateName();
+  validateEmail();
   putAdmin();
 });
 
-function checkbox() {
-  $("#is-active").on("click", function () {
-    if ($("#is-active").is(":checked")) {
-      console.log("checked");
-    } else {
-      console.log("not checked");
-    }
-  });
-}
 function validateInputs() {
   $(".form").keyup(function () {
-    console.log($("#adm-email").val());
-    console.log($("#adm-name").val());
-
     if ($("#adm-email").val() !== "" && $("#adm-name").val() !== "") {
       $("#saveadmin").removeAttr("disabled");
     } else {
       $("#saveadmin").attr("disabled", "disabled");
+    }
+  });
+}
+
+function validateName() {
+  $("#adm-name").on("keyup", function () {
+    let name = $("#adm-name").val();
+    if (name.length > 3) {
+      $("#name-error").hide();
+      $("#saveadmin").removeAttr("disabled");
+      $("#adm-name").removeClass("is-invalid");
+    } else {
+      $("#name-error").show();
+      $("#saveadmin").attr("disabled", "disabled");
+      $("#adm-name").addClass("is-invalid");
+    }
+  });
+}
+
+function validateEmail() {
+  $("#adm-email").on("keyup", function () {
+    let email = $("#adm-email").val();
+    if (email.includes("@")) {
+      $("#email-error").hide();
+      $("#saveadmin").removeAttr("disabled");
+      $("#adm-email").removeClass("is-invalid");
+    } else {
+      $("#email-error").show();
+      $("#saveadmin").attr("disabled", "disabled");
+      $("#adm-email").addClass("is-invalid");
     }
   });
 }

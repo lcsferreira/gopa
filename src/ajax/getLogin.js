@@ -1,13 +1,24 @@
 $(document).ready(function () {
+  $("#error-msg").hide();
+  $("#login").attr("disabled", "disabled");
   login();
+  validateInputs();
 });
+
+function validateInputs() {
+  $(".forms").keyup(function () {
+    if ($("#email").val() !== "" && $("#password").val() !== "") {
+      $("#login").removeAttr("disabled");
+    } else {
+      $("#login").attr("disabled", "disabled");
+    }
+  });
+}
 
 function login() {
   $("#login").on("click", function () {
     let email = $("#email").val();
     let password = $("#password").val();
-    console.log(email);
-    console.log(password);
 
     //Send data with get request
     let request = $.ajax({
@@ -24,7 +35,9 @@ function login() {
       if (msg == "success") {
         window.location.href = "../adminList/adminList.php";
       } else {
-        alert("Login failed");
+        $("#error-msg").show();
+        $("#email").addClass("is-invalid");
+        $("#password").addClass("is-invalid");
       }
     });
   });

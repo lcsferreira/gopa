@@ -35,10 +35,12 @@
       <div class="form-input">
         <label for="adm-name">Name</label>
         <input type="text" id="adm-name" class="form"placeholder="Name">
+        <p class="error-msg" id="name-error">Invalid name</p>
       </div>
       <div class="form-input">
         <label for="adm-email">Email</label>
         <input type="text" id="adm-email" class="form" placeholder="Email">
+        <p class="error-msg" id="email-error">Invalid email</p>
       </div>
       <button class="btn-create" type="button" id="saveadmin" disabled="true">Create</button>
     </form>

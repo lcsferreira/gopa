@@ -1,7 +1,12 @@
 $(document).ready(function () {
+  $("#error-msg-pw1").hide();
+  $("#error-msg-pw2").hide();
+  $("#post-password").attr("disabled", "disabled");
   checkFirstAccess();
   validateInputs();
   postPassword();
+  validateSecurePassword();
+  validateIfConfirmEqualsPassword();
 });
 
 function validateInputs() {
@@ -13,6 +18,37 @@ function validateInputs() {
       $("#post-password").removeAttr("disabled");
     } else {
       $("#post-password").attr("disabled", "disabled");
+    }
+  });
+}
+
+function validateSecurePassword() {
+  $("#create-password").on("blur", function () {
+    let password = $("#create-password").val();
+    var strongRegex = new RegExp(
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+    );
+    if (strongRegex.test(password)) {
+      $("#create-password").removeClass("is-invalid");
+      $("#error-msg-pw1").hide();
+    } else {
+      $("#create-password").addClass("is-invalid");
+      $("#post-password").attr("disabled", "disabled");
+      $("#error-msg-pw1").show();
+    }
+  });
+}
+
+function validateIfConfirmEqualsPassword() {
+  $("#confirm-password").on("keyup", function () {
+    if ($("#confirm-password").val() !== $("#create-password").val()) {
+      $("#confirm-password").addClass("is-invalid");
+      $("#post-password").attr("disabled", "disabled");
+      $("#error-msg-pw2").show();
+    } else {
+      $("#confirm-password").removeClass("is-invalid");
+      $("#post-password").removeAttr("disabled");
+      $("#error-msg-pw2").hide();
     }
   });
 }

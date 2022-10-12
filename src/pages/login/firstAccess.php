@@ -23,16 +23,18 @@
         </h1>
         <img class="logo" src="../../../assets/gopa-logo.svg" alt="gopa-logo">
       </div>
-      <p>Create your account password</p>
+      <p>Create your account password! It MUST have 8 characters, including a lower and uper case letter, a number and a special character(ex: @, !, #).</p>
 
       <form class="forms" method="POST">
         <div class="form-input">
           <label for="create-password">Create Password</label>
           <input type="password" id="create-password" placeholder="Password">
+          <p class="error-msg" id="error-msg-pw1">Password don't match the requirements</p>
         </div>
         <div class="form-input">
           <label for="confirm-password">Confirm Password</label>
           <input type="password" id="confirm-password" placeholder="Password">
+          <p class="error-msg" id="error-msg-pw2">Passwords not equal</p>
         </div>
       </form>
 

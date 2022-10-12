@@ -27,6 +27,7 @@
         <div class="form-input">
           <label for="password">Password <a href="forgotPassword.php">Forgot Password?</a></label>
           <input type="password" id="password" placeholder="Password">
+          <p class="error-msg" id="error-msg">Wrong email or password</p>
         </div>
       </form>
         

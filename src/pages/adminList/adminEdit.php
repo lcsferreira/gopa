@@ -49,6 +49,7 @@
           echo "value='".$name."'";
         ?>
         >
+        <p class="error-msg" id="name-error">Invalid name</p>
       </div>
       <div class="form-input">
         <label for="adm-email">Email</label>
@@ -58,6 +59,7 @@
           //display name in input value
           echo "value='".$email."'";?>
         >
+        <p class="error-msg" id="email-error">Invalid email</p>
       </div>
       <div class="form-input-rg">
         <label for="is-active">Active: </label>
