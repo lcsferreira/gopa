@@ -30,11 +30,11 @@
         echo 
         "
         <a href='../adminList/adminList.php'>Admins List</a>
-        <a href='#'>Contacts List</a>
+        <a href='../contactList/contactList.php'>Contacts List</a>
+        <a href='../countriesList/countriesListAdmin.php'>Countries list</a>
         ";
       }
     ?>
-    <a href="../countriesList/countriesListAdmin.php">Countries list</a>
     <a href="../login/login.php">Logout</a>
   </div>
   <div class="header-top">
