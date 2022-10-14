@@ -4,34 +4,32 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forgot Password</title>
+  <title>First Access</title>
   <link rel="stylesheet" href="../../../css/pages/login/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <div class="container">
     <div class="col-50 forms">
       <div class="form-title">
         <h1>
-          Forgot Password
+          First Access
         </h1>
         <img class="logo" src="../../../assets/gopa-logo.svg" alt="gopa-logo">
       </div>
-      <p>Enter your email to reset your password</p>
-
-      <form class="forms" method="POST">
-        <div class="form-input">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Email@mail.com">
-          <p class="error-msg" id="errorMsg">Invalid Email</p>
-        </div>
-      </form> 
-      <button type="button" id="sendEmail">Send</button>
+      <p>Your password has been saved. We'll redirect you to sign in area.</p>
+      <div style="margin-top: 20px; color: #03a9f4">
+        <i class="fa fa-check-circle fa-4x"></i>
+      </div>
     </div>
     <div class="col-50">
       <img class="side-img" src="../../../assets/firstAccess.jpg" alt="gopa-img">
     </div>
   </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="../../ajax/forgotPassword.js"></script>
+  <script>
+    setTimeout(function() {
+      window.location.href = "../login/login.php";
+    }, 3000);
+  </script>
 </body>
 </html>

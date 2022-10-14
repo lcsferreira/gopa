@@ -53,22 +53,6 @@ function validateIfConfirmEqualsPassword() {
   });
 }
 
-function checkFirstAccess() {
-  //get id from url
-  let request = $.ajax({
-    method: "POST",
-    url: "../../ajaxquery/checkFirstAccess.php",
-    type: "post",
-    contentType: "application/x-www-form-urlencoded",
-  });
-
-  request.done(function (msg) {
-    if (msg === "already signed up") {
-      window.location.href = "../login/login.php";
-    }
-  });
-}
-
 function postPassword() {
   $("#post-password").on("click", function () {
     let password = $("#create-password").val();
@@ -91,7 +75,7 @@ function postPassword() {
 
       request.done(function (msg) {
         if (msg == "success") {
-          window.location.href = "../login/emailSentFirstAccess.php";
+          window.location.href = "../login/login.php";
         } else {
           alert(msg);
         }
