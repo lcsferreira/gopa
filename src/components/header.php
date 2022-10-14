@@ -28,10 +28,10 @@
     <?php
       if($_SESSION['userType'] == "admin"){
         echo 
-        `
-        <a href="../adminList/adminList.php">Admins List</a>
-        <a href="#">Contacts List</a>
-        `
+        "
+        <a href='../adminList/adminList.php'>Admins List</a>
+        <a href='#'>Contacts List</a>
+        ";
       }
     ?>
     <a href="#">Countries list</a>

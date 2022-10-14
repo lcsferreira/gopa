@@ -46,7 +46,7 @@ function confirmDelete() {
         window.location.href = "../adminList/adminList.php";
       } else {
         closeModal();
-        alert("Admin delete failed");
+        alert(msg);
       }
     });
   });

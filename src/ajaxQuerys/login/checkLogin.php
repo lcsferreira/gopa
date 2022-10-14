@@ -1,5 +1,5 @@
 <?php
-  include_once "../../config.php"
+  include_once "../../../config.php"
 ?>
 <?php
 //get email and password from login.php
@@ -11,7 +11,7 @@ $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($result);
 
 //check if email exists in contact table
-$sql2 = "SELECT id, password FROM contact WHERE email = '$email'";
+$sql2 = "SELECT id, password FROM contacts WHERE email = '$email'";
 $result2 = mysqli_query($connection, $sql2);
 $row2 = mysqli_fetch_assoc($result2);
 
@@ -23,6 +23,7 @@ if(mysqli_num_rows($result) > 0){
     session_start();
     //set session id
     $_SESSION['id'] = $row['id'];
+    $_SESSION['loggedin'] = true;
     $_SESSION['userType'] = "admin";
     echo "success";
   }else{
@@ -34,6 +35,7 @@ if(mysqli_num_rows($result) > 0){
     session_start();
     //set session id
     $_SESSION['id'] = $row['id'];
+    $_SESSION['loggedin'] = true;
     $_SESSION['userType'] = "contact";
     echo "success";
   }else{

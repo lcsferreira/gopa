@@ -1,5 +1,5 @@
 <?php
-  include_once "../../config.php"
+  include_once "../../../config.php"
 ?>
 <?php
   $name  = $_POST['name'];
