@@ -23,7 +23,7 @@ function login() {
     //Send data with get request
     let request = $.ajax({
       method: "POST",
-      url: "../../ajaxquery/checkLogin.php",
+      url: "../../ajaxQuerys/login/checkLogin.php",
       data: { email: email, password: password },
       dataType: "text",
       type: "post",

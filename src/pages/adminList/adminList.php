@@ -78,7 +78,7 @@
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="../../ajax/sidebarMenu.js"></script>
-  <script src="../../ajax/adminDelete.js"></script>
+  <script src="../../js/sidebarMenu.js"></script>
+  <script src="../../js/admins/adminDelete.js"></script>
 </body>
 </html>

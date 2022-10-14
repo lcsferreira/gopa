@@ -2,9 +2,9 @@ $(document).ready(function () {
   $("#email-error").hide();
   $("#name-error").hide();
   validateInputs();
-  postAdmin();
   validateName();
   validateEmail();
+  putAdmin();
 });
 
 function validateInputs() {
@@ -47,25 +47,30 @@ function validateEmail() {
   });
 }
 
-function postAdmin() {
+function putAdmin() {
   $("#saveadmin").on("click", function () {
     let admName = $("#adm-name").val();
     let admEmail = $("#adm-email").val();
+    let isActivated = $("#is-active").is(":checked");
+    let is_active = 0;
+    if (isActivated) {
+      is_active = 1;
+    }
 
     let request = $.ajax({
       method: "POST",
-      url: "../../ajaxquery/saveAdmin.php",
-      data: { name: admName, email: admEmail },
+      url: "../../ajaxQuerys/admins/saveAdminEdited.php",
+      data: { name: admName, email: admEmail, is_active: is_active },
       dataType: "text",
       type: "post",
       contentType: "application/x-www-form-urlencoded",
     });
 
     request.done(function (msg) {
-      if (msg == "success") {
+      if (msg.substring(0, 7) == "success") {
         window.location.href = "../adminList/adminList.php";
       } else {
-        alert("Admin creation failed");
+        alert("Admin update failed");
       }
     });
   });

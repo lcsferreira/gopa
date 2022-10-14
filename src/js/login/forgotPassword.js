@@ -19,7 +19,7 @@ function sendEmail() {
     let email = $("#email").val();
     let request = $.ajax({
       method: "POST",
-      url: "../../ajaxquery/sendEmail.php",
+      url: "../../ajaxQuerys/login/sendEmail.php",
       data: { email: email },
       dataType: "text",
       type: "post",

@@ -33,7 +33,7 @@ function confirmDelete() {
   $("#delete").on("click", function () {
     let request = $.ajax({
       method: "POST",
-      url: "../../ajaxquery/adminDelete.php",
+      url: "../../ajaxQuerys/admins/adminDelete.php",
       data: { id: admid },
       dataType: "text",
       type: "post",

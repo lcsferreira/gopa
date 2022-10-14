@@ -76,7 +76,7 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script language="JavaScript" src="../../../scripts/md5.js"></script>
-  <script src="../../ajax/adminEdit.js"></script>
-  <script src="../../ajax/sidebarMenu.js"></script>
+  <script src="../../js/admins/adminEdit.js"></script>
+  <script src="../../js/sidebarMenu.js"></script>
 </body>
 </html>
