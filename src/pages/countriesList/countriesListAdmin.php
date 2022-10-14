@@ -34,7 +34,7 @@
       </button>
       </button>
     </div>
-    <div class="admin-list">
+    <div class="countries-list">
       <?php 
         $sql = "SELECT * FROM countries";
         $result = mysqli_query($connection, $sql);
