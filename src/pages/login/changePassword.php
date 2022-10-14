@@ -1,9 +1,8 @@
 <?php
   include_once "../../../config.php"
-  
 ?>
 <?php
-  include "../../ajaxquery/checkFirstAccess.php"
+  include "../../ajaxQuerys/login/checkFirstAccess.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,6 +44,6 @@
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="../../ajax/passwordReset.js"></script>
+  <script src="../../js/login/passwordReset.js"></script>
 </body>
 </html>

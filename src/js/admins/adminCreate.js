@@ -54,7 +54,7 @@ function postAdmin() {
 
     let request = $.ajax({
       method: "POST",
-      url: "../../ajaxQuerys/admins/adminCreate.php",
+      url: "../../ajaxQuerys/admins/saveAdmin.php",
       data: { name: admName, email: admEmail },
       dataType: "text",
       type: "post",

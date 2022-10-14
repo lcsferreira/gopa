@@ -2,7 +2,6 @@ $(document).ready(function () {
   $("#error-msg-pw1").hide();
   $("#error-msg-pw2").hide();
   $("#post-password").attr("disabled", "disabled");
-  checkFirstAccess();
   validateInputs();
   postPassword();
   validateSecurePassword();

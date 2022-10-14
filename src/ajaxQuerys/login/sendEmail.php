@@ -1,12 +1,15 @@
 <?php
+  include_once "../../../config.php"
+?>
+<?php
   //get the email from the form
   $email = $_POST['email'];
   //get the email from the admin table 
   $sql = "SELECT * FROM admin WHERE email = '$email'";
-  $result = mysqli_query($conn, $sql);
+  $result = mysqli_query($connection, $sql);
   $row = mysqli_fetch_assoc($result);
 
-  $sql2 = "SELECT * FROM contact WHERE email = '$email'";
+  $sql2 = "SELECT * FROM contacts WHERE email = '$email'";
   $result2 = mysqli_query($connection, $sql2);
   $row2 = mysqli_fetch_assoc($result2);
 

@@ -57,13 +57,16 @@ function checkFirstAccess() {
   //get id from url
   let request = $.ajax({
     method: "POST",
-    url: "../../ajaxquery/checkFirstAccess.php",
+    url: "../../ajaxQuerys/login/checkFirstAccess.php",
     type: "post",
     contentType: "application/x-www-form-urlencoded",
   });
 
   request.done(function (msg) {
-    if (msg === "already signed up") {
+    console.log(msg);
+    if (msg === "Already signed up") {
+      window.location.href = "../login/login.php";
+    } else if (msg === "Inactive") {
       window.location.href = "../login/login.php";
     }
   });
