@@ -34,7 +34,7 @@
         ";
       }
     ?>
-    <a href="#">Countries list</a>
+    <a href="../countriesList/countriesListAdmin.php">Countries list</a>
     <a href="../login/login.php">Logout</a>
   </div>
   <div class="header-top">
