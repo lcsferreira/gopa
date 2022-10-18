@@ -21,13 +21,12 @@ function postCountry() {
     let name = $("#name").val();
     let capital = $("#capital").val();
     let region = $("#region").val();
-    let need_translation;
-    let translation_step = "not started";
+    let need_translation = $("input[name=need-translation]:checked").val();
+    let translation_step;
 
-    if ($("input[name=need-translation]:checked").val() === "yes") {
-      need_translation = 1;
+    if ($("input[name=need-translation]:checked").val() === "1") {
+      translation_step = "not started";
     } else {
-      need_translation = 0;
       translation_step = null;
     }
 

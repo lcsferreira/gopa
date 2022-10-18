@@ -95,6 +95,7 @@ body {
   opacity: 60%;
   background-color: #8e9dae;
   border: 1px solid white;
+  cursor: auto;
 }
 
 .error-msg {

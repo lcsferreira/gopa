@@ -5,7 +5,7 @@
 <?php
   include_once "../../../config.php";
 //select admin values where id = $id
-  $id = $_GET['countryId'];
+  $id = $_GET['id'];
   $sql = "SELECT * FROM countries WHERE id = '$id'";
   $result = mysqli_query($connection, $sql);
   $row = mysqli_fetch_assoc($result);
@@ -26,8 +26,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Edit</title>
-  <link rel="stylesheet" href="../../../css/pages/adminList/adminEdit.css">
+  <title>Country Edit</title>
+  <link rel="stylesheet" href="../../../css/pages/countriesList/countryRegister.css">
   <link rel="stylesheet" href="../../../css/components/header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -37,10 +37,10 @@
     <form class="forms" method="POST">
       <div class="form-title">
         <h1>
-          Admin Edit
+          Country Edit
         </h1>
         <p>
-          Fill with the admin informations
+          Fill with the country informations
         </p>
       </div>
       <div class="form-input">
@@ -72,15 +72,18 @@
         <div id="need-translation">
           <?php 
             if($need_translation == 1){
-              echo "<input type='radio' id='yes' name='need-translation' value='1' checked>
+              echo "
               <label for='yes'>Yes</label>
+              <input type='radio' id='yes' name='need-translation' value='1' checked>
+              <label for='no'>No</label>
               <input type='radio' id='no' name='need-translation' value='0'>
-              <label for='no'>No</label>";
+              ";
             }else{
-              echo "<input type='radio' id='yes' name='need-translation' value='1'>
-              <label for='yes'>Yes</label>
+              echo "<label for='yes'>Yes</label>
+              <input type='radio' id='yes' name='need-translation' value='1'>
+              <label for='no'>No</label>
               <input type='radio' id='no' name='need-translation' value='0' checked>
-              <label for='no'>No</label>";
+              ";
             }
           ?>
         </div>
@@ -90,7 +93,7 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script language="JavaScript" src="../../../scripts/md5.js"></script>
-  <script src="../../js/admins/adminEdit.js"></script>
+  <script src="../../js/countries/countryEdit.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
 </body>
 </html>

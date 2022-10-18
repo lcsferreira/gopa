@@ -22,10 +22,10 @@
 
 <body>
   <div class="container" id="main">
-    <form class="forms" method="POST">
+    <form class="forms" method="POST" id="countryForm">
       <div class="form-title">
         <h1>
-          Admin Creation
+          Contact Creation
         </h1>
         <p>
           Fill with the contact informations
@@ -43,26 +43,30 @@
       <div class="form-input">
         <label for="second-email">Secondary email (optional)</label>
         <input type="text" id="second-email" class="form" placeholder="Secondary Email">
-        <p class="error-msg" id="email-error">Invalid email</p>
+        <p class="error-msg" id="second-email-error">Invalid email</p>
       </div>
       <div class="form-input">
         <label for="institution">Institution</label>
         <input type="text" id="institution" class="form" placeholder="Institution">
       </div>
-      <div class="country-relation">
-        <div class="form-input">
-          <label for="country">Country</label>
-          <input type="text" id="country" class="form" placeholder="Country">
+      <div class="country-relation" id="countryRelationForm">
+        <div class="inputs">
+          <div class="form-input country-input">
+            <label for="country">Country</label>
+            <input type="text" id="country" class="form" placeholder="Country">
+            <div class="form-checkbox">
+              <label for="contact-type">Main contact</label>
+              <input type="checkbox" id="contact-type" class="form">
+            </div>
+          </div>
         </div>
-        <div class="form-checkbox">
-          <label for="contact-type">Main contact</label>
-          <input type="checkbox" id="contact-type" class="form">
+        <div class="btn">
+          <button type="button" class="add-btn">
+            <i class="fa fa-plus"></i>
+          </button>
         </div>
-        <button type="button" class="add-btn" onclick="addCountry()">
-          <i class="fa fa-plus"></i>
-        </button>
       </div>
-      <button class="btn-create" type="button" id="saveContact" disabled="true">Create</button>
+      <button class="btn-create" type="button" id="saveContact" >Create</button>
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>

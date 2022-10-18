@@ -79,6 +79,6 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
-  <script src="../../js/admins/contactDelete.js"></script>
+  <script src="../../js/contacts/contactDelete.js"></script>
 </body>
 </html>

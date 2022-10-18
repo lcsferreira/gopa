@@ -2,16 +2,21 @@
   include_once "../../../config.php"
 ?>
 <?php
-$name  = $_POST['name'];
-$capital  = $_POST['capital'];
-$region  = $_POST['region'];
-$need_translation  = $_POST['need_translation'];
+  $payload = $_POST['payload'];
+  //get the data from the payload
+  $id = $payload['id'];
+  $name  = $payload['name'];
+  $capital = $payload['capital'];
+  $region = $payload['region'];
+  $need_translation = $payload['need_translation'];
+  $translation_step = $payload['translation_step'];
+  
   //update admin values where email = $email
-  $sql = "UPDATE country SET name = ?, capital = ?, region = ?, need_translation = ? WHERE name = '$name'";
+  $sql = "UPDATE countries SET name = ?, capital = ?, region = ?, translation_step = ?, need_translation = ? WHERE id = '$id'";
   
   $stmt = mysqli_prepare($connection, $sql);
 
-  mysqli_stmt_bind_param($stmt, "sssi", $name, $capital, $region, $need_translation);
+  mysqli_stmt_bind_param($stmt, "ssssi", $name, $capital, $region,$translation_step, $need_translation);
   mysqli_stmt_execute($stmt);
   
   if(mysqli_stmt_affected_rows($stmt) > 0){
@@ -19,7 +24,6 @@ $need_translation  = $_POST['need_translation'];
   }else{
     echo "error updating country";
   }
-  
   
   mysqli_stmt_close($stmt);
   mysqli_close($connection);

@@ -18,25 +18,32 @@ function validateInputs() {
 
 function putCountry() {
   $("#saveCountry").on("click", function () {
+    //get id from url
+    let url = window.location.href;
+    let id = url.substring(url.lastIndexOf("=") + 1);
+
     let name = $("#name").val();
     let capital = $("#capital").val();
     let region = $("#region").val();
-    let need_translation;
-    let translation_step = "not started";
-    if ($("input[name=need-translation]:checked").val() === "yes") {
-      need_translation = 1;
+    let need_translation = $("input[name=need-translation]:checked").val();
+    let translation_step;
+
+    if ($("input[name=need-translation]:checked").val() === "1") {
+      translation_step = "not started";
     } else {
-      need_translation = 0;
       translation_step = null;
     }
 
     let payload = {
+      id: id,
       name: name,
       capital: capital,
       region: region,
       need_translation: need_translation,
       translation_step: translation_step,
     };
+
+    console.log(payload);
 
     let request = $.ajax({
       method: "POST",
@@ -49,7 +56,7 @@ function putCountry() {
 
     request.done(function (msg) {
       if (msg.substring(0, 7) == "success") {
-        window.location.href = "../adminList/adminList.php";
+        window.location.href = "../countriesList/countriesListAdmin.php";
       } else {
         alert("country update failed");
       }

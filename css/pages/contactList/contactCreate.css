@@ -27,6 +27,13 @@ body {
   font-size: 40px;
 }
 
+.forms button:disabled {
+  opacity: 60%;
+  background-color: #8e9dae;
+  border: 1px solid white;
+  cursor: auto;
+}
+
 .forms p {
   color: #8e9dae;
   font-size: 16px;
@@ -72,24 +79,39 @@ body {
   align-self: flex-end;
   cursor: pointer;
 }
-
 .country-relation {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   width: 100%;
-  align-items: center;
+  justify-content: space-between;
 }
 
-.country-relation #country.form {
-  width: 230px;
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputs .form-input input {
+  width: 70%;
 }
 
 .form-checkbox {
-  margin-top: 3.5em;
+  display: flex;
+  align-items: center;
+}
+.btn {
+  display: flex;
+  align-items: flex-end;
+}
+
+.form-checkbox #contact-type {
+  width: 18px;
+  margin: 0 10px;
 }
 
 .add-btn {
-  margin-top: 2em;
+  margin-bottom: 2em;
   background-color: transparent;
   border: 1px solid #8e9dae;
   border-radius: 100%;
