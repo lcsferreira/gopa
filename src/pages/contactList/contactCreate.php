@@ -53,6 +53,9 @@
         <input type="text" id="institution" class="form" placeholder="Institution">
       </div>
       <div class="country-relation" id="countryRelationForm">
+        <button type="button" class="add-btn">
+          Add country
+        </button>
         <div class="inputs">
           <div class="form-input country-input">
             <label for="country">Country</label>
@@ -74,11 +77,6 @@
               <input type="checkbox" id="contact-type" class="form">
             </div>
           </div>
-        </div>
-        <div class="btn">
-          <button type="button" class="add-btn">
-            <i class="fa fa-plus"></i>
-          </button>
         </div>
       </div>
       <button class="btn-create" type="button" id="saveContact" >Create</button>

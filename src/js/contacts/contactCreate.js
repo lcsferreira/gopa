@@ -77,17 +77,10 @@ function deleteInputCountry() {
 
 function addCountry() {
   $(".add-btn").click(function () {
-    $(".inputs").append(
-      `<div class="form-input country-input">
-        <label for="country">Country</label>
-        <input type="text" id="country" class="form" placeholder="Country">
-        <div class="form-checkbox">
-          <label for="contact-type">Main contact</label>
-          <input type="checkbox" id="contact-type" class="form">
-        </div>
-        <a href="#" class="delete">Delete</a></div>
-      </div>`
-    );
+    //add the countryInput.php external file
+    $.get("../../components/countryInput.php", function (data) {
+      $(".inputs").append(data);
+    });
   });
 }
 
