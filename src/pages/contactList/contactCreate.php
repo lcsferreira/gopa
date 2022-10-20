@@ -8,6 +8,9 @@
     exit();
   }
 ?>
+<?php
+  include_once "../../../config.php"
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +56,19 @@
         <div class="inputs">
           <div class="form-input country-input">
             <label for="country">Country</label>
-            <input type="text" id="country" class="form" placeholder="Country">
+            <select name="country" id="country">
+              <?php
+                //get all countries from DB with msqli function
+                $sql = "SELECT id, name FROM countries";
+                $selectedCountry = mysqli_query($connection, $sql);
+                //form a new select option with all of our countries from DB
+                foreach($selectedCountry as $country){
+                  echo "
+                    <option value={$country['id']}>{$country['name']}</option>
+                  ";
+                }
+              ?>
+            </select>
             <div class="form-checkbox">
               <label for="contact-type">Main contact</label>
               <input type="checkbox" id="contact-type" class="form">

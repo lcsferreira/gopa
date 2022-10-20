@@ -2,7 +2,10 @@ $(document).ready(function () {
   $("#email-error").hide();
   $("#second-email-error").hide();
   postContact();
-  // validateInputs();
+  validateInputs();
+  validateEmail();
+  validateEmailSecond();
+  preventEqualEmails();
   addCountry();
   deleteInputCountry();
 });
@@ -16,6 +19,52 @@ function validateInputs() {
         $("#saveCountry").removeAttr("disabled");
       }
     });
+  });
+}
+
+function validateEmail() {
+  $("#email").on("keyup", function () {
+    let email = $("#email").val();
+    if (email.includes("@")) {
+      $("#email-error").hide();
+      $("#saveContact").removeAttr("disabled");
+      $("#email").removeClass("is-invalid");
+    } else {
+      $("#email-error").show();
+      $("#saveContact").attr("disabled", "disabled");
+      $("#email").addClass("is-invalid");
+    }
+  });
+}
+
+function validateEmailSecond() {
+  $("#second-email").on("keyup", function () {
+    let email = $("#second-email").val();
+    if (email.includes("@")) {
+      $("#second-email-error").hide();
+      $("#saveContact").removeAttr("disabled");
+      $("#second-email").removeClass("is-invalid");
+    } else {
+      $("#second-email-error").show();
+      $("#saveContact").attr("disabled", "disabled");
+      $("#second-email").addClass("is-invalid");
+    }
+  });
+}
+
+function preventEqualEmails() {
+  $("#second-email").on("blur", function () {
+    let email = $("#email").val();
+    let secondaryEmail = $("#second-email").val();
+    if (email === secondaryEmail) {
+      $("#email-error").show();
+      $("#second-email-error").show();
+      $("#saveContact").attr("disabled", "disabled");
+    } else {
+      $("#email-error").hide();
+      $("#second-email-error").hide();
+      $("#saveContact").removeAttr("disabled");
+    }
   });
 }
 
@@ -53,7 +102,7 @@ function postContact() {
 
     $(".country-input").each(function () {
       countries.push({
-        country: $(this).find("input[id=country]").val(),
+        country: $(this).find("#country").val(),
         mainContact: $(this).find("input[id=contact-type]").is(":checked"),
       });
     });
@@ -67,5 +116,20 @@ function postContact() {
     };
 
     console.log(payload);
+
+    // check if there are no duplicated email addresses
+    $.ajax({
+      url: "../../ajaxQuerys/contacts/saveContact.php",
+      type: "POST",
+      dataType: "text",
+      contentType: "application/x-www-form-urlencoded",
+    });
+    request.done(function (msg) {
+      if (msg == "success") {
+        window.location.href = "../contactList/contactList.php";
+      } else {
+        alert("Admin creation failed");
+      }
+    });
   });
 }
