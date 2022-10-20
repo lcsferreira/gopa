@@ -5,6 +5,7 @@ $(document).ready(function () {
 
 function validateInputs() {
   $(".forms").keyup(function () {
+    console.log($("input[name=need-translation]:checked").val());
     $('input[type="text"]').each(function () {
       if ($(this).val() === "") {
         $("#saveCountry").attr("disabled", "disabled");
@@ -21,13 +22,15 @@ function postCountry() {
     let name = $("#name").val();
     let capital = $("#capital").val();
     let region = $("#region").val();
-    let need_translation = $("input[name=need-translation]:checked").val();
+    let need_translation;
     let translation_step;
 
-    if ($("input[name=need-translation]:checked").val() === "1") {
+    if ($("input[name=need-translation]:checked").val() === "yes") {
       translation_step = "not started";
+      need_translation = 1;
     } else {
       translation_step = null;
+      need_translation = 0;
     }
 
     let payload = {
