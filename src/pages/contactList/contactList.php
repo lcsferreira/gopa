@@ -62,7 +62,7 @@
                       "</p>
                     </div>
                     <div class='object-buttons'>
-                      <button class='btn-edit' onclick='document.location = `contactEdit.php?admId=".$row['id']."`'>
+                      <button class='btn-edit' onclick='document.location = `contactEdit.php?id=".$row['id']."`'>
                         <i class='fa fa-pencil'></i>
                       </button>
                       <button class='btn-delete' onclick='showModal(".$row['id'].")'>

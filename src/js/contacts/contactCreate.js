@@ -111,12 +111,13 @@ function postContact() {
     console.log(payload);
 
     // check if there are no duplicated email addresses
-    $.ajax({
+    let request = $.ajax({
       url: "../../ajaxQuerys/contacts/saveContact.php",
       type: "POST",
       dataType: "text",
       contentType: "application/x-www-form-urlencoded",
     });
+
     request.done(function (msg) {
       if (msg == "success") {
         window.location.href = "../contactList/contactList.php";
