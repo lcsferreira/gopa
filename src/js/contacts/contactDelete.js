@@ -8,7 +8,7 @@ window.onunload = function () {
 };
 
 function showModal(id) {
-  admid = id;
+  contactId = id;
   // Get the modal
   var modal = document.getElementById("modalDelete");
   modal.style.display = "block";
@@ -21,7 +21,7 @@ function showModal(id) {
 function closeModal() {
   // Get the modal
   $("#cancel").on("click", function () {
-    admid = null;
+    contactId = null;
     var modal = document.getElementById("modalDelete");
     modal.style.display = "none";
     //enable pointer events on the id="main" element
@@ -34,7 +34,7 @@ function confirmDelete() {
     let request = $.ajax({
       method: "POST",
       url: "../../ajaxQuerys/contacts/contactDelete.php",
-      data: { id: id },
+      data: { id: contactId },
       dataType: "text",
       type: "post",
       contentType: "application/x-www-form-urlencoded",

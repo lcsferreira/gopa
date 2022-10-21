@@ -29,7 +29,7 @@
         <label for="contact-type">Main contact</label>
         <input type="checkbox" id="contact-type" class="form">
       </div>
-    <a href="#" class="delete">Delete</a></div>
+    <button type="button" class="delete">Delete</button>
   </div>
 </body>
 </html>

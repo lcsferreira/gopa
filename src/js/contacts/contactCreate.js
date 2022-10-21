@@ -95,10 +95,14 @@ function postContact() {
 
     $(".country-input").each(function () {
       countries.push({
-        country: $(this).find("#country").val(),
-        mainContact: $(this).find("input[id=contact-type]").is(":checked"),
+        country_id: $(this).find("#country").val(),
+        is_main: +$(this).find("input[id=contact-type]").is(":checked"),
       });
     });
+
+    if (secondaryEmail === undefined) {
+      secondaryEmail = null;
+    }
 
     let payload = {
       name: name,
@@ -110,10 +114,11 @@ function postContact() {
 
     console.log(payload);
 
-    // check if there are no duplicated email addresses
+    //check if there are no duplicated email addresses
     let request = $.ajax({
       url: "../../ajaxQuerys/contacts/saveContact.php",
       type: "POST",
+      data: { payload: payload },
       dataType: "text",
       contentType: "application/x-www-form-urlencoded",
     });

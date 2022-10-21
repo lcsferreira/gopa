@@ -10,7 +10,7 @@
   $countries = $payload['countries'];
 
   //insert contact in the database
-  $sql = "INSERT INTO contacts (name, email, secondaryEmail, institution) VALUES (?, ?, ?, ?)";
+  $sql = "INSERT INTO contacts (name, email, secondary_email, institution) VALUES (?, ?, ?, ?)";
   $stmt = mysqli_prepare($connection, $sql);
   
   mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $secondaryEmail, $institution);
