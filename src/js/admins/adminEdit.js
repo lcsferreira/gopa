@@ -56,11 +56,14 @@ function putAdmin() {
     if (isActivated) {
       is_active = 1;
     }
+    let url = window.location.href;
+    let urlArray = url.split("=");
+    let admId = urlArray[1];
 
     let request = $.ajax({
       method: "POST",
       url: "../../ajaxQuerys/admins/saveAdminEdited.php",
-      data: { name: admName, email: admEmail, is_active: is_active },
+      data: { id: admId, name: admName, email: admEmail, is_active: is_active },
       dataType: "text",
       type: "post",
       contentType: "application/x-www-form-urlencoded",

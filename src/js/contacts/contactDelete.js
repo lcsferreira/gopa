@@ -43,7 +43,7 @@ function confirmDelete() {
     request.done(function (msg) {
       if (msg.substring(0, 7) == "success") {
         closeModal();
-        window.location.href = "../adminList/adminList.php";
+        window.location.href = "../contactList/contactList.php";
       } else {
         closeModal();
         alert(msg);
