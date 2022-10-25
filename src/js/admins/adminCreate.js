@@ -3,32 +3,18 @@ $(document).ready(function () {
   $("#name-error").hide();
   validateInputs();
   postAdmin();
-  validateName();
   validateEmail();
 });
 
 function validateInputs() {
   $(".form").keyup(function () {
-    if ($("#adm-email").val() !== "" && $("#adm-name").val() !== "") {
-      $("#saveadmin").removeAttr("disabled");
-    } else {
-      $("#saveadmin").attr("disabled", "disabled");
-    }
-  });
-}
-
-function validateName() {
-  $("#adm-name").on("keyup", function () {
-    let name = $("#adm-name").val();
-    if (name.length > 3) {
-      $("#name-error").hide();
-      $("#saveadmin").removeAttr("disabled");
-      $("#adm-name").removeClass("is-invalid");
-    } else {
-      $("#name-error").show();
-      $("#saveadmin").attr("disabled", "disabled");
-      $("#adm-name").addClass("is-invalid");
-    }
+    $('input[type="text"]').each(function () {
+      if ($(this).val() === "") {
+        $("#saveCountry").attr("disabled", "disabled");
+      } else {
+        $("#saveCountry").removeAttr("disabled");
+      }
+    });
   });
 }
 
@@ -65,6 +51,7 @@ function postAdmin() {
       if (msg == "success") {
         window.location.href = "../adminList/adminList.php";
       } else {
+        //open modelError with msg
         alert("Admin creation failed");
       }
     });

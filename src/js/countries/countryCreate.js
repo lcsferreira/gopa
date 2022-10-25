@@ -5,11 +5,9 @@ $(document).ready(function () {
 
 function validateInputs() {
   $(".forms").keyup(function () {
-    console.log($("input[name=need-translation]:checked").val());
     $('input[type="text"]').each(function () {
       if ($(this).val() === "") {
         $("#saveCountry").attr("disabled", "disabled");
-        return false;
       } else {
         $("#saveCountry").removeAttr("disabled");
       }

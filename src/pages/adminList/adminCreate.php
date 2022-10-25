@@ -22,7 +22,7 @@
 
 <body>
   <div class="container" id="main">
-    <form class="forms" method="POST" action="">
+    <form class="form" method="POST" action="">
       <div class="form-title">
         <h1>
           Admin Creation
@@ -34,7 +34,6 @@
       <div class="form-input">
         <label for="adm-name">Name</label>
         <input type="text" id="adm-name" class="form"placeholder="Name">
-        <p class="error-msg" id="name-error">Invalid name</p>
       </div>
       <div class="form-input">
         <label for="adm-email">Email</label>
