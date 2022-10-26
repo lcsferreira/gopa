@@ -11,12 +11,18 @@
   mysqli_stmt_bind_param($stmt, "ss", $name, $email);
   mysqli_stmt_execute($stmt);
 
-  if(mysqli_stmt_affected_rows($stmt) > 0){
-    echo "success";
+  //get the error code
+  $error = mysqli_stmt_errno($stmt);
+  if($error){
+    echo $error;
   }else{
-    echo "error creating account";
+    if(mysqli_stmt_affected_rows($stmt) > 0){
+      echo "success";
+    }else{
+      echo "No account was created";
+    }
   }
-
+    
   mysqli_stmt_close($stmt);
 
   mysqli_close($connection);

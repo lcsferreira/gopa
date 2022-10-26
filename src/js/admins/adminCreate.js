@@ -4,6 +4,8 @@ $(document).ready(function () {
   validateInputs();
   postAdmin();
   validateEmail();
+  showModal();
+  closeModal();
 });
 
 function validateInputs() {
@@ -33,6 +35,34 @@ function validateEmail() {
   });
 }
 
+window.onunload = function () {
+  closeModal();
+};
+
+function showModal(msg) {
+  // Get the modal
+  var modal = document.getElementById("modalError");
+  modal.style.display = "block";
+  //disable pointer events on the id="main" element except for the modal
+  //create a p inside the modal-body with the msg
+  $("#modalError .modal-body").append("<p>" + msg + "</p>");
+
+  document.getElementById("main").style.pointerEvents = "none";
+  //enable pointer events on the modal
+  document.getElementById("modalError").style.pointerEvents = "auto";
+}
+
+function closeModal() {
+  // Get the modal
+  $("#cancel").on("click", function () {
+    admid = null;
+    var modal = document.getElementById("modalError");
+    modal.style.display = "none";
+    //enable pointer events on the id="main" element
+    document.getElementById("main").style.pointerEvents = "auto";
+  });
+}
+
 function postAdmin() {
   $("#saveadmin").on("click", function () {
     let admName = $("#adm-name").val();
@@ -51,8 +81,8 @@ function postAdmin() {
       if (msg == "success") {
         window.location.href = "../adminList/adminList.php";
       } else {
-        //open modelError with msg
-        alert("Admin creation failed");
+        //open modalError with msg
+        showModal(msg);
       }
     });
   });

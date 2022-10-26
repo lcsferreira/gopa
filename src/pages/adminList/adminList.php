@@ -25,7 +25,7 @@
 <body>
   <div class="container" id="main">
     <?php
-      include_once "../../components./modalDeleteAdmin.php";
+      include_once "../../components/modalDeleteAdmin.php";
     ?>
     <div class="title-header">
       <h1>Admin List</h1>

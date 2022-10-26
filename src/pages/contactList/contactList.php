@@ -25,7 +25,7 @@
 <body>
   <div class="container" id="main">
     <?php
-      include_once "../../components./modalDeleteContact.php";
+      include_once "../../components/modalDeleteContact.php";
     ?>
     <div class="title-header">
       <h1>Contact List</h1>
