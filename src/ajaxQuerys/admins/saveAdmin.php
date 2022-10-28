@@ -19,7 +19,7 @@
     if(mysqli_stmt_affected_rows($stmt) > 0){
       echo "success";
     }else{
-      echo "No account was created";
+      echo "No account was created! Please try again.";
     }
   }
     

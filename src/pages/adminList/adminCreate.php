@@ -22,10 +22,10 @@
 
 <body>
   <div class="container" id="main">
-  <?php
+    <?php
       include_once "../../components/modalError.php";
     ?>
-    <form class="form" method="POST" action="">
+    <form class="forms" method="POST" action="">
       <div class="form-title">
         <h1>
           Admin Creation
