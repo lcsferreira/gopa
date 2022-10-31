@@ -27,7 +27,7 @@ $is_active = $_POST['is_active'];
       //send email to admin
       //get the id of the admin that was just inserted
       // firstAccess.php?id='$admin_id'
-      echo "success! firstAccess.php?id='$id'";
+      echo "success! firstAccess.php?id='$id'&userType=admin";
     }
     else{
       echo "success!";
