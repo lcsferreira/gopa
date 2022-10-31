@@ -4,8 +4,6 @@ $(document).ready(function () {
   validateInputs();
   postAdmin();
   validateEmail();
-  showModal();
-  closeModal();
 });
 
 function validateInputs() {
