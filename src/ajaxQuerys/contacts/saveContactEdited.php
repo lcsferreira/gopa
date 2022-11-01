@@ -47,9 +47,7 @@
     //send email to contact
     //get the id of the contact that was just inserted
     // firstAccess.php?id='$contact_id'
-    //get the actual year
-    $year = date("Y");
-    echo "success! firstAccess.php?id='$year''$id'";
+    echo "success! firstAccess.php?id='$id'&userType=contact";
   }
   mysqli_stmt_close($stmt);
   mysqli_close($connection);
