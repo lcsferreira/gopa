@@ -10,7 +10,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>First Access</title>
+  <title>Forgot Password</title>
   <link rel="stylesheet" href="../../../css/pages/login/login.css">
 </head>
 <body>
@@ -18,11 +18,11 @@
     <div class="col-50 forms">
       <div class="form-title">
         <h1>
-          First Access 
+          Forgot Password
         </h1>
         <img class="logo" src="../../../assets/gopa-logo.svg" alt="gopa-logo">
       </div>
-      <p>Create your account password! It MUST have 8 characters, including a lower and uper case letter, a number and a special character(ex: @, !, #).</p>
+      <p>Recreate your account password! It MUST have 8 characters, including a lower and uper case letter, a number and a special character(ex: @, !, #).</p>
 
       <form class="forms" method="POST">
         <div class="form-input">
