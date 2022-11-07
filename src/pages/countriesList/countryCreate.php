@@ -3,7 +3,7 @@
   include "../../components/header.php";                 
 ?> 
 <?php
-  if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
+  if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== "1"){
     header("location: ../login/login.php");
     exit();
   }

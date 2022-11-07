@@ -113,7 +113,7 @@ function putContact() {
     //foreach country relation get the values
     let name = $("#name").val();
     let email = $("#email").val();
-    let secondaryEmail = $("#secondaryEmail").val();
+    let secondaryEmail = $("#second-email").val();
     let institution = $("#institution").val();
     let isActivated = $("#is-active").is(":checked");
 

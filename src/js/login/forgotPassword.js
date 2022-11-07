@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#errorMsg").hide();
+  $("#error-msg").hide();
   $("#sendEmail").attr("disabled", "disabled");
   validateInputs();
   sendEmail();
@@ -27,14 +27,9 @@ function sendEmail() {
     });
     request.done(function (msg) {
       if (msg == "success") {
-        $("#errorMsg").hide();
-        $("#email").val("");
-        $("#sendEmail").attr("disabled", "disabled");
-        $("#successMsg").show();
-        //setTimeout(function () { window.location.href = "../login/login.php"; }, 3000);
+        window.location.href = "../login/login.php";
       } else {
-        $("#successMsg").hide();
-        $("#errorMsg").show();
+        $("#error-msg").show();
       }
     });
   });

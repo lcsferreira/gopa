@@ -1,5 +1,5 @@
 <?php
-  $title = "Admin Edit";                   
+  $title = "Country Edit";                   
   include "../../components/header.php";                 
 ?>
 <?php

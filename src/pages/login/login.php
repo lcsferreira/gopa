@@ -20,7 +20,7 @@
         </h1>
         <img class="logo" src="../../../assets/gopa-logo.svg" alt="gopa-logo">
       </div>
-      <p>Enter with your credentials to login with your acconut</p>
+      <p>Enter with your credentials to login with your account</p>
 
       <form class="forms" method="POST">
         <div class="form-input">
@@ -30,7 +30,7 @@
         <div class="form-input">
           <label for="password">Password <a href="forgotPassword.php">Forgot Password?</a></label>
           <input type="password" id="password" placeholder="Password">
-          <p class="error-msg" id="error-msg">Wrong email or password</p>
+          <p class="error-msg" id="error-msg"></p>
         </div>
       </form>
         

@@ -2,6 +2,7 @@
   include_once "../../../config.php"
 ?>
 <?php
+
 $id = $_POST['id'];
 $name  = $_POST['name'];
 $email  = $_POST['email'];
@@ -27,7 +28,36 @@ $is_active = $_POST['is_active'];
       //send email to admin
       //get the id of the admin that was just inserted
       // firstAccess.php?id='$admin_id'
-      echo "success! firstAccess.php?id='$id'&userType=admin";
+      $assunto = "Action Required";
+    
+      $headers  = 'MIME-Version: 1.0' . "\r\n";
+      $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+      $headers .= 'From: Workflow GoPA <info@globalphysicalactivityobservatory.com>'. "\r\n";
+      $headers .= 'Reply-To: info@globalphysicalactivityobservatory.com'. "\r\n";
+      $headers .= 'X-Mailer: PHP/' . phpversion();
+    
+      $mensagem = "
+      <br>
+        This is an authomatic activation message for Administrators.
+      <br><br>
+        Please click in the <b>link below</b> to login in the GoPA Workflow.
+      <br><br>
+        <a href='http://work.globalphysicalactivityobservatory.com/src/pages/login/firstAccess.php?id=$id&userType=admin'>First access registration</a>
+      <br><br>
+        If you have any questions, please contact us at <a href='mailto: andrea.ramirez@globalphysicalactivityobservatory.com'>andrea.ramirez@globalphysicalactivityobservatory.com</a>
+      ";
+    
+      $enviaremail = mail($email, $assunto, $mensagem, $headers);
+    
+      if($enviaremail){
+        $mgm = "E-MAIL ENVIADO COM SUCESSO!";
+        echo "success!";
+      } else {
+        $mgm = "ERRO AO ENVIAR E-MAIL!";
+        echo $mgm;
+      }
+    
+
     }
     else{
       echo "success!";

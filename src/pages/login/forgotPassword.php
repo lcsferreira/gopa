@@ -22,7 +22,7 @@
         <div class="form-input">
           <label for="email">Email</label>
           <input type="email" id="email" placeholder="Email@mail.com">
-          <p class="error-msg" id="errorMsg">Invalid Email</p>
+          <p class="error-msg" id="error-msg">Invalid Email</p>
         </div>
       </form> 
       <button type="button" id="sendEmail">Send</button>

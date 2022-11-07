@@ -1,12 +1,12 @@
 <?php
-  $title = "Admin List";                   
-  include "../../components./header.php";                 
+  $title = "Countries List";                   
+  include "../../components/header.php";                 
 ?>
 <?php
   include_once "../../../config.php"
 ?>
 <?php
-  if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
+  if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== "1"){
     header("location: ../login/login.php");
     exit();
   }
@@ -52,19 +52,19 @@
                     <div class='steps-list'>
                       <div class='step'>
                         <p>Indicators</p>
-                        <button type='button' class='step-start'>
+                        <button disabled type='button' class='step-start'>
                         <i class='fa fa-play fa-2x'></i>
                         </button>
                       </div>
                       <div class='step'>
                         <p>Translation</p>
-                        <button type='button' class='step-start'>
+                        <button disabled type='button' class='step-start'>
                         <i class='fa fa-play fa-2x'></i>
                         </button>
                       </div>
                       <div class='step'>
                         <p>Country Cards</p>
-                        <button type='button' class='step-start'>
+                        <button disabled type='button' class='step-start'>
                         <i class='fa fa-play fa-2x'></i>
                         </button>
                       </div>

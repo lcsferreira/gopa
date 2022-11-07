@@ -119,6 +119,12 @@ html {
   color: #8e9dae;
   cursor: pointer;
 }
+
+.list-object .steps-list .step button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .list-object .steps-list .step button i {
   font-size: 16px !important;
 }

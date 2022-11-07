@@ -1,12 +1,12 @@
 <?php
   $title = "Contacts List";                   
-  include "../../components./header.php";                 
+  include "../../components/header.php";                 
 ?>
 <?php
   include_once "../../../config.php"
 ?>
 <?php
-  if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
+  if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== "1"){
     header("location: ../login/login.php");
     exit();
   }

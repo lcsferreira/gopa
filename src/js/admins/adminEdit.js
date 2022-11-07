@@ -57,8 +57,8 @@ function putAdmin() {
       is_active = 1;
     }
     let url = window.location.href;
-    let urlArray = url.split("=");
-    let admId = urlArray[1];
+    let urlClass = new URL(url);
+    let admId = urlClass.searchParams.get("admId");
 
     let request = $.ajax({
       method: "POST",

@@ -76,9 +76,10 @@ function postPassword() {
   $("#post-password").on("click", function () {
     let password = $("#create-password").val();
     let confirmPassword = $("#confirm-password").val();
-    //get id from url
-    let url = window.location.href;
-    let id = url.substring(url.lastIndexOf("=") + 1);
+
+    url = window.location.href;
+    let urlClass = new URL(url);
+    let id = urlClass.searchParams.get("id");
 
     if (password !== confirmPassword) {
       alert("Passwords do not match");

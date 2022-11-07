@@ -35,6 +35,7 @@ function login() {
       if (msg == "success") {
         window.location.href = "../adminList/adminList.php";
       } else {
+        $("#error-msg").html(msg);
         $("#error-msg").show();
         $("#email").addClass("is-invalid");
         $("#password").addClass("is-invalid");
