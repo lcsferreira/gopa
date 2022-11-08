@@ -33,7 +33,7 @@ function login() {
     //redirect to adminList.php if login is successful
     request.done(function (msg) {
       if (msg == "success") {
-        window.location.href = "../adminList/adminList.php";
+        window.location.href = "../contactList/contactList.php";
       } else {
         $("#error-msg").html(msg);
         $("#error-msg").show();
