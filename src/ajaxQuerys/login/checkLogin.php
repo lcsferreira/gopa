@@ -28,7 +28,7 @@ if(mysqli_num_rows($result) > 0){
       $_SESSION['id'] = $row['id'];
       $_SESSION['loggedin'] = true;
       $_SESSION['userType'] = "admin";
-      echo "success";
+      echo "success admin";
     }else{
       echo "Wrong password";
     }
@@ -41,7 +41,7 @@ if(mysqli_num_rows($result) > 0){
     $_SESSION['id'] = $row['id'];
     $_SESSION['loggedin'] = true;
     $_SESSION['userType'] = "contact";
-    echo "success";
+    echo "success contact";
   }else{
     echo "Wrong password";
   }

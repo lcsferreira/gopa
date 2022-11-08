@@ -81,6 +81,8 @@
             
           }
           echo "</div>";
+        }else {
+          echo "<p>No country registered.</p>";
         }
       ?>
     </div>

@@ -32,8 +32,13 @@ function login() {
 
     //redirect to adminList.php if login is successful
     request.done(function (msg) {
-      if (msg == "success") {
-        window.location.href = "../contactList/contactList.php";
+      //if the first string is success then redirect to adminList.php
+      if (msg.substring(0, 7) === "success") {
+        if (msg === "success admin") {
+          window.location.href = "../countriesList/countriesListAdmin.php";
+        } else {
+          window.location.href = "../countriesList/countriesListContact.php";
+        }
       } else {
         $("#error-msg").html(msg);
         $("#error-msg").show();
