@@ -73,6 +73,8 @@
             
           }
           echo "</div>";
+        } else {
+          echo "<p>No contact registered.</p>";
         }
       ?>
     </div>
