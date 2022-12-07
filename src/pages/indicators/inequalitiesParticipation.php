@@ -36,10 +36,6 @@
           <label for="groups">Physical activity prevalence adults (%)</label>
           <div name="groups" id="groups">
             <div>
-              <label for="both-sexes">Both sexes</label>
-              <input type="number" name="both-sexes" id="both-sexes">
-            </div>
-            <div>
               <label for="males">Males</label>
               <input type="number" name="males" id="males">
             </div>
@@ -51,7 +47,7 @@
           <label for="reference">Reference</label>
           <input type="text" name="reference" id="reference">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="comments" id="pa-prevalence-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="indicators">
         <div class="indicator-image">
@@ -61,7 +57,7 @@
           </label>
           <img src="" alt="image">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="comments" id="inequalities-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="buttons">
         <button class="btn-back" type="button"

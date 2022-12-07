@@ -51,7 +51,7 @@
           <label for="reference">Reference</label>
           <input type="text" name="reference" id="reference">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="comments" id="pa-prevalence-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="buttons">
         <button class="btn-back" type="button"

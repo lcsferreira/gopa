@@ -52,7 +52,7 @@
                     <div class='steps-list'>
                       <div class='step'>
                         <p>Indicators</p>
-                        <button type='button' disabled class='step-start' onclick='document.location = `../indicators/progress.php?id=".$row['id']."`'>
+                        <button type='button' class='step-start' onclick='document.location = `../indicators/progress.php?id=".$row['id']."`'>
                         <i class='fa fa-play fa-2x'></i>
                         </button>
                       </div>

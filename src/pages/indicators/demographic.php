@@ -43,7 +43,7 @@
           <label for="capital">Capital</label>
           <input type="text" name="capital" id="capital">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="comments" id="capital-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -52,7 +52,7 @@
           </label>
           <input type="number" name="total-population" id="total-population">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="comments" id="total-population-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -61,7 +61,7 @@
           </label>
           <input type="number" name="urban-population" id="urban-population">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="comments" id="urban-population-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -70,7 +70,7 @@
           </label>
           <input type="number" name="life-expentacy" id="life-expentacy">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="comments" id="life-expentacy-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -81,7 +81,7 @@
           </label>
           <input type="number" name="gini-index" id="gini-index">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="comments" id="gini-index-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -90,7 +90,7 @@
           </label>
           <input type="number" name="human-index" id="human-index">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="comments" id="human-index-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -99,7 +99,7 @@
           </label>
           <input type="number" name="literacy-rate" id="literacy-rate">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="comments" id="literacy-rate-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -109,7 +109,7 @@
           </label>
           <input type="number" name="deaths-diseases" id="deaths-diseases">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="comments" id="deaths-diseases-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="buttons">
         <button class="btn-back" type="button" <?php

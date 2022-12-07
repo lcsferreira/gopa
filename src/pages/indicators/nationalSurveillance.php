@@ -40,31 +40,65 @@
             </p>
           </label>
           <div class="radio" id="radio-group">
-            <input type="radio" id="yes" name="country" value="yes">
             <label for="yes">Yes</label>
-            <input type="radio" id="no" name="country" value="no">
+            <input type="radio" id="yes" name="national-surveys" value="yes">
             <label for="no">No</label>
+            <input type="radio" id="no" name="national-surveys" value="no">
+          </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="comments" id="national-surveys-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
           <label for="most-recent-year">Most recent (Year)</label>
           <input type="text" name="most-recent-year" id="most-recent-year">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"></textarea>
+        <textarea placeholder="Add a comment..." name="most-recent-comments" id="most-recent-comments" cols="30" rows="5" class="comment"></textarea>
+      </div>
+      <div class="indicators">
+        <div class="form-input">
+          <label for="next-year">Next (Year)</label>
+          <input type="text" name="next-year" id="next-year">
+        </div>
+        <textarea placeholder="Add a comment..." name="next-year-comments" id="next-year-comments" cols="30" rows="5" class="comment"></textarea>
+      </div>
+      <div class="indicators">
+        <div class="form-input">
+          <label for="surveys-used">
+            Surveys and instruments used to assess physical activity
+            Names
+          </label>
+          <input type="text" name="surveys-used" id="surveys-used">
+        </div>
+        <textarea placeholder="Add a comment..." name="comments" id="surveys-used-comments" cols="30" rows="5" class="comment"></textarea>
+      </div>
+      <div class="indicators">
+        <div class="form-input">
+          <label for="groups">
+            Objective measurement to assess physical activity in adults  <span class="new">*new*</span>
+          </label>
+          <div class="radio" id="radio-group">
+            <label for="yes">Yes</label>
+            <input type="radio" id="yes" name="objective" value="yes">
+            <label for="no">No</label>
+            <input type="radio" id="no" name="objective" value="no">
+          </div>
+          <label for="reference">Reference</label>
+          <input type="text" name="reference" id="reference">
+        </div>
+        <textarea placeholder="Add a comment..." name="comments" id="objective-comments" cols="30" rows="5" class="comment"></textarea>
       </div>
       <div class="buttons">
         <button class="btn-back" type="button"
           <?php
-          echo "onclick='document.location = `demographic.php?id=".$id."`'";
+          echo "onclick='document.location = `inequalitiesParticipation.php?id=".$id."`'";
           ?>
         >Back</button>
       <button class="btn-next" type="button"
           <?php
-          echo "onclick='document.location = `inequalitiesParticipation.php?id=".$id."`'";
+          echo "onclick='document.location = `nationalPolicy.php?id=".$id."`'";
           ?>>Next</button>
-    </div>
+      </div>
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
