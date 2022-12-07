@@ -1,0 +1,266 @@
+body {
+  background-color: #f5fafd;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5fafd;
+  max-width: 80vw;
+  margin: 0 auto;
+}
+
+.new {
+  color: #03a9f4;
+  font-weight: 600;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.title h1 {
+  color: #222b34;
+  font-size: 40px;
+  text-align: center;
+}
+
+.title p {
+  max-width: 500px;
+  color: #8e9dae;
+  font-size: 16px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  width: 80vw;
+}
+
+form .indicators {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 30px;
+  width: 100%;
+  border-bottom: 1px solid #8e9dae;
+  padding-bottom: 15px;
+}
+
+form .indicators .form-input,
+.indicator-image {
+  max-width: 371px;
+}
+
+form .form-input,
+.indicator-image {
+  display: flex;
+  flex-direction: column;
+}
+
+form .form-input,
+.indicator-image label p {
+  max-width: 347px;
+  text-align: justify;
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #313439c0;
+}
+
+form .form-input,
+.indicator-image label {
+  color: #313439;
+}
+
+form .form-input input {
+  width: 347px;
+  padding-left: 20px;
+  height: 42px;
+  border-color: #8e9dae;
+  border-radius: 4px;
+  border-style: solid;
+  font-size: 16px;
+  border-width: 1px;
+  margin-top: 10px;
+}
+
+form .form-input #groups {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0 20px 0;
+}
+form .form-input #groups label {
+  color: #313439;
+}
+
+form .form-input #groups input {
+  width: 50px;
+}
+
+form .form-input #groups div {
+  display: flex;
+  flex-direction: column;
+}
+
+form textarea {
+  width: 347px;
+  padding-left: 20px;
+  padding-top: 10px;
+  height: auto;
+  border-color: #8e9dae;
+  border-radius: 4px;
+  border-style: solid;
+  font-size: 16px;
+  resize: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+form .form-input input,
+textarea::placeholder {
+  font-size: 16px;
+}
+
+.btn-next {
+  background-color: #03a9f4;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  width: 110px;
+  height: 35px;
+  border: none;
+  border-radius: 4px;
+  padding: 0;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.btn-next:disabled {
+  opacity: 60%;
+  background-color: #8e9dae;
+  border: 1px solid white;
+  cursor: auto;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.btn-back {
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  width: 110px;
+  height: 35px;
+  border: 2px solid #03a9f4;
+  color: #03a9f4;
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btn-back:disabled {
+  opacity: 60%;
+  background-color: #8e9dae;
+  border: 1px solid white;
+  cursor: auto;
+}
+
+.progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.indicator-progress {
+  width: 100px;
+}
+
+.indicator-progress h2 {
+  font-size: 13px;
+  text-align: center;
+  color: #8e9dae;
+  min-height: 50px;
+}
+
+.indicator-progress-percent .number h2 {
+  font-size: 15px;
+  text-align: center;
+  color: #8e9dae;
+}
+
+.indicator-progress-percent .number h2 span {
+  font-size: 9px;
+}
+
+.indicator-progress-percent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.indicator-progress-percent .number {
+  position: relative;
+  top: -45px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress .indicator-progress .indicator-progress-percent svg {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.progress .indicator-progress .indicator-progress-percent svg circle {
+  width: 50px;
+  height: 50px;
+  fill: none;
+  stroke-width: 5;
+  stroke: #000;
+  transform: translate(5px, 5px);
+  stroke-dasharray: 130;
+  stroke-dashoffset: 120;
+}
+
+.progress
+  .indicator-progress
+  .indicator-progress-percent
+  svg
+  circle:nth-child(1) {
+  stroke-dashoffset: 0;
+  stroke: #03a8f431;
+}
+
+.progress
+  .indicator-progress
+  .indicator-progress-percent
+  svg
+  circle:nth-child(2) {
+  stroke-dashoffset: calc(130 - (125 * var(--percent)) / 100);
+  stroke: #03a9f4;
+}

@@ -1,7 +1,4 @@
 body {
-  margin: 0 auto;
-  padding: 0;
-  height: 100vh;
   background-color: #f5fafd;
 }
 
@@ -12,6 +9,9 @@ body {
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #f5fafd;
+  max-width: 80vw;
+  margin: 0 auto;
+  min-height: 100vh;
 }
 
 .forms {
@@ -25,6 +25,18 @@ body {
 .forms .form-title h1 {
   color: #222b34;
   font-size: 40px;
+}
+
+.form-input-rg {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  margin-top: 30px;
+}
+
+.form-input-rg > label {
+  margin-right: 20px;
 }
 
 .forms button:disabled {
@@ -65,7 +77,8 @@ body {
   font-size: 16px;
 }
 
-.forms .btn-confirm {
+.forms .btn-create,
+.btn-confirm {
   background-color: #03a9f4;
   color: white;
   font-size: 16px;
@@ -75,7 +88,7 @@ body {
   border: none;
   border-radius: 4px;
   padding: 0;
-  margin: 30px 0;
+  margin-top: 30px;
   align-self: flex-end;
   cursor: pointer;
 }
@@ -161,14 +174,88 @@ body {
   cursor: pointer;
 }
 
-.form-input-rg {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  height: 48px;
-  margin-top: 30px;
+.modal-error {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 25%;
+  width: 250px;
+  height: 370px;
+  padding: 20px;
+  overflow: auto;
+  background-color: white;
+  border: 1px solid #8e9dae;
+  border-radius: 4px;
+  -webkit-box-shadow: 5px 5px 0px 100vw rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 0px 100vw rgba(0, 0, 0, 0.3);
 }
 
-.form-input-rg > label {
-  margin-right: 20px;
+.modal-error .modal-header {
+  color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-error .modal-header i {
+  align-self: center;
+}
+
+.modal-error .modal-header h1 {
+  color: #222b34;
+}
+
+.modal-error .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-evenly;
+  font-size: 16px;
+}
+
+.modal-error .modal-body {
+  color: #8e9dae;
+  text-align: center;
+}
+
+.modal-error .modal-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.modal-error .btn-cancel {
+  width: 32px;
+  background-color: white;
+  position: absolute;
+  top: -10px;
+  right: 5px;
+  border: none;
+  margin-top: 14px;
+  border-radius: 3px;
+  color: #8e9dae;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 7px 0px;
+}
+
+.forms #need-translation {
+  width: 482px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.forms #need-translation #yes,
+#no {
+  width: 20px;
+  margin-top: 0;
+}
+
+.forms #need-translation #yes {
+  margin-right: 40px;
 }
