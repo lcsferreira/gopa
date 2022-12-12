@@ -56,6 +56,7 @@
               }
             ?> 
             name="country" id="country-admin"
+            onblur="saveValueByAdmin('country', '<?php echo $id ?>')"
           >
         </div>
         <div class="form-input">
@@ -87,7 +88,7 @@
               if($_SESSION['userType'] != "admin"){
                 echo "disabled";
               }
-              if($admin_values['country'] != null){
+              if($admin_values['capital'] != null){
                 echo "value=" . $admin_values['capital'];
               }
             ?>
@@ -99,14 +100,14 @@
               if($_SESSION['userType'] == "admin"){
                 echo "disabled";
               }
-              if($contact_values['country'] != null){
+              if($contact_values['capital'] != null){
                 echo "value=" . $contact_values['capital'];
               } 
             ?> name="capital" id="capital">
         </div>
         <textarea placeholder="Add a comment..." 
               <?php
-                if($comments['country'] != null){
+                if($comments['capital'] != null){
                   echo "value=" . $comments['capital'];
                 }
               ?>
@@ -122,7 +123,7 @@
               if($_SESSION['userType'] != "admin"){
                 echo "disabled";
               }
-              if($admin_values['country'] != null){
+              if($admin_values['total_population'] != null){
                 echo "value=" . $admin_values['total_population'];
               }
             ?>
@@ -135,7 +136,7 @@
               if($_SESSION['userType'] == "admin"){
                 echo "disabled";
               }
-              if($contact_values['country'] != null){
+              if($contact_values['total_population'] != null){
                 echo "value=" . $contact_values['total_population'];
               } 
             ?>
@@ -143,7 +144,7 @@
         </div>
         <textarea placeholder="Add a comment..." 
           <?php
-            if($comments['country'] != null){
+            if($comments['total_population'] != null){
               echo "value=" . $comments['total_population'];
             }
           ?>
@@ -159,7 +160,7 @@
               if($_SESSION['userType'] != "admin"){
                 echo "disabled";
               }
-              if($admin_values['country'] != null){
+              if($admin_values['urban_population'] != null){
                 echo "value=" . $admin_values['urban_population'];
               }
             ?>
@@ -172,7 +173,7 @@
               if($_SESSION['userType'] == "admin"){
                 echo "disabled";
               }
-              if($contact_values['country'] != null){
+              if($contact_values['urban_population'] != null){
                 echo "value=" . $contact_values['urban_population'];
               } 
             ?>
@@ -180,7 +181,7 @@
         </div>
         <textarea placeholder="Add a comment..." 
           <?php
-            if($comments['country'] != null){
+            if($comments['urban_population'] != null){
               echo "value=" . $comments['urban_population'];
             }
           ?>
@@ -196,7 +197,7 @@
               if($_SESSION['userType'] != "admin"){
                 echo "disabled";
               }
-              if($admin_values['country'] != null){
+              if($admin_values['life_expentacy'] != null){
                 echo "value=" . $admin_values['life_expentacy'];
               }
             ?>
@@ -209,7 +210,7 @@
               if($_SESSION['userType'] == "admin"){
                 echo "disabled";
               }
-              if($contact_values['country'] != null){
+              if($contact_values['life_expentacy'] != null){
                 echo "value=" . $contact_values['life_expentacy'];
               } 
             ?>
@@ -217,7 +218,7 @@
         </div>
         <textarea placeholder="Add a comment..." 
           <?php
-            if($comments['country'] != null){
+            if($comments['life_expentacy'] != null){
               echo "value=" . $comments['life_expentacy'];
             }
           ?>
@@ -235,7 +236,7 @@
               if($_SESSION['userType'] != "admin"){
                 echo "disabled";
               }
-              if($admin_values['country'] != null){
+              if($admin_values['gini_index'] != null){
                 echo "value=" . $admin_values['gini_index'];
               }
             ?> 
@@ -248,7 +249,7 @@
               if($_SESSION['userType'] == "admin"){
                 echo "disabled";
               }
-              if($contact_values['country'] != null){
+              if($contact_values['gini_index'] != null){
                 echo "value=" . $contact_values['gini_index'];
               } 
             ?>
@@ -256,7 +257,7 @@
         </div>
         <textarea placeholder="Add a comment..." 
           <?php
-            if($comments['country'] != null){
+            if($comments['gini_index'] != null){
               echo "value=" . $comments['gini_index'];
             }
           ?>
@@ -272,7 +273,7 @@
               if($_SESSION['userType'] != "admin"){
                 echo "disabled";
               }
-              if($admin_values['country'] != null){
+              if($admin_values['human_index'] != null){
                 echo "value=" . $admin_values['human_index'];
               }
             ?>
@@ -285,7 +286,7 @@
               if($_SESSION['userType'] == "admin"){
                 echo "disabled";
               }
-              if($contact_values['country'] != null){
+              if($contact_values['human_index'] != null){
                 echo "value=" . $contact_values['human_index'];
               } 
             ?>
@@ -293,7 +294,7 @@
         </div>
         <textarea placeholder="Add a comment..." 
           <?php
-            if($comments['country'] != null){
+            if($comments['human_index'] != null){
               echo "value=" . $comments['human_index'];
             }
           ?>
@@ -309,7 +310,7 @@
               if($_SESSION['userType'] != "admin"){
                 echo "disabled";
               }
-              if($admin_values['country'] != null){
+              if($admin_values['literacy_rate'] != null){
                 echo "value=" . $admin_values['literacy_rate'];
               }
             ?>
@@ -322,7 +323,7 @@
               if($_SESSION['userType'] == "admin"){
                 echo "disabled";
               }
-              if($contact_values['country'] != null){
+              if($contact_values['literacy_rate'] != null){
                 echo "value=" . $contact_values['literacy_rate'];
               } 
             ?>
@@ -330,7 +331,7 @@
         </div>
         <textarea placeholder="Add a comment..."
           <?php
-            if($comments['country'] != null){
+            if($comments['literacy_rate'] != null){
               echo "value=" . $comments['literacy_rate'];
             }
           ?> name="comments" id="literacy-rate-comments" cols="30" rows="5" class="comment"></textarea>
@@ -346,7 +347,7 @@
               if($_SESSION['userType'] != "admin"){
                 echo "disabled";
               }
-              if($admin_values['country'] != null){
+              if($admin_values['deaths_diseases'] != null){
                 echo "value=" . $admin_values['deaths_diseases'];
               }
             ?>
@@ -359,7 +360,7 @@
               if($_SESSION['userType'] == "admin"){
                 echo "disabled";
               }
-              if($contact_values['country'] != null){
+              if($contact_values['deaths_diseases'] != null){
                 echo "value=" . $contact_values['deaths_diseases'];
               } 
             ?>
@@ -367,7 +368,7 @@
         </div>
         <textarea placeholder="Add a comment..." 
           <?php
-            if($comments['country'] != null){
+            if($comments['deaths_diseases'] != null){
               echo "value=" . $comments['deaths_diseases'];
             }
           ?>
@@ -387,7 +388,7 @@
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="../../js/countries/countryEdit.js"></script>
+  <script src="../../js/indicators/demographic.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
 </body>
 </html>
