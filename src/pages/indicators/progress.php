@@ -10,39 +10,38 @@
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_assoc($result);
 
+  $demographic_progress = 0;
+
   if($row['indicators_step'] == "not started"){
-    //create new row in demographic_values table
-    $sql = "INSERT INTO demographic_values";
-    $result = mysqli_query($conn, $sql);
-    $id_demographic_values = mysqli_insert_id($conn);
-    //create new row in demographic_comments table
-    $sql = "INSERT INTO demographic_comments";
-    $result = mysqli_query($conn, $sql);
-    $id_demographic_comments = mysqli_insert_id($conn);
+    //create row in demographic_comments, demographic_values_admin and demograpghic_values_contact tables
+    $sql = "INSERT INTO demographic_comments (id) VALUES ($id)";
+    mysqli_query($conn, $sql);
+    //get the id of the last row inserted
+    $id_comment = $id;
+    $sql = "INSERT INTO demographic_values_admin (id) VALUES ($id)";
+    mysqli_query($conn, $sql);
+    $id_value_admin = $id;
+    $sql = "INSERT INTO demographic_values_contact (id) VALUES ($id)";
+    mysqli_query($conn, $sql);
+    $id_value_contact = $id;
 
-    //create new row in demoind_country_comments table
-    $sql = "INSERT INTO demoind_country_comments (id_demo_value, id_demo_comment, id_country) VALUES ($id_demographic_values, $id_demographic_comments, $id)";
-    $result = mysqli_query($conn, $sql);
-
-    //update indicators_step in country table
-    $sql = "UPDATE country SET indicators_step = 'started' WHERE id = $id";
-    $result = mysqli_query($conn, $sql);
+    //create row in demoind_country_comments, with all foreign keys from id, id_value_admin, id_comment, id_value_contact
+    $sql = "INSERT INTO demoind_country_comments (id_country, id_value_admin, id_comment, id_value_contact) VALUES ($id, $id_comment, $id_value_admin, $id_value_contact)";
   }
 
-
-  $sql = "SELECT * FROM demoind_country_comments WHERE id = $id";
+  //select row from demographic_values_contacct table
+  $sql = "SELECT * FROM demographic_values_contact WHERE id = $id";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_assoc($result);
+  //for each row except id, check if the value is not null
+  foreach($row as $key => $value){
+    if($key != "id" && $value != null){
+      $demographic_progress ++;
+    }
+  }
+  //calculate the percentage of the demographic indicators
+  $demographic_progress = ($demographic_progress / 9) * 100;
 
-  $id_values = $row['id_demo_value'];
-  $id_comments = $row['id_demo_comment'];
-
-  $sql = "SELECT total_indicators FROM demographic_values WHERE id = $id_values";
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_assoc($result);
-
-  $total_demographic_indicators = $row['total_indicators'];
-  $demoind_percent = ($total_demographic_indicators / 9) * 100;
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -71,13 +70,21 @@
     <div class="progress">
       <div class="indicator-progress">
         <h2>Demographic Indicators</h2>
-        <div class="indicator-progress-percent" style="--percent: 0">
+        <div class="indicator-progress-percent" style="--percent: 
+        <?php 
+          echo $demographic_progress;
+        ?>">
           <svg>
             <circle cx="20" cy="20" r="20"></circle>
             <circle cx="20" cy="20" r="20"></circle>
           </svg>
           <div class="number">
-            <h2>0<span>%</span></h2>
+            <h2>
+              <?php 
+                echo $demographic_progress;
+              ?>
+              <span>%</span>
+            </h2>
           </div>
         </div>
       </div>
