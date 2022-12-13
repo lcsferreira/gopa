@@ -2,6 +2,7 @@ $(document).ready(function () {
   $("#error-msg").hide();
   $("#login").attr("disabled", "disabled");
   login();
+  enterLogin();
   validateInputs();
 });
 
@@ -11,6 +12,14 @@ function validateInputs() {
       $("#login").removeAttr("disabled");
     } else {
       $("#login").attr("disabled", "disabled");
+    }
+  });
+}
+
+function enterLogin() {
+  $(".forms").keyup(function (event) {
+    if (event.keyCode === 13) {
+      $("#login").click();
     }
   });
 }

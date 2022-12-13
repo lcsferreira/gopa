@@ -7,10 +7,12 @@ function saveValueByContact(indicator, id, table) {
 }
 
 function saveComment(indicator, id, table) {
-  postValue(indicator, $("#" + indicator + "-comment").val(), id, table);
+  postValue(indicator, $("#" + indicator + "-comments").val(), id, table);
 }
 
 function postValue(indicator, value, id, table) {
+  //replace the - by _ to match the database
+  indicator = indicator.replace("-", "_");
   let request = $.ajax({
     method: "POST",
     url: "../../ajaxQuerys/indicators/saveValue.php",

@@ -73,14 +73,19 @@
           name="country" id="country"
           onblur="saveValueByContact('country', '<?php echo $id ?>', 'demographic_values_contact')">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5" class="comment"
-              <?php
-                if($comments['country'] != null){
-                  echo "value=" . $comments['country'];
-                }
-              ?>
-              onblur="saveComment('country', '<?php echo $id ?>', 'demographic_comments')"
-        ></textarea>
+        <textarea 
+          placeholder="Add a comment..." 
+          name="comments"
+          id="country-comments" 
+          cols="30" 
+          rows="5" 
+          class="comment"
+          onblur="saveComment('country', '<?php echo $id ?>', 'demographic_comments')"
+        ><?php
+            if($comments['country'] != null){
+              echo $comments['country'];
+            }
+          ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -110,13 +115,12 @@
             onblur="saveValueByContact('capital', '<?php echo $id ?>', 'demographic_values_contact')">
         </div>
         <textarea placeholder="Add a comment..." 
-              <?php
-                if($comments['capital'] != null){
-                  echo "value=" . $comments['capital'];
-                }
-              ?>
               onblur="saveComment('capital', '<?php echo $id ?>', 'demographic_comments')"
-              name="comments" id="capital-comments" cols="30" rows="5" class="comment"></textarea>
+              name="comments" id="capital-comments" cols="30" rows="5" class="comment"><?php
+                if($comments['capital'] != null){
+                  echo $comments['capital'];
+                }
+              ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -133,7 +137,7 @@
               }
             ?>
             name="total-population" id="total-population-admin"
-            onblur="saveValueByAdmin('total_population', '<?php echo $id ?>', 'demographic_values_admin')">
+            onblur="saveValueByAdmin('total-population', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="form-input">
           <label for="total-population">Total population (number of people)</label>
@@ -147,16 +151,15 @@
               } 
             ?>
             name="total-population" id="total-population"
-            onblur="saveValueByContact('total_population', '<?php echo $id ?>', 'demographic_values_contact')">
+            onblur="saveValueByContact('total-population', '<?php echo $id ?>', 'demographic_values_contact')">
         </div>
         <textarea placeholder="Add a comment..." 
-          <?php
+          onblur="saveComment('total-population', '<?php echo $id ?>', 'demographic_comments')"
+          name="comments" id="total-population-comments" cols="30" rows="5" class="comment"><?php
             if($comments['total_population'] != null){
-              echo "value=" . $comments['total_population'];
+              echo $comments['total_population'];
             }
-          ?>
-          onblur="saveComment('total_population', '<?php echo $id ?>', 'demographic_comments')"
-          name="comments" id="total-population-comments" cols="30" rows="5" class="comment"></textarea>
+          ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -173,7 +176,7 @@
               }
             ?>
             name="urban-population" id="urban-population-admin"
-            onblur="saveValueByAdmin('urban_population', '<?php echo $id ?>', 'demographic_values_admin')">
+            onblur="saveValueByAdmin('urban-population', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="form-input">
           <label for="urban-population">Urban population (%)</label>
@@ -183,20 +186,19 @@
                 echo "disabled";
               }
               if($contact_values['urban_population'] != null){
-                echo "value=" . $contact_values['urban_population'];
+                echo "value=" . $contact_values['urban-population'];
               } 
             ?>
             name="urban-population" id="urban-population"
-            onblur="saveValueByContact('urban_population', '<?php echo $id ?>', 'demographic_values_contact')">
+            onblur="saveValueByContact('urban-population', '<?php echo $id ?>', 'demographic_values_contact')">
         </div>
         <textarea placeholder="Add a comment..." 
-          <?php
+          onblur="saveComment('urban-population', '<?php echo $id ?>', 'demographic_comments')"
+          name="comments" id="urban-population-comments" cols="30" rows="5" class="comment"><?php
             if($comments['urban_population'] != null){
-              echo "value=" . $comments['urban_population'];
+              echo $comments['urban_population'];
             }
-          ?>
-          onblur="saveComment('urban_population', '<?php echo $id ?>', 'demographic_comments')"
-          name="comments" id="urban-population-comments" cols="30" rows="5" class="comment"></textarea>
+          ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -213,7 +215,7 @@
               }
             ?>
             name="life-expentacy" id="life-expentacy-admin"
-            onblur="saveValueByAdmin('life_expentacy', '<?php echo $id ?>', 'demographic_values_admin')">
+            onblur="saveValueByAdmin('life-expentacy', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="form-input">
           <label for="life-expentacy">Life expentacy (years)</label>
@@ -227,16 +229,15 @@
               } 
             ?>
             name="life-expentacy" id="life-expentacy"
-            onblur="saveValueByContact('life_expentacy', '<?php echo $id ?>', 'demographic_values_contact')">
+            onblur="saveValueByContact('life-expentacy', '<?php echo $id ?>', 'demographic_values_contact')">
         </div>
         <textarea placeholder="Add a comment..." 
-          <?php
-            if($comments['life_expentacy'] != null){
-              echo "value=" . $comments['life_expentacy'];
-            }
-          ?>
           onblur="saveComment('life_expentacy', '<?php echo $id ?>', 'demographic_comments')"
-          name="comments" id="life-expentacy-comments" cols="30" rows="5" class="comment"></textarea>
+          name="comments" id="life-expentacy-comments" cols="30" rows="5" class="comment"><?php
+            if($comments['life_expentacy'] != null){
+              echo $comments['life_expentacy'];
+            }
+          ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -255,7 +256,7 @@
               }
             ?> 
             name="gini-index" id="gini-index-admin"
-            onblur="saveValueByAdmin('gini_index', '<?php echo $id ?>', 'demographic_values_admin')">
+            onblur="saveValueByAdmin('gini-index', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="form-input">
           <label for="gini-index">Gini inequality index (number between 0 and 1)</label>
@@ -269,16 +270,15 @@
               } 
             ?>
             name="gini-index" id="gini-index"
-            onblur="saveValueByContact('gini_index', '<?php echo $id ?>', 'demographic_values_contact')">
+            onblur="saveValueByContact('gini-index', '<?php echo $id ?>', 'demographic_values_contact')">
         </div>
-        <textarea placeholder="Add a comment..." 
-          <?php
+        <textarea placeholder="Add a comment..."
+          onblur="saveComment('gini-index', '<?php echo $id ?>', 'demographic_comments')"
+          name="comments" id="gini-index-comments" cols="30" rows="5" class="comment"><?php
             if($comments['gini_index'] != null){
-              echo "value=" . $comments['gini_index'];
+              echo $comments['gini_index'];
             }
-          ?>
-          onblur="saveComment('gini_index', '<?php echo $id ?>', 'demographic_comments')"
-          name="comments" id="gini-index-comments" cols="30" rows="5" class="comment"></textarea>
+          ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -295,7 +295,7 @@
               }
             ?>
             name="human-index" id="human-index-admin"
-            onblur="saveValueByAdmin('human_index', '<?php echo $id ?>', 'demographic_values_admin')">
+            onblur="saveValueByAdmin('human-index', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="form-input">
           <label for="human-index">Human development index (number between 0 and 1)</label>
@@ -309,16 +309,15 @@
               } 
             ?>
             name="human-index" id="human-index"
-            onblur="saveValueByContact('human_index', '<?php echo $id ?>', 'demographic_values_contact')">
+            onblur="saveValueByContact('human-index', '<?php echo $id ?>', 'demographic_values_contact')">
         </div>
-        <textarea placeholder="Add a comment..." 
-          <?php
+        <textarea placeholder="Add a comment..."
+          onblur="saveComment('human-index', '<?php echo $id ?>', 'demographic_comments')"
+          name="comments" id="human-index-comments" cols="30" rows="5" class="comment"><?php
             if($comments['human_index'] != null){
-              echo "value=" . $comments['human_index'];
+              echo $comments['human_index'];
             }
-          ?>
-          onblur="saveComment('human_index', '<?php echo $id ?>', 'demographic_comments')"
-          name="comments" id="human-index-comments" cols="30" rows="5" class="comment"></textarea>
+          ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -335,7 +334,7 @@
               }
             ?>
             name="literacy-rate" id="literacy-rate-admin"
-            onblur="saveValueByAdmin('literacy_rate', '<?php echo $id ?>', 'demographic_values_admin')">
+            onblur="saveValueByAdmin('literacy-rate', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="form-input">
           <label for="literacy-rate">Literacy rate (%)</label>
@@ -349,16 +348,15 @@
               } 
             ?>
             name="literacy-rate" id="literacy-rate"
-            onblur="saveValueByContact('literacy_rate', '<?php echo $id ?>', 'demographic_values_contact')">
+            onblur="saveValueByContact('literacy-rate', '<?php echo $id ?>', 'demographic_values_contact')">
         </div>
         <textarea placeholder="Add a comment..."
-          <?php
+          onblur="saveComment('literacy-rate', '<?php echo $id ?>', 'demographic_comments')"
+          name="comments" id="literacy-rate-comments" cols="30" rows="5" class="comment"><?php
             if($comments['literacy_rate'] != null){
-              echo "value=" . $comments['literacy_rate'];
+              echo $comments['literacy_rate'];
             }
-          ?> 
-          onblur="saveComment('literacy_rate', '<?php echo $id ?>', 'demographic_comments')"
-          name="comments" id="literacy-rate-comments" cols="30" rows="5" class="comment"></textarea>
+          ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -376,7 +374,7 @@
               }
             ?>
             name="deaths-diseases" id="deaths-diseases-admin"
-            onblur="saveValueByAdmin('deaths_diseases', '<?php echo $id ?>', 'demographic_values_admin')">
+            onblur="saveValueByAdmin('deaths-diseases', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="form-input">
           <label for="deaths-diseases">Deaths due to non-communicable diseases (%)</label>
@@ -390,16 +388,15 @@
               } 
             ?>
             name="deaths-diseases" id="deaths-diseases"
-            onblur="saveValueByContact('deaths_diseases', '<?php echo $id ?>', 'demographic_values_contact')">
+            onblur="saveValueByContact('deaths-diseases', '<?php echo $id ?>', 'demographic_values_contact')">
         </div>
         <textarea placeholder="Add a comment..." 
-          <?php
+          onblur="saveComment('deaths-diseases', '<?php echo $id ?>', 'demographic_comments')"
+          name="comments" id="deaths-diseases-comments" cols="30" rows="5" class="comment"><?php
             if($comments['deaths_diseases'] != null){
-              echo "value=" . $comments['deaths_diseases'];
+              echo $comments['deaths_diseases'];
             }
-          ?>
-          onblur="saveComment('deaths_diseases', '<?php echo $id ?>', 'demographic_comments')"
-          name="comments" id="deaths-diseases-comments" cols="30" rows="5" class="comment"></textarea>
+          ?></textarea>
       </div>
       <div class="buttons">
         <button class="btn-back" type="button" <?php
@@ -415,7 +412,7 @@
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="../../js/indicators/demographic.js"></script>
+  <script src="../../js/indicators/indicators.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
 </body>
 </html>
