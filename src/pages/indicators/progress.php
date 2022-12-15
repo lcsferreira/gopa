@@ -5,6 +5,15 @@
 <?php
   //get id from url
   $id = $_GET['id'];
+
+  //create an array tha have all the indicators steps 
+
+  $indicators_steps = array("demographic", "pa_prevalence", "inequalitites_participation", "national_surveillance", "national_policy", "research", "pa_promotion", "contact");
+
+  $value_types = array("comments","values_admin", "values_contact");
+
+  $indicators_progress = array(0, 0, 0, 0, 0, 0, 0, 0);
+
   //get indicators_step from country table
   $sql = "SELECT indicators_step FROM countries WHERE id = $id";
   $result = mysqli_query($connection, $sql);
@@ -13,39 +22,35 @@
   $demographic_progress = 0;
 
   if($row['indicators_step'] == "not started"){
-    //create row in demographic_comments, demographic_values_admin and demograpghic_values_contact tables
-    $sql = "INSERT INTO demographic_comments (id) VALUES ($id)";
-    mysqli_query($connection, $sql);
-    //get the id of the last row inserted
-    $id_comment = $id;
-    $sql = "INSERT INTO demographic_values_admin (id) VALUES ($id)";
-    mysqli_query($connection, $sql);
-    $id_value_admin = $id;
-    $sql = "INSERT INTO demographic_values_contact (id) VALUES ($id)";
-    mysqli_query($connection, $sql);
-    $id_value_contact = $id;
-
-    //create row in demoind_country_comments, with all foreign keys from id, id_value_admin, id_comment, id_value_contact
-    $sql = "INSERT INTO demoind_country_comment (id_country, id_value_admin, id_comment, id_value_contact) VALUES ($id, $id_comment, $id_value_admin, $id_value_contact)";
-    mysqli_query($connection, $sql);
-
+    //for all the indicators steps, create a row in the table
+    foreach ($indicators_steps as $step) {
+      foreach($value_types as $value_type){
+        $sql = "INSERT INTO " . $step . "_" . $value_type . " (id) VALUES ($id)";
+        mysqli_query($connection, $sql);
+      }
+    }
     //update indicators_step to "in progress" in countries table
     $sql = "UPDATE countries SET indicators_step = 'started' WHERE id = $id";
   }
 
-  //select row from demographic_values_contacct table
-  $sql = "SELECT * FROM demographic_values_contact WHERE id = $id";
-  $result = mysqli_query($connection, $sql);
-  $row = mysqli_fetch_assoc($result);
-  //for each row except id, check if the value is not null
-  foreach($row as $key => $value){
-    if($key != "id" && $value != null){
-      $demographic_progress ++;
+  foreach ($indicators_steps as $step) {
+    $index = 0;
+    //select row from demographic_values_contacct table
+    $sql = "SELECT * FROM " . $step . "_values_contact WHERE id = $id";
+    $result = mysqli_query($connection, $sql);
+    $row = mysqli_fetch_assoc($result);
+    //for each row except id, check if the value is not null
+    foreach($row as $key => $value){
+      if($key != "id" && $value != null){
+        $indicators_progress[$index] ++;
+      }
     }
+    $index ++;
   }
-  //calculate the percentage of the demographic indicators
-  $demographic_progress = ($demographic_progress / 9) * 100;
 
+  foreach ($indicators_progress as $progress) {
+    $progress = ($progress / 9) * 100;
+  }
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -55,6 +60,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -177,14 +183,13 @@
         </div>
       </div>
     </div>
-    <button class="btn-next" type="button"
-      <?php
+    <button class="btn-next" type="button" <?php
         echo "onclick='document.location = `demographic.php?id=".$id."`'";
-      ?>
-    >Next</button>
+      ?>>Next</button>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="../../js/countries/countryEdit.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
 </body>
+
 </html>
