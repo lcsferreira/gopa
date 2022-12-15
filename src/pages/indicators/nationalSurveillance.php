@@ -69,57 +69,126 @@
           </label>
           <div class="radio" id="national-surveys-admin">
             <label for="yes">Yes</label>
-            <input type="radio" id="yes-admin" name="national-surveys"
-              onblur="saveRadioValue('national-surveys',  '<?php echo $id ?>', 'national_surveillance_values_admin')"
+            <input type="radio" id="yes-admin" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if ($admin_values['national_surveys'] == 1) {
+                echo "checked";
+              }
+            ?> name="national-surveys-admin"
+              onblur="saveRadioValue('national-surveys-admin',  '<?php echo $id ?>', 'national_surveillance_values_admin')"
               value="yes">
             <label for="no">No</label>
-            <input type="radio" id="no-admin" name="national-surveys"
-              onblur="saveRadioValue('national-surveys',  '<?php echo $id ?>', 'national_surveillance_values_admin')"
+            <input type="radio" id="no-admin" <?php 
+              if ($admin_values['national_surveys'] == 0) {
+                echo "checked ";
+              }
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled";
+              }
+            ?> name="national-surveys-admin"
+              onblur="saveRadioValue('national-surveys-admin',  '<?php echo $id ?>', 'national_surveillance_values_admin')"
               value="no">
           </div>
         </div>
         <div class="form-input">
           <label for="national-surveys">
             National survey(s) including physical activity questions
-            <p>
-              Surveys at the national level that cover physical activity at work/in the household, for transport, and
-              during leisure time. Surveys should include a representative sample of the entire population or, in some
-              cases, a clearly defined geographic segment of the population.
-            </p>
           </label>
           <div class="radio" id="national-surveys">
             <label for="yes">Yes</label>
-            <input type="radio" id="yes" name="national-surveys" value="yes">
+            <input type="radio" id="yes" <?php 
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if ($contact_values['national_surveys'] == 1) {
+                echo "checked";
+              }
+            ?> name="national-surveys" value="yes"
+              onblur="saveRadioValue('national-surveys',  '<?php echo $id ?>', 'national_surveillance_values_contact')">
             <label for="no">No</label>
-            <input type="radio" id="no" name="national-surveys" value="no">
+            <input type="radio" id="no" <?php 
+              if ($contact_values['national_surveys'] == 0) {
+                echo "checked ";
+              }
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }
+            ?> name="national-surveys" value="no"
+              onblur="saveRadioValue('national-surveys',  '<?php echo $id ?>', 'national_surveillance_values_contact')">
           </div>
         </div>
         <textarea placeholder="Add a comment..." name="comments" id="national-surveys-comments" cols="30" rows="5"
-          class="comment"></textarea>
+          class="comment"
+          onblur="saveComment('national-surveys', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['national_surveys'] != null) {
+            echo $comments['national_surveys'];
+          }?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
           <label for="most-recent-year-admin">Most recent (Year)</label>
-          <input type="text" name="most-recent-year" id="most-recent-year-admin">
+          <input type="text" name="most-recent-year"
+            onblur="saveValueByAdmin('most-recent-year', '<?php echo $id ?>', 'national_surveillance_values_admin')"
+            id="most-recent-year-admin" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled";
+              }
+              if($admin_values['most_recent_year'] != null){
+                echo "value=" . $admin_values['most_recent_year'];
+              }
+          ?>>
         </div>
         <div class="form-input">
           <label for="most-recent-year">Most recent (Year)</label>
-          <input type="text" name="most-recent-year" id="most-recent-year">
+          <input type="text"
+            onblur="saveValueByContact('most-recent-year', '<?php echo $id ?>', 'national_surveillance_values_contact')"
+            name="most-recent-year" id="most-recent-year" <?php 
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }
+              if($contact_values['most_recent_year'] != null){
+                echo "value=" . $contact_values['most_recent_year'];
+              }
+          ?>>
         </div>
         <textarea placeholder="Add a comment..." name="most-recent-comments" id="most-recent-comments" cols="30"
-          rows="5" class="comment"></textarea>
+          rows="5" class="comment"
+          onblur="saveComment('most-recent-year', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['most_recent_year'] != null) {
+            echo $comments['most_recent_year'];
+          }?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
           <label for="next-year-admin">Next (Year)</label>
-          <input type="text" name="next-year" id="next-year-admin">
+          <input type="text" name="next-year"
+            onblur="saveValueByAdmin('next-year', '<?php echo $id ?>', 'national_surveillance_values_admin')"
+            id="next-year-admin" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled";
+              }
+              if($admin_values['next_year'] != null){
+                echo "value=" . $admin_values['next_year'];
+              }
+          ?>>
         </div>
         <div class="form-input">
           <label for="next-year">Next (Year)</label>
-          <input type="text" name="next-year" id="next-year">
+          <input type="text" name="next-year"
+            onblur="saveValueByContact('next-year', '<?php echo $id ?>', 'national_surveillance_values_contact')"
+            id="next-year" <?php 
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }
+              if($contact_values['next_year'] != null){
+                echo "value=" . $contact_values['next_year'];
+              }
+          ?>>
         </div>
         <textarea placeholder="Add a comment..." name="next-year-comments" id="next-year-comments" cols="30" rows="5"
-          class="comment"></textarea>
+          class="comment" onblur="saveComment('next-year', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['next_year'] != null) {
+            echo $comments['next_year'];
+          }?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -127,17 +196,34 @@
             Surveys and instruments used to assess physical activity
             Names
           </label>
-          <input type="text" name="survey-names" id="survey-names-admin">
+          <input type="text" name="survey-names" id="survey-names-admin" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['survey_names'] != null){
+                echo "value=" . $admin_values['survey_names'];
+              }
+          ?> onblur="saveValueByAdmin('survey-names', '<?php echo $id ?>', 'national_surveillance_values_admin')">
         </div>
         <div class="form-input">
           <label for="survey-names">
             Surveys and instruments used to assess physical activity
             Names
           </label>
-          <input type="text" name="survey-names" id="survey-names">
+          <input type="text" name="survey-names" id="survey-names"
+            onblur="saveValueByContact('survey-names', '<?php echo $id ?>', 'national_surveillance_values_contact')" <?php 
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }
+              if($contact_values['survey_names'] != null){
+                echo "value=" . $contact_values['survey_names'];
+              }
+          ?>>
         </div>
         <textarea placeholder="Add a comment..." name="comments" id="survey-names-comments" cols="30" rows="5"
-          class="comment"></textarea>
+          class="comment" onblur="saveComment('survey-names', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['survey_names'] != null) {
+            echo $comments['survey_names'];
+          }?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -146,12 +232,34 @@
           </label>
           <div class="radio" id="objective-measures-admin">
             <label for="yes">Yes</label>
-            <input type="radio" id="yes-admin" name="objective" value="yes">
+            <input type="radio" id="yes-admin" name="objective-measures-admin" value="yes" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if ($admin_values['objective_measures'] == 1) {
+                echo "checked";
+              }?>
+              onblur="saveRadioValue('objective-measures-admin',  '<?php echo $id ?>', 'national_surveillance_values_admin')">
             <label for="no">No</label>
-            <input type="radio" id="no-admin" name="objective" value="no">
+            <input type="radio" id="no-admin" name="objective-measures-admin" value="no" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if ($admin_values['objective_measures'] == 0) {
+                echo "checked";
+              }?>
+              onblur="saveRadioValue('objective-measures-admin',  '<?php echo $id ?>', 'national_surveillance_values_admin')">
           </div>
           <label for="reference">Reference</label>
-          <input type="text" name="reference" id="objetcitve-measures-reference-admin">
+          <input type="text" name="reference" id="objective-measures-reference-admin" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled";
+              }
+              if($admin_values['objective_measures_reference'] != null){
+                echo "value=" . $admin_values['objective_measures_reference'];
+              }
+          ?>
+            onblur="saveValueByAdmin('objective-measures-reference', '<?php echo $id ?>', 'national_surveillance_values_admin')">
         </div>
         <div class="form-input">
           <label for="objective-measures">
@@ -159,15 +267,40 @@
           </label>
           <div class="radio" id="objetctive-measures">
             <label for="yes">Yes</label>
-            <input type="radio" id="yes" name="objective" value="yes">
+            <input type="radio" id="yes" name="objective-measures" value="yes" <?php 
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if ($contact_values['objective_measures'] == 1) {
+                echo "checked";
+              }?>
+              onblur="saveRadioValue('objective-measures',  '<?php echo $id ?>', 'national_surveillance_values_contact')">
             <label for="no">No</label>
-            <input type="radio" id="no" name="objective" value="no">
+            <input type="radio" id="no" name="objectiveobjective-measures" value="no" <?php 
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if ($contact_values['objective_measures'] == 0) {
+                echo "checked";
+              }?>
+              onblur="saveRadioValue('objective-measures',  '<?php echo $id ?>', 'national_surveillance_values_contact')">
           </div>
           <label for="reference">Reference</label>
-          <input type="text" name="reference" id="objective-measures-reference">
+          <input type="text" name="reference" id="objective-measures-reference" <?php 
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }
+              if($contact_values['objective_measures_reference'] != null){
+                echo "value=" . $contact_values['objective_measures_reference'];
+              }
+          ?>
+            onblur="saveValueByContact('objective-measures-reference', '<?php echo $id ?>', 'national_surveillance_values_contact')">
         </div>
         <textarea placeholder="Add a comment..." name="comments" id="objective-measures-comments" cols="30" rows="5"
-          class="comment"></textarea>
+          class="comment"
+          onblur="saveComment('objective-measures', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['objective_measures'] != null) {
+            echo $comments['objective_measures'];
+          }?></textarea>
       </div>
       <div class="buttons">
         <button class="btn-back" type="button" <?php
