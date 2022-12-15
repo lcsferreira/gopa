@@ -8,48 +8,59 @@
 
   //create an array tha have all the indicators steps 
 
-  $indicators_steps = array("demographic", "pa_prevalence", "inequalitites_participation", "national_surveillance", "national_policy", "research", "pa_promotion", "contact");
+  $indicators_steps = array("demographic", "pa_prevalence", "inequalities_participation", "national_surveillance", "national_policy", "research", "pa_promotion", "contact");
 
   $value_types = array("comments","values_admin", "values_contact");
 
   $indicators_progress = array(0, 0, 0, 0, 0, 0, 0, 0);
+
+  $max_total_indicators = array(9, 4, 4, 6, 6, 4, 3, 9);
 
   //get indicators_step from country table
   $sql = "SELECT indicators_step FROM countries WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $row = mysqli_fetch_assoc($result);
 
-  $demographic_progress = 0;
-
   if($row['indicators_step'] == "not started"){
     //for all the indicators steps, create a row in the table
     foreach ($indicators_steps as $step) {
       foreach($value_types as $value_type){
-        $sql = "INSERT INTO " . $step . "_" . $value_type . " (id) VALUES ($id)";
-        mysqli_query($connection, $sql);
+        //write the logic to not create a row in the pa_promotion_values_contact table
+        if($step == "pa_promotion" && $value_type == "values_contact"){
+          continue;
+        }else{
+          // $sql = "INSERT INTO " . $step . "_" . $value_type . " (id) VALUES ($id)";
+          // mysqli_query($connection, $sql);
+        }
       }
     }
-    //update indicators_step to "in progress" in countries table
+    // update indicators_step to "started" in countries table
     $sql = "UPDATE countries SET indicators_step = 'started' WHERE id = $id";
+    mysqli_query($connection, $sql);
   }
 
+  $index = 0;
   foreach ($indicators_steps as $step) {
-    $index = 0;
     //select row from demographic_values_contacct table
-    $sql = "SELECT * FROM " . $step . "_values_contact WHERE id = $id";
+    $sql = "SELECT * FROM " . $step . "_values_admin WHERE id = $id";
     $result = mysqli_query($connection, $sql);
     $row = mysqli_fetch_assoc($result);
-    //for each row except id, check if the value is not null
+    //for each row except id, check if the value is not null or zero
     foreach($row as $key => $value){
-      if($key != "id" && $value != null){
+      if($key != "id" && $value != null && $value != 0){
         $indicators_progress[$index] ++;
       }
     }
     $index ++;
   }
 
+  $index = 0;
   foreach ($indicators_progress as $progress) {
-    $progress = ($progress / 9) * 100;
+    $progress = ($progress / $max_total_indicators[$index]) * 100;
+    //MAKE PROGRESS 2 DECIMALS
+    $progress = number_format($progress, 1);
+    $indicators_progress[$index] = $progress;
+    $index++;
   }
 ?>
 <?php
@@ -82,104 +93,130 @@
         <h2>Demographic Indicators</h2>
         <div class="indicator-progress-percent" style="--percent: 
         <?php 
-          echo $demographic_progress;
+          echo $indicators_progress[0];
         ?>">
           <svg>
             <circle cx="20" cy="20" r="20"></circle>
             <circle cx="20" cy="20" r="20"></circle>
           </svg>
           <div class="number">
-            <h2>
-              <?php 
-                echo $demographic_progress;
-              ?>
-              <span>%</span>
-            </h2>
           </div>
+          <h2><?php 
+                echo $indicators_progress[0];
+              ?><span>%</span>
+          </h2>
         </div>
       </div>
       <div class="indicator-progress">
         <h2>P.A. Prevalance</h2>
-        <div class="indicator-progress-percent" style="--percent: 0">
+        <div class="indicator-progress-percent" style="--percent: <?php 
+                echo $indicators_progress[1];
+              ?>">
           <svg>
             <circle cx="20" cy="20" r="20"></circle>
             <circle cx="20" cy="20" r="20"></circle>
           </svg>
           <div class="number">
-            <h2>0<span>%</span></h2>
           </div>
+          <h2><?php 
+                echo $indicators_progress[1];
+              ?><span>%</span></h2>
         </div>
       </div>
       <div class="indicator-progress">
         <h2>Ineqaulities in P.A. Participation</h2>
-        <div class="indicator-progress-percent" style="--percent: 0">
+        <div class="indicator-progress-percent" style="--percent: <?php 
+                echo $indicators_progress[2];
+              ?>">
           <svg>
             <circle cx="20" cy="20" r="20"></circle>
             <circle cx="20" cy="20" r="20"></circle>
           </svg>
           <div class="number">
-            <h2>0<span>%</span></h2>
           </div>
+          <h2><?php 
+                echo $indicators_progress[2];
+              ?><span>%</span></h2>
         </div>
       </div>
       <div class="indicator-progress">
         <h2>National Surveillance</h2>
-        <div class="indicator-progress-percent" style="--percent: 0">
+        <div class="indicator-progress-percent" style="--percent: <?php 
+                echo $indicators_progress[3];
+              ?>">
           <svg>
             <circle cx="20" cy="20" r="20"></circle>
             <circle cx="20" cy="20" r="20"></circle>
           </svg>
           <div class="number">
-            <h2>0<span>%</span></h2>
           </div>
+          <h2><?php 
+                echo $indicators_progress[3];
+              ?><span>%</span></h2>
         </div>
       </div>
       <div class="indicator-progress">
         <h2>National Policy</h2>
-        <div class="indicator-progress-percent" style="--percent: 0">
+        <div class="indicator-progress-percent" style="--percent: <?php 
+                echo $indicators_progress[4];
+              ?>">
           <svg>
             <circle cx="20" cy="20" r="20"></circle>
             <circle cx="20" cy="20" r="20"></circle>
           </svg>
           <div class="number">
-            <h2>0<span>%</span></h2>
           </div>
+          <h2><?php 
+                echo $indicators_progress[4];
+              ?><span>%</span></h2>
         </div>
       </div>
       <div class="indicator-progress">
         <h2>Research Indicators</h2>
-        <div class="indicator-progress-percent" style="--percent: 0">
+        <div class="indicator-progress-percent" style="--percent: <?php 
+                echo $indicators_progress[5];
+              ?>">
           <svg>
             <circle cx="20" cy="20" r="20"></circle>
             <circle cx="20" cy="20" r="20"></circle>
           </svg>
           <div class="number">
-            <h2>0<span>%</span></h2>
           </div>
+          <h2><?php 
+                echo $indicators_progress[5];
+              ?><span>%</span></h2>
         </div>
       </div>
       <div class="indicator-progress">
         <h2>P.A. Promotion Capacity Pyramid</h2>
-        <div class="indicator-progress-percent" style="--percent: 0">
+        <div class="indicator-progress-percent" style="--percent: <?php 
+                echo $indicators_progress[6];
+              ?>">
           <svg>
             <circle cx="20" cy="20" r="20"></circle>
             <circle cx="20" cy="20" r="20"></circle>
           </svg>
           <div class="number">
-            <h2>0<span>%</span></h2>
           </div>
+          <h2><?php 
+                echo $indicators_progress[6];
+              ?><span>%</span></h2>
         </div>
       </div>
       <div class="indicator-progress">
         <h2>Country Card Contact</h2>
-        <div class="indicator-progress-percent" style="--percent: 0">
+        <div class="indicator-progress-percent" style="--percent: <?php 
+                echo $indicators_progress[7];
+              ?>">
           <svg>
             <circle cx="20" cy="20" r="20"></circle>
             <circle cx="20" cy="20" r="20"></circle>
           </svg>
           <div class="number">
-            <h2>0<span>%</span></h2>
           </div>
+          <h2><?php 
+                echo $indicators_progress[7];
+              ?><span>%</span></h2>
         </div>
       </div>
     </div>

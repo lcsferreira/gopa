@@ -13,6 +13,7 @@ function saveComment(indicator, id, table) {
 function postValue(indicator, value, id, table) {
   //replace the - by _ to match the database
   indicator = indicator.replace("-", "_");
+
   let request = $.ajax({
     method: "POST",
     url: "../../ajaxQuerys/indicators/saveValue.php",
@@ -21,4 +22,14 @@ function postValue(indicator, value, id, table) {
     type: "post",
     contentType: "application/x-www-form-urlencoded",
   });
+}
+
+function saveRadioValue(indicator, id, table) {
+  let value = $("input[name=" + indicator + "]:checked").val();
+  if (value == "yes") {
+    value = 1;
+  } else {
+    value = 0;
+  }
+  postValue(indicator, value, id, table);
 }

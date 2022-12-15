@@ -252,14 +252,14 @@ textarea::placeholder {
   min-height: 50px;
 }
 
-.indicator-progress-percent .number h2 {
-  font-size: 15px;
+.indicator-progress-percent h2 {
+  font-size: 18px;
   text-align: center;
   color: #8e9dae;
 }
 
-.indicator-progress-percent .number h2 span {
-  font-size: 9px;
+.indicator-progress-percent h2 span {
+  font-size: 12px;
 }
 
 .indicator-progress-percent {

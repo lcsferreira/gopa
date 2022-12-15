@@ -5,15 +5,15 @@
 <?php
   //get id from url
   $id = $_GET['id'];
-  $sql = "SELECT * FROM paprevalence_values_admin WHERE id = $id";
+  $sql = "SELECT * FROM pa_prevalence_values_admin WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $admin_values = mysqli_fetch_assoc($result);
   //select row from demographic_comments table
-  $sql = "SELECT * FROM paprevalence_comments WHERE id = $id";
+  $sql = "SELECT * FROM pa_prevalence_comments WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $comments = mysqli_fetch_assoc($result);
   //select row from demographic_values_contact table
-  $sql = "SELECT * FROM paprevalence_values_contact WHERE id = $id";
+  $sql = "SELECT * FROM pa_prevalence_values_contact WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $contact_values = mysqli_fetch_assoc($result);
 ?>
@@ -45,10 +45,15 @@
     </div>
     <div class="input-labels">
       <div>
-        <p>suggest a value</p>
+        <p>Adjusted or most current value suggested</p>
       </div>
       <div>
-        <p>add a comment</p>
+        <p>
+          If any adjustment, please indicate year of information.
+        </p>
+        <p>
+          Please provide additional comments here.
+        </p>
       </div>
     </div>
     <form>
@@ -59,46 +64,50 @@
             <div>
               <label for="both-sexes">Both sexes</label>
               <input type="number" <?php
-                if($_SESSION['userType'] == "admin"){
+                if($_SESSION['userType'] != "admin"){
                   echo "disabled";
                 }
                 if($admin_values['both_sexes'] != null){
                   echo "value=" . $admin_values['both_sexes'];
                 }
-              ?> name="both-sexes" id="both-sexes-admin">
+              ?> onblur="saveValueByAdmin('both-sexes', '<?php echo $id ?>', 'pa_prevalence_values_admin')"
+                name="both-sexes" id="both-sexes-admin">
             </div>
             <div>
               <label for="males">Males</label>
               <input type="number" <?php
-                if($_SESSION['userType'] == "admin"){
+                if($_SESSION['userType'] != "admin"){
                   echo "disabled";
                 }
                 if($admin_values['males'] != null){
                   echo "value=" . $admin_values['males'];
                 }
-              ?>name="males" id="males-admin">
+              ?> onblur="saveValueByAdmin('males', '<?php echo $id ?>', 'pa_prevalence_values_admin')" name="males"
+                id="males-admin">
             </div>
             <div>
               <label for="females">Females</label>
               <input type="number" <?php
-                if($_SESSION['userType'] == "admin"){
+                if($_SESSION['userType'] != "admin"){
                   echo "disabled";
                 }
                 if($admin_values['females'] != null){
                   echo "value=" . $admin_values['females'];
                 }
-              ?> name="females" id="females-admin">
+              ?> onblur="saveValueByAdmin('females', '<?php echo $id ?>', 'pa_prevalence_values_admin')" name="females"
+                id="females-admin">
             </div>
           </div>
           <label for="reference">Reference</label>
           <input type="text" <?php
-                if($_SESSION['userType'] == "admin"){
+                if($_SESSION['userType'] != "admin"){
                   echo "disabled";
                 }
                 if($admin_values['reference'] != null){
                   echo "value=" . $admin_values['reference'];
                 }
-              ?> name="reference" id="reference-admin">
+              ?> onblur="saveValueByAdmin('reference', '<?php echo $id ?>', 'pa_prevalence_values_admin')"
+            name="reference" id="reference-admin">
         </div>
         <div class="form-input">
           <label for="groups">Physical activity prevalence adults (%)</label>
@@ -106,49 +115,53 @@
             <div>
               <label for="both-sexes">Both sexes</label>
               <input type="number" <?php
-                if($_SESSION['userType'] != "admin"){
+                if($_SESSION['userType'] == "admin"){
                   echo "disabled";
                 }
                 if($contact_values['both_sexes'] != null){
                   echo "value=" . $contact_values['both_sexes'];
                 }
-              ?> name="both-sexes" id="both-sexes">
+              ?> onblur="saveValueByContact('both-sexes', '<?php echo $id ?>', 'pa_prevalence_values_contact')"
+                name="both-sexes" id="both-sexes">
             </div>
             <div>
               <label for="males">Males</label>
               <input type="number" <?php
-                if($_SESSION['userType'] != "admin"){
+                if($_SESSION['userType'] == "admin"){
                   echo "disabled";
                 }
                 if($contact_values['males'] != null){
                   echo "value=" . $contact_values['males'];
                 }
-              ?> name="males" id="males">
+              ?> onblur="saveValueByContact('males', '<?php echo $id ?>', 'pa_prevalence_values_contact')" name="males"
+                id="males">
             </div>
             <div>
               <label for="females">Females</label>
               <input type="number" <?php
-                if($_SESSION['userType'] != "admin"){
+                if($_SESSION['userType'] == "admin"){
                   echo "disabled";
                 }
                 if($contact_values['females'] != null){
                   echo "value=" . $contact_values['females'];
                 }
-              ?> name="females" id="females">
+              ?> onblur="saveValueByContact('females', '<?php echo $id ?>', 'pa_prevalence_values_contact')"
+                name="females" id="females">
             </div>
           </div>
           <label for="reference">Reference</label>
           <input type="text" <?php
-                if($_SESSION['userType'] != "admin"){
+                if($_SESSION['userType'] == "admin"){
                   echo "disabled";
                 }
                 if($contact_values['reference'] != null){
                   echo "value=" . $contact_values['reference'];
                 }
-              ?> name="reference" id="reference">
+              ?> onblur="saveValueByContact('reference', '<?php echo $id ?>', 'pa_prevalence_values_contact')"
+            name="reference" id="reference">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="pa-prevalence-comments" cols="30" rows="5"
-          class="comment"><?php
+        <textarea onblur="saveComment('pa-prevalence', '<?php echo $id ?>', 'pa_prevalence_comments')"
+          placeholder="Add a comment..." name="comments" id="pa-prevalence-comments" cols="30" rows="5" class="comment"><?php
                 if($comments['pa_prevalence'] != null){
                   echo $comments['pa_prevalence'];
                 }

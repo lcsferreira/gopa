@@ -7,6 +7,10 @@
   $id = $_POST['id'];
   $table = $_POST['table'];
 
+  if($value == ""){
+    $value = NULL;
+  }
+
   //update table with the value
   $sql = "UPDATE $table SET $indicator = ? WHERE id = $id";
   $stmt = mysqli_prepare($connection, $sql);
