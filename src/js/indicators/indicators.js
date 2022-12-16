@@ -18,7 +18,7 @@ function saveComment(indicator, id, table) {
 
 function postValue(indicator, value, id, table) {
   //replace the - by _ to match the database
-  indicator = indicator.replace("-", "_");
+  indicator = indicator.replaceAll("-", "_");
 
   let request = $.ajax({
     method: "POST",
@@ -37,7 +37,17 @@ function saveRadioValue(indicator, id, table) {
   } else {
     value = 0;
   }
-  indicator = indicator.replace("-", "_");
+  indicator = indicator.replaceAll("-", "_");
+  //remove the -admin from the indicator
+  if (indicator.includes("-admin")) {
+    indicator = indicator.replace("-admin", "");
+  }
+  postValue(indicator, value, id, table);
+}
+
+function saveRadioValue2(indicator, id, table) {
+  let value = $("input[name=" + indicator + "]:checked").val();
+  indicator = indicator.replaceAll("-", "_");
   //remove the -admin from the indicator
   if (indicator.includes("-admin")) {
     indicator = indicator.replace("-admin", "");

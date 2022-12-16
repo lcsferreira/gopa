@@ -53,7 +53,7 @@
               Percentage (%) of publications per country (total articles per country / total of articles worldwide)
             </p>
           </label>
-          <input type="number" name="contribution" id="contribution" <?php 
+          <input type="number" name="contribution" id="contribution-admin" <?php 
               if($admin_values['contribution'] != null){
                 echo "value=" . $admin_values['contribution'];
               }
@@ -88,8 +88,8 @@
             <input type="radio" id="q5" name="quintiles" value="q5">
           </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="pa-quitiles-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('pa-quitiles', '<?php echo $id ?>', 'research_comments')"><?php
+        <textarea placeholder="Add a comment..." name="comments" id="pa-quintiles-comments" cols="30" rows="5"
+          class="comment" onblur="saveComment('pa-quintiles', '<?php echo $id ?>', 'research_comments')"><?php
               if($comments['pa_quintiles'] != null){
                 echo $comments['pa_quintiles'];
               }
@@ -107,19 +107,19 @@
           <div name="groups" id="groups">
             <div>
               <label for="male">Male</label>
-              <input type="number" name="male" id="gender-inequalities-male-admin" <?php 
-              if($admin_values['gender_inequalities_male'] != null){
-                echo "value=" . $admin_values['gender_inequalities_male'];
-              }
-          ?> onblur="saveValueByAdmin('gender-inequalities-male', '<?php echo $id ?>', 'research_values_admin')">
+              <input type="number" name="male" id="gender-inequalities-male-admin" <?php
+                if($admin_values['gender_inequalities_male'] != null){
+                  echo "value=" . $admin_values['gender_inequalities_male'];
+                }
+              ?> onblur="saveValueByAdmin('gender-inequalities-male', '<?php echo $id ?>', 'research_values_admin')">
             </div>
             <div>
               <label for="female">Female</label>
               <input type="number" name="female" id="gender-inequalities-female-admin" <?php 
-              if($admin_values['gender_inequalities_male'] != null){
+              if($admin_values['gender_inequalities_female'] != null){
                 echo "value=" . $admin_values['gender_inequalities_female'];
               }
-          ?> onblur="saveValueByAdmin('gender-inequalities-female', '<?php echo $id ?>', 'research_values_admin')">
+              ?> onblur="saveValueByAdmin('gender-inequalities-female', '<?php echo $id ?>', 'research_values_admin')">
             </div>
           </div>
         </div>
@@ -141,7 +141,7 @@
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="../../js/countries/countryEdit.js"></script>
+  <script src="../../js/indicators/indicators.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
 </body>
 

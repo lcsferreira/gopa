@@ -51,23 +51,23 @@
               if ($admin_values['research'] == "green") {
                 echo "checked";
               }
-            ?> onblur="saveRadioValue('research',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
+            ?> onblur="saveRadioValue2('research',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="yellow">Yellow</label>
             <input type="radio" id="yellow" name="research" value="yellow" <?php 
               if ($admin_values['research'] == "yellow") {
                 echo "checked";
               }
-            ?> onblur="saveRadioValue('research',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
+            ?> onblur="saveRadioValue2('research',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="red">Red</label>
             <input type="radio" id="red" name="research" value="red" <?php 
               if ($admin_values['research'] == "red") {
                 echo "checked";
               }
-            ?> onblur="saveRadioValue('research',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
+            ?> onblur="saveRadioValue2('research',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
           </div>
         </div>
         <textarea placeholder="Add a comment..." name="comments" id="research-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('research', '<?php echo $id ?>', 'research_comments')"><?php
+          class="comment" onblur="saveComment('research', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
               if($comments['research'] != null){
                 echo $comments['research'];
               }
@@ -84,35 +84,35 @@
               if ($admin_values['policy'] == "green") {
                 echo "checked";
               }
-            ?> onblur="saveRadioValue('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
+            ?> onblur="saveRadioValue2('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="yellow">Yellow</label>
             <input type="radio" id="yellow" name="policy" value="yellow" <?php 
               if ($admin_values['policy'] == "yellow") {
                 echo "checked";
               }
-            ?> onblur="saveRadioValue('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
+            ?> onblur="saveRadioValue2('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="red">Red</label>
             <input type="radio" id="red" name="policy" value="red" <?php 
               if ($admin_values['policy'] == "red") {
                 echo "checked";
               }
-            ?> onblur="saveRadioValue('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
+            ?> onblur="saveRadioValue2('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="availability">Availability</label>
             <input type="radio" id="availability" name="policy" value="availability" <?php 
               if ($admin_values['policy'] == "availability") {
                 echo "checked";
               }
-            ?> onblur="saveRadioValue('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
+            ?> onblur="saveRadioValue2('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="implementation">Implementation</label>
             <input type="radio" id="implementation" name="policy" value="implementation" <?php 
               if ($admin_values['policy'] == "implementation") {
                 echo "checked";
               }
-            ?> onblur="saveRadioValue('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
+            ?> onblur="saveRadioValue2('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
           </div>
         </div>
         <textarea placeholder="Add a comment..." name="comments" id="policy-comments" cols="30" rows="5" class="comment"
-          onblur="saveComment('policy', '<?php echo $id ?>', 'research_comments')"><?php
+          onblur="saveComment('policy', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
               if($comments['policy'] != null){
                 echo $comments['policy'];
               }
@@ -129,23 +129,23 @@
               if ($admin_values['surveillance'] == "green") {
                 echo "checked";
               }
-            ?> onblur="saveRadioValue('surveillance',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
+            ?> onblur="saveRadioValue2('surveillance',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="yellow">Yellow</label>
             <input type="radio" id="yellow" name="surveillance" value="yellow" <?php 
               if ($admin_values['surveillance'] == "yellow") {
                 echo "checked";
               }
-            ?> onblur="saveRadioValue('surveillance',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
+            ?> onblur="saveRadioValue2('surveillance',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="red">Red</label>
             <input type="radio" id="red" name="surveillance" value="red" <?php 
               if ($admin_values['surveillance'] == "red") {
                 echo "checked";
               }
-            ?> onblur="saveRadioValue('surveillance',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
+            ?> onblur="saveRadioValue2('surveillance',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
           </div>
         </div>
         <textarea placeholder="Add a comment..." name="comments" id="surveillance-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('surveillance', '<?php echo $id ?>', 'research_comments')"><?php
+          class="comment" onblur="saveComment('surveillance', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
               if($comments['surveillance'] != null){
                 echo $comments['surveillance'];
               }
@@ -158,7 +158,7 @@
           }?>" alt="pyramids">
         </div>
         <textarea placeholder="Add a comment..." name="comments" id="pyramid-image-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('pyramid-image', '<?php echo $id ?>', 'research_comments')"><?php
+          class="comment" onblur="saveComment('pyramid-image', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
               if($comments['pyramid_image'] != null){
                 echo $comments['pyramid_image'];
               }
@@ -175,7 +175,7 @@
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="../../js/countries/countryEdit.js"></script>
+  <script src="../../js/indicators/indicators.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
 </body>
 
