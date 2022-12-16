@@ -276,7 +276,7 @@
               }?>
               onblur="saveRadioValue('objective-measures',  '<?php echo $id ?>', 'national_surveillance_values_contact')">
             <label for="no">No</label>
-            <input type="radio" id="no" name="objectiveobjective-measures" value="no" <?php 
+            <input type="radio" id="no" name="objective-measures" value="no" <?php 
               if($_SESSION['userType'] == "admin"){
                 echo "disabled ";
               }

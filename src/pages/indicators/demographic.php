@@ -17,6 +17,10 @@
   $sql = "SELECT * FROM demographic_values_contact WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $contact_values = mysqli_fetch_assoc($result);
+
+  //create an array with agreement states for each indicator
+  $agreement = array(null, null, null, null, null, null, null, null, null);
+
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -44,6 +48,7 @@
       <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a
         file to help with new information, to this drive: https:/drive.com/(CountryName)</p>
     </div>
+    <?php echo $agreement[0]?>
     <div class="input-labels">
       <div>
         <p>Adjusted or most current value suggested</p>
@@ -71,9 +76,20 @@
             ?> name="country" id="country-admin"
             onblur="saveValueByAdmin('country', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="country">Country</label>
-          <input type="text" <?php
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="showInput('agreement-1','country')">
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-1" value="no" onclick="hideInput('agreement-1','country')">
+            </div>
+          </div>
+          <div class="contact-input" id="country-indicator">
+            <div class="form-input" id="country">
+              <label for="country">Country</label>
+              <input type="text" <?php
               if($_SESSION['userType'] == "admin"){
                 echo "disabled";
               }
@@ -81,14 +97,16 @@
                 echo "value=" . $contact_values['country'];
               } 
             ?> name="country" id="country"
-            onblur="saveValueByContact('country', '<?php echo $id ?>', 'demographic_values_contact')">
+                onblur="saveValueByContact('country', '<?php echo $id ?>', 'demographic_values_contact')">
+            </div>
+            <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5"
+              class="comment" onblur="saveComment('country', '<?php echo $id ?>', 'demographic_comments')"><?php
+              if($comments['country'] != null){
+                echo $comments['country'];
+              }
+              ?></textarea>
+          </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('country', '<?php echo $id ?>', 'demographic_comments')"><?php
-            if($comments['country'] != null){
-              echo $comments['country'];
-            }
-          ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">

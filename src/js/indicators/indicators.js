@@ -1,3 +1,9 @@
+//when document is ready
+$(document).ready(function () {
+  //display none to country-input
+  $("#country-indicator").css("display", "none");
+});
+
 function saveValueByAdmin(indicator, id, table) {
   postValue(indicator, $("#" + indicator + "-admin").val(), id, table);
 }
@@ -31,5 +37,22 @@ function saveRadioValue(indicator, id, table) {
   } else {
     value = 0;
   }
+  indicator = indicator.replace("-", "_");
+  //remove the -admin from the indicator
+  if (indicator.includes("-admin")) {
+    indicator = indicator.replace("-admin", "");
+  }
   postValue(indicator, value, id, table);
+}
+
+function showInput(agreement, input) {
+  if ($("input[name=" + agreement + "]:checked").val() == "yes") {
+    $("#" + input + "-indicator").css("display", "flex");
+  }
+}
+
+function hideInput(agreement, input) {
+  if ($("input[name=" + agreement + "]:checked").val() == "no") {
+    $("#" + input + "-indicator").css("display", "none");
+  }
 }
