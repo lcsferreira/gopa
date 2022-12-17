@@ -7,7 +7,7 @@
           <i class='fa fa-times-circle fa-5x' aria-hidden='true'></i>
         </div>
         <div class='modal-body'>
-          <p>Do you really want to delete this admin? This process cannot be undone.</p>
+          <p>Do you really want to delete this ".$type."? This process cannot be undone.</p>
         </div>
         <div class='modal-footer'>
           <button type='button' class='btn-delete' id='delete'>Delete</button>

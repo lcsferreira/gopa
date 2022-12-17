@@ -27,7 +27,8 @@
 <body>
   <div class="container" id="main">
     <?php
-      include_once "../../components/modalDeleteCountry.php";
+      $type = "country";
+      include_once "../../components/modalDelete.php";
     ?>
     <div class="title-header">
       <h1>Countries List</h1>

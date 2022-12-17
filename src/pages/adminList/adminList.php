@@ -13,6 +13,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,10 +23,12 @@
   <link rel="stylesheet" href="../../../css/components/header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
   <div class="container" id="main">
     <?php
-      include_once "../../components/modalDeleteAdmin.php";
+      $type = "admin";
+      include_once "../../components/modalDelete.php";
     ?>
     <div class="title-header">
       <h1>Admin List</h1>
@@ -81,4 +84,5 @@
   <script src="../../js/sidebarMenu.js"></script>
   <script src="../../js/admins/adminDelete.js"></script>
 </body>
+
 </html>
