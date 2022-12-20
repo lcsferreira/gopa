@@ -10,11 +10,11 @@
 
   $indicators_steps = array("demographic", "pa_prevalence", "inequalities_participation", "national_surveillance", "national_policy", "research", "pa_promotion", "contact");
 
-  $value_types = array("comments","values_admin", "values_contact");
+  $value_types = array("comments","values_admin", "values_contact", "agreement");
 
   $indicators_progress = array(0, 0, 0, 0, 0, 0, 0, 0);
 
-  $max_total_indicators = array(9, 4, 4, 6, 6, 4, 3, 9);
+  $max_total_indicators = array(9, 1, 2, 5, 3, 3, 4, 9);
 
   //get indicators_step from country table
   $sql = "SELECT indicators_step FROM countries WHERE id = $id";
@@ -42,7 +42,7 @@
   $index = 0;
   foreach ($indicators_steps as $step) {
     //select row from demographic_values_contacct table
-    $sql = "SELECT * FROM " . $step . "_values_admin WHERE id = $id";
+    $sql = "SELECT * FROM " . $step . "_agreement WHERE id = $id";
     $result = mysqli_query($connection, $sql);
     $row = mysqli_fetch_assoc($result);
     //for each row except id, check if the value is not null or zero

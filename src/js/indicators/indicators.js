@@ -1,8 +1,17 @@
+//take the modalInfoText.json file and put it in a variable
 //when document is ready
 $(document).ready(function () {
-  //display none to country-input
   $("#country-indicator").css("display", "none");
+  $("#capital-indicator").css("display", "none");
+  $("#total-population-indicator").css("display", "none");
+  $("#urban-population-indicator").css("display", "none");
+  $("#life-expentacy-indicator").css("display", "none");
+  closeModalInfo();
 });
+
+window.onunload = function () {
+  closeModalInfo();
+};
 
 function saveValueByAdmin(indicator, id, table) {
   postValue(indicator, $("#" + indicator + "-admin").val(), id, table);
@@ -56,13 +65,42 @@ function saveRadioValue2(indicator, id, table) {
 }
 
 function showInput(agreement, input) {
-  if ($("input[name=" + agreement + "]:checked").val() == "yes") {
+  if ($("input[name=" + agreement + "]:checked").val() == "no") {
     $("#" + input + "-indicator").css("display", "flex");
   }
 }
 
 function hideInput(agreement, input) {
-  if ($("input[name=" + agreement + "]:checked").val() == "no") {
+  if ($("input[name=" + agreement + "]:checked").val() == "yes") {
     $("#" + input + "-indicator").css("display", "none");
   }
+}
+
+function showModalInfo(indicator) {
+  let modal = document.getElementById("modalInfo");
+  modal.style.display = "block";
+  //disable pointer events on the id="main" element except for the modal
+  document.getElementById("main").style.pointerEvents = "none";
+  //disable scroll on the html element
+  document.body.style.overflow = "hidden";
+  //enable pointer events on the modal
+  document.getElementById("modalInfo").style.pointerEvents = "auto";
+  //set the text of the modal
+  $.getJSON("../../js/indicators/modalInfoText.json", function (data) {
+    let modalInfoText = data;
+    document.getElementById("modalInfoText").innerHTML =
+      modalInfoText[indicator].body;
+  }).fail(function () {
+    console.log("An error has occurred.");
+  });
+}
+
+function closeModalInfo() {
+  $("#closeModalInfo").on("click", function () {
+    let modal = document.getElementById("modalInfo");
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+    //enable pointer events on the id="main" element
+    document.getElementById("main").style.pointerEvents = "auto";
+  });
 }

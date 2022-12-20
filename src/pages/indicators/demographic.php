@@ -18,9 +18,6 @@
   $result = mysqli_query($connection, $sql);
   $contact_values = mysqli_fetch_assoc($result);
 
-  //create an array with agreement states for each indicator
-  $agreement = array(null, null, null, null, null, null, null, null, null);
-
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -43,15 +40,18 @@
 
 <body>
   <div class="container" id="main">
+    <?php 
+      include_once "../../components/modalInfo.php";
+    ?>
     <div class="title">
       <h1>Demographic Indicators <span><i class="fa fa-question-circle-o"></i></span></h1>
       <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a
         file to help with new information, to this drive: https:/drive.com/(CountryName)</p>
     </div>
-    <?php echo $agreement[0]?>
     <div class="input-labels">
       <div>
-        <p>Adjusted or most current value suggested</p>
+        <p>Chek if you agree with the information on the left side. If don't, write the adjusted or most current value
+          suggested</p>
       </div>
       <div>
         <p>
@@ -65,11 +65,9 @@
     <form>
       <div class="indicators">
         <div class="form-input">
-          <label for="country">Country</label>
+          <label for="country">Country <span onclick="showModalInfo('country')"><i
+                class="fa fa-question-circle-o"></i></span></label>
           <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled";
-              }
               if($admin_values['country'] != null){
                 echo "value=" . $admin_values['country'];
               }
@@ -81,18 +79,19 @@
             <label for="radio-group">Agreement</label>
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="showInput('agreement-1','country')">
+              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','country')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }?>>
               <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-1" value="no" onclick="hideInput('agreement-1','country')">
+              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','country')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }?>>
             </div>
           </div>
           <div class="contact-input" id="country-indicator">
             <div class="form-input" id="country">
               <label for="country">Country</label>
               <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled";
-              }
               if($contact_values['country'] != null){
                 echo "value=" . $contact_values['country'];
               } 
@@ -110,7 +109,8 @@
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="capital">Capital</label>
+          <label for="capital">Capital <span onclick="showModalInfo('capital')"><i
+                class="fa fa-question-circle-o"></i></span></label>
           <input type="text" <?php
               if($_SESSION['userType'] != "admin"){
                 echo "disabled";
@@ -121,29 +121,47 @@
             ?> name="capital" id="capital-admin"
             onblur="saveValueByAdmin('capital', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="capital">Capital</label>
-          <input type="text" <?php
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','capital')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','capital')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="capital-indicator">
+            <div class="form-input">
+              <label for="capital">Capital</label>
+              <input type="text" <?php
               if($_SESSION['userType'] == "admin"){
                 echo "disabled";
               }
               if($contact_values['capital'] != null){
                 echo "value=" . $contact_values['capital'];
               } 
-            ?> name="capital" id="capital"
-            onblur="saveValueByContact('capital', '<?php echo $id ?>', 'demographic_values_contact')">
-        </div>
-        <textarea placeholder="Add a comment..."
-          onblur="saveComment('capital', '<?php echo $id ?>', 'demographic_comments')" name="comments"
-          id="capital-comments" cols="30" rows="5" class="comment"><?php
+              ?> name="capital" id="capital"
+                onblur="saveValueByContact('capital', '<?php echo $id ?>', 'demographic_values_contact')">
+            </div>
+            <textarea placeholder="Add a comment..."
+              onblur="saveComment('capital', '<?php echo $id ?>', 'demographic_comments')" name="comments"
+              id="capital-comments" cols="30" rows="5" class="comment"><?php
                 if($comments['capital'] != null){
                   echo $comments['capital'];
                 }
-              ?></textarea>
+                ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="total-population">Total population (number of people)
+          <label for="total-population">Total population (number of people) <span
+              onclick="showModalInfo('total-population')"><i class="fa fa-question-circle-o"></i></span>
             <p>Inhabits of the country</p>
           </label>
           <input type="number" <?php
@@ -156,25 +174,41 @@
             ?> name="total-population" id="total-population-admin"
             onblur="saveValueByAdmin('total-population', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="total-population">Total population (number of people)</label>
-          <input type="number" <?php
-              if($_SESSION['userType'] == "admin"){
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-3" value="yes"
+                onclick="hideInput('agreement-3','total-population')" <?php if($_SESSION['userType'] == "admin"){
                 echo "disabled";
-              }
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-3" value="no"
+                onclick="showInput('agreement-3','total-population')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="total-population-indicator">
+            <div class="form-input">
+              <label for="total-population">Total population (number of people)</label>
+              <input type="number" <?php
               if($contact_values['total_population'] != null){
                 echo "value=" . $contact_values['total_population'];
               } 
             ?> name="total-population" id="total-population"
-            onblur="saveValueByContact('total-population', '<?php echo $id ?>', 'demographic_values_contact')">
-        </div>
-        <textarea placeholder="Add a comment..."
-          onblur="saveComment('total-population', '<?php echo $id ?>', 'demographic_comments')" name="comments"
-          id="total-population-comments" cols="30" rows="5" class="comment"><?php
+                onblur="saveValueByContact('total-population', '<?php echo $id ?>', 'demographic_values_contact')">
+            </div>
+            <textarea placeholder="Add a comment..."
+              onblur="saveComment('total-population', '<?php echo $id ?>', 'demographic_comments')" name="comments"
+              id="total-population-comments" cols="30" rows="5" class="comment"><?php
             if($comments['total_population'] != null){
               echo $comments['total_population'];
             }
-          ?></textarea>
+            ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -191,25 +225,44 @@
             ?> name="urban-population" id="urban-population-admin"
             onblur="saveValueByAdmin('urban-population', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="urban-population">Urban population (%)</label>
-          <input type="number" <?php
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-4" value="yes"
+                onclick="hideInput('agreement-4','urban-population')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-4" value="no"
+                onclick="showInput('agreement-4','urban-population')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="urban-population-indicator">
+            <div class="form-input">
+              <label for="urban-population">Urban population (%)</label>
+              <input type="number" <?php
               if($_SESSION['userType'] == "admin"){
                 echo "disabled";
               }
               if($contact_values['urban_population'] != null){
                 echo "value=" . $contact_values['urban-population'];
               } 
-            ?> name="urban-population" id="urban-population"
-            onblur="saveValueByContact('urban-population', '<?php echo $id ?>', 'demographic_values_contact')">
-        </div>
-        <textarea placeholder="Add a comment..."
-          onblur="saveComment('urban-population', '<?php echo $id ?>', 'demographic_comments')" name="comments"
-          id="urban-population-comments" cols="30" rows="5" class="comment"><?php
+              ?> name="urban-population" id="urban-population"
+                onblur="saveValueByContact('urban-population', '<?php echo $id ?>', 'demographic_values_contact')">
+            </div>
+            <textarea placeholder="Add a comment..."
+              onblur="saveComment('urban-population', '<?php echo $id ?>', 'demographic_comments')" name="comments"
+              id="urban-population-comments" cols="30" rows="5" class="comment"><?php
             if($comments['urban_population'] != null){
               echo $comments['urban_population'];
             }
-          ?></textarea>
+            ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -226,9 +279,26 @@
             ?> name="life-expentacy" id="life-expentacy-admin"
             onblur="saveValueByAdmin('life-expentacy', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="life-expentacy">Life expentacy (years)</label>
-          <input type="number" <?php
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-5" value="yes"
+                onclick="hideInput('agreement-5','life-expentacy')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-5" value="no"
+                onclick="showInput('agreement-5','life-expentacy')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="life-expentacy-indicator">
+            <div class="form-input">
+              <label for="life-expentacy">Life expentacy (years)</label>
+              <input type="number" <?php
               if($_SESSION['userType'] == "admin"){
                 echo "disabled";
               }
@@ -236,15 +306,17 @@
                 echo "value=" . $contact_values['life_expentacy'];
               } 
             ?> name="life-expentacy" id="life-expentacy"
-            onblur="saveValueByContact('life-expentacy', '<?php echo $id ?>', 'demographic_values_contact')">
-        </div>
-        <textarea placeholder="Add a comment..."
-          onblur="saveComment('life_expentacy', '<?php echo $id ?>', 'demographic_comments')" name="comments"
-          id="life-expentacy-comments" cols="30" rows="5" class="comment"><?php
+                onblur="saveValueByContact('life-expentacy', '<?php echo $id ?>', 'demographic_values_contact')">
+            </div>
+            <textarea placeholder="Add a comment..."
+              onblur="saveComment('life_expentacy', '<?php echo $id ?>', 'demographic_comments')" name="comments"
+              id="life-expentacy-comments" cols="30" rows="5" class="comment"><?php
             if($comments['life_expentacy'] != null){
               echo $comments['life_expentacy'];
             }
-          ?></textarea>
+            ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="indicators">
         <div class="form-input">

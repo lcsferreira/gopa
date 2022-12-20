@@ -328,3 +328,78 @@ textarea::placeholder {
   stroke-dashoffset: calc(130 - (125 * var(--percent)) / 100);
   stroke: #03a9f4;
 }
+
+.modal-info {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 15%;
+  width: 500px;
+  max-height: 500px;
+  padding-right: 15px;
+  overflow: auto;
+  background-color: white;
+  border: 20px solid white;
+  border-radius: 20px;
+  -webkit-box-shadow: 5px 5px 0px 100vw rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 0px 100vw rgba(0, 0, 0, 0.3);
+}
+
+.modal-info::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.modal-info::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+.modal-info::-webkit-scrollbar-thumb {
+  background: #8e9dae;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.modal-info::-webkit-scrollbar-thumb:hover {
+  background: #313439;
+}
+
+.modal-info .modal-header {
+  color: #313439;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #8e9dae;
+}
+
+.modal-info .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-start;
+  font-size: 16px;
+}
+
+.modal-info .modal-body {
+  color: #8e9dae;
+  text-align: justify;
+  width: 100%;
+}
+
+.modal-info .modal-body .p-i {
+  font-style: italic;
+}
+
+.modal-info .modal-body a {
+  color: #03a9f4;
+  text-decoration: underline;
+}
+
+.modal-info #closeModalInfo {
+  position: absolute;
+  left: 91%;
+  top: 2%;
+  color: #8e9dae;
+}
