@@ -20,4 +20,10 @@
   mysqli_stmt_close($stmt);
 
   mysqli_close($connection);
+
+  //create a session variable to check if the data was edited
+  session_start();
+  //set the edited variable to true
+  $_SESSION['edited'] = true;
+
 ?>

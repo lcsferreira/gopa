@@ -4,7 +4,23 @@
 ?>
 <?php
   //get id from url
-  $id = $_GET['id'];
+  $country_id = $_GET['id'];
+
+  //get the id from the session
+  
+  //get the userType from the session
+  $userType = $_SESSION['userType'];
+  if ($userType == "contact") {
+    $contact_id = $_SESSION['id'];
+    //get the the is_main from the country_contact table where the contact_id is equal to id and the country_id is equal to the id from the url
+    $sql = "SELECT is_main FROM country_contact WHERE contact_id = $contact_id AND country_id = $country_id"; 
+    $result = mysqli_query($connection, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $is_main = $row['is_main'];
+  }
+
+  //get the 'edited' variable from localstorage and set it to a variable  
+  $edited = $_SESSION['edited'];
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -14,6 +30,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,28 +45,31 @@
   <div class="container" id="main">
     <div class="title">
       <h1>Conclusion</h1>
-      <p>If new data was submitted, determine if the indicators need to be examined by the GoPA! working group, or approve the data provided.</p>
+      <p>If new data was submitted, determine if the indicators need to be examined by the GoPA! working group, or
+        approve the data provided.</p>
     </div>
     <form>
       <div class="indicators">
         <div class="form-input-conclusion">
-          <div>
-            <label for="adjust">Request further adjustments</label>
-            <input type="checkbox" name="adjust" id="adjust" value="adjust">
-          </div>
-          <div>
-            <label for="approve">Approve</label>
-            <input type="checkbox" name="approve" id="approve" value="approve">
-          </div>
+          <?php 
+            if($edited == true){
+              echo "<div><label for='adjust'>Request further adjustments</label><input type='checkbox' name='adjust' id='adjust' value='adjust'></div>";
+            }else if($is_main == 1){
+            echo "<div>
+                <label for='approve'>Approve</label>
+                <input type='checkbox' name='approve' id='approve' value='approve'>
+              </div>";
+            }else{
+              echo "<div><p>You didn't make any adjustment on the indicators value!</p></div>";
+            }
+          ?>
         </div>
       </div>
       <div class="buttons">
-        <button class="btn-back" type="button"
-          <?php
+        <button class="btn-back" type="button" <?php
           echo "onclick='document.location = `contact.php?id=".$id."`'";
-          ?>
-        >Back</button>
-      <button class="btn-next" type="button">Submit</button>
+          ?>>Back</button>
+        <button class="btn-next" type="button">Submit</button>
       </div>
     </form>
   </div>
@@ -57,4 +77,5 @@
   <script src="../../js/countries/countryEdit.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
 </body>
+
 </html>
