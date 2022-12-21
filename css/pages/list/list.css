@@ -122,11 +122,9 @@ body {
   font-size: 16px;
 }
 .list-object .steps-list .step button {
-  border: 1px solid #8e9dae;
   background-color: transparent;
   border-radius: 100%;
-  padding: 7px;
-  color: #8e9dae;
+  border: none;
   cursor: pointer;
 }
 
@@ -136,8 +134,25 @@ body {
 }
 
 .list-object .steps-list .step button i {
-  font-size: 16px !important;
+  font-size: 2.7em !important;
 }
+
+.list-object .steps-list .step button i.red {
+  color: red !important;
+}
+
+.list-object .steps-list .step button i.gray {
+  color: #8e9dae !important;
+}
+
+.list-object .steps-list .step button i.green {
+  color: green !important;
+}
+
+.list-object .steps-list .step button i.yellow {
+  color: yellow !important;
+}
+
 .list-object .steps-list .step p {
   margin-top: 0;
 }

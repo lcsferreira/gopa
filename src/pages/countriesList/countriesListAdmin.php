@@ -42,33 +42,42 @@
         $sql = "SELECT * FROM countries";
         $result = mysqli_query($connection, $sql);
         $resultCheck = mysqli_num_rows($result);
+    
         if($resultCheck > 0){
           echo "<div class='list'>";
           while($row = mysqli_fetch_assoc($result)){
-            echo "<div class='list-object'>
+          echo "<div class='list-object'>
                     <div class='country-flag'>
                       <i class='fa fa-flag'></i>
                     </div>
                     <div class='info-detail'>
-                      <p>".$row['name']."</p>
+                      <p>" . $row['name'] . "</p>
                     </div>
                     <div class='steps-list'>
                       <div class='step'>
                         <p>Indicators</p>
-                        <button type='button' class='step-start' onclick='document.location = `../indicators/progress.php?id=".$row['id']."`'>
-                        <i class='fa fa-play fa-2x'></i>
-                        </button>
+                        <button type='button' class='step-start' onclick='document.location = `../indicators/progress.php?id=" . $row['id'] . "`'>";
+                        if($row['indicators_step'] == 'not_started'){
+                          echo "<i class='fa fa-play-circle fa-2x gray'></i>";
+                        }else if($row['indicators_step'] == 'waiting_contact'){
+                          echo "<i class='fa fa-clock-o fa-2x yellow'></i>";
+                        }else if($row['indicators_step'] == 'waiting_admin'){
+                          echo "<i class='fa fa-exclamation-circle fa-2x red'></i>";
+                        }else if($row['indicators_step'] == 'approved'){
+                          echo "<i class='fa fa-check-circle fa-2x green'></i>";
+                        }
+                        echo "</button>
                       </div>
                       <div class='step'>
                         <p>Translation</p>
                         <button disabled type='button' class='step-start'>
-                        <i class='fa fa-play fa-2x'></i>
+                        <i class='fa fa-play-circle fa-2x'></i>
                         </button>
                       </div>
                       <div class='step'>
                         <p>Country Cards</p>
                         <button disabled type='button' class='step-start'>
-                        <i class='fa fa-play fa-2x'></i>
+                        <i class='fa fa-play-circle fa-2x'></i>
                         </button>
                       </div>
                     </div>

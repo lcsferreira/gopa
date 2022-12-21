@@ -301,7 +301,11 @@
           echo "onclick='document.location = `paPyramid.php?id=".$id."`'";
           ?>>Back</button>
         <button class="btn-next" type="button" <?php
-          echo "onclick='document.location = `conclusion.php?id=".$id."`'";
+          if($_SESSION['userType'] == 'admin'){
+            echo "onclick='document.location = `conclusionAdmin.php?id=".$id."`'";
+          }else{
+            echo "onclick='document.location =  `conclusion.php?id=".$id."`'";
+          }
           ?>>Next</button>
       </div>
     </form>

@@ -35,7 +35,7 @@
       }
     }
     // update indicators_step to "started" in countries table
-    $sql = "UPDATE countries SET indicators_step = 'started' WHERE id = $id";
+    $sql = "UPDATE countries SET indicators_step = 'waiting_admin' WHERE id = $id";
     mysqli_query($connection, $sql);
   }
 
