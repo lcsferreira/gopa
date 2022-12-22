@@ -29,13 +29,13 @@
         if($step == "pa_promotion" && $value_type == "values_contact"){
           continue;
         }else{
-          // $sql = "INSERT INTO " . $step . "_" . $value_type . " (id) VALUES ($id)";
-          // mysqli_query($connection, $sql);
+          $sql = "INSERT INTO " . $step . "_" . $value_type . " (id) VALUES ($id)";
+          mysqli_query($connection, $sql);
         }
       }
     }
     // update indicators_step to "started" in countries table
-    $sql = "UPDATE countries SET indicators_step = 'waiting_admin' WHERE id = $id";
+    $sql = "UPDATE countries SET indicators_step = 'waiting admin' WHERE id = $id";
     mysqli_query($connection, $sql);
   }
 

@@ -46,7 +46,7 @@
         if($resultCheck > 0){
           echo "<div class='list'>";
           while($row = mysqli_fetch_assoc($result)){
-            echo "<div class='list-object'>
+            echo "<div class='list-object contact'>
                     <div class='country-flag'>
                       <i class='fa fa-flag'></i>
                     </div>
@@ -56,15 +56,15 @@
                     <div class='steps-list'>
                       <div class='step'>
                         <p>Indicators</p>
-                        <button type='button' class='step-start' onclick='document.location = `../indicators/progress.php?id=" . $row['id'] . "`'>";
+                        <button type='button' class='step-start' onclick='document.location = `../indicators/progress.php?id=" . $row['id'] . "";
                         if($row['indicators_step'] == 'not started'){
-                          echo "<i class='fa fa-play-circle fa-2x gray'></i>";
+                          echo "`' disabled><i class='fa fa-play-circle fa-2x gray'></i>";
                         }else if($row['indicators_step'] == 'waiting admin'){
-                          echo "<i class='fa fa-clock-o fa-2x yellow'></i>";
+                          echo "`'><i class='fa fa-clock-o fa-2x yellow'></i>";
                         }else if($row['indicators_step'] == 'waiting contact'){
-                          echo "<i class='fa fa-exclamation-circle fa-2x red'></i>";
+                          echo "`'><i class='fa fa-exclamation-circle fa-2x red'></i>";
                         }else if($row['indicators_step'] == 'approved'){
-                          echo "<i class='fa fa-check-circle fa-2x green'></i>";
+                          echo "`'><i class='fa fa-check-circle fa-2x green'></i>";
                         };
                         echo "</button>
                       </div>
@@ -96,14 +96,6 @@
                         };
                         echo "</button>
                       </div>
-                    </div>
-                    <div class='object-buttons'>
-                      <button class='btn-edit' onclick='document.location = `countryEdit.php?id=".$row['id']."`'>
-                        <i class='fa fa-pencil'></i>
-                      </button>
-                      <button class='btn-delete' onclick='showModal(".$row['id'].")'>
-                        <i class='fa fa-trash'></i>
-                      </button>
                     </div>
                   </div>";
             

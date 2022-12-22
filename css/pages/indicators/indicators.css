@@ -44,11 +44,12 @@ body {
 
 .input-labels {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-end;
+  align-self: end;
   flex-direction: row;
   margin-top: 30px;
-  width: 100%;
+  width: 65%;
 }
 
 .input-labels div {
@@ -109,7 +110,7 @@ form .indicators .contact-field {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  width: 761px;
+  width: 65%;
 }
 
 form .indicators .contact-field .contact-input {

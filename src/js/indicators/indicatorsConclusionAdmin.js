@@ -12,6 +12,10 @@ function sendToContactReview(id) {
       type: "post",
       contentType: "application/x-www-form-urlencoded",
     });
+    request.done(function (msg) {
+      //redirect to progress page
+      window.location.href = "../../pages/countriesList/countriesListAdmin.php";
+    });
   } else {
     //redirect to progress page
     window.location.href = "../../pages/indicators/progress.php?id=" + id;

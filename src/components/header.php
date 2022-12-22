@@ -44,6 +44,11 @@
         <a href='../contactList/contactList.php'>Contacts List</a>
         <a href='../countriesList/countriesListAdmin.php'>Countries list</a>
         ";
+      }if($_SESSION['userType'] == "contact"){
+        echo 
+        "
+        <a href='../countriesList/countriesListContacts.php?id=".$id."'>Countries list</a>
+        ";
       }
     ?>
     <a href="../login/login.php">Logout</a>

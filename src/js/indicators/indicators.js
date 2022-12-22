@@ -1,11 +1,35 @@
 //take the modalInfoText.json file and put it in a variable
 //when document is ready
+
+let agreementInputs = [
+  "country",
+  "capital",
+  "total-population",
+  "urban-population",
+  "life-expentacy",
+  "gini-index",
+  "human-index",
+  "literacy-rate",
+  "deaths-diseases",
+];
+let agreementOrder = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 $(document).ready(function () {
-  $("#country-indicator").css("display", "none");
-  $("#capital-indicator").css("display", "none");
-  $("#total-population-indicator").css("display", "none");
-  $("#urban-population-indicator").css("display", "none");
-  $("#life-expentacy-indicator").css("display", "none");
+  agreementOrder.forEach(function (order) {
+    if ($("input[name=agreement-" + order + "]:checked").val() == "no") {
+      $("#" + agreementInputs[Number(order) - 1] + "-indicator").css(
+        "display",
+        "flex"
+      );
+    } else if (
+      $("input[name=agreement-1" + order + "]:checked").val() == "yes" ||
+      $("input[name=agreement-1" + order + "]:checked").val() == undefined
+    ) {
+      $("#" + agreementInputs[Number(order) - 1] + "-indicator").css(
+        "display",
+        "none"
+      );
+    }
+  });
   closeModalInfo();
 });
 
@@ -64,15 +88,17 @@ function saveRadioValue2(indicator, id, table) {
   postValue(indicator, value, id, table);
 }
 
-function showInput(agreement, input) {
+function showInput(agreement, input, id, table) {
   if ($("input[name=" + agreement + "]:checked").val() == "no") {
     $("#" + input + "-indicator").css("display", "flex");
+    postValue(input, 0, id, table + "_agreement");
   }
 }
 
-function hideInput(agreement, input) {
+function hideInput(agreement, input, id, table) {
   if ($("input[name=" + agreement + "]:checked").val() == "yes") {
     $("#" + input + "-indicator").css("display", "none");
+    postValue(input, 1, id, table + "_agreement");
   }
 }
 

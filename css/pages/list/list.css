@@ -64,12 +64,16 @@ body {
 .list .list-object {
   padding: 15px;
   display: flex;
-  width: 100%;
+  width: 90%;
   justify-content: space-around;
   background-color: white;
   border: 2px solid #8e9dae;
   border-radius: 4px;
   margin-bottom: 20px;
+}
+
+.list .list-object.contact {
+  width: 70%;
 }
 
 .list .list-header {
@@ -110,7 +114,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50%;
+  width: 40%;
 }
 
 .list-object .steps-list .step {

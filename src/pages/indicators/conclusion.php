@@ -5,8 +5,6 @@
 <?php
   //get id from url
   $country_id = $_GET['id'];
-
-  //get the id from the session
   
   //get the userType from the session
   $userType = $_SESSION['userType'];
@@ -19,8 +17,12 @@
     $is_main = $row['is_main'];
   }
 
-  //get the 'edited' variable from localstorage and set it to a variable  
-  $edited = $_SESSION['edited'];
+  //get the 'edited' variable from localstorage and set it to a variable 
+  if(isset($_SESSION['edited'])){
+    $edited = true;
+  }else{
+    $edited = false;
+  }
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -67,14 +69,14 @@
       </div>
       <div class="buttons">
         <button class="btn-back" type="button" <?php
-          echo "onclick='document.location = `contact.php?id=".$id."`'";
+          echo "onclick='document.location = `contact.php?id=".$country_id."`'";
           ?>>Back</button>
-        <button class="btn-next" type="button">Submit</button>
+        <button class="btn-next" type="button" onclick="saveStatus('<?php echo $country_id ?>')">Submit</button>
       </div>
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="../../js/countries/countryEdit.js"></script>
+  <script src="../../js/indicators/indicatorsConclusion.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
 </body>
 
