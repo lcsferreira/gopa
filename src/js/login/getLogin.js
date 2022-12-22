@@ -46,7 +46,7 @@ function login() {
         if (msg === "success admin") {
           window.location.href = "../countriesList/countriesListAdmin.php";
         } else {
-          window.location.href = "../countriesList/countriesListContact.php";
+          window.location.href = "../countriesList/countriesListContacts.php";
         }
       } else {
         $("#error-msg").html(msg);

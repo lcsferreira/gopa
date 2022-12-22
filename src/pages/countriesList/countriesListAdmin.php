@@ -57,28 +57,44 @@
                       <div class='step'>
                         <p>Indicators</p>
                         <button type='button' class='step-start' onclick='document.location = `../indicators/progress.php?id=" . $row['id'] . "`'>";
-                        if($row['indicators_step'] == 'not_started'){
+                        if($row['indicators_step'] == 'not started'){
                           echo "<i class='fa fa-play-circle fa-2x gray'></i>";
-                        }else if($row['indicators_step'] == 'waiting_contact'){
+                        }else if($row['indicators_step'] == 'waiting contact'){
                           echo "<i class='fa fa-clock-o fa-2x yellow'></i>";
-                        }else if($row['indicators_step'] == 'waiting_admin'){
+                        }else if($row['indicators_step'] == 'waiting admin'){
                           echo "<i class='fa fa-exclamation-circle fa-2x red'></i>";
                         }else if($row['indicators_step'] == 'approved'){
                           echo "<i class='fa fa-check-circle fa-2x green'></i>";
-                        }
+                        };
                         echo "</button>
                       </div>
                       <div class='step'>
                         <p>Translation</p>
-                        <button disabled type='button' class='step-start'>
-                        <i class='fa fa-play-circle fa-2x'></i>
-                        </button>
+                        <button disabled type='button' class='step-start'>";
+                        if($row['translation_step'] == 'not started'){
+                          echo "<i class='fa fa-play-circle fa-2x gray'></i>";
+                        }else if($row['translation_step'] == 'waiting contact'){
+                          echo "<i class='fa fa-clock-o fa-2x yellow'></i>";
+                        }else if($row['translation_step'] == 'waiting admin'){
+                          echo "<i class='fa fa-exclamation-circle fa-2x red'></i>";
+                        }else if($row['translation_step'] == 'approved'){
+                          echo "<i class='fa fa-check-circle fa-2x green'></i>";
+                        };
+                        echo"</button>
                       </div>
                       <div class='step'>
                         <p>Country Cards</p>
-                        <button disabled type='button' class='step-start'>
-                        <i class='fa fa-play-circle fa-2x'></i>
-                        </button>
+                        <button disabled type='button' class='step-start'>";
+                        if($row['country_cards_step'] == 'not started'){
+                          echo "<i class='fa fa-play-circle fa-2x gray'></i>";
+                        }else if($row['country_cards_step'] == 'waiting contact'){
+                          echo "<i class='fa fa-clock-o fa-2x yellow'></i>";
+                        }else if($row['country_cards_step'] == 'waiting admin'){
+                          echo "<i class='fa fa-exclamation-circle fa-2x red'></i>";
+                        }else if($row['country_cards_step'] == 'approved'){
+                          echo "<i class='fa fa-check-circle fa-2x green'></i>";
+                        };
+                        echo "</button>
                       </div>
                     </div>
                     <div class='object-buttons'>

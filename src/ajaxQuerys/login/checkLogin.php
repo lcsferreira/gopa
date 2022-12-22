@@ -11,7 +11,7 @@ $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($result);
 
 //check if email exists in contact table
-$sql2 = "SELECT id, password FROM contacts WHERE email = '$email'";
+$sql2 = "SELECT id, password, is_active FROM contacts WHERE email = '$email'";
 $result2 = mysqli_query($connection, $sql2);
 $row2 = mysqli_fetch_assoc($result2);
 
@@ -34,11 +34,11 @@ if(mysqli_num_rows($result) > 0){
     }
   }
 }else if(mysqli_num_rows($result2) > 0){
-  if($row['password'] == $password){
+  if($row2['password'] == $password){
     //start session
     session_start();
     //set session id
-    $_SESSION['id'] = $row['id'];
+    $_SESSION['id'] = $row2['id'];
     $_SESSION['loggedin'] = true;
     $_SESSION['userType'] = "contact";
     echo "success contact";

@@ -5,11 +5,22 @@
 //get the session id
   session_start();
   $id = $_SESSION['id'];
+  //get the user type from session
+  $userType = $_SESSION['userType'];
+
+  if($userType == "contact"){
+    //select the contact name where id = session id
+    $sql = "SELECT name FROM contacts WHERE id = '$id'";
+    $result = mysqli_query($connection, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $name = $row['name'];
+  }else if( $userType == "admin"){
   //select the admin name where id = session id
-  $sql = "SELECT name FROM admin WHERE id = '$id'";
-  $result = mysqli_query($connection, $sql);
-  $row = mysqli_fetch_assoc($result);
-  $name = $row['name'];
+    $sql = "SELECT name FROM admin WHERE id = '$id'";
+    $result = mysqli_query($connection, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $name = $row['name'];
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">

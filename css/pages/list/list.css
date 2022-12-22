@@ -138,7 +138,7 @@ body {
 }
 
 .list-object .steps-list .step button i.red {
-  color: red !important;
+  color: rgb(196, 1, 1) !important;
 }
 
 .list-object .steps-list .step button i.gray {
@@ -146,11 +146,11 @@ body {
 }
 
 .list-object .steps-list .step button i.green {
-  color: green !important;
+  color: rgb(5, 116, 38) !important;
 }
 
 .list-object .steps-list .step button i.yellow {
-  color: yellow !important;
+  color: rgb(236, 203, 14) !important;
 }
 
 .list-object .steps-list .step p {
