@@ -48,6 +48,10 @@
     <?php 
       include_once "../../components/modalInfo.php";
     ?>
+    <?php
+      $page = "demographic";
+      include "../../components/indicatorsNav.php";
+    ?>
     <div class="title">
       <h1>Demographic Indicators <span><i class="fa fa-question-circle-o"></i></span></h1>
       <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a
@@ -88,14 +92,14 @@
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
               <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','country', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               } 
               if($agreement_values['country'] == 1){
                 echo "checked";
               }?>>
               <label for="no">No</label>
               <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','country', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }if($agreement_values['country'] == 0 && $agreement_values['country'] != null){
                 echo "checked";
               }?>>
@@ -140,7 +144,7 @@
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
               <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','capital', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['capital'] == 1){
                 echo "checked";
@@ -148,7 +152,7 @@
               ?>>
               <label for="no">No</label>
               <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','capital', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['capital'] == 0 && $agreement_values['capital'] != null){
                 echo "checked";
@@ -202,7 +206,7 @@
               <label for="yes">Yes</label>
               <input type="radio" id="yes" name="agreement-3" value="yes"
                 onclick="hideInput('agreement-3','total-population', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               } 
               if($agreement_values['total_population'] == 1){
                 echo "checked";
@@ -211,7 +215,7 @@
               <label for="no">No</label>
               <input type="radio" id="no" name="agreement-3" value="no"
                 onclick="showInput('agreement-3','total-population', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['total_population'] == 0 && $agreement_values['total_population'] != null){
                 echo "checked";
@@ -261,7 +265,7 @@
               <label for="yes">Yes</label>
               <input type="radio" id="yes" name="agreement-4" value="yes"
                 onclick="hideInput('agreement-4','urban-population', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['urban_population'] == 1){
                 echo "checked";
@@ -270,7 +274,7 @@
               <label for="no">No</label>
               <input type="radio" id="no" name="agreement-4" value="no"
                 onclick="showInput('agreement-4','urban-population', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['urban_population'] == 0 && $agreement_values['urban_population'] != null){
                 echo "checked";
@@ -323,7 +327,7 @@
               <label for="yes">Yes</label>
               <input type="radio" id="yes" name="agreement-5" value="yes"
                 onclick="hideInput('agreement-5','life-expentacy', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['life_expentacy'] == 1){
                 echo "checked";
@@ -332,7 +336,7 @@
               <label for="no">No</label>
               <input type="radio" id="no" name="agreement-5" value="no"
                 onclick="showInput('agreement-5','life-expentacy', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['life_expentacy'] == 0 && $agreement_values['life_expentacy'] != null){
                 echo "checked";
@@ -388,7 +392,7 @@
               <label for="yes">Yes</label>
               <input type="radio" id="yes" name="agreement-6" value="yes"
                 onclick="hideInput('agreement-6','gini-index', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['gini_index'] == 1){
                 echo "checked";
@@ -397,7 +401,7 @@
               <label for="no">No</label>
               <input type="radio" id="no" name="agreement-6" value="no"
                 onclick="showInput('agreement-6','gini-index', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['gini_index'] == 0 && $agreement_values['gini_index'] != null){
                 echo "checked";
@@ -448,7 +452,7 @@
               <label for="yes">Yes</label>
               <input type="radio" id="yes" name="agreement-7" value="yes"
                 onclick="hideInput('agreement-7','human-index', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['human_index'] == 1){
                 echo "checked";
@@ -457,7 +461,7 @@
               <label for="no">No</label>
               <input type="radio" id="no" name="agreement-7" value="no"
                 onclick="showInput('agreement-7','human-index', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['human_index'] == 0 && $agreement_values['human_index'] != null){
                 echo "checked";
@@ -507,7 +511,7 @@
               <label for="yes">Yes</label>
               <input type="radio" id="yes" name="agreement-8" value="yes"
                 onclick="hideInput('agreement-8','literacy-rate', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['literacy_rate'] == 1){
                 echo "checked";
@@ -516,7 +520,7 @@
               <label for="no">No</label>
               <input type="radio" id="no" name="agreement-8" value="no"
                 onclick="showInput('agreement-8','literacy-rate', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['literacy_rate'] == 0 && $agreement_values['literacy_rate'] != null){
                 echo "checked";
@@ -568,16 +572,16 @@
               <label for="yes">Yes</label>
               <input type="radio" id="yes" name="agreement-9" value="yes"
                 onclick="hideInput('agreement-9','deaths-diseases', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['deaths_diseases'] == 1){
-                echo "checked";
+                echo "checked ";
               }
               ?>>
               <label for="no">No</label>
               <input type="radio" id="no" name="agreement-9" value="no"
                 onclick="showInput('agreement-9','deaths-diseases', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($agreement_values['deaths_diseases'] == 0 && $agreement_values['deaths_diseases'] != null){
                 echo "checked";

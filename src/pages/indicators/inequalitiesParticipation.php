@@ -16,6 +16,9 @@
   $sql = "SELECT * FROM inequalities_participation_values_contact WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $contact_values = mysqli_fetch_assoc($result);
+  $sql = "SELECT * FROM inequalities_participation_agreement WHERE id = $id";
+  $result = mysqli_query($connection, $sql);
+  $agreement_values = mysqli_fetch_assoc($result);
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -38,6 +41,10 @@
 
 <body>
   <div class="container" id="main">
+    <?php
+      $page = "inequalitiesParticipation";
+      include "../../components/indicatorsNav.php";
+    ?>
     <div class="title">
       <h1>Inequalities in Physical Activity Participation <span class="new">*new*</span> <span><i
             class="fa fa-question-circle-o"></i></span></h1>
@@ -66,7 +73,7 @@
               <label for="males">Males</label>
               <input type="number" <?php
                 if($_SESSION['userType'] != "admin"){
-                  echo "disabled";
+                  echo "disabled ";
                 }
                 if($admin_values['pa_activity_males'] != null){
                   echo "value=" . $admin_values['pa_activity_males'];
@@ -77,7 +84,7 @@
               <label for="females">Females</label>
               <input type="number" <?php
                 if($_SESSION['userType'] != "admin"){
-                  echo "disabled";
+                  echo "disabled ";
                 }
                 if($admin_values['pa_activity_females'] != null){
                   echo "value=" . $admin_values['pa_activity_females'];
@@ -88,55 +95,77 @@
           <label for="reference">Reference</label>
           <input type="text" <?php
                 if($_SESSION['userType'] != "admin"){
-                  echo "disabled";
+                  echo "disabled ";
                 }
                 if($admin_values['reference'] != null){
                   echo "value=" . $admin_values['reference'];
                 }
               ?> name="reference" id="reference">
         </div>
-        <div class="form-input">
-          <label for="groups">Physical activity prevalence adults (%)</label>
-          <div name="groups" id="groups">
-            <div>
-              <label for="males">Males</label>
-              <input type="number" <?php
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','pa-activity', '<?php echo $id ?>', 'pa_activity')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['pa_activity'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','pa-activity', '<?php echo $id ?>', 'pa_activity')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['pa_activity'] == 0 && $agreement_values['pa_activity'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="pa-activity-indicator">
+            <div class="form-input">
+              <label for="groups">Physical activity prevalence adults (%)</label>
+              <div name="groups" id="groups">
+                <div>
+                  <label for="males">Males</label>
+                  <input type="number" <?php
                 if($_SESSION['userType'] == "admin"){
-                  echo "disabled";
+                  echo "disabled ";
                 }
                 if($contact_values['pa_activity_males'] != null){
                   echo "value=" . $contact_values['pa_activity_males'];
                 }
-              ?> name="males" id="males">
+                ?> name="males" id="males">
             </div>
             <div>
               <label for="females">Females</label>
               <input type="number" <?php
                 if($_SESSION['userType'] == "admin"){
-                  echo "disabled";
+                  echo "disabled ";
                 }
                 if($contact_values['pa_activity_females'] != null){
                   echo "value=" . $contact_values['pa_activity_females'];
                 }
-              ?> name="females" id="females">
+                ?> name="females" id="females">
             </div>
           </div>
           <label for="reference">Reference</label>
           <input type="text" <?php
                 if($_SESSION['userType'] == "admin"){
-                  echo "disabled";
+                  echo "disabled ";
                 }
                 if($contact_values['reference'] != null){
                   echo "value=" . $contact_values['reference'];
                 }
-              ?> name="reference" id="reference">
-        </div>
-        <textarea placeholder="Add a comment..." name="comments" id="pa-prevalence-comments" cols="30" rows="5"
+                ?> name="reference" id="reference">
+          </div>
+          <textarea placeholder="Add a comment..." name="comments" id="pa-prevalence-comments" cols="30" rows="5"
           class="comment"><?php
-                if($comments['pa_activity'] != null){
-                  echo $comments['pa_activity'];
-                }
-              ?></textarea>
+                  if($comments['pa_activity'] != null){
+                    echo $comments['pa_activity'];
+                  }
+                  ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="indicators">
         <div class="indicator-image">
@@ -149,12 +178,34 @@
             echo $admin_values['inequalities_image']; 
           ?> alt="image">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="inequalities-comments" cols="30" rows="5"
-          class="comment"><?php
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','inequalities-image', '<?php echo $id ?>', 'inequalities-image')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['inequalities_image'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','inequalities-image', '<?php echo $id ?>', 'inequalities-image')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['inequalities_image'] == 0 && $agreement_values['inequalities_image'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="inequalities-image-indicator">
+            <textarea placeholder="Add a comment..." name="comments" id="inequalities-comments" cols="30" rows="5"
+            class="comment"><?php
                 if($comments['inequalities'] != null){
                   echo $comments['inequalities'];
                 }
-              ?></textarea>
+                ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="buttons">
         <button class="btn-back" type="button" <?php
@@ -167,7 +218,7 @@
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="../../js/countries/countryEdit.js"></script>
+  <script src="../../js/indicators/indicators.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
 </body>
 

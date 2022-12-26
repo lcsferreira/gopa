@@ -16,6 +16,10 @@
   $sql = "SELECT * FROM national_policy_values_contact WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $contact_values = mysqli_fetch_assoc($result);
+
+  $sql = "SELECT * FROM national_policy_agreement WHERE id = $id";
+  $result = mysqli_query($connection, $sql);
+  $agreement_values = mysqli_fetch_assoc($result);
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -38,6 +42,10 @@
 
 <body>
   <div class="container" id="main">
+    <?php
+      $page = "nationalPolicy";
+      include "../../components/indicatorsNav.php";
+    ?>
     <div class="title">
       <h1>National Policy <span><i class="fa fa-question-circle-o"></i></span></h1>
       <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a

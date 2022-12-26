@@ -404,3 +404,47 @@ textarea::placeholder {
   top: 2%;
   color: #8e9dae;
 }
+
+.indicator-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 30px;
+  border-bottom: 1px solid #313439;
+  width: 100%;
+}
+
+.indicator-nav div {
+  padding: 0 5px 10px 5px;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.indicator-nav div::after {
+  content: "";
+  position: relative;
+  top: 21px;
+  display: block;
+  margin-left: 6px;
+  width: 1px;
+  height: 19px;
+  background-color: #313439;
+  transition: width 0.3s;
+}
+
+.indicator-nav div:last-child::after {
+  display: none;
+}
+
+.indicator-nav div a:hover {
+  color: #8e9dae;
+}
+
+.indicator-nav div a {
+  color: #313439;
+  text-decoration: none;
+  transition: all 0.3s;
+}

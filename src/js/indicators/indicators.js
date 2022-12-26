@@ -1,33 +1,51 @@
 //take the modalInfoText.json file and put it in a variable
 //when document is ready
 
-let agreementInputs = [
-  "country",
-  "capital",
-  "total-population",
-  "urban-population",
-  "life-expentacy",
-  "gini-index",
-  "human-index",
-  "literacy-rate",
-  "deaths-diseases",
-];
-let agreementOrder = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+let agreementInputs = {
+  demographic: [
+    "country",
+    "capital",
+    "total-population",
+    "urban-population",
+    "life-expentacy",
+    "gini-index",
+    "human-index",
+    "literacy-rate",
+    "deaths-diseases",
+  ],
+  paPrevalence: ["pa-prevalence"],
+  inequalitiesParticipation: ["pa-activity", "inequalities-image"],
+  nationalSurveillance: [
+    "national-surveys",
+    "most-recent-year",
+    "next-year",
+    "survey-names",
+    "objective-measures",
+  ],
+  nationalPolicy: [
+    "national-policy",
+    "national-recommendations",
+    "policy-implementation",
+  ],
+};
+
+//get the url and split it before the last /
+let url = window.location.href;
+let urlSplit = url.split("/");
+let page = urlSplit[urlSplit.length - 1];
+//split the page name before the ?
+let pageSplit = page.split(".");
+let table = pageSplit[0];
+
 $(document).ready(function () {
-  agreementOrder.forEach(function (order) {
-    if ($("input[name=agreement-" + order + "]:checked").val() == "no") {
-      $("#" + agreementInputs[Number(order) - 1] + "-indicator").css(
-        "display",
-        "flex"
-      );
+  agreementInputs[table].forEach(function (input, index) {
+    if ($("input[name=agreement-" + index + 1 + "]:checked").val() == "no") {
+      $("#" + input + "-indicator").css("display", "flex");
     } else if (
-      $("input[name=agreement-1" + order + "]:checked").val() == "yes" ||
-      $("input[name=agreement-1" + order + "]:checked").val() == undefined
+      $("input[name=agreement-" + index + "]:checked").val() == "yes" ||
+      $("input[name=agreement-" + index + "]:checked").val() == undefined
     ) {
-      $("#" + agreementInputs[Number(order) - 1] + "-indicator").css(
-        "display",
-        "none"
-      );
+      $("#" + input + "-indicator").css("display", "none");
     }
   });
   closeModalInfo();
