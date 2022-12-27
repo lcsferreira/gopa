@@ -16,7 +16,10 @@
   $sql = "SELECT * FROM research_values_contact WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $contact_values = mysqli_fetch_assoc($result);
-?>
+
+  $sql = "SELECT * FROM research_agreement WHERE id = $id";
+  $result = mysqli_query($connection, $sql);
+  $agreement_values = mysqli_fetch_assoc($result);
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -39,6 +42,10 @@
 
 <body>
   <div class="container" id="main">
+    <?php
+      $page = "research";
+      include "../../components/indicatorsNav.php";
+    ?>
     <div class="title">
       <h1>Research Indicators <span><i class="fa fa-question-circle-o"></i></span></h1>
       <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a
@@ -59,12 +66,34 @@
               }
           ?> onblur="saveValueByAdmin('contribution', '<?php echo $id ?>', 'research_values_admin')">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="contribution-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('contribution', '<?php echo $id ?>', 'research_comments')"><?php
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','contribution', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['contribution'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','contribution', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['contribution'] == 0 && $agreement_values['contribution'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="contribution-indicator">
+            <textarea placeholder="Add a comment..." name="comments" id="contribution-comments" cols="30" rows="5"
+            class="comment" onblur="saveComment('contribution', '<?php echo $id ?>', 'research_comments')"><?php
               if($comments['contribution'] != null){
                 echo $comments['contribution'];
               }
               ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -88,12 +117,34 @@
             <input type="radio" id="q5" name="quintiles" value="q5">
           </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="pa-quintiles-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('pa-quintiles', '<?php echo $id ?>', 'research_comments')"><?php
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','pa-quintiles', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['pa_quintiles'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','pa-quintiles', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['pa_quintiles'] == 0 && $agreement_values['pa_quintiles'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="pa-quintiles-indicator">
+            <textarea placeholder="Add a comment..." name="comments" id="pa-quintiles-comments" cols="30" rows="5"
+              class="comment" onblur="saveComment('pa-quintiles', '<?php echo $id ?>', 'research_comments')"><?php
               if($comments['pa_quintiles'] != null){
                 echo $comments['pa_quintiles'];
               }
               ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -123,12 +174,34 @@
             </div>
           </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="gender-inequalities-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('gender-inequalities', '<?php echo $id ?>', 'research_comments')"><?php
-              if($comments['gender_inequalities'] != null){
-                echo $comments['gender_inequalities'];
-              }
-              ?></textarea>
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-3" value="yes" onclick="hideInput('agreement-3','gender-inequalities', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['gender_inequalities'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','gender-inequalities', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['gender_inequalities'] == 0 && $agreement_values['gender_inequalities'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="gender-inequalities-indicator">
+            <textarea placeholder="Add a comment..." name="comments" id="gender-inequalities-comments" cols="30" rows="5"
+            class="comment" onblur="saveComment('gender-inequalities', '<?php echo $id ?>', 'research_comments')"><?php
+                if($comments['gender_inequalities'] != null){
+                  echo $comments['gender_inequalities'];
+                }
+                ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="buttons">
         <button class="btn-back" type="button" <?php

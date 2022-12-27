@@ -12,6 +12,10 @@
   $sql = "SELECT * FROM pa_promotion_comments WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $comments = mysqli_fetch_assoc($result);
+
+  $sql = "SELECT * FROM pa_promotion_agreement WHERE id = $id";
+  $result = mysqli_query($connection, $sql);
+  $agreement_values = mysqli_fetch_assoc($result);
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -34,6 +38,10 @@
 
 <body>
   <div class="container" id="main">
+    <?php
+      $page = "paPyramid";
+      include "../../components/indicatorsNav.php";
+    ?>
     <div class="title">
       <h1>Physical Activity Promotion capacity pyramid <span><i class="fa fa-question-circle-o"></i></span></h1>
       <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a
@@ -66,12 +74,34 @@
             ?> onblur="saveRadioValue2('research',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
           </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="research-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('research', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
-              if($comments['research'] != null){
-                echo $comments['research'];
-              }
-              ?></textarea>
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','research', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['research'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','research', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['research'] == 0 && $agreement_values['research'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="research-indicator">
+            <textarea placeholder="Add a comment..." name="comments" id="research-comments" cols="30" rows="5"
+            class="comment" onblur="saveComment('research', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
+                if($comments['research'] != null){
+                  echo $comments['research'];
+                }
+                ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -111,12 +141,34 @@
             ?> onblur="saveRadioValue2('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
           </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="policy-comments" cols="30" rows="5" class="comment"
-          onblur="saveComment('policy', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
-              if($comments['policy'] != null){
-                echo $comments['policy'];
-              }
-              ?></textarea>
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','policy', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['policy'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','policy', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['policy'] == 0 && $agreement_values['policy'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="policy-indicator">
+            <textarea placeholder="Add a comment..." name="comments" id="policy-comments" cols="30" rows="5"
+            class="comment" onblur="saveComment('policy', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
+                if($comments['policy'] != null){
+                  echo $comments['policy'];
+                }
+                ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -144,12 +196,34 @@
             ?> onblur="saveRadioValue2('surveillance',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
           </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="surveillance-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('surveillance', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
-              if($comments['surveillance'] != null){
-                echo $comments['surveillance'];
-              }
-              ?></textarea>
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-3" value="yes" onclick="hideInput('agreement-3','surveillance', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['surveillance'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-3" value="no" onclick="showInput('agreement-3','surveillance', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['surveillance'] == 0 && $agreement_values['surveillance'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="surveillance-indicator">
+            <textarea placeholder="Add a comment..." name="comments" id="surveillance-comments" cols="30" rows="5"
+            class="comment" onblur="saveComment('surveillance', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
+                if($comments['surveillance'] != null){
+                  echo $comments['surveillance'];
+                }
+                ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -157,12 +231,34 @@
             echo $admin_values['pyramid_image'];
           }?>" alt="pyramids">
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="pyramid-image-comments" cols="30" rows="5"
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-4" value="yes" onclick="hideInput('agreement-4','pyramid-image', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['pyramid_image'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-4" value="no" onclick="showInput('agreement-4','pyramid-image', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['pyramid_image'] == 0 && $agreement_values['pyramid_image'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="pyramid-image-indicator">
+          <textarea placeholder="Add a comment..." name="comments" id="pyramid-image-comments" cols="30" rows="5"
           class="comment" onblur="saveComment('pyramid-image', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
               if($comments['pyramid_image'] != null){
                 echo $comments['pyramid_image'];
               }
               ?></textarea>
+          </div>
+        </div>
       </div>
       <div class="buttons">
         <button class="btn-back" type="button" <?php

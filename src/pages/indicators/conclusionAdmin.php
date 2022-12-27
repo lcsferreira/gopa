@@ -4,10 +4,12 @@
 ?>
 <?php
   //get id from url
-  $country_id = $_GET['id'];
+  $id = $_GET['id'];
 
-  //get the 'edited' variable from localstorage and set it to a variable  
-  $edited = $_SESSION['edited'];
+  //get the 'edited' variable from localstorage and set it to a variable
+  if(isset($_SESSION['edited'])){
+    $edited = $_SESSION['edited'];
+  }  
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -30,6 +32,10 @@
 
 <body>
   <div class="container" id="main">
+    <?php
+      $page = "conclusionAdmin";
+      include "../../components/indicatorsNav.php";
+    ?>
     <div class="title">
       <h1>Conclusion</h1>
       <p>If new data was submitted, determine if the indicators need to be examined by the GoPA! working group, or
@@ -49,7 +55,7 @@
           echo "onclick='document.location = `contact.php?id=".$id."`'";
           ?>>Back</button>
         <button class="btn-next" type="button"
-          onclick="sendToContactReview('<?php echo $country_id ?>')">Submit</button>
+          onclick="sendToContactReview('<?php echo $id ?>')">Submit</button>
       </div>
     </form>
   </div>

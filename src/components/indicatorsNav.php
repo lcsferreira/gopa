@@ -32,7 +32,7 @@
     if($_SESSION['userType'] == "admin"){
       echo "
       <div>
-        <a href='conlusionAdmin.php?id=".$id."' "; if($page == "conlusionAdmin"){echo "style='color:#03a9f4'";} echo">Conclusion</a>
+        <a href='conclusionAdmin.php?id=".$id."' "; if($page == "conclusionAdmin"){echo "style='color:#03a9f4'";} echo">Conclusion</a>
       </div>
       ";
     }else{

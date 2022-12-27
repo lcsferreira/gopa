@@ -103,45 +103,67 @@
           ?>
             onblur="saveValueByAdmin('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="radio-group">
-            National physical activity policy/plan
-          </label>
-          <div class="radio" id="radio-group">
-            <label for="yes">Yes</label>
-            <input type="radio" id="yes" name="national-policy" value="yes" <?php 
-              if ($contact_values['national_policy'] == 1) {
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','national-policy', '<?php echo $id ?>', 'national_policy')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['national_policy'] == 1){
                 echo "checked";
-              }
-            ?> onblur="saveRadioValue('national-policy',  '<?php echo $id ?>', 'national_policy_values_contact')">
-            <label for="no">No</label>
-            <input type="radio" id="no" name="national-policy" value="no" <?php 
-              if ($contact_values['national_policy'] == 0 && $contact_values['national_policy'] != null) {
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','national-policy', '<?php echo $id ?>', 'national_policy')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['national_policy'] == 0 && $agreement_values['national_policy'] != null){
                 echo "checked";
-              }
-            ?> onblur="saveRadioValue('national-policy',  '<?php echo $id ?>', 'national_policy_values_contact')">
+              }?>>
+            </div>
           </div>
-          <label for="national-policy-titles">Title(s)</label>
-          <input type="text" name="titles" id="national-policy-titles" <?php 
-              if($contact_values['national_policy_titles'] != null){
-                echo "value=" . $contact_values['national_policy_titles'];
-              }
-          ?>
-            onblur="saveValueByContact('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_contact')">
-          <label for="national-policy-reference" class="mt-10">Reference</label>
-          <input type="text" name="reference" id="national-policy-reference" <?php 
-              if($contact_values['national_policy_reference'] != null){
-                echo "value=" . $contact_values['national_policy_reference'];
-              }
-          ?>
-            onblur="saveValueByContact('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_contact')">
+        <div class="contact-input" id="national-policy-indicator">
+          <div class="form-input">
+            <label for="radio-group">
+              National physical activity policy/plan
+            </label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="national-policy" value="yes" <?php 
+                if ($contact_values['national_policy'] == 1) {
+                  echo "checked";
+                }
+              ?> onblur="saveRadioValue('national-policy',  '<?php echo $id ?>', 'national_policy_values_contact')">
+              <label for="no">No</label>
+              <input type="radio" id="no" name="national-policy" value="no" <?php 
+                if ($contact_values['national_policy'] == 0 && $contact_values['national_policy'] != null) {
+                  echo "checked";
+                }
+              ?> onblur="saveRadioValue('national-policy',  '<?php echo $id ?>', 'national_policy_values_contact')">
+            </div>
+            <label for="national-policy-titles">Title(s)</label>
+            <input type="text" name="titles" id="national-policy-titles" <?php 
+                if($contact_values['national_policy_titles'] != null){
+                  echo "value=" . $contact_values['national_policy_titles'];
+                }
+            ?>
+              onblur="saveValueByContact('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_contact')">
+            <label for="national-policy-reference" class="mt-10">Reference</label>
+            <input type="text" name="reference" id="national-policy-reference" <?php 
+                if($contact_values['national_policy_reference'] != null){
+                  echo "value=" . $contact_values['national_policy_reference'];
+                }
+            ?>
+              onblur="saveValueByContact('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_contact')">
+          </div>
+          <textarea placeholder="Add a comment..." name="comments" id="national-policy-comments" cols="30" rows="5"
+            class="comment" onblur="saveComment('national-policy', '<?php echo $id ?>', 'national_policy_comments')"><?php
+                if($comments['national_policy'] != null){
+                  echo $comments['national_policy'];
+                }
+                ?></textarea>
+          </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="national-policy-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('national-policy', '<?php echo $id ?>', 'national_policy_comments')"><?php
-              if($comments['national_policy'] != null){
-                echo $comments['national_policy'];
-              }
-              ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -172,41 +194,63 @@
           ?>
             onblur="saveValueByAdmin('national-recommendations-reference', '<?php echo $id ?>', 'national_recommendations_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="groups">
-            National recommendations
-          </label>
-          <div class="radio" id="radio-group">
-            <label for="yes">Yes</label>
-            <input type="radio" id="yes" name="national-recommendations" value="yes" <?php 
-              if ($contact_values['national_recommendations'] == 1) {
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','national-recommendations', '<?php echo $id ?>', 'national_policy')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['national_recommendations'] == 1){
                 echo "checked";
-              }
-            ?>
-              onblur="saveRadioValue('national-recommendations',  '<?php echo $id ?>', 'national_policy_values_contact')">
-            <label for="no">No</label>
-            <input type="radio" id="no" name="national-recommendations" value="no" <?php 
-              if ($contact_values['national_recommendations'] == 0 && $contact_values['national_recommendations'] != null) {
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','national-recommendations', '<?php echo $id ?>', 'national_policy')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['national_recommendations'] == 0 && $agreement_values['national_recommendations'] != null){
                 echo "checked";
-              }
-            ?>
-              onblur="saveRadioValue('national-recommendations',  '<?php echo $id ?>', 'national_policy_values_contact')">
+              }?>>
+            </div>
           </div>
-          <label for="reference">Reference</label>
-          <input type="text" name="reference" id="national-recommendations-reference" <?php 
-              if($contact_values['national_recommendations_reference'] != null){
-                echo "value=" . $contact_values['national_recommendations_reference'];
-              }
-          ?>
-            onblur="saveValueByContact('national-recommendations-reference', '<?php echo $id ?>', 'national_policy_values_contact')">
+        <div class="contact-input" id="national-recommendations-indicator">
+          <div class="form-input">
+            <label for="groups">
+              National recommendations
+            </label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="national-recommendations" value="yes" <?php 
+                if ($contact_values['national_recommendations'] == 1) {
+                  echo "checked";
+                }
+              ?>
+                onblur="saveRadioValue('national-recommendations',  '<?php echo $id ?>', 'national_policy_values_contact')">
+              <label for="no">No</label>
+              <input type="radio" id="no" name="national-recommendations" value="no" <?php 
+                if ($contact_values['national_recommendations'] == 0 && $contact_values['national_recommendations'] != null) {
+                  echo "checked";
+                }
+              ?>
+                onblur="saveRadioValue('national-recommendations',  '<?php echo $id ?>', 'national_policy_values_contact')">
+            </div>
+            <label for="reference">Reference</label>
+            <input type="text" name="reference" id="national-recommendations-reference" <?php 
+                if($contact_values['national_recommendations_reference'] != null){
+                  echo "value=" . $contact_values['national_recommendations_reference'];
+                }
+            ?>
+              onblur="saveValueByContact('national-recommendations-reference', '<?php echo $id ?>', 'national_policy_values_contact')">
+          </div>
+          <textarea placeholder="Add a comment..." name="comments" id="national-recommendations-comments" cols="30"
+            rows="5" class="comment"
+            onblur="saveComment('national-recommendations', '<?php echo $id ?>', 'national_policy_comments')"><?php
+                if($comments['national_recommendations'] != null){
+                  echo $comments['national_recommendations'];
+                }
+                ?></textarea>
+          </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="national-recommendations-comments" cols="30"
-          rows="5" class="comment"
-          onblur="saveComment('national-recommendations', '<?php echo $id ?>', 'national_policy_comments')"><?php
-              if($comments['national_recommendations'] != null){
-                echo $comments['national_recommendations'];
-              }
-              ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -223,24 +267,46 @@
               }
           ?> onblur="saveValueByAdmin('policy-implementation', '<?php echo $id ?>', 'national_policy_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="policy-implementation">
-            Percentage (%) of policy implementation <span class="new">*new*</span>
-          </label>
-          <input type="number" name="policy-implementation" id="policy-implementation" <?php 
-              if($contact_values['policy_implementation'] != null){
-                echo "value=" . $contact_values['policy_implementation'];
-              }
-          ?>
-            onblur="saveValueByContact('policy-implementation', '<?php echo $id ?>', 'national_policy_values_contact')">
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-3" value="yes" onclick="hideInput('agreement-3','policy-implementation', '<?php echo $id ?>', 'national_policy')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['policy_implementation'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-3" value="no" onclick="showInput('agreement-3','policy-implementation', '<?php echo $id ?>', 'national_policy')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['policy_implementation'] == 0 && $agreement_values['policy_implementation'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+        <div class="contact-input" id="policy-implementation-indicator">
+          <div class="form-input">
+            <label for="policy-implementation">
+              Percentage (%) of policy implementation <span class="new">*new*</span>
+            </label>
+            <input type="number" name="policy-implementation" id="policy-implementation" <?php 
+                if($contact_values['policy_implementation'] != null){
+                  echo "value=" . $contact_values['policy_implementation'];
+                }
+            ?>
+              onblur="saveValueByContact('policy-implementation', '<?php echo $id ?>', 'national_policy_values_contact')">
+          </div>
+          <textarea placeholder="Add a comment..." name="comments" id="policy-implementation-comments" cols="30" rows="5"
+            class="comment"
+            onblur="saveComment('policy-implementation', '<?php echo $id ?>', 'national_policy_comments')"><?php
+                if($comments['policy_implementation'] != null){
+                  echo $comments['policy_implementation'];
+                }
+                ?></textarea>
+          </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="policy-implementation-comments" cols="30" rows="5"
-          class="comment"
-          onblur="saveComment('policy-implementation', '<?php echo $id ?>', 'national_policy_comments')"><?php
-              if($comments['policy_implementation'] != null){
-                echo $comments['policy_implementation'];
-              }
-              ?></textarea>
       </div>
       <div class="buttons">
         <button class="btn-back" type="button" <?php

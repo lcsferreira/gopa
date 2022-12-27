@@ -16,6 +16,10 @@
   $sql = "SELECT * FROM contact_values_contact WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $contact_values = mysqli_fetch_assoc($result);
+
+  $sql = "SELECT * FROM contact_agreement WHERE id = $id";
+  $result = mysqli_query($connection, $sql);
+  $agreement_values = mysqli_fetch_assoc($result);
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -38,6 +42,10 @@
 
 <body>
   <div class="container" id="main">
+    <?php
+      $page = "contact";
+      include "../../components/indicatorsNav.php";
+    ?>
     <div class="title">
       <h1>Country Card Contact <span><i class="fa fa-question-circle-o"></i></span></h1>
       <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a
@@ -110,14 +118,14 @@
             <label for="radio-group">Agreement</label>
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-2','email-1', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','email-1', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
                 echo "disabled ";
               } 
               if($agreement_values['email_1'] == 1){
                 echo "checked";
               }?>>
               <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-2','email-1', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','email-1', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
                 echo "disabled ";
               }if($agreement_values['email_1'] == 0 && $agreement_values['email_1'] != null){
                 echo "checked";
@@ -160,14 +168,14 @@
             <label for="radio-group">Agreement</label>
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-3','institution-1', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+              <input type="radio" id="yes" name="agreement-3" value="yes" onclick="hideInput('agreement-3','institution-1', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
                 echo "disabled ";
               } 
               if($agreement_values['institution_1'] == 1){
                 echo "checked";
               }?>>
               <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-3','institution-1', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+              <input type="radio" id="no" name="agreement-3" value="no" onclick="showInput('agreement-3','institution-1', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
                 echo "disabled ";
               }if($agreement_values['institution_1'] == 0 && $agreement_values['institution_1'] != null){
                 echo "checked";
@@ -210,14 +218,14 @@
             <label for="radio-group">Agreement</label>
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-4','name-2', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+              <input type="radio" id="yes" name="agreement-4" value="yes" onclick="hideInput('agreement-4','name-2', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
                 echo "disabled ";
               } 
               if($agreement_values['name_2'] == 1){
                 echo "checked";
               }?>>
               <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-4','name-2', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+              <input type="radio" id="no" name="agreement-4" value="no" onclick="showInput('agreement-4','name-2', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
                 echo "disabled ";
               }if($agreement_values['name_2'] == 0 && $agreement_values['name_2'] != null){
                 echo "checked";
@@ -255,22 +263,44 @@
               }
           ?> onblur="saveValueByAdmin('email-2', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="email-2">
-            Email 2
-          </label>
-          <input type="text" name="email-2" id="email-2" <?php 
-              if($contact_values['email_2'] != null){
-                echo "value=" . $contact_values['email_2'];
-              }
-          ?> onblur="saveValueByContact('email-2', '<?php echo $id ?>', 'contact_values_contact')">
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-5" value="yes" onclick="hideInput('agreement-5','email-2', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['email_2'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-5" value="no" onclick="showInput('agreement-5','email-2', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['email_2'] == 0 && $agreement_values['email_2'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="email-2-indicator">
+            <div class="form-input">
+              <label for="email-2">
+                Email 2
+              </label>
+              <input type="text" name="email-2" id="email-2" <?php 
+                  if($contact_values['email_2'] != null){
+                    echo "value=" . $contact_values['email_2'];
+                  }
+              ?> onblur="saveValueByContact('email-2', '<?php echo $id ?>', 'contact_values_contact')">
+            </div>
+            <textarea placeholder="Add a comment..." name="comments" id="email-2-comments" cols="30" rows="5"
+              class="comment" onblur="saveComment('email-2', '<?php echo $id ?>', 'contact_comments')"><?php
+                  if($comments['email_2'] != null){
+                    echo $comments['email_2'];
+                  }
+                  ?></textarea> 
+          </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="email-2-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('email-2', '<?php echo $id ?>', 'contact_comments')"><?php
-              if($comments['email_2'] != null){
-                echo $comments['email_2'];
-              }
-              ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -283,22 +313,44 @@
               }
           ?> onblur="saveValueByAdmin('institution-2', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="institution-2">
-            Institution 2
-          </label>
-          <input type="text" name="institution-2" id="institution-2" <?php 
-              if($contact_values['institution_2'] != null){
-                echo "value=" . $contact_values['institution_2'];
-              }
-          ?> onblur="saveValueByContact('institution-2', '<?php echo $id ?>', 'contact_values_contact')">
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-6" value="yes" onclick="hideInput('agreement-6','institution-2', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['institution_2'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-6" value="no" onclick="showInput('agreement-6','institution-2', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['institution_2'] == 0 && $agreement_values['institution_2'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="institution-2-indicator">
+            <div class="form-input">
+              <label for="institution-2">
+                Institution 2
+              </label>
+              <input type="text" name="institution-2" id="institution-2" <?php 
+                  if($contact_values['institution_2'] != null){
+                    echo "value=" . $contact_values['institution_2'];
+                  }
+              ?> onblur="saveValueByContact('institution-2', '<?php echo $id ?>', 'contact_values_contact')">
+            </div>
+            <textarea placeholder="Add a comment..." name="comments" id="institution-2-comments" cols="30" rows="5"
+              class="comment" onblur="saveComment('institution-2', '<?php echo $id ?>', 'contact_comments')"><?php
+                  if($comments['institution_2'] != null){
+                    echo $comments['institution_2'];
+                  }
+                  ?></textarea>
+          </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="institution-2-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('institution-2', '<?php echo $id ?>', 'contact_comments')"><?php
-              if($comments['institution_2'] != null){
-                echo $comments['institution_2'];
-              }
-              ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -311,22 +363,44 @@
               }
           ?> onblur="saveValueByAdmin('name-3', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="name-3">
-            Name 3
-          </label>
-          <input type="text" name="name-3" id="name-3" <?php 
-              if($contact_values['name_3'] != null){
-                echo "value=" . $contact_values['name_3'];
-              }
-          ?> onblur="saveValueByContact('name-3', '<?php echo $id ?>', 'contact_values_contact')">
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-7" value="yes" onclick="hideInput('agreement-7','name-3', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['name_3'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-7" value="no" onclick="showInput('agreement-7','name-3', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['name_3'] == 0 && $agreement_values['name_3'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+        <div class="contact-input" id="name-3-indicator">
+          <div class="form-input">
+            <label for="name-3">
+              Name 3
+            </label>
+            <input type="text" name="name-3" id="name-3" <?php 
+                if($contact_values['name_3'] != null){
+                  echo "value=" . $contact_values['name_3'];
+                }
+            ?> onblur="saveValueByContact('name-3', '<?php echo $id ?>', 'contact_values_contact')">
+          </div>
+          <textarea placeholder="Add a comment..." name="comments" id="name-3-comments" cols="30" rows="5" class="comment"
+            onblur="saveComment('name-3', '<?php echo $id ?>', 'contact_comments')"><?php
+                if($comments['name_3'] != null){
+                  echo $comments['name_3'];
+                }
+                ?></textarea>
+          </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="name-3-comments" cols="30" rows="5" class="comment"
-          onblur="saveComment('name-3', '<?php echo $id ?>', 'contact_comments')"><?php
-              if($comments['name_3'] != null){
-                echo $comments['name_3'];
-              }
-              ?></textarea>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -339,22 +413,44 @@
               }
           ?> onblur="saveValueByAdmin('email-3', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="email-3">
-            Email 3
-          </label>
-          <input type="text" name="email-3" id="email-3" <?php 
-              if($contact_values['email_3'] != null){
-                echo "value=" . $contact_values['email_3'];
-              }
-          ?> onblur="saveValueByContact('email-3', '<?php echo $id ?>', 'contact_values_contact')">
-        </div>
-        <textarea placeholder="Add a comment..." name="comments" id="email-3-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('email-3', '<?php echo $id ?>', 'contact_comments')"><?php
-              if($comments['email_3'] != null){
-                echo $comments['email_3'];
-              }
-              ?></textarea>
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-8" value="yes" onclick="hideInput('agreement-8','email-3', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['email_3'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-8" value="no" onclick="showInput('agreement-8','email-3', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['email_3'] == 0 && $agreement_values['email_3'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+        <div class="contact-input" id="email-3-indicator">
+          <div class="form-input">
+            <label for="email-3">
+              Email 3
+            </label>
+            <input type="text" name="email-3" id="email-3" <?php 
+                if($contact_values['email_3'] != null){
+                  echo "value=" . $contact_values['email_3'];
+                }
+            ?> onblur="saveValueByContact('email-3', '<?php echo $id ?>', 'contact_values_contact')">
+          </div>
+          <textarea placeholder="Add a comment..." name="comments" id="email-3-comments" cols="30" rows="5"
+            class="comment" onblur="saveComment('email-3', '<?php echo $id ?>', 'contact_comments')"><?php
+                if($comments['email_3'] != null){
+                  echo $comments['email_3'];
+                }
+                ?></textarea>
+          </div>
+        </div>  
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -367,22 +463,44 @@
               }
           ?> onblur="saveValueByAdmin('institution-3', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
-        <div class="form-input">
-          <label for="institution-3">
-            Institution 3
-          </label>
-          <input type="text" name="institution-3" id="institution-3" <?php 
-              if($contact_values['institution_3'] != null){
-                echo "value=" . $contact_values['institution_3'];
-              }
-          ?> onblur="saveValueByContact('institution-3', '<?php echo $id ?>', 'contact_values_contact')">
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-9','institution-3', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['institution_3'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-9','institution-3', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['institution_3'] == 0 && $agreement_values['institution_3'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+        <div class="contact-input" id="institution-3-indicator">
+          <div class="form-input">
+            <label for="institution-3">
+              Institution 3
+            </label>
+            <input type="text" name="institution-3" id="institution-3" <?php 
+                if($contact_values['institution_3'] != null){
+                  echo "value=" . $contact_values['institution_3'];
+                }
+            ?> onblur="saveValueByContact('institution-3', '<?php echo $id ?>', 'contact_values_contact')">
+          </div>
+          <textarea placeholder="Add a comment..." name="comments" id="institution-3-comments" cols="30" rows="5"
+            class="comment" onblur="saveComment('institution-3', '<?php echo $id ?>', 'contact_comments')"><?php
+                if($comments['institution_3'] != null){
+                  echo $comments['institution_3'];
+                }
+                ?></textarea>
+          </div>
         </div>
-        <textarea placeholder="Add a comment..." name="comments" id="institution-3-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('institution-3', '<?php echo $id ?>', 'contact_comments')"><?php
-              if($comments['institution_3'] != null){
-                echo $comments['institution_3'];
-              }
-              ?></textarea>
       </div>
       <div class="buttons">
         <button class="btn-back" type="button" <?php

@@ -27,6 +27,19 @@ let agreementInputs = {
     "national-recommendations",
     "policy-implementation",
   ],
+  research: ["contribution", "pa-quintiles", "gender-inequalities"],
+  paPyramid: ["research", "policy", "surveillance", "pyramid-image"],
+  contact: [
+    "name-1",
+    "email-1",
+    "institution-1",
+    "name-2",
+    "email-2",
+    "institution-2",
+    "name-3",
+    "email-3",
+    "institution-3",
+  ],
 };
 
 //get the url and split it before the last /

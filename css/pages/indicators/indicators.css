@@ -110,7 +110,7 @@ form .indicators .contact-field {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  width: 65%;
+  width: 55%;
 }
 
 form .indicators .contact-field .contact-input {
