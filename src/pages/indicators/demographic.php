@@ -23,9 +23,6 @@
   $result = mysqli_query($connection, $sql);
   $agreement_values = mysqli_fetch_assoc($result);
 
-  //read a excel file and get the row values
-  
-
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
