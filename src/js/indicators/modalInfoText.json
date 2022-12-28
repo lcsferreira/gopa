@@ -7,5 +7,50 @@
   },
   "total-population": {
     "body": "<p>World Bank, Our World in Data, CIA’s World Factbook and national statistics sources in the case of England, Northern Ireland, Scotland, and Wales.</p><p class='p-i'>Most recent data – available year 2021</p><p><a target='_blank' href='http://data.worldbank.org/indicator/SP.POP.TOTL/countries/CO?display=default'>http://data.worldbank.org/indicator/SP.POP.TOTL/countries/CO?display=default</a></p><p><a target='_blank' href='https://ourworldindata.org/'>https://ourworldindata.org/</a></p><p>National statistic source England, Northern Ireland, Scotland, and Wales:</p><p class='p-i'>(Available mid-year estimate 2020 – next update September 2022)</p><p><a target='_blank' href='https://www.ons.gov.uk/datasets/mid-year-pop-est/editions'>https://www.ons.gov.uk/datasets/mid-year-pop-est/editions</a></p><p class='p-i'>(Available mid-year estimate 2020 – next update June 2022)</p><p><a target='_blank' href='https://statswales.gov.wales/catalogue/population-and-migration/population/estimates/nationallevelpopulationestimates-by-year-age-ukcountry'>https://statswales.gov.wales/catalogue/population-and-migration/population/estimates/nationallevelpopulationestimates-by-year-age-ukcountry</a></p><p class='p-i'>CIA’s World Factbook estimates – available year 2021</p><p>Channel Islands/Guernsey:<p><a href='https://www.cia.gov/the-world-factbook/countries/guernsey/' target='_blank'>https://www.cia.gov/the-world-factbook/countries/guernsey/</a></p></p><p>Kosovo:<p><a href='https://www.cia.gov/the-world-factbook/countries/kosovo/' target='_blank'>https://www.cia.gov/the-world-factbook/countries/kosovo/</a></p></p>"
+  },
+  "urban-population": {
+    "body": ""
+  },
+  "life-expentacy": {
+    "body": ""
+  },
+  "gini-index": {
+    "body": ""
+  },
+  "human-index": {
+    "body": ""
+  },
+  "deaths-diseases": {
+    "body": ""
+  },
+  "pa-prevalence": {
+    "body": ""
+  },
+  "pa-inequalities": {
+    "body": ""
+  },
+  "national-survey": {
+    "body": ""
+  },
+  "objective-measures": {
+    "body": ""
+  },
+  "pa-policy-year": {
+    "body": ""
+  },
+  "policy-implementation": {
+    "body": ""
+  },
+  "pa-research": {
+    "body": ""
+  },
+  "research-quintiles": {
+    "body": ""
+  },
+  "gendder-inequalities": {
+    "body": ""
+  },
+  "pa-promotion": {
+    "body": ""
   }
 }
