@@ -5,6 +5,8 @@
 //get email and password from login.php
 $email = $_POST['email'];
 $password = md5($_POST['password']);
+
+
 //check if email exists in admin table
 $sql = "SELECT id, password, is_active FROM admin WHERE email = '$email'";
 $result = mysqli_query($connection, $sql);
@@ -28,6 +30,7 @@ if(mysqli_num_rows($result) > 0){
       $_SESSION['id'] = $row['id'];
       $_SESSION['loggedin'] = true;
       $_SESSION['userType'] = "admin";
+
       echo "success admin";
     }else{
       echo "Wrong password";

@@ -1,4 +1,5 @@
 <?php
+  $singin = false;
   session_start();
   session_destroy();
 ?>
@@ -25,11 +26,11 @@
       <form class="forms" method="POST">
         <div class="form-input">
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Email@mail.com">
+          <input type="email" id="email" placeholder="Email@mail.com" onfocus="clearError()">
         </div>
         <div class="form-input">
           <label for="password">Password <a href="forgotPassword.php">Forgot Password?</a></label>
-          <input type="password" id="password" placeholder="Password">
+          <input type="password" id="password" placeholder="Password" onfocus="clearError()">
           <p class="error-msg" id="error-msg"></p>
         </div>
       </form>

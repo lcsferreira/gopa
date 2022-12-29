@@ -26,10 +26,14 @@ function enterLogin() {
 
 function login() {
   $("#login").on("click", function () {
+    //set the html text of the login button to loading
+    $("#login").html("Singin in...");
+
     let email = $("#email").val();
     let password = $("#password").val();
 
     //Send data with get request
+
     let request = $.ajax({
       method: "POST",
       url: "../../ajaxQuerys/login/checkLogin.php",
@@ -49,6 +53,7 @@ function login() {
           window.location.href = "../countriesList/countriesListContacts.php";
         }
       } else {
+        $("#login").html("Login");
         $("#error-msg").html(msg);
         $("#error-msg").show();
         $("#email").addClass("is-invalid");
@@ -56,4 +61,10 @@ function login() {
       }
     });
   });
+}
+
+function clearError() {
+  $("#email").removeClass("is-invalid");
+  $("#password").removeClass("is-invalid");
+  $("#error-msg").hide();
 }

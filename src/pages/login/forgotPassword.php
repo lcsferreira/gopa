@@ -21,11 +21,11 @@
       <form class="forms" method="POST">
         <div class="form-input">
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Email@mail.com">
+          <input type="email" id="email" placeholder="Email@mail.com" onfocus="clearError()">
           <p class="error-msg" id="error-msg">Invalid Email</p>
         </div>
       </form> 
-      <button type="button" id="sendEmail">Send</button>
+      <button type="button" id="sendEmail">Send Email</button>
     </div>
     <div class="col-50">
       <img class="side-img" src="../../../assets/firstAccess.jpg" alt="gopa-img">
