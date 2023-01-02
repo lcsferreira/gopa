@@ -186,7 +186,7 @@
                 echo "checked";
               }?>>
               <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','gender-inequalities', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
+              <input type="radio" id="no" name="agreement-3" value="no" onclick="showInput('agreement-2','gender-inequalities', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
                 echo "disabled ";
               }if($agreement_values['gender_inequalities'] == 0 && $agreement_values['gender_inequalities'] != null){
                 echo "checked";

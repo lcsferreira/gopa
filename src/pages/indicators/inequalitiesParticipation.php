@@ -107,14 +107,14 @@
             <label for="radio-group">Agreement</label>
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','pa-activity', '<?php echo $id ?>', 'pa_activity')" <?php if($_SESSION['userType'] == "admin"){
+              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','pa-activity', '<?php echo $id ?>', 'inequalities_participation')" <?php if($_SESSION['userType'] == "admin"){
                 echo "disabled ";
               } 
               if($agreement_values['pa_activity'] == 1){
                 echo "checked";
               }?>>
               <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','pa-activity', '<?php echo $id ?>', 'pa_activity')" <?php if($_SESSION['userType'] == "admin"){
+              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','pa-activity', '<?php echo $id ?>', 'inequalities_participation')" <?php if($_SESSION['userType'] == "admin"){
                 echo "disabled ";
               }if($agreement_values['pa_activity'] == 0 && $agreement_values['pa_activity'] != null){
                 echo "checked";
@@ -158,8 +158,7 @@
                 }
                 ?> name="reference" id="reference">
           </div>
-          <textarea placeholder="Add a comment..." name="comments" id="pa-prevalence-comments" cols="30" rows="5"
-          class="comment"><?php
+          <textarea placeholder="Add a comment..." name="comments" id="pa-activity-comments" cols="30" rows="5" onblur="saveComment('pa-activity', '<?php echo $id ?>', 'inequalities_participation_comments')" class="comment"><?php
                   if($comments['pa_activity'] != null){
                     echo $comments['pa_activity'];
                   }
@@ -183,14 +182,14 @@
             <label for="radio-group">Agreement</label>
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','inequalities-image', '<?php echo $id ?>', 'inequalities-image')" <?php if($_SESSION['userType'] == "admin"){
+              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','inequalities-image', '<?php echo $id ?>', 'inequalities_participation')" <?php if($_SESSION['userType'] == "admin"){
                 echo "disabled ";
               } 
               if($agreement_values['inequalities_image'] == 1){
                 echo "checked";
               }?>>
               <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','inequalities-image', '<?php echo $id ?>', 'inequalities-image')" <?php if($_SESSION['userType'] == "admin"){
+              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','inequalities-image', '<?php echo $id ?>', 'inequalities_participatione')" <?php if($_SESSION['userType'] == "admin"){
                 echo "disabled ";
               }if($agreement_values['inequalities_image'] == 0 && $agreement_values['inequalities_image'] != null){
                 echo "checked";
@@ -199,7 +198,7 @@
           </div>
           <div class="contact-input" id="inequalities-image-indicator">
             <textarea placeholder="Add a comment..." name="comments" id="inequalities-comments" cols="30" rows="5"
-            class="comment"><?php
+            onblur="saveComment('inequalities', '<?php echo $id ?>', 'inequalities_participation_comments')" class="comment"><?php
                 if($comments['inequalities'] != null){
                   echo $comments['inequalities'];
                 }

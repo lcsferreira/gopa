@@ -40,7 +40,7 @@
     </div>
     <div class="countries-list">
       <?php 
-        $sql = "SELECT * FROM countries WHERE id = '$country_id'";
+        $sql = "SELECT * FROM countries WHERE id = '$country_id' ORDER BY name ASC";
         $result = mysqli_query($connection, $sql);
         $resultCheck = mysqli_num_rows($result);
         if($resultCheck > 0){

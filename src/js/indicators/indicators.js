@@ -51,18 +51,27 @@ let pageSplit = page.split(".");
 let table = pageSplit[0];
 
 $(document).ready(function () {
+  closeModalInfo();
+
+  checkValues();
+});
+
+function checkValues() {
   agreementInputs[table].forEach(function (input, index) {
-    if ($("input[name=agreement-" + index + 1 + "]:checked").val() == "no") {
+    //sum the index ++ at the string;
+    index++;
+    if ($("input[name=agreement-" + index + "]:checked").val() == "no") {
+      // console.log("no" + input + index);
       $("#" + input + "-indicator").css("display", "flex");
     } else if (
       $("input[name=agreement-" + index + "]:checked").val() == "yes" ||
       $("input[name=agreement-" + index + "]:checked").val() == undefined
     ) {
       $("#" + input + "-indicator").css("display", "none");
+      // console.log("yes" + input + index);
     }
   });
-  closeModalInfo();
-});
+}
 
 window.onunload = function () {
   closeModalInfo();

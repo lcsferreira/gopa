@@ -39,7 +39,7 @@
     </div>
     <div class="countries-list">
       <?php 
-        $sql = "SELECT * FROM countries";
+        $sql = "SELECT * FROM countries ORDER BY name ASC";
         $result = mysqli_query($connection, $sql);
         $resultCheck = mysqli_num_rows($result);
     
@@ -70,7 +70,7 @@
                       </div>
                       <div class='step'>
                         <p>Translation</p>
-                        <button disabled type='button' class='step-start'>";
+                        <button"; if($row['need_translation'] == 0){echo " disabled ";} echo " type='button' class='step-start'>";
                         if($row['translation_step'] == 'not started'){
                           echo "<i class='fa fa-play-circle fa-2x gray'></i>";
                         }else if($row['translation_step'] == 'waiting contact'){
@@ -79,6 +79,8 @@
                           echo "<i class='fa fa-exclamation-circle fa-2x red'></i>";
                         }else if($row['translation_step'] == 'approved'){
                           echo "<i class='fa fa-check-circle fa-2x green'></i>";
+                        }else if($row['translation_step'] == ''){
+                          echo "<i class='fa fa-play-circle fa-2x gray'></i>";
                         };
                         echo"</button>
                       </div>

@@ -39,7 +39,7 @@
     </div>
     <div class="admin-list">
       <?php 
-        $sql = "SELECT * FROM admin";
+        $sql = "SELECT * FROM admin ORDER BY name ASC";
         $result = mysqli_query($connection, $sql);
         $resultCheck = mysqli_num_rows($result);
         if($resultCheck > 0){

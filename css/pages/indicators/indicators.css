@@ -110,7 +110,7 @@ form .indicators .contact-field {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  width: 55%;
+  width: 65%;
 }
 
 form .indicators .contact-field .contact-input {
@@ -122,6 +122,7 @@ form .indicators .contact-field .contact-input {
 
 form .form-input .radio {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   height: 48px;
 }

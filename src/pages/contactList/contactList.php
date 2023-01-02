@@ -39,7 +39,7 @@
     </div>
     <div class="contact-list">
       <?php 
-        $sql = "SELECT * FROM contacts";
+        $sql = "SELECT * FROM contacts ORDER BY name ASC";
         $result = mysqli_query($connection, $sql);
         $resultCheck = mysqli_num_rows($result);
         if($resultCheck > 0){
