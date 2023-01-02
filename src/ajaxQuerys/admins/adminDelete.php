@@ -8,7 +8,7 @@
   if($id != $_SESSION['id']){
     $sql = "DELETE FROM admin WHERE id = '$id'";
     $result = mysqli_query($connection, $sql);
-    echo "success deleing admin";
+    echo "success deleting admin";
   }else{
     echo "You cannot delete yourself";
   }

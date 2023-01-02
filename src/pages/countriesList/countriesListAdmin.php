@@ -56,7 +56,7 @@
                     <div class='steps-list'>
                       <div class='step'>
                         <p>Indicators</p>
-                        <button type='button' class='step-start' onclick='document.location = `../indicators/progress.php?id=" . $row['id'] . "`'>";
+                        <button disabled type='button' class='step-start' onclick='document.location = `../indicators/progress.php?id=" . $row['id'] . "`'>";
                         if($row['indicators_step'] == 'not started'){
                           echo "<i class='fa fa-play-circle fa-2x gray'></i>";
                         }else if($row['indicators_step'] == 'waiting contact'){
@@ -70,7 +70,7 @@
                       </div>
                       <div class='step'>
                         <p>Translation</p>
-                        <button"; if($row['need_translation'] == 0){echo " disabled ";} echo " type='button' class='step-start'>";
+                        <button disabled type='button' class='step-start'>";
                         if($row['translation_step'] == 'not started'){
                           echo "<i class='fa fa-play-circle fa-2x gray'></i>";
                         }else if($row['translation_step'] == 'waiting contact'){
