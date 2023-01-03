@@ -41,6 +41,9 @@
 
 <body>
   <div class="container" id="main">
+    <?php 
+      include_once "../../components/modalInfo.php";
+    ?>
     <?php
       $page = "inequalitiesParticipation";
       include "../../components/indicatorsNav.php";
@@ -67,7 +70,8 @@
     <form>
       <div class="indicators">
         <div class="form-input">
-          <label for="groups">Physical activity prevalence adults (%)</label>
+          <label for="groups">Physical activity prevalence adults (%) <span onclick="showModalInfo('pa-prevalence')"><i
+                class="fa fa-question-circle-o"></i></span></label>
           <div name="groups" id="groups">
             <div>
               <label for="males">Males</label>
@@ -168,7 +172,8 @@
       </div>
       <div class="indicators">
         <div class="indicator-image">
-          <label for="country">Inequalities in adult's physical activity participation <span class="new">*new*</span>
+          <label for="country">Inequalities in adult's physical activity participation <span class="new">*new*</span> <span onclick="showModalInfo('pa-inequalities')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>Determined using the physical activity prevalence estimates by sex and will be assessed with classical
               methods for equity analysis such as equiplots.
             </p>

@@ -245,7 +245,8 @@
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="urban-population">Urban population (%)
+          <label for="urban-population">Urban population (%) <span onclick="showModalInfo('urban-population')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>Percentage (%) of the total population living in urban areas</p>
           </label>
           <input type="number" <?php
@@ -307,7 +308,8 @@
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="life-expentacy">Life expentacy (years)
+          <label for="life-expentacy">Life expentacy (years) <span onclick="showModalInfo('life-expentacy')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>Average age that a person of the population is expected to live</p>
           </label>
           <input type="number" <?php
@@ -369,7 +371,8 @@
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="gini-index">Gini inequality index (number between 0 and 1)
+          <label for="gini-index">Gini inequality index (number between 0 and 1) <span onclick="showModalInfo('gini-index')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>Measure of income inequality that summarizes the dispersion of income across the entire income
               distribution.
               0: perfect equality; 1: perfect inequality
@@ -431,7 +434,8 @@
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="human-index">Human development index (number between 0 and 1)
+          <label for="human-index">Human development index (number between 0 and 1) <span onclick="showModalInfo('human-index')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>Summary measure of average achievement in key dimensions of human development: a long and healthy life,
               being knowledgeable and have a decent standard of living</p>
           </label>
@@ -491,7 +495,8 @@
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="literacy-rate">Literacy rate (%)
+          <label for="literacy-rate">Literacy rate (%) <span onclick="showModalInfo('literacy-rate')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>Percentage (%) of adults aged 15 and older who can both read and write</p>
           </label>
           <input type="number" <?php
@@ -550,7 +555,8 @@
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="deaths-diseases">Deaths due to non-communicable diseases (%)
+          <label for="deaths-diseases">Deaths due to non-communicable diseases (%) <span onclick="showModalInfo('deaths-diseases')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>Percentage (%) of deaths by NCDs (include cancer, diabetes mellitus, cardiovascular diseases, digestive
               diseases, skin diseases, musculoskeletal diseases, and congenital anomalies)
             </p>

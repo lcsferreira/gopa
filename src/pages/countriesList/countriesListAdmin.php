@@ -56,7 +56,7 @@
                     <div class='steps-list'>
                       <div class='step'>
                         <p>Indicators</p>
-                        <button disabled type='button' class='step-start' onclick='document.location = `../indicators/progress.php?id=" . $row['id'] . "`'>";
+                        <button type='button' class='step-start' onclick='document.location = `../indicators/progress.php?id=" . $row['id'] . "`'>";
                         if($row['indicators_step'] == 'not started'){
                           echo "<i class='fa fa-play-circle fa-2x gray'></i>";
                         }else if($row['indicators_step'] == 'waiting contact'){

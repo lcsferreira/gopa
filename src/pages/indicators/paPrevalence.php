@@ -41,6 +41,9 @@
 
 <body>
   <div class="container" id="main">
+    <?php 
+      include_once "../../components/modalInfo.php";
+    ?>
     <?php
       $page = "paPrevalence";
       include "../../components/indicatorsNav.php";
@@ -66,7 +69,8 @@
     <form>
       <div class="indicators">
         <div class="form-input">
-          <label for="groups">Physical activity prevalence adults (%)</label>
+          <label for="groups">Physical activity prevalence adults (%) <span onclick="showModalInfo('pa-prevalence')"><i
+                class="fa fa-question-circle-o"></i></span></label>
           <div name="groups" id="groups">
             <div>
               <label for="both-sexes">Both sexes</label>

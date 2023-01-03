@@ -394,9 +394,20 @@ textarea::placeholder {
   font-style: italic;
 }
 
+.modal-info .modal-body .p-b {
+  font-weight: bold;
+  color: #222b34;
+}
+
 .modal-info .modal-body a {
   color: #03a9f4;
   text-decoration: underline;
+  word-break: break-all;
+}
+
+.modal-info .modal-body img {
+  border: 1px solid #222b34;
+  border-radius: 5px;
 }
 
 .modal-info #closeModalInfo {
@@ -404,6 +415,7 @@ textarea::placeholder {
   left: 91%;
   top: 2%;
   color: #8e9dae;
+  cursor: pointer;
 }
 
 .indicator-nav {
