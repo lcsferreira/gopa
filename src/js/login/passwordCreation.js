@@ -53,6 +53,13 @@ function validateIfConfirmEqualsPassword() {
   });
 }
 
+function clearErrors() {
+  $("#create-password").removeClass("is-invalid");
+  $("#confirm-password").removeClass("is-invalid");
+  $("#error-msg-pw1").hide();
+  $("#error-msg-pw2").hide();
+}
+
 function checkFirstAccess() {
   //get id from url
   let request = $.ajax({
@@ -60,15 +67,6 @@ function checkFirstAccess() {
     url: "../../ajaxQuerys/login/checkFirstAccess.php",
     type: "post",
     contentType: "application/x-www-form-urlencoded",
-  });
-
-  request.done(function (msg) {
-    console.log(msg);
-    if (msg === "Already signed up") {
-      window.location.href = "../login/login.php";
-    } else if (msg === "Inactive") {
-      window.location.href = "../login/login.php";
-    }
   });
 }
 
@@ -81,13 +79,15 @@ function postPassword() {
     let urlClass = new URL(url);
     let id = urlClass.searchParams.get("id");
 
+    let userType = urlClass.searchParams.get("userType");
+
     if (password !== confirmPassword) {
       alert("Passwords do not match");
     } else {
       let request = $.ajax({
         method: "POST",
         url: "../../ajaxQuerys/login/savePassword.php",
-        data: { id: id, password: password },
+        data: { id: id, password: password, userType: userType },
         dataType: "text",
         type: "post",
         contentType: "application/x-www-form-urlencoded",
@@ -97,6 +97,7 @@ function postPassword() {
         if (msg == "success") {
           window.location.href = "../login/emailSentFirstAccess.php";
         } else {
+          clearErrors();
           alert(msg);
         }
       });

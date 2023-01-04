@@ -53,7 +53,35 @@
       //send email to contact
       //get the id of the contact that was just inserted
       // firstAccess.php?id='$contact_id'
-      echo "success! firstAccess.php?id='$id'&userType=contact";
+
+      $assunto = "Action Required";
+    
+      $headers  = 'MIME-Version: 1.0' . "\r\n";
+      $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+      $headers .= 'From: Workflow GoPA <info@globalphysicalactivityobservatory.com>'. "\r\n";
+      $headers .= 'Reply-To: info@globalphysicalactivityobservatory.com'. "\r\n";
+      $headers .= 'X-Mailer: PHP/' . phpversion();
+    
+      $mensagem = "
+      <br>
+        This is an authomatic activation message for Contacts.
+      <br><br>
+        Please click in the <b>link below</b> to login in the GoPA Workflow.
+      <br><br>
+        <a href='http://work.globalphysicalactivityobservatory.com/src/pages/login/firstAccess.php?id='$id'&userType=contact'>First access registration</a>
+      <br><br>
+        If you have any questions, please contact us at <a href='mailto: andrea.ramirez@globalphysicalactivityobservatory.com'>andrea.ramirez@globalphysicalactivityobservatory.com</a>
+      ";
+    
+      $enviaremail = mail($email, $assunto, $mensagem, $headers);
+    
+      if($enviaremail){
+        $mgm = "E-MAIL ENVIADO COM SUCESSO!";
+        echo "success!";
+      } else {
+        $mgm = "ERRO AO ENVIAR E-MAIL!";
+        echo $mgm;
+      }
     }
     echo "success";
   }
