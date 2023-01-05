@@ -25,9 +25,9 @@ function validateInputs() {
 function validateSecurePassword() {
   $("#create-password").on("blur", function () {
     let password = $("#create-password").val();
-    var strongRegex = new RegExp(
-      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
-    );
+    //create a regex that checks for at least one lowercase, one number and is at least 8 characters long
+    let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
+
     if (strongRegex.test(password)) {
       $("#create-password").removeClass("is-invalid");
       $("#error-msg-pw1").hide();
