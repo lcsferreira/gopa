@@ -179,6 +179,7 @@
               ?> onblur="saveValueByAdmin('gender-inequalities-female', '<?php echo $id ?>', 'research_values_admin')">
             </div>
           </div>
+          <img src="../../../assets/gender-inequalities-example.PNG" alt="gender-inequalties-example">
         </div>
         <div class="contact-field">
           <div class="form-input">

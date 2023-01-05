@@ -70,7 +70,7 @@
                       </div>
                       <div class='step'>
                         <p>Translation</p>
-                        <button type='button' class='step-start' onclick='document.location = ../others/workInProgress.php'>";
+                        <button type='button' class='step-start' onclick='document.location = `../others/workInProgress.php`'>";
                         if($row['translation_step'] == 'not started'){
                           echo "<i class='fa fa-play-circle fa-2x gray'></i>";
                         }else if($row['translation_step'] == 'waiting admin'){
@@ -84,7 +84,7 @@
                       </div>
                       <div class='step'>
                         <p>Country Cards</p>
-                        <button type='button' class='step-start' onclick='document.location = ../others/workInProgress.php'>";
+                        <button type='button' class='step-start' onclick='document.location = `../others/workInProgress.php`'>";
                         if($row['country_cards_step'] == 'not started'){
                           echo "<i class='fa fa-play-circle fa-2x gray'></i>";
                         }else if($row['country_cards_step'] == 'waiting admin'){

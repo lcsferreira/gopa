@@ -178,9 +178,7 @@
               methods for equity analysis such as equiplots.
             </p>
           </label>
-          <img src=<?php
-            echo $admin_values['inequalities_image']; 
-          ?> alt="image">
+          <img src="../../../assets/inequalities-example.PNG" alt="image">
         </div>
         <div class="contact-field">
           <div class="form-input">
