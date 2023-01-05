@@ -90,7 +90,7 @@
       </div>
       <div class="form-input-rg">
         <label for="is-active">Active: </label>
-        <input disabled type="checkbox" name="is-active" id="is-active" 
+        <input type="checkbox" name="is-active" id="is-active" 
           <?php
             if($is_active == 1){
               echo "checked";

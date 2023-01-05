@@ -1,6 +1,6 @@
 <?php
   $title = "Countries List";                   
-  include "../../components./header.php";                 
+  include "../../components/header.php";                 
 ?>
 <?php
   include_once "../../../config.php"

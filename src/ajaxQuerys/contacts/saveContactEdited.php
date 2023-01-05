@@ -68,7 +68,7 @@
       <br><br>
         Please click in the <b>link below</b> to login in the GoPA Workflow.
       <br><br>
-        <a href='http://work.globalphysicalactivityobservatory.com/src/pages/login/firstAccess.php?id='$id'&userType=contact'>First access registration</a>
+        <a href='http://work.globalphysicalactivityobservatory.com/src/pages/login/firstAccess.php?id=$id&userType=contact'>First access registration</a>
       <br><br>
         If you have any questions, please contact us at <a href='mailto: andrea.ramirez@globalphysicalactivityobservatory.com'>andrea.ramirez@globalphysicalactivityobservatory.com</a>
       ";

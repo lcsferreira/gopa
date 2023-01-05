@@ -166,7 +166,7 @@ function putContact() {
       if (msg.substring(0, 7) == "success") {
         window.location.href = "../contactList/contactList.php";
       } else {
-        alert("Admin Edit failed");
+        alert("Contact Edit failed");
       }
     });
   });
