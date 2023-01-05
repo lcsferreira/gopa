@@ -42,6 +42,9 @@
 
 <body>
   <div class="container" id="main">
+    <?php 
+      include_once "../../components/modalInfo.php";
+    ?>
     <?php
       $page = "research";
       include "../../components/indicatorsNav.php";
@@ -55,7 +58,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="contribution-research">
-            Contribution to physical activity and health research worldwide from 1950-2016
+            Contribution to physical activity and health research worldwide from 1950-2016 <span onclick="showModalInfo('pa-research')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>
               Percentage (%) of publications per country (total articles per country / total of articles worldwide)
             </p>
@@ -98,7 +102,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="groups">
-            Physical activity research quintiles
+            Physical activity research quintiles <span onclick="showModalInfo('research-quintiles')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>
               Calculated to display a comparison between countries on the country cards. 1- high; 2-upper-middle;
               3-middle; 4-lower-middle; and, 5-low.
@@ -149,7 +154,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="groups">
-            Gender inequalities in physical activity research <span class="new">*new*</span>
+            Gender inequalities in physical activity research <span class="new">*new*</span> <span onclick="showModalInfo('gender-inequalities')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>
               Percentage (%) authors in physical activity research, which will be assessed with classical methods of
               equity analysis such as equiplots

@@ -37,7 +37,10 @@
 </head>
 
 <body>
-  <div class="container" id="main">
+  <div class="container" id="main">]
+    <?php 
+      include_once "../../components/modalInfo.php";
+    ?>
     <?php
       $page = "paPyramid";
       include "../../components/indicatorsNav.php";
@@ -51,7 +54,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="radio-group">
-            Research:
+            Research: <span onclick="showModalInfo('pa-promotion')"><i
+                class="fa fa-question-circle-o"></i></span>
           </label>
           <div class="radio" id="radio-group">
             <label for="green">Green</label>
@@ -106,7 +110,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="groups">
-            Policy:
+            Policy: <span onclick="showModalInfo('pa-promotion')"><i
+                class="fa fa-question-circle-o"></i></span>
           </label>
           <div class="radio" id="radio-group">
             <label for="green">Green</label>
@@ -173,7 +178,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="radio-group">
-            Surveillance:
+            Surveillance: <span onclick="showModalInfo('pa-promotion')"><i
+                class="fa fa-question-circle-o"></i></span>
           </label>
           <div class="radio" id="radio-group">
             <label for="green">Green</label>
@@ -227,9 +233,7 @@
       </div>
       <div class="indicators">
         <div class="form-input">
-          <img src="<?php if ($admin_values['pyramid_image'] != null) {
-            echo $admin_values['pyramid_image'];
-          }?>" alt="pyramids">
+          <img src="../../../assets/pyramid-example.jpg" alt="pyramids">
         </div>
         <div class="contact-field">
           <div class="form-input">

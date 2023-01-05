@@ -90,7 +90,9 @@
     </div>
     <div class="progress">
       <div class="indicator-progress">
-        <h2>Demographic Indicators</h2>
+        <h2 <?php
+          echo "onclick='document.location = `demographic.php?id=".$id."`'";
+          ?>>Demographic Indicators</h2>
         <div class="indicator-progress-percent" style="--percent: 
         <?php 
           echo $indicators_progress[0];
@@ -108,7 +110,9 @@
         </div>
       </div>
       <div class="indicator-progress">
-        <h2>P.A. Prevalance</h2>
+        <h2 <?php
+          echo "onclick='document.location = `paPrevalence.php?id=".$id."`'";
+          ?>>P.A. Prevalance</h2>
         <div class="indicator-progress-percent" style="--percent: <?php 
                 echo $indicators_progress[1];
               ?>">
@@ -124,7 +128,9 @@
         </div>
       </div>
       <div class="indicator-progress">
-        <h2>Ineqaulities in P.A. Participation</h2>
+        <h2  <?php
+          echo "onclick='document.location = `inequalitiesParticipation.php?id=".$id."`'";
+          ?>>Ineqaulities in P.A. Participation</h2>
         <div class="indicator-progress-percent" style="--percent: <?php 
                 echo $indicators_progress[2];
               ?>">
@@ -140,7 +146,9 @@
         </div>
       </div>
       <div class="indicator-progress">
-        <h2>National Surveillance</h2>
+        <h2 <?php
+          echo "onclick='document.location = `nationalSurveillance.php?id=".$id."`'";
+          ?>>National Surveillance</h2>
         <div class="indicator-progress-percent" style="--percent: <?php 
                 echo $indicators_progress[3];
               ?>">
@@ -156,7 +164,9 @@
         </div>
       </div>
       <div class="indicator-progress">
-        <h2>National Policy</h2>
+        <h2 <?php
+          echo "onclick='document.location = `nationalPolicy.php?id=".$id."`'";
+          ?>>National Policy</h2>
         <div class="indicator-progress-percent" style="--percent: <?php 
                 echo $indicators_progress[4];
               ?>">
@@ -172,7 +182,9 @@
         </div>
       </div>
       <div class="indicator-progress">
-        <h2>Research Indicators</h2>
+        <h2 <?php
+          echo "onclick='document.location = `research.php?id=".$id."`'";
+          ?>>Research Indicators</h2>
         <div class="indicator-progress-percent" style="--percent: <?php 
                 echo $indicators_progress[5];
               ?>">
@@ -188,7 +200,9 @@
         </div>
       </div>
       <div class="indicator-progress">
-        <h2>P.A. Promotion Capacity Pyramid</h2>
+        <h2 <?php
+          echo "onclick='document.location = `paPyramid.php?id=".$id."`'";
+          ?>>P.A. Promotion Capacity Pyramid</h2>
         <div class="indicator-progress-percent" style="--percent: <?php 
                 echo $indicators_progress[6];
               ?>">
@@ -204,7 +218,9 @@
         </div>
       </div>
       <div class="indicator-progress">
-        <h2>Country Card Contact</h2>
+        <h2 <?php
+          echo "onclick='document.location = `contact.php?id=".$id."`'";
+          ?>>Country Card Contact</h2>
         <div class="indicator-progress-percent" style="--percent: <?php 
                 echo $indicators_progress[7];
               ?>">

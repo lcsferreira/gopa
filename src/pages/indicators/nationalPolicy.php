@@ -42,6 +42,9 @@
 
 <body>
   <div class="container" id="main">
+    <?php 
+      include_once "../../components/modalInfo.php";
+    ?>
     <?php
       $page = "nationalPolicy";
       include "../../components/indicatorsNav.php";
@@ -68,7 +71,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="groups">
-            National physical activity policy/plan
+            National physical activity policy/plan <span onclick="showModalInfo('pa-policy-year')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>
               Physical activity plan created and endorsed by the government. The plan should not only endorse the
               benefits of achieving the recommended level of physical activity but should also encourage the promotion
@@ -255,7 +259,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="policy-implementation-admin">
-            Percentage (%) of policy implementation <span class="new">*new*</span>
+            Percentage (%) of policy implementation <span class="new">*new*</span> <span onclick="showModalInfo('policy-implementation')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>
               Policy implementation includes translating statements, ideas, goals, and/or objectives mentioned in the
               policy documents into practice.

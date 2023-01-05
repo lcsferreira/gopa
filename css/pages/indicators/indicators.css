@@ -267,6 +267,12 @@ textarea::placeholder {
   text-align: center;
   color: #8e9dae;
   min-height: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.indicator-progress h2:hover {
+  color: #03a9f4;
+  cursor: pointer;
 }
 
 .indicator-progress-percent h2 {

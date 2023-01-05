@@ -41,6 +41,9 @@
 
 <body>
   <div class="container" id="main">
+    <?php 
+      include_once "../../components/modalInfo.php";
+    ?>
     <?php
       $page = "nationalSurveillance";
       include "../../components/indicatorsNav.php";
@@ -67,7 +70,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="national-surveys-admin">
-            National survey(s) including physical activity questions
+            National survey(s) including physical activity questions <span onclick="showModalInfo('national-survey')"><i
+                class="fa fa-question-circle-o"></i></span>
             <p>
               Surveys at the national level that cover physical activity at work/in the household, for transport, and
               during leisure time. Surveys should include a representative sample of the entire population or, in some
@@ -323,7 +327,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="objective-measures-admin">
-            Objective measurement to assess physical activity in adults <span class="new">*new*</span>
+            Objective measurement to assess physical activity in adults <span class="new">*new*</span> <span onclick="showModalInfo('objective-measures')"><i
+                class="fa fa-question-circle-o"></i></span>
           </label>
           <div class="radio" id="objective-measures-admin">
             <label for="yes">Yes</label>
