@@ -51,7 +51,7 @@
                     </div>
                     <div class='info-detail'>
                       <p>".$row['name']."</p>
-                      <p>".$row['institution']."</p>
+                      <p class='institution'>".$row['institution']."</p>
                     </div>
                     <div class='is-active'>
                       <p>
