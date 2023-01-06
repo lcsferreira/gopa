@@ -12,10 +12,6 @@
   $sql = "SELECT * FROM research_comments WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $comments = mysqli_fetch_assoc($result);
-  //select row from demographic_values_contact table
-  $sql = "SELECT * FROM research_values_contact WHERE id = $id";
-  $result = mysqli_query($connection, $sql);
-  $contact_values = mysqli_fetch_assoc($result);
 
   $sql = "SELECT * FROM research_agreement WHERE id = $id";
   $result = mysqli_query($connection, $sql);
