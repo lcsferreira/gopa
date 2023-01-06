@@ -233,35 +233,13 @@
       </div>
       <div class="indicators">
         <div class="form-input">
-          <img src="../../../assets/pyramid-example.jpg" alt="pyramids">
-        </div>
-        <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-4" value="yes" onclick="hideInput('agreement-4','pyramid-image', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['pyramid_image'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-4" value="no" onclick="showInput('agreement-4','pyramid-image', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['pyramid_image'] == 0 && $agreement_values['pyramid_image'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
-          <div class="contact-input" id="pyramid-image-indicator">
-          <textarea placeholder="Add a comment..." name="comments" id="pyramid-image-comments" cols="30" rows="5"
-          class="comment" onblur="saveComment('pyramid-image', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
-              if($comments['pyramid_image'] != null){
-                echo $comments['pyramid_image'];
-              }
-              ?></textarea>
-          </div>
+          <label for="pyramid-image">
+            Physical activity promotion capacity pyramids
+            <p>
+            Below is an illustration of how the physical activity promotion capacity pyramid will be shown.
+            </p>
+          </label>
+          <img src="../../../assets/pyramid-example.jpg" alt="pyramids" name="pyramid-image">
         </div>
       </div>
       <div class="buttons">

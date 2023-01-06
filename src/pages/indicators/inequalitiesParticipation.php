@@ -82,7 +82,7 @@
                 if($admin_values['pa_activity_males'] != null){
                   echo "value=" . $admin_values['pa_activity_males'];
                 }
-              ?> name="males" id="males">
+              ?> onblur="saveValueByAdmin('pa-activity-males', '<?php echo $id ?>', 'inequalities_participation_values_admin')" name="males" id="pa-activity-males-admin">
             </div>
             <div>
               <label for="females">Females</label>
@@ -93,7 +93,7 @@
                 if($admin_values['pa_activity_females'] != null){
                   echo "value=" . $admin_values['pa_activity_females'];
                 }
-              ?> name="females" id="females">
+              ?> onblur="saveValueByAdmin('pa-activity-females', '<?php echo $id ?>', 'inequalities_participation_values_admin')" name="females" id="pa-activity-females-admin">
             </div>
           </div>
           <label for="reference">Reference</label>
@@ -104,7 +104,7 @@
                 if($admin_values['reference'] != null){
                   echo "value=" . $admin_values['reference'];
                 }
-              ?> name="reference" id="reference">
+              ?> onblur="saveValueByAdmin('reference', '<?php echo $id ?>', 'inequalities_participation_values_admin')" name="reference" id="reference-admin">
         </div>
         <div class="contact-field">
           <div class="form-input">
@@ -174,39 +174,10 @@
         <div class="indicator-image">
           <label for="country">Inequalities in adult's physical activity participation <span class="new">*new*</span> <span onclick="showModalInfo('pa-inequalities')"><i
                 class="fa fa-question-circle-o"></i></span>
-            <p>Determined using the physical activity prevalence estimates by sex and will be assessed with classical
-              methods for equity analysis such as equiplots.
+            <p> Inequalities in adults’ physical activity participation will be determined using the physical activity prevalence estimates by sex and will be assessed with classical methods for equity analysis such as equiplots. Below is an illustration of how the equiplot will be shown. The prevalence estimates will be used to compute the inequality, therefore we invite you to review them or correct them.
             </p>
           </label>
           <img src="../../../assets/inequalities-example.PNG" alt="image">
-        </div>
-        <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','inequalities-image', '<?php echo $id ?>', 'inequalities_participation')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['inequalities_image'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','inequalities-image', '<?php echo $id ?>', 'inequalities_participatione')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['inequalities_image'] == 0 && $agreement_values['inequalities_image'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
-          <div class="contact-input" id="inequalities-image-indicator">
-            <textarea placeholder="Add a comment..." name="comments" id="inequalities-comments" cols="30" rows="5"
-            onblur="saveComment('inequalities', '<?php echo $id ?>', 'inequalities_participation_comments')" class="comment"><?php
-                if($comments['inequalities'] != null){
-                  echo $comments['inequalities'];
-                }
-                ?></textarea>
-          </div>
         </div>
       </div>
       <div class="buttons">

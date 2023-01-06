@@ -157,57 +157,10 @@
             Gender inequalities in physical activity research <span class="new">*new*</span> <span onclick="showModalInfo('gender-inequalities')"><i
                 class="fa fa-question-circle-o"></i></span>
             <p>
-              Percentage (%) authors in physical activity research, which will be assessed with classical methods of
-              equity analysis such as equiplots
+            Gender inequalities in physical activity research will constructed estimating the percentage of male and female authors in physical activity research, which will be assessed with classical methods of equity analysis such as equiplots. Below is an illustration of how the equiplot will be shown.
             </p>
           </label>
-          <div name="groups" id="groups">
-            <div>
-              <label for="male">Male</label>
-              <input type="number" name="male" id="gender-inequalities-male-admin" <?php
-                if($admin_values['gender_inequalities_male'] != null){
-                  echo "value=" . $admin_values['gender_inequalities_male'];
-                }
-              ?> onblur="saveValueByAdmin('gender-inequalities-male', '<?php echo $id ?>', 'research_values_admin')">
-            </div>
-            <div>
-              <label for="female">Female</label>
-              <input type="number" name="female" id="gender-inequalities-female-admin" <?php 
-              if($admin_values['gender_inequalities_female'] != null){
-                echo "value=" . $admin_values['gender_inequalities_female'];
-              }
-              ?> onblur="saveValueByAdmin('gender-inequalities-female', '<?php echo $id ?>', 'research_values_admin')">
-            </div>
-          </div>
           <img src="../../../assets/gender-inequalities-example.PNG" alt="gender-inequalties-example">
-        </div>
-        <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-3" value="yes" onclick="hideInput('agreement-3','gender-inequalities', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['gender_inequalities'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-3" value="no" onclick="showInput('agreement-2','gender-inequalities', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['gender_inequalities'] == 0 && $agreement_values['gender_inequalities'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
-          <div class="contact-input" id="gender-inequalities-indicator">
-            <textarea placeholder="Add a comment..." name="comments" id="gender-inequalities-comments" cols="30" rows="5"
-            class="comment" onblur="saveComment('gender-inequalities', '<?php echo $id ?>', 'research_comments')"><?php
-                if($comments['gender_inequalities'] != null){
-                  echo $comments['gender_inequalities'];
-                }
-                ?></textarea>
-          </div>
         </div>
       </div>
       <div class="buttons">

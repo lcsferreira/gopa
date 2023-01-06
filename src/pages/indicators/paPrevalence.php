@@ -146,6 +146,9 @@
                 <div>
                   <label for="both-sexes">Both sexes</label>
                   <input type="number" <?php
+                  if($_SESSION['userType'] == "admin"){
+                    echo "disabled ";
+                  }
                 if($contact_values['both_sexes'] != null){
                   echo "value=" . $contact_values['both_sexes'];
                 }
@@ -155,6 +158,9 @@
               <div>
                 <label for="males">Males</label>
                 <input type="number" <?php
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                }
                 if($contact_values['males'] != null){
                   echo "value=" . $contact_values['males'];
                 }
@@ -164,6 +170,9 @@
               <div>
                 <label for="females">Females</label>
                 <input type="number" <?php
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                }
                 if($contact_values['females'] != null){
                   echo "value=" . $contact_values['females'];
                 }
@@ -173,6 +182,9 @@
             </div>
             <label for="reference">Reference</label>
             <input type="text" <?php
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                }
                 if($contact_values['reference'] != null){
                   echo "value=" . $contact_values['reference'];
                 }

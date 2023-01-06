@@ -416,6 +416,9 @@
             <div class="form-input">
               <label for="gini-index">Gini inequality index (number between 0 and 1)</label>
               <input type="number" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
               if($contact_values['gini_index'] != null){
                 echo "value=" . $contact_values['gini_index'];
               } 
@@ -477,6 +480,9 @@
             <div class="form-input">
               <label for="human-index">Human development index (number between 0 and 1)</label>
               <input type="number" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
               if($contact_values['human_index'] != null){
                 echo "value=" . $contact_values['human_index'];
               } 
@@ -537,6 +543,9 @@
             <div class="form-input">
               <label for="literacy-rate">Literacy rate (%)</label>
               <input type="number" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
               if($contact_values['literacy_rate'] != null){
                 echo "value=" . $contact_values['literacy_rate'];
               } 
@@ -599,6 +608,9 @@
             <div class="form-input">
               <label for="deaths-diseases">Deaths due to non-communicable diseases (%)</label>
               <input type="number" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
               if($contact_values['deaths_diseases'] != null){
                 echo "value=" . $contact_values['deaths_diseases'];
               } 
