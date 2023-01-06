@@ -88,6 +88,9 @@
                 Name 1
               </label>
               <input type="text" name="name-1" id="name-1" <?php 
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
               if($contact_values['name_1'] != null){
                 echo "value=" . $contact_values['name_1'];
               }
@@ -137,7 +140,10 @@
               <label for="email-1">
                 Email 1
               </label>
-              <input type="text" name="email-1" id="email-1" <?php 
+              <input type="text" name="email-1" id="email-1" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
               if($contact_values['email_1'] != null){
                 echo "value=" . $contact_values['email_1'];
               }
@@ -188,6 +194,9 @@
                 Institution 1
               </label>
               <input type="text" name="institution-1" id="institution-1" <?php 
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                }
                 if($contact_values['institution_1'] != null){
                   echo "value=" . $contact_values['institution_1'];
                 }
@@ -237,7 +246,10 @@
               <label for="name-2">
                 Name 2
               </label>
-              <input type="text" name="name-2" id="name-2" <?php 
+              <input type="text" name="name-2" id="name-2" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
               if($contact_values['name_2'] != null){
                 echo "value=" . $contact_values['name_2'];
               }
@@ -287,7 +299,10 @@
               <label for="email-2">
                 Email 2
               </label>
-              <input type="text" name="email-2" id="email-2" <?php 
+              <input type="text" name="email-2" id="email-2" <?php
+                  if($_SESSION['userType'] == "admin"){
+                    echo "disabled ";
+                  } 
                   if($contact_values['email_2'] != null){
                     echo "value=" . $contact_values['email_2'];
                   }
@@ -338,6 +353,9 @@
                 Institution 2
               </label>
               <input type="text" name="institution-2" id="institution-2" <?php 
+                  if($_SESSION['userType'] == "admin"){
+                    echo "disabled ";
+                  }
                   if($contact_values['institution_2'] != null){
                     echo "value=" . $contact_values['institution_2'];
                   }
@@ -387,7 +405,10 @@
             <label for="name-3">
               Name 3
             </label>
-            <input type="text" name="name-3" id="name-3" <?php 
+            <input type="text" name="name-3" id="name-3" <?php
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                } 
                 if($contact_values['name_3'] != null){
                   echo "value=" . $contact_values['name_3'];
                 }
@@ -438,6 +459,9 @@
               Email 3
             </label>
             <input type="text" name="email-3" id="email-3" <?php 
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                }
                 if($contact_values['email_3'] != null){
                   echo "value=" . $contact_values['email_3'];
                 }
@@ -487,7 +511,10 @@
             <label for="institution-3">
               Institution 3
             </label>
-            <input type="text" name="institution-3" id="institution-3" <?php 
+            <input type="text" name="institution-3" id="institution-3" <?php
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                } 
                 if($contact_values['institution_3'] != null){
                   echo "value=" . $contact_values['institution_3'];
                 }

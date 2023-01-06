@@ -134,12 +134,18 @@
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
               <input type="radio" id="yes" name="national-policy" value="yes" <?php 
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                }
                 if ($contact_values['national_policy'] == 1) {
                   echo "checked";
                 }
               ?> onblur="saveRadioValue('national-policy',  '<?php echo $id ?>', 'national_policy_values_contact')">
               <label for="no">No</label>
               <input type="radio" id="no" name="national-policy" value="no" <?php 
+                  if($_SESSION['userType'] == "admin"){
+                    echo "disabled ";
+                  }
                 if ($contact_values['national_policy'] == 0 && $contact_values['national_policy'] != null) {
                   echo "checked";
                 }
@@ -147,13 +153,19 @@
             </div>
             <label for="national-policy-titles">Title(s)</label>
             <input type="text" name="titles" id="national-policy-titles" <?php 
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                }
                 if($contact_values['national_policy_titles'] != null){
                   echo "value=" . $contact_values['national_policy_titles'];
                 }
             ?>
               onblur="saveValueByContact('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_contact')">
             <label for="national-policy-reference" class="mt-10">Reference</label>
-            <input type="text" name="reference" id="national-policy-reference" <?php 
+            <input type="text" name="reference" id="national-policy-reference" <?php
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                } 
                 if($contact_values['national_policy_reference'] != null){
                   echo "value=" . $contact_values['national_policy_reference'];
                 }
@@ -240,6 +252,9 @@
             </div>
             <label for="reference">Reference</label>
             <input type="text" name="reference" id="national-recommendations-reference" <?php 
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                }
                 if($contact_values['national_recommendations_reference'] != null){
                   echo "value=" . $contact_values['national_recommendations_reference'];
                 }
@@ -297,6 +312,9 @@
               Percentage (%) of policy implementation <span class="new">*new*</span>
             </label>
             <input type="number" name="policy-implementation" id="policy-implementation" <?php 
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                }
                 if($contact_values['policy_implementation'] != null){
                   echo "value=" . $contact_values['policy_implementation'];
                 }
