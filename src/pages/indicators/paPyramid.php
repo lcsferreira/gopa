@@ -239,7 +239,7 @@
             Below is an illustration of how the physical activity promotion capacity pyramid will be shown.
             </p>
           </label>
-          <img src="../../../assets/pyramid-example.jpg" alt="pyramids" name="pyramid-image">
+          <img class="mt-10" src="../../../assets/pyramid-example.jpg" alt="pyramids" name="pyramid-image">
         </div>
       </div>
       <div class="buttons">

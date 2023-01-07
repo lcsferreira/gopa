@@ -214,6 +214,7 @@
             ?>
               onblur="saveValueByContact('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_contact')">
           </div>
+          <!-- <label for="national-policy-comments" class="label-textarea">Comments: </label> -->
           <textarea placeholder="Add a comment..." name="comments" id="national-policy-comments" cols="30" rows="5"
             class="comment" onblur="saveComment('national-policy', '<?php echo $id ?>', 'national_policy_comments')"><?php
                 if($comments['national_policy'] != null){

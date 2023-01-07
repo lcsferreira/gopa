@@ -177,7 +177,7 @@
             <p> Inequalities in adults’ physical activity participation will be determined using the physical activity prevalence estimates by sex and will be assessed with classical methods for equity analysis such as equiplots. Below is an illustration of how the equiplot will be shown. The prevalence estimates will be used to compute the inequality, therefore we invite you to review them or correct them.
             </p>
           </label>
-          <img src="../../../assets/inequalities-example.PNG" alt="image">
+          <img class="mt-10" src="../../../assets/inequalities-example.PNG" alt="inequalities-example">
         </div>
       </div>
       <div class="buttons">

@@ -81,7 +81,7 @@ form .indicators {
 
 form .indicators .form-input,
 .indicator-image {
-  max-width: 371px;
+  width: 345px;
 }
 
 form .indicators .form-input-conclusion {
@@ -466,4 +466,43 @@ textarea::placeholder {
   color: #313439;
   text-decoration: none;
   transition: all 0.3s;
+}
+
+@media screen and (min-width: 1330px) {
+  /* form .label-textarea {
+    display: none;
+  } */
+}
+
+@media screen and (max-width: 1330px) {
+  form .indicators .form-input,
+  .indicator-image {
+    max-width: 371px;
+    align-self: flex-start;
+  }
+
+  form .indicators .contact-field .contact-input {
+    flex-direction: column;
+  }
+
+  form textarea {
+    width: 85%;
+    margin-top: 10px;
+    align-self: flex-start;
+  }
+
+  /* form .label-textarea {
+    display: flex;
+    margin-top: 10px;
+    align-self: flex-start;
+    color: #313439;
+  } */
+
+  .input-labels {
+    display: none;
+  }
+
+  form .indicators .contact-field {
+    width: 50%;
+  }
 }

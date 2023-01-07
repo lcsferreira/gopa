@@ -176,7 +176,7 @@
             Gender inequalities in physical activity research will constructed estimating the percentage of male and female authors in physical activity research, which will be assessed with classical methods of equity analysis such as equiplots. Below is an illustration of how the equiplot will be shown.
             </p>
           </label>
-          <img src="../../../assets/gender-inequalities-example.PNG" alt="gender-inequalties-example">
+          <img class="mt-10" src="../../../assets/gender-inequalities-example.PNG" alt="gender-inequalties-example">
         </div>
       </div>
       <div class="buttons">

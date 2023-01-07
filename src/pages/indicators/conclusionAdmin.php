@@ -38,8 +38,6 @@
     ?>
     <div class="title">
       <h1>Conclusion</h1>
-      <p>If new data was submitted, determine if the indicators need to be examined by the GoPA! working group, or
-        approve the data provided.</p>
     </div>
     <form>
       <div class="indicators">

@@ -191,6 +191,7 @@
                 ?> onblur="saveValueByContact('reference', '<?php echo $id ?>', 'pa_prevalence_values_contact')"
             name="reference" id="reference">
           </div>
+          <!-- <label for="pa-prevalence-comments" class="label-textarea">Comments: </label> -->
           <textarea onblur="saveComment('pa-prevalence', '<?php echo $id ?>', 'pa_prevalence_comments')"
           placeholder="Add a comment..." name="comments" id="pa-prevalence-comments" cols="30" rows="5" class="comment"><?php
                 if($comments['pa_prevalence'] != null){
