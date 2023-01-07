@@ -21,6 +21,7 @@ let agreementInputs = {
     "next-year",
     "survey-names",
     "objective-measures",
+    "quantifiable-targets",
   ],
   nationalPolicy: [
     "national-policy",
@@ -52,8 +53,9 @@ let table = pageSplit[0];
 
 $(document).ready(function () {
   closeModalInfo();
-
   checkValues();
+  checkEmbbedAndStandaloneInputs();
+  checkEmbbedAndStandaloneInputsOnBlur();
 });
 
 function checkValues() {
@@ -76,6 +78,22 @@ function checkValues() {
 window.onunload = function () {
   closeModalInfo();
 };
+
+function checkEmbbedAndStandaloneInputsOnBlur() {
+  $("input[name=national-policy-admin]").on("blur", function () {
+    checkEmbbedAndStandaloneInputs();
+  });
+}
+
+function checkEmbbedAndStandaloneInputs() {
+  if ($("input[name=national-policy-admin]:checked").val() == "yes") {
+    $("#embbed-prevention-field").css("display", "flex");
+    $("#standalone-prevention-field").css("display", "flex");
+  } else {
+    $("#embbed-prevention-field").css("display", "none");
+    $("#standalone-prevention-field").css("display", "none");
+  }
+}
 
 function saveValueByAdmin(indicator, id, table) {
   postValue(indicator, $("#" + indicator + "-admin").val(), id, table);
@@ -106,25 +124,25 @@ function postValue(indicator, value, id, table) {
 function saveRadioValue(indicator, id, table) {
   let value = $("input[name=" + indicator + "]:checked").val();
   if (value == "yes") {
-    value = 1;
+    value = "1";
   } else {
-    value = 0;
+    value = "0";
   }
-  indicator = indicator.replaceAll("-", "_");
   //remove the -admin from the indicator
   if (indicator.includes("-admin")) {
     indicator = indicator.replace("-admin", "");
   }
+  indicator = indicator.replaceAll("-", "_");
   postValue(indicator, value, id, table);
 }
 
 function saveRadioValue2(indicator, id, table) {
   let value = $("input[name=" + indicator + "]:checked").val();
-  indicator = indicator.replaceAll("-", "_");
   //remove the -admin from the indicator
   if (indicator.includes("-admin")) {
     indicator = indicator.replace("-admin", "");
   }
+  indicator = indicator.replaceAll("-", "_");
   postValue(indicator, value, id, table);
 }
 

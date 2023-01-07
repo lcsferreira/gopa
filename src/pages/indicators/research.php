@@ -107,15 +107,35 @@
           </label>
           <div class="radio" id="radio-group">
             <label for="q1">Q1</label>
-            <input type="radio" id="q1" name="quintiles" value="q1">
+            <input type="radio" id="q1" name="pa-quintiles" value="q1" <?php 
+              if ($admin_values['pa_quintiles'] == "q1") {
+                echo " checked";
+              }
+            ?> onblur="saveRadioValue2('pa-quintiles', '<?php echo $id ?>', 'research_values_admin')">
             <label for="q2">Q2</label>
-            <input type="radio" id="q2" name="quintiles" value="q2">
+            <input type="radio" id="q2" name="pa-quintiles" value="q2" <?php 
+              if ($admin_values['pa_quintiles'] == "q2") {
+                echo " checked";
+              }
+            ?> onblur="saveRadioValue2('pa-quintiles', '<?php echo $id ?>', 'research_values_admin')">
             <label for="q3">Q3</label>
-            <input type="radio" id="q3" name="quintiles" value="q3">
+            <input type="radio" id="q3" name="pa-quintiles" value="q3" <?php 
+              if ($admin_values['pa_quintiles'] == "q3") {
+                echo " checked";
+              }
+            ?>onblur="saveRadioValue2('pa-quintiles', '<?php echo $id ?>', 'research_values_admin')">
             <label for="q4">Q4</label>
-            <input type="radio" id="q4" name="quintiles" value="q4">
+            <input type="radio" id="q4" name="pa-quintiles" value="q4"<?php 
+              if ($admin_values['pa_quintiles'] == "q4") {
+                echo " checked";
+              }
+            ?> onblur="saveRadioValue2('pa-quintiles', '<?php echo $id ?>', 'research_values_admin')">
             <label for="q5">Q5</label>
-            <input type="radio" id="q5" name="quintiles" value="q5">
+            <input type="radio" id="q5" name="pa-quintiles" value="q5"<?php 
+              if ($admin_values['pa_quintiles'] == "q5") {
+                echo " checked";
+              }
+            ?> onblur="saveRadioValue2('pa-quintiles', '<?php echo $id ?>', 'research_values_admin')">
           </div>
         </div>
         <div class="contact-field">

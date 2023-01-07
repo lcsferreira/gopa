@@ -83,13 +83,13 @@
             <label for="yes">Yes</label>
             <input type="radio" id="yes" name="national-policy-admin" value="yes" <?php 
               if ($admin_values['national_policy'] == 1) {
-                echo "checked";
+                echo " checked";
               }
             ?> onblur="saveRadioValue('national-policy-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
             <label for="no">No</label>
             <input type="radio" id="no" name="national-policy-admin" value="no" <?php
               if ($admin_values['national_policy'] == 0 && $admin_values['national_policy'] != null) {
-                echo "checked";
+                echo " checked";
               }
             ?> onblur="saveRadioValue('national-policy-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
           </div>
@@ -106,6 +106,48 @@
               }
           ?>
             onblur="saveValueByAdmin('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_admin')">
+          <div class="form-input" id="embbed-prevention-field">
+            <label for="radio-group" class="mt-10">
+              Embedded in an noncommunicable disease (NCD) for physical prevention plan
+            </label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="embbed-prevention-admin" value="yes" <?php 
+                if ($admin_values['embbed_prevention'] == 1) {
+                  echo "checked";
+                }
+                ?>
+                onblur="saveRadioValue('embbed-prevention-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
+              <label for="no">No</label>
+              <input type="radio" id="no" name="embbed-prevention-admin" value="no" <?php 
+                if ($admin_values['embbed_prevention'] == 0 && $admin_values['embbed_prevention'] != null) {
+                  echo "checked";
+                }
+                ?>
+                onblur="saveRadioValue('embbed-prevention-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
+            </div>
+          </div>
+          <div class="form-input" id="standalone-prevention-field">
+            <label for="radio-group">
+              Standalone for physical prevention plan? (i.e., exclusively dedicated to physical activity)
+            </label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="standalone-prevention-admin" value="yes" <?php 
+              if ($admin_values['standalone_prevention'] == 1) {
+                echo "checked";
+              }
+              ?>
+              onblur="saveRadioValue('standalone-prevention-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
+              <label for="no">No</label>
+              <input type="radio" id="no" name="standalone-prevention-admin" value="no" <?php 
+              if ($admin_values['standalone_prevention'] == 0 && $admin_values['standalone_prevention'] != null) {
+                echo "checked";
+              }
+              ?>
+              onblur="saveRadioValue('standalone-prevention-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
+            </div>
+          </div>
         </div>
         <div class="contact-field">
           <div class="form-input">
@@ -183,8 +225,8 @@
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="groups">
-            National recommendations
+          <label for="radio-group">
+            National physical activity guidelines
           </label>
           <div class="radio" id="radio-group">
             <label for="yes">Yes</label>

@@ -327,7 +327,7 @@
       <div class="indicators">
         <div class="form-input">
           <label for="objective-measures-admin">
-            Objective measurement to assess physical activity in adults <span class="new">*new*</span> <span onclick="showModalInfo('objective-measures')"><i
+          The country has collected national/subnational physical activity data using objective measures <span class="new">*new*</span> <span onclick="showModalInfo('objective-measures')"><i
                 class="fa fa-question-circle-o"></i></span>
           </label>
           <div class="radio" id="objective-measures-admin">
@@ -350,16 +350,26 @@
               }?>
               onblur="saveRadioValue('objective-measures-admin',  '<?php echo $id ?>', 'national_surveillance_values_admin')">
           </div>
-          <label for="reference">Reference</label>
-          <input type="text" name="reference" id="objective-measures-reference-admin" <?php 
+          <label for="devices-used">Devices that were used (Name)</label>
+          <input type="text" name="devices-used" id="devices-used-admin" <?php 
               if($_SESSION['userType'] != "admin"){
                 echo "disabled";
               }
-              if($admin_values['objective_measures_reference'] != null){
-                echo "value=" . $admin_values['objective_measures_reference'];
+              if($admin_values['devices_used'] != null){
+                echo "value=" . $admin_values['devices_used'];
               }
           ?>
-            onblur="saveValueByAdmin('objective-measures-reference', '<?php echo $id ?>', 'national_surveillance_values_admin')">
+            onblur="saveValueByAdmin('devices-used', '<?php echo $id ?>', 'national_surveillance_values_admin')">
+          <label for="estimates" class="mt-10">Objectively measured physical activity prevalence estimates (minutes)</label>
+          <input type="number" name="estimates" id="estimates-admin" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled";
+              }
+              if($admin_values['estimates'] != null){
+                echo "value=" . $admin_values['estimates'];
+              }
+          ?>
+            onblur="saveValueByAdmin('estimates', '<?php echo $id ?>', 'national_surveillance_values_admin')">
         </div>
         <div class="contact-field">
           <div class="form-input">
@@ -383,7 +393,7 @@
           <div class="contact-input" id="objective-measures-indicator">
             <div class="form-input">
               <label for="objective-measures">
-                Objective measurement to assess physical activity in adults <span class="new">*new*</span>
+                The country has collected national/subnational physical activity data using objective measures <span class="new">*new*</span>
               </label>
               <div class="radio" id="objetctive-measures">
                 <label for="yes">Yes</label>
@@ -405,22 +415,118 @@
                   }?>
                   onblur="saveRadioValue('objective-measures',  '<?php echo $id ?>', 'national_surveillance_values_contact')">
               </div>
-              <label for="reference">Reference</label>
-              <input type="text" name="reference" id="objective-measures-reference" <?php 
+              <label for="devices-used">Devices that were used (Name)</label>
+              <input type="text" name="devices-used" id="devices-used" <?php 
                   if($_SESSION['userType'] == "admin"){
                     echo "disabled";
                   }
-                  if($contact_values['objective_measures_reference'] != null){
-                    echo "value=" . $contact_values['objective_measures_reference'];
+                  if($contact_values['devices_used'] != null){
+                    echo "value=" . $contact_values['devices_used'];
                   }
               ?>
-                onblur="saveValueByContact('objective-measures-reference', '<?php echo $id ?>', 'national_surveillance_values_contact')">
+                onblur="saveValueByContact('devices-used', '<?php echo $id ?>', 'national_surveillance_values_contact')">
+              <label for="estimates" class="mt-10">Objectively measured physical activity prevalence estimates (minutes)</label>
+              <input type="number" name="estimates" id="estimates" <?php 
+                  if($_SESSION['userType'] == "admin"){
+                    echo "disabled";
+                  }
+                  if($contact_values['estimates'] != null){
+                    echo "value=" . $contact_values['estimates'];
+                  }
+              ?>
+                onblur="saveValueByContact('estimates', '<?php echo $id ?>', 'national_surveillance_values_contact')">
             </div>
             <textarea placeholder="Add a comment..." name="comments" id="objective-measures-comments" cols="30" rows="5"
               class="comment"
               onblur="saveComment('objective-measures', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['objective_measures'] != null) {
                 echo $comments['objective_measures'];
               }?></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="indicators">
+        <div class="form-input">
+          <label for="national-surveys-admin">
+            Quantifiable national targets (e.g., to increase the prevalence 15 of meeting physical activity guidelines by 15% by 2030) for physical activity
+          </label>
+          <div class="radio" id="quantifiable-targets-admin">
+            <label for="yes">Yes</label>
+            <input type="radio" id="yes-admin" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if ($admin_values['quantifiable_targets'] == 1) {
+                echo "checked";
+              }
+            ?> name="quantifiable-targets-admin"
+              onblur="saveRadioValue('quantifiable-targets-admin',  '<?php echo $id ?>', 'national_surveillance_values_admin')"
+              value="yes">
+            <label for="no">No</label>
+            <input type="radio" id="no-admin" <?php 
+              if ($admin_values['quantifiable_targets'] == 0 && $admin_values['quantifiable_targets'] != null) {
+                echo "checked ";
+              }
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled";
+              }
+            ?> name="quantifiable-targets-admin"
+              onblur="saveRadioValue('quantifiable-targets-admin',  '<?php echo $id ?>', 'national_surveillance_values_admin')"
+              value="no">
+          </div>
+        </div>
+        <div class="contact-field">
+          <div class="form-input">
+            <label for="radio-group">Agreement</label>
+            <div class="radio" id="radio-group">
+              <label for="yes">Yes</label>
+              <input type="radio" id="yes" name="agreement-6" value="yes" onclick="hideInput('agreement-6','quantifiable-targets', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              } 
+              if($agreement_values['quantifiable_targets'] == 1){
+                echo "checked";
+              }?>>
+              <label for="no">No</label>
+              <input type="radio" id="no" name="agreement-6" value="no" onclick="showInput('agreement-6','quantifiable-targets', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }if($agreement_values['quantifiable_targets'] == 0 && $agreement_values['quantifiable_targets'] != null){
+                echo "checked";
+              }?>>
+            </div>
+          </div>
+          <div class="contact-input" id="quantifiable-targets-indicator">
+            <div class="form-input">
+              <label for="quantifiable-targets">
+                National survey(s) including physical activity questions
+              </label>
+              <div class="radio" id="quantifiable-targets">
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" <?php 
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                }
+                if ($contact_values['quantifiable_targets'] == 1) {
+                  echo "checked";
+                }
+                ?> name="quantifiable-targets" value="yes"
+                onblur="saveRadioValue('quantifiable-targets',  '<?php echo $id ?>', 'national_surveillance_values_contact')">
+                <label for="no">No</label>
+                <input type="radio" id="no" <?php 
+                if ($contact_values['quantifiable_targets'] == 0 && $contact_values['quantifiable_targets'] != null) {
+                  echo "checked ";
+                }
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled";
+                }
+                ?> name="quantifiable-targets" value="no"
+                onblur="saveRadioValue('quantifiable-targets',  '<?php echo $id ?>', 'national_surveillance_values_contact')">
+              </div>
+            </div>
+            <textarea placeholder="Add a comment..." name="comments" id="quantifiable-targets-comments" cols="30" rows="5"
+            class="comment"
+            onblur="saveComment('quantifiable-targets', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['quantifiable_targets'] != null) {
+              echo $comments['quantifiable_targets'];
+            }?></textarea>
           </div>
         </div>
       </div>
