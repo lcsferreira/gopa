@@ -54,7 +54,9 @@ let table = pageSplit[0];
 $(document).ready(function () {
   closeModalInfo();
   checkValues();
+  checkEmbbedAndStandaloneInputsAdmin();
   checkEmbbedAndStandaloneInputs();
+  checkEmbbedAndStandaloneInputsOnBlurAdmin();
   checkEmbbedAndStandaloneInputsOnBlur();
 });
 
@@ -79,14 +81,30 @@ window.onunload = function () {
   closeModalInfo();
 };
 
-function checkEmbbedAndStandaloneInputsOnBlur() {
+function checkEmbbedAndStandaloneInputsOnBlurAdmin() {
   $("input[name=national-policy-admin]").on("blur", function () {
+    checkEmbbedAndStandaloneInputsAdmin();
+  });
+}
+
+function checkEmbbedAndStandaloneInputsOnBlur() {
+  $("input[name=national-policy]").on("blur", function () {
     checkEmbbedAndStandaloneInputs();
   });
 }
 
-function checkEmbbedAndStandaloneInputs() {
+function checkEmbbedAndStandaloneInputsAdmin() {
   if ($("input[name=national-policy-admin]:checked").val() == "yes") {
+    $("#embbed-prevention-field-admin").css("display", "flex");
+    $("#standalone-prevention-field-admin").css("display", "flex");
+  } else {
+    $("#embbed-prevention-field-admin").css("display", "none");
+    $("#standalone-prevention-field-admin").css("display", "none");
+  }
+}
+
+function checkEmbbedAndStandaloneInputs() {
+  if ($("input[name=national-policy]:checked").val() == "yes") {
     $("#embbed-prevention-field").css("display", "flex");
     $("#standalone-prevention-field").css("display", "flex");
   } else {

@@ -38,7 +38,7 @@
     }else{
       echo "
       <div>
-        <a href='conlusion.php?id=".$id."' "; if($page == "conlusion"){echo "style='color:#03a9f4'";} echo">Conclusion</a>
+        <a href='conclusion.php?id=".$id."' "; if($page == "conclusion"){echo "style='color:#03a9f4'";} echo">Conclusion</a>
       </div>
       ";
     }

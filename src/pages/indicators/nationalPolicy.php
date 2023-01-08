@@ -82,44 +82,62 @@
           <div class="radio" id="radio-group">
             <label for="yes">Yes</label>
             <input type="radio" id="yes" name="national-policy-admin" value="yes" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
               if ($admin_values['national_policy'] == 1) {
                 echo " checked";
               }
             ?> onblur="saveRadioValue('national-policy-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
             <label for="no">No</label>
             <input type="radio" id="no" name="national-policy-admin" value="no" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
               if ($admin_values['national_policy'] == 0 && $admin_values['national_policy'] != null) {
                 echo " checked";
               }
             ?> onblur="saveRadioValue('national-policy-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
           </div>
           <label for="national-policy-titles-admin">Title(s)</label>
-          <input type="text" name="national-policy-titles" id="national-policy-titles-admin" <?php 
+          <input type="text" name="national-policy-titles" id="national-policy-titles-admin" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if($admin_values['national_policy_titles'] != null){
                 echo "value=" . $admin_values['national_policy_titles'];
               }
           ?> onblur="saveValueByAdmin('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_admin')">
           <label for="reference" class="mt-10">Reference</label>
-          <input type="text" name="reference" id="national-policy-reference-admin" <?php 
+          <input type="text" name="reference" id="national-policy-reference-admin" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if($admin_values['national_policy_reference'] != null){
                 echo "value=" . $admin_values['national_policy_reference'];
               }
           ?>
             onblur="saveValueByAdmin('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_admin')">
-          <div class="form-input" id="embbed-prevention-field">
+          <div class="form-input" id="embbed-prevention-field-admin">
             <label for="radio-group" class="mt-10">
               Embedded in an noncommunicable disease (NCD) for physical prevention plan
             </label>
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="embbed-prevention-admin" value="yes" <?php 
+              <input type="radio" id="yes" name="embbed-prevention-admin" value="yes" <?php
+                if($_SESSION['userType'] != "admin"){
+                  echo "disabled ";
+                }
                 if ($admin_values['embbed_prevention'] == 1) {
                   echo "checked";
                 }
                 ?>
                 onblur="saveRadioValue('embbed-prevention-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
               <label for="no">No</label>
-              <input type="radio" id="no" name="embbed-prevention-admin" value="no" <?php 
+              <input type="radio" id="no" name="embbed-prevention-admin" value="no" <?php
+                if($_SESSION['userType'] != "admin"){
+                  echo "disabled ";
+                }
                 if ($admin_values['embbed_prevention'] == 0 && $admin_values['embbed_prevention'] != null) {
                   echo "checked";
                 }
@@ -127,13 +145,16 @@
                 onblur="saveRadioValue('embbed-prevention-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
             </div>
           </div>
-          <div class="form-input" id="standalone-prevention-field">
+          <div class="form-input" id="standalone-prevention-field-admin">
             <label for="radio-group">
               Standalone for physical prevention plan? (i.e., exclusively dedicated to physical activity)
             </label>
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="standalone-prevention-admin" value="yes" <?php 
+              <input type="radio" id="yes" name="standalone-prevention-admin" value="yes" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if ($admin_values['standalone_prevention'] == 1) {
                 echo "checked";
               }
@@ -141,6 +162,9 @@
               onblur="saveRadioValue('standalone-prevention-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
               <label for="no">No</label>
               <input type="radio" id="no" name="standalone-prevention-admin" value="no" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
               if ($admin_values['standalone_prevention'] == 0 && $admin_values['standalone_prevention'] != null) {
                 echo "checked";
               }
@@ -213,6 +237,48 @@
                 }
             ?>
               onblur="saveValueByContact('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_contact')">
+            <div class="form-input" id="embbed-prevention-field">
+              <label for="radio-group" class="mt-10">
+                Embedded in an noncommunicable disease (NCD) for physical prevention plan
+              </label>
+              <div class="radio" id="radio-group">
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" name="embbed-prevention" value="yes" <?php 
+                  if ($contact_values['embbed_prevention'] == 1) {
+                    echo "checked";
+                  }
+                  ?>
+                  onblur="saveRadioValue('embbed-prevention',  '<?php echo $id ?>', 'national_policy_values_admin')">
+                <label for="no">No</label>
+                <input type="radio" id="no" name="embbed-prevention" value="no" <?php 
+                  if ($contact_values['embbed_prevention'] == 0 && $contact_values['embbed_prevention'] != null) {
+                    echo "checked";
+                  }
+                  ?>
+                  onblur="saveRadioValue('embbed-prevention',  '<?php echo $id ?>', 'national_policy_values_admin')">
+              </div>
+            </div>
+            <div class="form-input" id="standalone-prevention-field">
+              <label for="radio-group">
+                Standalone for physical prevention plan? (i.e., exclusively dedicated to physical activity)
+              </label>
+              <div class="radio" id="radio-group">
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" name="standalone-prevention" value="yes" <?php 
+                if ($contact_values['standalone_prevention'] == 1) {
+                  echo "checked";
+                }
+                ?>
+                onblur="saveRadioValue('standalone-prevention',  '<?php echo $id ?>', 'national_policy_values_admin')">
+                <label for="no">No</label>
+                <input type="radio" id="no" name="standalone-prevention" value="no" <?php 
+                if ($contact_values['standalone_prevention'] == 0 && $contact_values['standalone_prevention'] != null) {
+                  echo "checked";
+                }
+                ?>
+                onblur="saveRadioValue('standalone-prevention',  '<?php echo $id ?>', 'national_policy_values_admin')">
+              </div>
+            </div>
           </div>
           <!-- <label for="national-policy-comments" class="label-textarea">Comments: </label> -->
           <textarea placeholder="Add a comment..." name="comments" id="national-policy-comments" cols="30" rows="5"
@@ -232,13 +298,19 @@
           <div class="radio" id="radio-group">
             <label for="yes">Yes</label>
             <input type="radio" id="yes" name="national-recommendations-admin" value="yes" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
               if ($admin_values['national_recommendations'] == 1) {
                 echo "checked";
               }
             ?>
               onblur="saveRadioValue('national-recommendations-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
             <label for="no">No</label>
-            <input type="radio" id="no" name="national-recommendations-admin" value="no" <?php 
+            <input type="radio" id="no" name="national-recommendations-admin" value="no" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+            } 
               if ($admin_values['national_recommendations'] == 0 && $admin_values['national_recommendations'] != null) {
                 echo "checked";
               }
@@ -246,7 +318,10 @@
               onblur="saveRadioValue('national-recommendations-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
           </div>
           <label for="national-recommendation-reference-admin">Reference</label>
-          <input type="text" name="reference" id="national-recommendation-reference-admin" <?php 
+          <input type="text" name="reference" id="national-recommendation-reference-admin" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if($admin_values['national_recommendations_reference'] != null){
                 echo "value=" . $admin_values['national_recommendations_reference'];
               }
@@ -324,7 +399,10 @@
               policy documents into practice.
             </p>
           </label>
-          <input type="number" name="policy-implementation" id="policy-implementation-admin" <?php 
+          <input type="number" name="policy-implementation" id="policy-implementation-admin" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if($admin_values['policy_implementation'] != null){
                 echo "value=" . $admin_values['policy_implementation'];
               }

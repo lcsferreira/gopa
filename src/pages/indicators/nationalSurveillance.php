@@ -165,7 +165,7 @@
             onblur="saveValueByAdmin('most-recent-year', '<?php echo $id ?>', 'national_surveillance_values_admin')"
             id="most-recent-year-admin" <?php 
               if($_SESSION['userType'] != "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($admin_values['most_recent_year'] != null){
                 echo "value=" . $admin_values['most_recent_year'];
@@ -198,7 +198,7 @@
               onblur="saveValueByContact('most-recent-year', '<?php echo $id ?>', 'national_surveillance_values_contact')"
               name="most-recent-year" id="most-recent-year" <?php 
                 if($_SESSION['userType'] == "admin"){
-                  echo "disabled";
+                  echo "disabled ";
                 }
                 if($contact_values['most_recent_year'] != null){
                   echo "value=" . $contact_values['most_recent_year'];
@@ -220,7 +220,7 @@
             onblur="saveValueByAdmin('next-year', '<?php echo $id ?>', 'national_surveillance_values_admin')"
             id="next-year-admin" <?php 
               if($_SESSION['userType'] != "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($admin_values['next_year'] != null){
                 echo "value=" . $admin_values['next_year'];
@@ -253,7 +253,7 @@
               onblur="saveValueByContact('next-year', '<?php echo $id ?>', 'national_surveillance_values_contact')"
               id="next-year" <?php 
                 if($_SESSION['userType'] == "admin"){
-                  echo "disabled";
+                  echo "disabled ";
                 }
                 if($contact_values['next_year'] != null){
                   echo "value=" . $contact_values['next_year'];
@@ -353,7 +353,7 @@
           <label for="devices-used">Devices that were used (Name)</label>
           <input type="text" name="devices-used" id="devices-used-admin" <?php 
               if($_SESSION['userType'] != "admin"){
-                echo "disabled";
+                echo "disabled ";
               }
               if($admin_values['devices_used'] != null){
                 echo "value=" . $admin_values['devices_used'];

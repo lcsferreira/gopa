@@ -59,19 +59,28 @@
           </label>
           <div class="radio" id="radio-group">
             <label for="green">Green</label>
-            <input type="radio" id="green" name="research" value="green" <?php 
+            <input type="radio" id="green" name="research" value="green" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if ($admin_values['research'] == "green") {
                 echo "checked";
               }
             ?> onblur="saveRadioValue2('research',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="yellow">Yellow</label>
-            <input type="radio" id="yellow" name="research" value="yellow" <?php 
+            <input type="radio" id="yellow" name="research" value="yellow" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if ($admin_values['research'] == "yellow") {
                 echo "checked";
               }
             ?> onblur="saveRadioValue2('research',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="red">Red</label>
-            <input type="radio" id="red" name="research" value="red" <?php 
+            <input type="radio" id="red" name="research" value="red" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if ($admin_values['research'] == "red") {
                 echo "checked";
               }
@@ -115,31 +124,46 @@
           </label>
           <div class="radio" id="radio-group">
             <label for="green">Green</label>
-            <input type="radio" id="green" name="policy" value="green" <?php 
+            <input type="radio" id="green" name="policy" value="green" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if ($admin_values['policy'] == "green") {
                 echo "checked";
               }
             ?> onblur="saveRadioValue2('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="yellow">Yellow</label>
             <input type="radio" id="yellow" name="policy" value="yellow" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
               if ($admin_values['policy'] == "yellow") {
                 echo "checked";
               }
             ?> onblur="saveRadioValue2('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="red">Red</label>
-            <input type="radio" id="red" name="policy" value="red" <?php 
+            <input type="radio" id="red" name="policy" value="red" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if ($admin_values['policy'] == "red") {
                 echo "checked";
               }
             ?> onblur="saveRadioValue2('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="availability">Availability</label>
-            <input type="radio" id="availability" name="policy" value="availability" <?php 
+            <input type="radio" id="availability" name="policy" value="availability" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if ($admin_values['policy'] == "availability") {
                 echo "checked";
               }
             ?> onblur="saveRadioValue2('policy',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="implementation">Implementation</label>
-            <input type="radio" id="implementation" name="policy" value="implementation" <?php 
+            <input type="radio" id="implementation" name="policy" value="implementation" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if ($admin_values['policy'] == "implementation") {
                 echo "checked";
               }
@@ -183,19 +207,28 @@
           </label>
           <div class="radio" id="radio-group">
             <label for="green">Green</label>
-            <input type="radio" id="green" name="surveillance" value="green" <?php 
+            <input type="radio" id="green" name="surveillance" value="green" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if ($admin_values['surveillance'] == "green") {
                 echo "checked";
               }
             ?> onblur="saveRadioValue2('surveillance',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="yellow">Yellow</label>
-            <input type="radio" id="yellow" name="surveillance" value="yellow" <?php 
+            <input type="radio" id="yellow" name="surveillance" value="yellow" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if ($admin_values['surveillance'] == "yellow") {
                 echo "checked";
               }
             ?> onblur="saveRadioValue2('surveillance',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
             <label for="red">Red</label>
-            <input type="radio" id="red" name="surveillance" value="red" <?php 
+            <input type="radio" id="red" name="surveillance" value="red" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              } 
               if ($admin_values['surveillance'] == "red") {
                 echo "checked";
               }
