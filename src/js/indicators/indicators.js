@@ -84,13 +84,13 @@ window.onunload = function () {
 };
 
 function checkEmbbedAndStandaloneInputsOnBlurAdmin() {
-  $("input[name=national-policy-admin]").on("blur", function () {
+  $("input[name=national-policy-admin]").on("click", function () {
     checkEmbbedAndStandaloneInputsAdmin();
   });
 }
 
 function checkEmbbedAndStandaloneInputsOnBlur() {
-  $("input[name=national-policy]").on("blur", function () {
+  $("input[name=national-policy]").on("click", function () {
     checkEmbbedAndStandaloneInputs();
   });
 }
