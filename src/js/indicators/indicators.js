@@ -54,6 +54,7 @@ let table = pageSplit[0];
 $(document).ready(function () {
   closeModalInfo();
   checkValues();
+  // testInput();
   checkEmbbedAndStandaloneInputsAdmin();
   checkEmbbedAndStandaloneInputs();
   checkEmbbedAndStandaloneInputsOnBlurAdmin();
@@ -64,12 +65,13 @@ function checkValues() {
   agreementInputs[table].forEach(function (input, index) {
     //sum the index ++ at the string;
     index++;
-    if ($("input[name=agreement-" + index + "]:checked").val() == "no") {
+    if ($("input[name=agreement-" + index + "]:checked").val() == "no-edit") {
       // console.log("no" + input + index);
       $("#" + input + "-indicator").css("display", "flex");
     } else if (
       $("input[name=agreement-" + index + "]:checked").val() == "yes" ||
-      $("input[name=agreement-" + index + "]:checked").val() == undefined
+      $("input[name=agreement-" + index + "]:checked").val() == undefined ||
+      $("input[name=agreement-" + index + "]:checked").val() == "no"
     ) {
       $("#" + input + "-indicator").css("display", "none");
       // console.log("yes" + input + index);
@@ -118,7 +120,7 @@ function saveValueByAdmin(indicator, id, table) {
 }
 
 function saveValueByContact(indicator, id, table) {
-  postValue(indicator, $("#" + indicator).val(), id, table);
+  postValue(indicator, $("input[name=" + indicator + "]").val(), id, table);
 }
 
 function saveComment(indicator, id, table) {
@@ -165,16 +167,21 @@ function saveRadioValue2(indicator, id, table) {
 }
 
 function showInput(agreement, input, id, table) {
-  if ($("input[name=" + agreement + "]:checked").val() == "no") {
+  input = input.replaceAll("_", "-");
+  if ($("input[name=" + agreement + "]:checked").val() == "no-edit") {
     $("#" + input + "-indicator").css("display", "flex");
-    postValue(input, 0, id, table + "_agreement");
+    postValue(input, 2, id, table + "_agreement");
   }
 }
 
 function hideInput(agreement, input, id, table) {
+  input = input.replaceAll("_", "-");
   if ($("input[name=" + agreement + "]:checked").val() == "yes") {
     $("#" + input + "-indicator").css("display", "none");
     postValue(input, 1, id, table + "_agreement");
+  } else if ($("input[name=" + agreement + "]:checked").val() == "no") {
+    $("#" + input + "-indicator").css("display", "none");
+    postValue(input, 0, id, table + "_agreement");
   }
 }
 

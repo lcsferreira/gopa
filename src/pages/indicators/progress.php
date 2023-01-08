@@ -47,7 +47,7 @@
     $row = mysqli_fetch_assoc($result);
     //for each row except id, check if the value is not null or zero
     foreach($row as $key => $value){
-      if($key != "id" && $value != null && $value != 0){
+      if($key != "id" && $value == 1){
         $indicators_progress[$index] ++;
       }
     }

@@ -54,27 +54,12 @@
     ?>
     <div class="title">
       <h1>Demographic Indicators <span><i class="fa fa-question-circle-o"></i></span></h1>
-      <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a
-        file to help with new information, to this drive: https:/drive.com/(CountryName)</p>
-    </div>
-    <div class="input-labels">
-      <div>
-        <p>Chek if you agree with the information on the left side. If don't, write the adjusted or most current value
-          suggested</p>
-      </div>
-      <div>
-        <p>
-          If any adjustment, please indicate year of information.
-        </p>
-        <p>
-          Please provide additional comments here.
-        </p>
-      </div>
+      <p>Review the indicators on the left side and check the best option about it.</p>
     </div>
     <form>
       <div class="indicators">
         <div class="form-input">
-          <label for="country">Country <span onclick="showModalInfo('country')"><i
+          <label for="country-admin">Country <span onclick="showModalInfo('country')"><i
                 class="fa fa-question-circle-o"></i></span></label>
           <input type="text" <?php
               if($_SESSION['userType'] != "admin"){
@@ -83,51 +68,34 @@
               if($admin_values['country'] != null){
                 echo "value=" . $admin_values['country'];
               }
-            ?> name="country" id="country-admin"
+            ?> name="country-admin" id="country-admin"
             onblur="saveValueByAdmin('country', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','country', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['country'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','country', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['country'] == 0 && $agreement_values['country'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 1;
+            $indicator_name = "country";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="country-indicator">
-            <div class="form-input" id="country">
-              <label for="country">Country</label>
-              <input type="text" <?php
-              if($contact_values['country'] != null){
-                echo "value=" . $contact_values['country'];
-              }
-            ?> name="country" id="country"
-                onblur="saveValueByContact('country', '<?php echo $id ?>', 'demographic_values_contact')">
-            </div>
-            <!-- <label for="country-comments" class="label-textarea">Comments: </label> -->
-            <textarea placeholder="Add a comment..." name="comments" id="country-comments" cols="30" rows="5"
-              class="comment" onblur="saveComment('country', '<?php echo $id ?>', 'demographic_comments')"><?php
-              if($comments['country'] != null){
-                echo $comments['country'];
-              }
-              ?></textarea>
+            <?php
+              $indicator_title = "Country";
+              $indicator_name = "country";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "country";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="capital">Capital <span onclick="showModalInfo('capital')"><i
+          <label for="capital-admin">Capital <span onclick="showModalInfo('capital')"><i
                 class="fa fa-question-circle-o"></i></span></label>
           <input type="text" <?php
               if($_SESSION['userType'] != "admin"){
@@ -136,58 +104,34 @@
               if($admin_values['capital'] != null){
                 echo "value=" . $admin_values['capital'];
               }
-            ?> name="capital" id="capital-admin"
+            ?> name="capital-admin" id="capital-admin"
             onblur="saveValueByAdmin('capital', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','capital', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['capital'] == 1){
-                echo "checked";
-              }
-              ?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','capital', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['capital'] == 0 && $agreement_values['capital'] != null){
-                echo "checked";
-              }
-              ?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 2;
+            $indicator_name = "capital";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="capital-indicator">
-            <div class="form-input">
-              <label for="capital">Capital</label>
-              <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['capital'] != null){
-                echo "value=" . $contact_values['capital'];
-              } 
-              ?> name="capital" id="capital"
-                onblur="saveValueByContact('capital', '<?php echo $id ?>', 'demographic_values_contact')">
-            </div>
-            <!-- <label for="capital-comments" class="label-textarea">Comments: </label> -->
-            <textarea placeholder="Add a comment..."
-              onblur="saveComment('capital', '<?php echo $id ?>', 'demographic_comments')" name="comments"
-              id="capital-comments" cols="30" rows="5" class="comment"><?php
-                if($comments['capital'] != null){
-                  echo $comments['capital'];
-                }
-                ?></textarea>
+          <?php
+              $indicator_title = "Capital";
+              $indicator_name = "capital";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "capital";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="total-population">Total population (number of people) <span
+          <label for="total-population-admin">Total population (number of people) <span
               onclick="showModalInfo('total-population')"><i class="fa fa-question-circle-o"></i></span>
             <p>Inhabits of the country</p>
           </label>
@@ -198,57 +142,34 @@
               if($admin_values['total_population'] != null){
                 echo "value=" . $admin_values['total_population'];
               }
-            ?> name="total-population" id="total-population-admin"
+            ?> name="total-population-admin" id="total-population-admin"
             onblur="saveValueByAdmin('total-population', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-3" value="yes"
-                onclick="hideInput('agreement-3','total-population', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['total_population'] == 1){
-                echo "checked";
-              }
-              ?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-3" value="no"
-                onclick="showInput('agreement-3','total-population', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['total_population'] == 0 && $agreement_values['total_population'] != null){
-                echo "checked";
-              }
-              ?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 3;
+            $indicator_name = "total_population";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="total-population-indicator">
-            <div class="form-input">
-              <label for="total-population">Total population (number of people)</label>
-              <input type="number" <?php
-              if($contact_values['total_population'] != null){
-                echo "value=" . $contact_values['total_population'];
-              } 
-            ?> name="total-population" id="total-population"
-                onblur="saveValueByContact('total-population', '<?php echo $id ?>', 'demographic_values_contact')">
-            </div>
-            <!-- <label for="total-population-comments" class="label-textarea">Comments: </label> -->
-            <textarea placeholder="Add a comment..."
-              onblur="saveComment('total-population', '<?php echo $id ?>', 'demographic_comments')" name="comments"
-              id="total-population-comments" cols="30" rows="5" class="comment"><?php
-            if($comments['total_population'] != null){
-              echo $comments['total_population'];
-            }
-            ?></textarea>
+            <?php
+              $indicator_title = "Total population (number of people)";
+              $indicator_name = "total_population";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "total_population";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="urban-population">Urban population (%) <span onclick="showModalInfo('urban-population')"><i
+          <label for="urban-population-admin">Urban population (%) <span onclick="showModalInfo('urban-population')"><i
                 class="fa fa-question-circle-o"></i></span>
             <p>Percentage (%) of the total population living in urban areas</p>
           </label>
@@ -259,60 +180,34 @@
               if($admin_values['urban_population'] != null){
                 echo "value=" . $admin_values['urban_population'];
               }
-            ?> name="urban-population" id="urban-population-admin"
+            ?> name="urban-population-admin" id="urban-population-admin"
             onblur="saveValueByAdmin('urban-population', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-4" value="yes"
-                onclick="hideInput('agreement-4','urban-population', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['urban_population'] == 1){
-                echo "checked";
-              }
-              ?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-4" value="no"
-                onclick="showInput('agreement-4','urban-population', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['urban_population'] == 0 && $agreement_values['urban_population'] != null){
-                echo "checked";
-              }
-              ?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 4;
+            $indicator_name = "urban_population";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="urban-population-indicator">
-            <div class="form-input">
-              <label for="urban-population">Urban population (%)</label>
-              <input type="number" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['urban_population'] != null){
-                echo "value=" . $contact_values['urban_population'];
-              } 
-              ?> name="urban-population" id="urban-population"
-                onblur="saveValueByContact('urban-population', '<?php echo $id ?>', 'demographic_values_contact')">
-            </div>
-            <!-- <label for="urban-population-comments" class="label-textarea">Comments: </label> -->
-            <textarea placeholder="Add a comment..."
-              onblur="saveComment('urban-population', '<?php echo $id ?>', 'demographic_comments')" name="comments"
-              id="urban-population-comments" cols="30" rows="5" class="comment"><?php
-            if($comments['urban_population'] != null){
-              echo $comments['urban_population'];
-            }
-            ?></textarea>
+          <?php
+              $indicator_title = "Urban population (%)";
+              $indicator_name = "urban_population";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "urban_population";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="life-expentacy">Life expentacy (years) <span onclick="showModalInfo('life-expentacy')"><i
+          <label for="life-expentacy-admin">Life expentacy (years) <span onclick="showModalInfo('life-expentacy')"><i
                 class="fa fa-question-circle-o"></i></span>
             <p>Average age that a person of the population is expected to live</p>
           </label>
@@ -323,60 +218,34 @@
               if($admin_values['life_expentacy'] != null){
                 echo "value=" . $admin_values['life_expentacy'];
               }
-            ?> name="life-expentacy" id="life-expentacy-admin"
+            ?> name="life-expentacy-admin" id="life-expentacy-admin"
             onblur="saveValueByAdmin('life-expentacy', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-5" value="yes"
-                onclick="hideInput('agreement-5','life-expentacy', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['life_expentacy'] == 1){
-                echo "checked";
-              }
-              ?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-5" value="no"
-                onclick="showInput('agreement-5','life-expentacy', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['life_expentacy'] == 0 && $agreement_values['life_expentacy'] != null){
-                echo "checked";
-              }
-              ?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 5;
+            $indicator_name = "life_expentacy";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="life-expentacy-indicator">
-            <div class="form-input">
-              <label for="life-expentacy">Life expentacy (years)</label>
-              <input type="number" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['life_expentacy'] != null){
-                echo "value=" . $contact_values['life_expentacy'];
-              } 
-            ?> name="life-expentacy" id="life-expentacy"
-                onblur="saveValueByContact('life-expentacy', '<?php echo $id ?>', 'demographic_values_contact')">
-            </div>
-            <!-- <label for="life-expentacy-comments" class="label-textarea">Comments: </label> -->
-            <textarea placeholder="Add a comment..."
-              onblur="saveComment('life_expentacy', '<?php echo $id ?>', 'demographic_comments')" name="comments"
-              id="life-expentacy-comments" cols="30" rows="5" class="comment"><?php
-            if($comments['life_expentacy'] != null){
-              echo $comments['life_expentacy'];
-            }
-            ?></textarea>
+          <?php
+              $indicator_title = "Life expentacy (years)";
+              $indicator_name = "life_expentacy";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "life_expentacy";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="gini-index">Gini inequality index (number between 0 and 1) <span onclick="showModalInfo('gini-index')"><i
+          <label for="gini-index-admin">Gini inequality index (number between 0 and 1) <span onclick="showModalInfo('gini-index')"><i
                 class="fa fa-question-circle-o"></i></span>
             <p>Measure of income inequality that summarizes the dispersion of income across the entire income
               distribution.
@@ -390,60 +259,34 @@
               if($admin_values['gini_index'] != null){
                 echo "value=" . $admin_values['gini_index'];
               }
-            ?> name="gini-index" id="gini-index-admin"
+            ?> name="gini-index-admin" id="gini-index-admin"
             onblur="saveValueByAdmin('gini-index', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-6" value="yes"
-                onclick="hideInput('agreement-6','gini-index', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['gini_index'] == 1){
-                echo "checked";
-              }
-              ?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-6" value="no"
-                onclick="showInput('agreement-6','gini-index', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['gini_index'] == 0 && $agreement_values['gini_index'] != null){
-                echo "checked";
-              }
-              ?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 6;
+            $indicator_name = "gini_index";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="gini-index-indicator">
-            <div class="form-input">
-              <label for="gini-index">Gini inequality index (number between 0 and 1)</label>
-              <input type="number" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['gini_index'] != null){
-                echo "value=" . $contact_values['gini_index'];
-              } 
-              ?> name="gini-index" id="gini-index"
-            onblur="saveValueByContact('gini-index', '<?php echo $id ?>', 'demographic_values_contact')">
-            </div>
-            <!-- <label for="gini-index-comments" class="label-textarea">Comments: </label> -->
-            <textarea placeholder="Add a comment..."
-            onblur="saveComment('gini-index', '<?php echo $id ?>', 'demographic_comments')" name="comments"
-            id="gini-index-comments" cols="30" rows="5" class="comment"><?php
-              if($comments['gini_index'] != null){
-                echo $comments['gini_index'];
-              }
-            ?></textarea>
+            <?php
+              $indicator_title = "Gini inequality index (number between 0 and 1)";
+              $indicator_name = "gini_index";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "gini_index";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
           </div>  
         </div>
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="human-index">Human development index (number between 0 and 1) <span onclick="showModalInfo('human-index')"><i
+          <label for="human-index-admin">Human development index (number between 0 and 1) <span onclick="showModalInfo('human-index')"><i
                 class="fa fa-question-circle-o"></i></span>
             <p>Summary measure of average achievement in key dimensions of human development: a long and healthy life,
               being knowledgeable and have a decent standard of living</p>
@@ -455,60 +298,34 @@
               if($admin_values['human_index'] != null){
                 echo "value=" . $admin_values['human_index'];
               }
-            ?> name="human-index" id="human-index-admin"
+            ?> name="human-index-admin" id="human-index-admin"
             onblur="saveValueByAdmin('human-index', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-7" value="yes"
-                onclick="hideInput('agreement-7','human-index', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['human_index'] == 1){
-                echo "checked";
-              }
-              ?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-7" value="no"
-                onclick="showInput('agreement-7','human-index', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['human_index'] == 0 && $agreement_values['human_index'] != null){
-                echo "checked";
-              }
-              ?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 7;
+            $indicator_name = "human_index";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="human-index-indicator">
-            <div class="form-input">
-              <label for="human-index">Human development index (number between 0 and 1)</label>
-              <input type="number" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['human_index'] != null){
-                echo "value=" . $contact_values['human_index'];
-              } 
-              ?> name="human-index" id="human-index"
-              onblur="saveValueByContact('human-index', '<?php echo $id ?>', 'demographic_values_contact')">
-            </div>
-            <!-- <label for="human-index-comments" class="label-textarea">Comments: </label> -->
-            <textarea placeholder="Add a comment..."
-              onblur="saveComment('human-index', '<?php echo $id ?>', 'demographic_comments')" name="comments"
-              id="human-index-comments" cols="30" rows="5" class="comment"><?php
-                if($comments['human_index'] != null){
-                  echo $comments['human_index'];
-                }
-                ?></textarea>
+            <?php
+              $indicator_title = "Human development index (number between 0 and 1)";
+              $indicator_name = "human_index";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "human_index";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="literacy-rate">Literacy rate (%) <span onclick="showModalInfo('literacy-rate')"><i
+          <label for="literacy-rate-admin">Literacy rate (%) <span onclick="showModalInfo('literacy-rate')"><i
                 class="fa fa-question-circle-o"></i></span>
             <p>Percentage (%) of adults aged 15 and older who can both read and write</p>
           </label>
@@ -519,60 +336,34 @@
               if($admin_values['literacy_rate'] != null){
                 echo "value=" . $admin_values['literacy_rate'];
               }
-            ?> name="literacy-rate" id="literacy-rate-admin"
+            ?> name="literacy-rate-admin" id="literacy-rate-admin"
             onblur="saveValueByAdmin('literacy-rate', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-8" value="yes"
-                onclick="hideInput('agreement-8','literacy-rate', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['literacy_rate'] == 1){
-                echo "checked";
-              }
-              ?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-8" value="no"
-                onclick="showInput('agreement-8','literacy-rate', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['literacy_rate'] == 0 && $agreement_values['literacy_rate'] != null){
-                echo "checked";
-              }
-              ?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 8;
+            $indicator_name = "literacy_rate";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="literacy-rate-indicator">
-            <div class="form-input">
-              <label for="literacy-rate">Literacy rate (%)</label>
-              <input type="number" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['literacy_rate'] != null){
-                echo "value=" . $contact_values['literacy_rate'];
-              } 
-              ?> name="literacy-rate" id="literacy-rate"
-            onblur="saveValueByContact('literacy-rate', '<?php echo $id ?>', 'demographic_values_contact')">
-            </div>
-            <!-- <label for="literacy-rate-comments" class="label-textarea">Comments: </label> -->
-            <textarea placeholder="Add a comment..."
-            onblur="saveComment('literacy-rate', '<?php echo $id ?>', 'demographic_comments')" name="comments"
-            id="literacy-rate-comments" cols="30" rows="5" class="comment"><?php
-              if($comments['literacy_rate'] != null){
-                echo $comments['literacy_rate'];
-              }
-              ?></textarea>
+          <?php
+              $indicator_title = "Literacy rate (%)";
+              $indicator_name = "literacy_rate";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "literacy_rate";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="deaths-diseases">Deaths due to non-communicable diseases (%) <span onclick="showModalInfo('deaths-diseases')"><i
+          <label for="deaths-diseases-admin">Deaths due to non-communicable diseases (%) <span onclick="showModalInfo('deaths-diseases')"><i
                 class="fa fa-question-circle-o"></i></span>
             <p>Percentage (%) of deaths by NCDs (include cancer, diabetes mellitus, cardiovascular diseases, digestive
               diseases, skin diseases, musculoskeletal diseases, and congenital anomalies)
@@ -585,54 +376,28 @@
               if($admin_values['deaths_diseases'] != null){
                 echo "value=" . $admin_values['deaths_diseases'];
               }
-            ?> name="deaths-diseases" id="deaths-diseases-admin"
+            ?> name="deaths-diseases-admin" id="deaths-diseases-admin"
             onblur="saveValueByAdmin('deaths-diseases', '<?php echo $id ?>', 'demographic_values_admin')">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-9" value="yes"
-                onclick="hideInput('agreement-9','deaths-diseases', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['deaths_diseases'] == 1){
-                echo "checked ";
-              }
-              ?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-9" value="no"
-                onclick="showInput('agreement-9','deaths-diseases', '<?php echo $id ?>', 'demographic')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($agreement_values['deaths_diseases'] == 0 && $agreement_values['deaths_diseases'] != null){
-                echo "checked";
-              }
-              ?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 9;
+            $indicator_name = "deaths_diseases";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="deaths-diseases-indicator">
-            <div class="form-input">
-              <label for="deaths-diseases">Deaths due to non-communicable diseases (%)</label>
-              <input type="number" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['deaths_diseases'] != null){
-                echo "value=" . $contact_values['deaths_diseases'];
-              } 
-              ?> name="deaths-diseases" id="deaths-diseases"
-            onblur="saveValueByContact('deaths-diseases', '<?php echo $id ?>', 'demographic_values_contact')">
-            </div>
-            <!-- <label for="deaths-diseases-comments" class="label-textarea">Comments: </label> -->
-            <textarea placeholder="Add a comment..."
-            onblur="saveComment('deaths-diseases', '<?php echo $id ?>', 'demographic_comments')" name="comments"
-            id="deaths-diseases-comments" cols="30" rows="5" class="comment"><?php
-              if($comments['deaths_diseases'] != null){
-                echo $comments['deaths_diseases'];
-              }
-              ?></textarea>
+          <?php
+              $indicator_title = "Deaths due to non-communicable diseases (%)";
+              $indicator_name = "deaths_diseases";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "deaths_diseases";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
