@@ -50,21 +50,7 @@
     ?>
     <div class="title">
       <h1>National Surveillance <span><i class="fa fa-question-circle-o"></i></span></h1>
-      <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a
-        file to help with new information, to this drive: https:/drive.com/(CountryName)</p>
-    </div>
-    <div class="input-labels">
-      <div>
-        <p>Adjusted or most current value suggested</p>
-      </div>
-      <div>
-        <p>
-          If any adjustment, please indicate year of information.
-        </p>
-        <p>
-          Please provide additional comments here.
-        </p>
-      </div>
+      <p>Review the indicators on the left side and check the best option about it.</p>
     </div>
     <form>
       <div class="indicators">
@@ -104,25 +90,14 @@
           </div>
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','national-surveys', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['national_surveys'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','national-surveys', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['national_surveys'] == 0 && $agreement_values['national_surveys'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 1;
+            $indicator_name = "national_surveys";
+            $indicator_table_name = "national_surveillance";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="national-surveys-indicator">
+            <p>Provide the new information here: </p>
             <div class="form-input">
               <label for="national-surveys">
                 National survey(s) including physical activity questions
@@ -150,18 +125,18 @@
                 onblur="saveRadioValue('national-surveys',  '<?php echo $id ?>', 'national_surveillance_values_contact')">
               </div>
             </div>
-            <textarea placeholder="Add a comment..." name="comments" id="national-surveys-comments" cols="30" rows="5"
-            class="comment"
-            onblur="saveComment('national-surveys', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['national_surveys'] != null) {
-              echo $comments['national_surveys'];
-            }?></textarea>
+            <?php
+              $indicator_name = "national_surveys";
+              $indicator_table_name = "national_surveillance";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
       <div class="indicators">
         <div class="form-input">
           <label for="most-recent-year-admin">Most recent (Year)</label>
-          <input type="text" name="most-recent-year"
+          <input type="text" name="most-recent-year-admin"
             onblur="saveValueByAdmin('most-recent-year', '<?php echo $id ?>', 'national_surveillance_values_admin')"
             id="most-recent-year-admin" <?php 
               if($_SESSION['userType'] != "admin"){
@@ -173,25 +148,14 @@
           ?>>
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','most-recent-year', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['most_recent_year'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','most-recent-year', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['most_recent_year'] == 0 && $agreement_values['most_recent_year'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 2;
+            $indicator_name = "most_recent_year";
+            $indicator_table_name = "national_surveillance";
+            include("../../components/agreementInput.php") 
+          ?>
         <div class="contact-input" id="most-recent-year-indicator">
+          <p>Provide the new information here: </p>
           <div class="form-input">
             <label for="most-recent-year">Most recent (Year)</label>
             <input type="text"
@@ -205,18 +169,18 @@
                 }
             ?>>
           </div>
-          <textarea placeholder="Add a comment..." name="most-recent-comments" id="most-recent-comments" cols="30"
-            rows="5" class="comment"
-            onblur="saveComment('most-recent-year', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['most_recent_year'] != null) {
-              echo $comments['most_recent_year'];
-            }?></textarea>
+            <?php
+              $indicator_name = "most_recent_year";
+              $indicator_table_name = "national_surveillance";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
       <div class="indicators">
         <div class="form-input">
           <label for="next-year-admin">Next (Year)</label>
-          <input type="text" name="next-year"
+          <input type="text" name="next-year-admin"
             onblur="saveValueByAdmin('next-year', '<?php echo $id ?>', 'national_surveillance_values_admin')"
             id="next-year-admin" <?php 
               if($_SESSION['userType'] != "admin"){
@@ -228,24 +192,12 @@
           ?>>
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-3" value="yes" onclick="hideInput('agreement-3','next-year', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['next_year'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-3" value="no" onclick="showInput('agreement-3','next-year', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['next_year'] == 0 && $agreement_values['next_year'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 3;
+            $indicator_name = "next_year";
+            $indicator_table_name = "national_surveillance";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="next-year-indicator">
             <div class="form-input">
               <label for="next-year">Next (Year)</label>
@@ -260,10 +212,11 @@
                 }
                 ?>>
               </div>
-              <textarea placeholder="Add a comment..." name="next-year-comments" id="next-year-comments" cols="30" rows="5"
-              class="comment" onblur="saveComment('next-year', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['next_year'] != null) {
-                echo $comments['next_year'];
-              }?></textarea>
+            <?php
+              $indicator_name = "next_year";
+              $indicator_table_name = "national_surveillance";
+              include("../../components/commentInput.php")
+            ?>
             </div>
           </div>
       </div>
@@ -283,24 +236,12 @@
           ?> onblur="saveValueByAdmin('survey-names', '<?php echo $id ?>', 'national_surveillance_values_admin')">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-4" value="yes" onclick="hideInput('agreement-4','survey-names', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['survey_names'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-4" value="no" onclick="showInput('agreement-4','survey-names', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['survey_names'] == 0 && $agreement_values['survey_names'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 4;
+            $indicator_name = "survey_names";
+            $indicator_table_name = "national_surveillance";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="survey-names-indicator">
             <div class="form-input">
               <label for="survey-names">
@@ -317,10 +258,11 @@
                   }
               ?>>
             </div>
-            <textarea placeholder="Add a comment..." name="comments" id="survey-names-comments" cols="30" rows="5"
-              class="comment" onblur="saveComment('survey-names', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['survey_names'] != null) {
-                echo $comments['survey_names'];
-              }?></textarea>
+            <?php
+              $indicator_name = "survey_names";
+              $indicator_table_name = "national_surveillance";
+              include("../../components/commentInput.php")
+            ?>
           </div>    
         </div>
       </div>
@@ -351,7 +293,7 @@
               onblur="saveRadioValue('objective-measures-admin',  '<?php echo $id ?>', 'national_surveillance_values_admin')">
           </div>
           <label for="devices-used">Devices that were used (Name)</label>
-          <input type="text" name="devices-used" id="devices-used-admin" <?php 
+          <input type="text" name="devices-used-admin" id="devices-used-admin" <?php 
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
               }
@@ -361,7 +303,7 @@
           ?>
             onblur="saveValueByAdmin('devices-used', '<?php echo $id ?>', 'national_surveillance_values_admin')">
           <label for="estimates" class="mt-10">Objectively measured physical activity prevalence estimates (minutes)</label>
-          <input type="number" name="estimates" id="estimates-admin" <?php 
+          <input type="number" name="estimates-admin" id="estimates-admin" <?php 
               if($_SESSION['userType'] != "admin"){
                 echo "disabled";
               }
@@ -372,24 +314,12 @@
             onblur="saveValueByAdmin('estimates', '<?php echo $id ?>', 'national_surveillance_values_admin')">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-5" value="yes" onclick="hideInput('agreement-5','objective-measures', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['objective_measures'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-5" value="no" onclick="showInput('agreement-5','objective-measures', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['objective_measures'] == 0 && $agreement_values['objective_measures'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 5;
+            $indicator_name = "objective_measures";
+            $indicator_table_name = "national_surveillance";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="objective-measures-indicator">
             <div class="form-input">
               <label for="objective-measures">
@@ -436,11 +366,11 @@
               ?>
                 onblur="saveValueByContact('estimates', '<?php echo $id ?>', 'national_surveillance_values_contact')">
             </div>
-            <textarea placeholder="Add a comment..." name="comments" id="objective-measures-comments" cols="30" rows="5"
-              class="comment"
-              onblur="saveComment('objective-measures', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['objective_measures'] != null) {
-                echo $comments['objective_measures'];
-              }?></textarea>
+            <?php
+              $indicator_name = "objective_measures";
+              $indicator_table_name = "national_surveillance";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
@@ -476,24 +406,12 @@
           </div>
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-6" value="yes" onclick="hideInput('agreement-6','quantifiable-targets', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['quantifiable_targets'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-6" value="no" onclick="showInput('agreement-6','quantifiable-targets', '<?php echo $id ?>', 'national_surveillance')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['quantifiable_targets'] == 0 && $agreement_values['quantifiable_targets'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 6;
+            $indicator_name = "quantifiable_targets";
+            $indicator_table_name = "national_surveillance";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="quantifiable-targets-indicator">
             <div class="form-input">
               <label for="quantifiable-targets">
@@ -522,11 +440,11 @@
                 onblur="saveRadioValue('quantifiable-targets',  '<?php echo $id ?>', 'national_surveillance_values_contact')">
               </div>
             </div>
-            <textarea placeholder="Add a comment..." name="comments" id="quantifiable-targets-comments" cols="30" rows="5"
-            class="comment"
-            onblur="saveComment('quantifiable-targets', '<?php echo $id ?>', 'national_surveillance_comments')"><?php if ($comments['quantifiable_targets'] != null) {
-              echo $comments['quantifiable_targets'];
-            }?></textarea>
+            <?php
+              $indicator_name = "quantifiable_targets";
+              $indicator_table_name = "national_surveillance";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>

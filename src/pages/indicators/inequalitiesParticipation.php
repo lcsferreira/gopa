@@ -51,21 +51,7 @@
     <div class="title">
       <h1>Inequalities in Physical Activity Participation <span class="new">*new*</span> <span><i
             class="fa fa-question-circle-o"></i></span></h1>
-      <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a
-        file to help with new information, to this drive: https:/drive.com/(CountryName)</p>
-    </div>
-    <div class="input-labels">
-      <div>
-        <p>Adjusted or most current value suggested</p>
-      </div>
-      <div>
-        <p>
-          If any adjustment, please indicate year of information.
-        </p>
-        <p>
-          Please provide additional comments here.
-        </p>
-      </div>
+      <p>Review the indicators on the left side and check the best option about it.</p>
     </div>
     <form>
       <div class="indicators">
@@ -82,7 +68,7 @@
                 if($admin_values['pa_activity_males'] != null){
                   echo "value=" . $admin_values['pa_activity_males'];
                 }
-              ?> onblur="saveValueByAdmin('pa-activity-males', '<?php echo $id ?>', 'inequalities_participation_values_admin')" name="males" id="pa-activity-males-admin">
+              ?> onblur="saveValueByAdmin('pa-activity-males', '<?php echo $id ?>', 'inequalities_participation_values_admin')" name="pa-activity-males-admin" id="pa-activity-males-admin">
             </div>
             <div>
               <label for="females">Females</label>
@@ -93,7 +79,7 @@
                 if($admin_values['pa_activity_females'] != null){
                   echo "value=" . $admin_values['pa_activity_females'];
                 }
-              ?> onblur="saveValueByAdmin('pa-activity-females', '<?php echo $id ?>', 'inequalities_participation_values_admin')" name="females" id="pa-activity-females-admin">
+              ?> onblur="saveValueByAdmin('pa-activity-females', '<?php echo $id ?>', 'inequalities_participation_values_admin')" name="pa-activity-females-admin" id="pa-activity-females-admin">
             </div>
           </div>
           <label for="reference">Reference</label>
@@ -104,29 +90,19 @@
                 if($admin_values['reference'] != null){
                   echo "value=" . $admin_values['reference'];
                 }
-              ?> onblur="saveValueByAdmin('reference', '<?php echo $id ?>', 'inequalities_participation_values_admin')" name="reference" id="reference-admin">
+              ?> onblur="saveValueByAdmin('reference', '<?php echo $id ?>', 'inequalities_participation_values_admin')" name="reference-admin" id="reference-admin">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','pa-activity', '<?php echo $id ?>', 'inequalities_participation')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['pa_activity'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','pa-activity', '<?php echo $id ?>', 'inequalities_participation')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['pa_activity'] == 0 && $agreement_values['pa_activity'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 1;
+            $indicator_name = "pa_activity";
+            $indicator_table_name = "inequalities_participation";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="pa-activity-indicator">
+            <p>Provide the new information here: </p>
             <div class="form-input">
+              <p>Provide the new information here: </p>
               <label for="groups">Physical activity prevalence adults (%)</label>
               <div name="groups" id="groups">
                 <div>
@@ -162,11 +138,11 @@
                 }
                 ?> name="reference" id="reference">
           </div>
-          <textarea placeholder="Add a comment..." name="comments" id="pa-activity-comments" cols="30" rows="5" onblur="saveComment('pa-activity', '<?php echo $id ?>', 'inequalities_participation_comments')" class="comment"><?php
-                  if($comments['pa_activity'] != null){
-                    echo $comments['pa_activity'];
-                  }
-                  ?></textarea>
+          <?php
+            $indicator_name = "pa-activity";
+            $indicator_table_name = "inequalities_participation";
+            include("../../components/commentInput.php")
+          ?>
           </div>
         </div>
       </div>

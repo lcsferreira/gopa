@@ -47,8 +47,7 @@
     ?>
     <div class="title">
       <h1>Physical Activity Promotion capacity pyramid <span><i class="fa fa-question-circle-o"></i></span></h1>
-      <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a
-        file to help with new information, to this drive: https:/drive.com/(CountryName)</p>
+      <p>Review the indicators on the left side and check the best option about it.</p>
     </div>
     <form>
       <div class="indicators">
@@ -88,31 +87,18 @@
           </div>
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','research', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['research'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','research', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['research'] == 0 && $agreement_values['research'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 1;
+            $indicator_name = "research";
+            $indicator_table_name = "pa_promotion";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="research-indicator">
-            <textarea placeholder="Add a comment..." name="comments" id="research-comments" cols="30" rows="5"
-            class="comment" onblur="saveComment('research', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
-                if($comments['research'] != null){
-                  echo $comments['research'];
-                }
-                ?></textarea>
+            <?php
+              $indicator_name = "research";
+              $indicator_table_name = "pa_promotion";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
@@ -171,31 +157,18 @@
           </div>
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','policy', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['policy'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','policy', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['policy'] == 0 && $agreement_values['policy'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 2;
+            $indicator_name = "policy";
+            $indicator_table_name = "pa_promotion";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="policy-indicator">
-            <textarea placeholder="Add a comment..." name="comments" id="policy-comments" cols="30" rows="5"
-            class="comment" onblur="saveComment('policy', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
-                if($comments['policy'] != null){
-                  echo $comments['policy'];
-                }
-                ?></textarea>
+            <?php
+              $indicator_name = "policy";
+              $indicator_table_name = "pa_promotion";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
@@ -236,31 +209,18 @@
           </div>
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-3" value="yes" onclick="hideInput('agreement-3','surveillance', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['surveillance'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-3" value="no" onclick="showInput('agreement-3','surveillance', '<?php echo $id ?>', 'pa_promotion')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['surveillance'] == 0 && $agreement_values['surveillance'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 3;
+            $indicator_name = "surveillance";
+            $indicator_table_name = "pa_promotion";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="surveillance-indicator">
-            <textarea placeholder="Add a comment..." name="comments" id="surveillance-comments" cols="30" rows="5"
-            class="comment" onblur="saveComment('surveillance', '<?php echo $id ?>', 'pa_promotion_comments')"><?php
-                if($comments['surveillance'] != null){
-                  echo $comments['surveillance'];
-                }
-                ?></textarea>
+            <?php
+              $indicator_name = "surveillance";
+              $indicator_table_name = "pa_promotion";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>

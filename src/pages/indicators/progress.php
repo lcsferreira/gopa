@@ -14,7 +14,7 @@
 
   $indicators_progress = array(0, 0, 0, 0, 0, 0, 0, 0);
 
-  $max_total_indicators = array(9, 1, 2, 5, 3, 3, 4, 9);
+  $max_total_indicators = array(9, 1, 1, 6, 3, 2, 3, 9);
 
   //get indicators_step from country table
   $sql = "SELECT indicators_step FROM countries WHERE id = $id";

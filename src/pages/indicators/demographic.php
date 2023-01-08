@@ -80,6 +80,7 @@
           ?>
           <div class="contact-input" id="country-indicator">
             <?php
+              $indicator_type = "text";
               $indicator_title = "Country";
               $indicator_name = "country";
               $indicator_table_name = "demographic_values_contact";
@@ -115,7 +116,8 @@
             include("../../components/agreementInput.php") 
           ?>
           <div class="contact-input" id="capital-indicator">
-          <?php
+            <?php
+              $indicator_type = "text";
               $indicator_title = "Capital";
               $indicator_name = "capital";
               $indicator_table_name = "demographic_values_contact";
@@ -154,6 +156,7 @@
           ?>
           <div class="contact-input" id="total-population-indicator">
             <?php
+              $indicator_type = "number";
               $indicator_title = "Total population (number of people)";
               $indicator_name = "total_population";
               $indicator_table_name = "demographic_values_contact";
@@ -192,6 +195,7 @@
           ?>
           <div class="contact-input" id="urban-population-indicator">
           <?php
+              $indicator_type = "number";
               $indicator_title = "Urban population (%)";
               $indicator_name = "urban_population";
               $indicator_table_name = "demographic_values_contact";
@@ -230,6 +234,7 @@
           ?>
           <div class="contact-input" id="life-expentacy-indicator">
           <?php
+              $indicator_type = "number";
               $indicator_title = "Life expentacy (years)";
               $indicator_name = "life_expentacy";
               $indicator_table_name = "demographic_values_contact";
@@ -271,6 +276,7 @@
           ?>
           <div class="contact-input" id="gini-index-indicator">
             <?php
+              $indicator_type = "number";
               $indicator_title = "Gini inequality index (number between 0 and 1)";
               $indicator_name = "gini_index";
               $indicator_table_name = "demographic_values_contact";
@@ -310,6 +316,7 @@
           ?>
           <div class="contact-input" id="human-index-indicator">
             <?php
+              $indicator_type = "number";
               $indicator_title = "Human development index (number between 0 and 1)";
               $indicator_name = "human_index";
               $indicator_table_name = "demographic_values_contact";
@@ -348,6 +355,7 @@
           ?>
           <div class="contact-input" id="literacy-rate-indicator">
           <?php
+              $indicator_type = "number";
               $indicator_title = "Literacy rate (%)";
               $indicator_name = "literacy_rate";
               $indicator_table_name = "demographic_values_contact";
@@ -387,7 +395,8 @@
             include("../../components/agreementInput.php") 
           ?>
           <div class="contact-input" id="deaths-diseases-indicator">
-          <?php
+            <?php
+              $indicator_type = "number";
               $indicator_title = "Deaths due to non-communicable diseases (%)";
               $indicator_name = "deaths_diseases";
               $indicator_table_name = "demographic_values_contact";

@@ -47,8 +47,7 @@
     ?>
     <div class="title">
       <h1>Research Indicators <span><i class="fa fa-question-circle-o"></i></span></h1>
-      <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a
-        file to help with new information, to this drive: https:/drive.com/(CountryName)</p>
+      <p>Review the indicators on the left side and check the best option about it.</p>
     </div>
     <form>
       <div class="indicators">
@@ -70,31 +69,18 @@
           ?> onblur="saveValueByAdmin('contribution', '<?php echo $id ?>', 'research_values_admin')">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','contribution', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['contribution'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','contribution', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['contribution'] == 0 && $agreement_values['contribution'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 1;
+            $indicator_name = "contribution";
+            $indicator_table_name = "research";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="contribution-indicator">
-            <textarea placeholder="Add a comment..." name="comments" id="contribution-comments" cols="30" rows="5"
-            class="comment" onblur="saveComment('contribution', '<?php echo $id ?>', 'research_comments')"><?php
-              if($comments['contribution'] != null){
-                echo $comments['contribution'];
-              }
-              ?></textarea>
+            <?php
+              $indicator_name = "contribution";
+              $indicator_table_name = "research";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>
@@ -157,31 +143,18 @@
           </div>
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-2" value="yes" onclick="hideInput('agreement-2','pa-quintiles', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['pa_quintiles'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-2" value="no" onclick="showInput('agreement-2','pa-quintiles', '<?php echo $id ?>', 'research')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['pa_quintiles'] == 0 && $agreement_values['pa_quintiles'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 2;
+            $indicator_name = "pa_quintiles";
+            $indicator_table_name = "research";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="pa-quintiles-indicator">
-            <textarea placeholder="Add a comment..." name="comments" id="pa-quintiles-comments" cols="30" rows="5"
-              class="comment" onblur="saveComment('pa-quintiles', '<?php echo $id ?>', 'research_comments')"><?php
-              if($comments['pa_quintiles'] != null){
-                echo $comments['pa_quintiles'];
-              }
-              ?></textarea>
+            <?php
+              $indicator_name = "pa_quintiles";
+              $indicator_table_name = "research";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>

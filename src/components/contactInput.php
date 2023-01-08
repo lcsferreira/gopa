@@ -1,7 +1,7 @@
 <div class="form-input" id="<?php echo $indicator_name ?>">
     <p>Provide the new information here: </p>
     <label for="<?php echo $indicator_name ?>"><?php echo $indicator_title ?></label>
-    <input type="text" <?php
+    <input type="<?php echo $indicator_type ?>" <?php
     if($contact_values[$indicator_name] != null){
       echo "value=" . $contact_values[$indicator_name];
     }

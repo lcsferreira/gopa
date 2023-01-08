@@ -50,21 +50,7 @@
     ?>
     <div class="title">
       <h1>Physical Activity Prevalence <span><i class="fa fa-question-circle-o"></i></span></h1>
-      <p>Check the indicators, adjust if necessary and add a comment with more information about it. You can upload a
-        file to help with new information, to this drive: https:/drive.com/(CountryName)</p>
-    </div>
-    <div class="input-labels">
-      <div>
-        <p>Adjusted or most current value suggested</p>
-      </div>
-      <div>
-        <p>
-          If any adjustment, please indicate year of information.
-        </p>
-        <p>
-          Please provide additional comments here.
-        </p>
-      </div>
+      <p>Review the indicators on the left side and check the best option about it.</p>
     </div>
     <form>
       <div class="indicators">
@@ -82,7 +68,7 @@
                   echo "value=" . $admin_values['both_sexes'];
                 }
               ?> onblur="saveValueByAdmin('both-sexes', '<?php echo $id ?>', 'pa_prevalence_values_admin')"
-                name="both-sexes" id="both-sexes-admin">
+                name="both-sexes-admin" id="both-sexes-admin">
             </div>
             <div>
               <label for="males">Males</label>
@@ -93,7 +79,7 @@
                 if($admin_values['males'] != null){
                   echo "value=" . $admin_values['males'];
                 }
-              ?> onblur="saveValueByAdmin('males', '<?php echo $id ?>', 'pa_prevalence_values_admin')" name="males"
+              ?> onblur="saveValueByAdmin('males', '<?php echo $id ?>', 'pa_prevalence_values_admin')" name="males-admin"
                 id="males-admin">
             </div>
             <div>
@@ -105,7 +91,7 @@
                 if($admin_values['females'] != null){
                   echo "value=" . $admin_values['females'];
                 }
-              ?> onblur="saveValueByAdmin('females', '<?php echo $id ?>', 'pa_prevalence_values_admin')" name="females"
+              ?> onblur="saveValueByAdmin('females', '<?php echo $id ?>', 'pa_prevalence_values_admin')" name="females-admin"
                 id="females-admin">
             </div>
           </div>
@@ -118,27 +104,15 @@
                   echo "value=" . $admin_values['reference'];
                 }
               ?> onblur="saveValueByAdmin('reference', '<?php echo $id ?>', 'pa_prevalence_values_admin')"
-            name="reference" id="reference-admin">
+            name="reference-admin" id="reference-admin">
         </div>
         <div class="contact-field">
-          <div class="form-input">
-            <label for="radio-group">Agreement</label>
-            <div class="radio" id="radio-group">
-              <label for="yes">Yes</label>
-              <input type="radio" id="yes" name="agreement-1" value="yes" onclick="hideInput('agreement-1','pa-prevalence', '<?php echo $id ?>', 'pa_prevalence')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              } 
-              if($agreement_values['pa_prevalence'] == 1){
-                echo "checked";
-              }?>>
-              <label for="no">No</label>
-              <input type="radio" id="no" name="agreement-1" value="no" onclick="showInput('agreement-1','pa-prevalence', '<?php echo $id ?>', 'pa_prevalence')" <?php if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }if($agreement_values['pa_prevalence'] == 0 && $agreement_values['pa_prevalence'] != null){
-                echo "checked";
-              }?>>
-            </div>
-          </div>
+          <?php
+            $agreement_order = 1;
+            $indicator_name = "pa_prevalence";
+            $indicator_table_name = "pa_prevalence";
+            include("../../components/agreementInput.php") 
+          ?>
           <div class="contact-input" id="pa-prevalence-indicator">
             <div class="form-input">
               <label for="groups">Physical activity prevalence adults (%)</label>
@@ -191,13 +165,11 @@
                 ?> onblur="saveValueByContact('reference', '<?php echo $id ?>', 'pa_prevalence_values_contact')"
             name="reference" id="reference">
           </div>
-          <!-- <label for="pa-prevalence-comments" class="label-textarea">Comments: </label> -->
-          <textarea onblur="saveComment('pa-prevalence', '<?php echo $id ?>', 'pa_prevalence_comments')"
-          placeholder="Add a comment..." name="comments" id="pa-prevalence-comments" cols="30" rows="5" class="comment"><?php
-                if($comments['pa_prevalence'] != null){
-                  echo $comments['pa_prevalence'];
-                }
-                ?></textarea>
+            <?php
+              $indicator_name = "pa_prevalence";
+              $indicator_table_name = "pa_prevalence";
+              include("../../components/commentInput.php")
+            ?>
           </div>
         </div>
       </div>

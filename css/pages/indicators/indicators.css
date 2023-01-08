@@ -74,6 +74,10 @@ form .indicators .form-input,
   width: 345px;
 }
 
+form .indicators .form-input.w-100 {
+  width: 100% !important;
+}
+
 form .indicators .form-input-conclusion {
   width: 100%;
   height: 100px;
