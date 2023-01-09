@@ -14,7 +14,7 @@ function sendToContactReview(id) {
     });
     request.done(function (msg) {
       //redirect to progress page
-      window.location.href = "../../pages/countriesList/countriesListAdmin.php";
+      window.location.href = "../../pages/indicators/progress.php?id=" + id;
     });
   } else {
     //redirect to progress page
