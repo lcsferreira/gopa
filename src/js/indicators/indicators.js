@@ -52,9 +52,10 @@ let pageSplit = page.split(".");
 let table = pageSplit[0];
 
 $(document).ready(function () {
+  hideAllDifferentInputOption();
   closeModalInfo();
+  closeModalDisplay();
   checkValues();
-  // testInput();
   checkEmbbedAndStandaloneInputsAdmin();
   checkEmbbedAndStandaloneInputs();
   checkEmbbedAndStandaloneInputsOnBlurAdmin();
@@ -63,19 +64,26 @@ $(document).ready(function () {
 
 function checkValues() {
   agreementInputs[table].forEach(function (input, index) {
-    //sum the index ++ at the string;
     index++;
     if ($("input[name=agreement-" + index + "]:checked").val() == "no-edit") {
-      // console.log("no" + input + index);
       $("#" + input + "-indicator").css("display", "flex");
+      if (table == "nationalPolicy") {
+        showDifferentInputOption(index);
+      }
     } else if (
       $("input[name=agreement-" + index + "]:checked").val() == "yes" ||
       $("input[name=agreement-" + index + "]:checked").val() == undefined ||
       $("input[name=agreement-" + index + "]:checked").val() == "no"
     ) {
       $("#" + input + "-indicator").css("display", "none");
-      // console.log("yes" + input + index);
     }
+  });
+}
+
+function hideAllDifferentInputOption() {
+  agreementInputs[table].forEach(function (input, index) {
+    index++;
+    hideDifferentInputOption(index);
   });
 }
 
@@ -113,6 +121,14 @@ function checkEmbbedAndStandaloneInputs() {
     $("#embbed-prevention-field").css("display", "none");
     $("#standalone-prevention-field").css("display", "none");
   }
+}
+
+function showDifferentInputOption(input) {
+  $("#different-value-source-" + input).css("display", "flex");
+}
+
+function hideDifferentInputOption(input) {
+  $("#different-value-source-" + input).css("display", "none");
 }
 
 function saveValueByAdmin(indicator, id, table) {
@@ -207,6 +223,27 @@ function showModalInfo(indicator) {
 function closeModalInfo() {
   $("#closeModalInfo").on("click", function () {
     let modal = document.getElementById("modalInfo");
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+    //enable pointer events on the id="main" element
+    document.getElementById("main").style.pointerEvents = "auto";
+  });
+}
+
+function showModalDisplay() {
+  let modal = document.getElementById("modalDisplay");
+  modal.style.display = "block";
+  //disable pointer events on the id="main" element except for the modal
+  document.getElementById("main").style.pointerEvents = "none";
+  //disable scroll on the html element
+  document.body.style.overflow = "hidden";
+  //enable pointer events on the modal
+  document.getElementById("modalDisplay").style.pointerEvents = "auto";
+}
+
+function closeModalDisplay() {
+  $("#closeModalDisplay").on("click", function () {
+    let modal = document.getElementById("modalDisplay");
     modal.style.display = "none";
     document.body.style.overflow = "auto";
     //enable pointer events on the id="main" element

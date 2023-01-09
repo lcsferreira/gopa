@@ -27,6 +27,7 @@
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     $headers .= 'From: Workflow GoPA <info@globalphysicalactivityobservatory.com>'. "\r\n";
     $headers .= 'Reply-To: info@globalphysicalactivityobservatory.com'. "\r\n";
+    $headers .= "X-Priority: 3\r\n";
     $headers .= 'X-Mailer: PHP/' . phpversion();
   
     $mensagem = "

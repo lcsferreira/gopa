@@ -44,6 +44,7 @@
     <?php
       $page = "research";
       include "../../components/indicatorsNav.php";
+      include_once "../../components/modalDisplay.php";
     ?>
     <div class="title">
       <h1>Research Indicators <span><i class="fa fa-question-circle-o"></i></span></h1>

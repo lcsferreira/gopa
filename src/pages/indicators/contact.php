@@ -45,9 +45,10 @@
     <?php
       $page = "contact";
       include "../../components/indicatorsNav.php";
+      include_once "../../components/modalDisplay.php";
     ?>
     <div class="title">
-      <h1>Country Card Contact <span><i class="fa fa-question-circle-o"></i></span></h1>
+      <h1>Country Card Contact <span onclick="showModalDisplay()"><i class="fa fa-question-circle-o"></i></span></h1>
       <p>Review the indicators on the left side and check the best option about it.</p>
     </div>
     <form>

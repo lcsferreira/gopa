@@ -47,9 +47,11 @@
     <?php
       $page = "inequalitiesParticipation";
       include "../../components/indicatorsNav.php";
+      $page = "inequalities";
+      include_once "../../components/modalDisplay.php";
     ?>
     <div class="title">
-      <h1>Inequalities in Physical Activity Participation <span class="new">*new*</span> <span><i
+      <h1>Inequalities in Physical Activity Participation <span class="new">*new*</span> <span onclick="showModalDisplay()"><i
             class="fa fa-question-circle-o"></i></span></h1>
       <p>Review the indicators on the left side and check the best option about it.</p>
     </div>

@@ -123,6 +123,10 @@ form .form-input p {
   color: #8e9dae;
 }
 
+form .form-input .clarification p {
+  color: #03a9f4 !important;
+}
+
 form .form-input .radio {
   display: flex;
   flex-wrap: wrap;
@@ -510,6 +514,34 @@ textarea::placeholder {
 
 .mt-50 {
   margin-top: 50px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.clarification .dropdown {
+  position: relative;
+  display: inline-block;
+  color: #03a9f4;
+  font-size: 20px;
+  margin-top: 14px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.clarification .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f5fafd;
+  padding: 10px;
+  width: 380px;
+  border: 1px solid #222b34;
+  border-radius: 5px;
+  font-size: 16px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Show the dropdown menu on hover */
+.clarification .dropdown:hover .dropdown-content {
+  display: block;
 }
 
 @media screen and (min-width: 1330px) {

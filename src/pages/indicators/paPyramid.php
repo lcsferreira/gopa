@@ -44,9 +44,11 @@
     <?php
       $page = "paPyramid";
       include "../../components/indicatorsNav.php";
+      $page = "pa-promotion";
+      include_once "../../components/modalDisplay.php";
     ?>
     <div class="title">
-      <h1>Physical Activity Promotion capacity pyramid <span><i class="fa fa-question-circle-o"></i></span></h1>
+      <h1>Physical Activity Promotion capacity pyramid <span onclick="showModalDisplay()"><i class="fa fa-question-circle-o"></i></span></h1>
       <p>Review the indicators on the left side and check the best option about it.</p>
     </div>
     <form>

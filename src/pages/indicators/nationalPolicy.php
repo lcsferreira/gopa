@@ -5,6 +5,11 @@
 <?php
   //get id from url
   $id = $_GET['id'];
+  //select the country of the id
+  $sql = "SELECT indicators_step FROM countries WHERE id = $id";
+  $result = mysqli_query($connection, $sql);
+  $status = mysqli_fetch_assoc($result);
+  
   $sql = "SELECT * FROM national_policy_values_admin WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $admin_values = mysqli_fetch_assoc($result);
@@ -48,9 +53,11 @@
     <?php
       $page = "nationalPolicy";
       include "../../components/indicatorsNav.php";
+      $page = "national-policy";
+      include_once "../../components/modalDisplay.php";
     ?>
     <div class="title">
-      <h1>National Policy <span><i class="fa fa-question-circle-o"></i></span></h1>
+      <h1>National Policy <span onclick="showModalDisplay()"><i class="fa fa-question-circle-o"></i></span></h1>
       <p>Review the indicators on the left side and check the best option about it.</p>
     </div>
     <form>
@@ -158,6 +165,12 @@
               onblur="saveRadioValue('standalone-prevention-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
             </div>
           </div>
+          <?php 
+            if($_SESSION['userType'] == "admin"){
+              $input_option = 1;
+              include("../../components/differentValueSource.php");
+            } 
+          ?>
         </div>
         <div class="contact-field">
           <?php
@@ -218,7 +231,10 @@
               </label>
               <div class="radio" id="radio-group">
                 <label for="yes">Yes</label>
-                <input type="radio" id="yes" name="embbed-prevention" value="yes" <?php 
+                <input type="radio" id="yes" name="embbed-prevention" value="yes" <?php
+                  if($_SESSION['userType'] == "admin"){
+                    echo "disabled ";
+                  } 
                   if ($contact_values['embbed_prevention'] == 1) {
                     echo "checked";
                   }
@@ -226,6 +242,9 @@
                   onblur="saveRadioValue('embbed-prevention',  '<?php echo $id ?>', 'national_policy_values_admin')">
                 <label for="no">No</label>
                 <input type="radio" id="no" name="embbed-prevention" value="no" <?php 
+                  if($_SESSION['userType'] == "admin"){
+                    echo "disabled ";
+                  }
                   if ($contact_values['embbed_prevention'] == 0 && $contact_values['embbed_prevention'] != null) {
                     echo "checked";
                   }
@@ -239,23 +258,30 @@
               </label>
               <div class="radio" id="radio-group">
                 <label for="yes">Yes</label>
-                <input type="radio" id="yes" name="standalone-prevention" value="yes" <?php 
-                if ($contact_values['standalone_prevention'] == 1) {
-                  echo "checked";
-                }
+                <input type="radio" id="yes" name="standalone-prevention" value="yes" <?php
+                  if($_SESSION['userType'] == "admin"){
+                    echo "disabled ";
+                  } 
+                  if ($contact_values['standalone_prevention'] == 1) {
+                    echo "checked";
+                  }
                 ?>
                 onblur="saveRadioValue('standalone-prevention',  '<?php echo $id ?>', 'national_policy_values_admin')">
                 <label for="no">No</label>
-                <input type="radio" id="no" name="standalone-prevention" value="no" <?php 
-                if ($contact_values['standalone_prevention'] == 0 && $contact_values['standalone_prevention'] != null) {
-                  echo "checked";
-                }
+                <input type="radio" id="no" name="standalone-prevention" value="no" <?php
+                  if($_SESSION['userType'] == "admin"){
+                    echo "disabled ";
+                  } 
+                  if ($contact_values['standalone_prevention'] == 0 && $contact_values['standalone_prevention'] != null) {
+                    echo "checked";
+                  }
                 ?>
                 onblur="saveRadioValue('standalone-prevention',  '<?php echo $id ?>', 'national_policy_values_admin')">
               </div>
             </div>
           </div>
           <?php
+            $diff_input = "1";
             $indicator_name = "national_policy";
             $indicator_table_name = "national_policy";
             include("../../components/commentInput.php")
@@ -300,6 +326,12 @@
               }
           ?>
             onblur="saveValueByAdmin('national-recommendations-reference', '<?php echo $id ?>', 'national_recommendations_values_admin')">
+            <?php 
+            if($_SESSION['userType'] == "admin"){
+              $input_option = 2;
+              include("../../components/differentValueSource.php");
+            } 
+          ?>
         </div>
         <div class="contact-field">
           <?php
@@ -309,6 +341,9 @@
             include("../../components/agreementInput.php") 
           ?>
         <div class="contact-input" id="national-recommendations-indicator">
+          <?php if ($status['indicators_step'] == "waiting contact" && $admin_values['different_value_source_2'] == 1) {
+              echo "<div class='clarification'><p>*<b>Clarification needed.</b> Please review and respond to our message to confirm the most current and updated Country Card information for your country*</p></div>";
+            }?>
           <div class="form-input">
             <p>Provide the new information here: </p>
             <label for="groups">
@@ -367,6 +402,12 @@
                 echo "value=" . $admin_values['policy_implementation'];
               }
           ?> onblur="saveValueByAdmin('policy-implementation', '<?php echo $id ?>', 'national_policy_values_admin')">
+          <?php 
+            if($_SESSION['userType'] == "admin"){
+              $input_option = 3;
+              include("../../components/differentValueSource.php");
+            } 
+          ?>
         </div>
         <div class="contact-field">
           <?php
@@ -376,6 +417,9 @@
             include("../../components/agreementInput.php") 
           ?>
         <div class="contact-input" id="policy-implementation-indicator">
+          <?php if ($status['indicators_step'] == "waiting contact" && $admin_values['different_value_source_2'] == 1) {
+              echo "<div class='clarification'><p>*<b>Clarification needed.</b> Please review and respond to our message to confirm the most current and updated Country Card information for your country*</p></div>";
+            }?>
           <?php
             $indicator_type = "number";
             $indicator_title = "Percentage (%) of policy implementation";
