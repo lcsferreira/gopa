@@ -84,7 +84,7 @@
 
 <body>
   <div class="container" id="main">
-    <div class="title">
+    <div class="title mt-50">
       <h1>Progress of the indicators</h1>
       <p>This is the progress of the data completion and review of the indicators of the Country Card:</p>
     </div>

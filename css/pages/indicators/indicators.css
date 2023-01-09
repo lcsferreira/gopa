@@ -99,6 +99,12 @@ form .form-input,
   flex-direction: column;
 }
 
+form .indicators .form-input,
+.indicator-image {
+  width: 371px;
+  text-align: justify;
+}
+
 form .indicators .contact-field {
   display: flex;
   flex-direction: column;
@@ -502,6 +508,10 @@ textarea::placeholder {
   transition: all 0.3s;
 }
 
+.mt-50 {
+  margin-top: 50px;
+}
+
 @media screen and (min-width: 1330px) {
   /* form .label-textarea {
     display: none;
@@ -511,8 +521,10 @@ textarea::placeholder {
 @media screen and (max-width: 1330px) {
   form .indicators .form-input,
   .indicator-image {
-    max-width: 371px;
+    max-width: 90%;
     align-self: flex-start;
+    width: max-content;
+    text-align: justify;
   }
 
   form .indicators .contact-field .contact-input {
@@ -520,9 +532,18 @@ textarea::placeholder {
   }
 
   form textarea {
-    width: 85%;
-    margin-top: 10px;
+    width: 90%;
+    margin-top: 20px;
     align-self: flex-start;
+  }
+
+  form .indicators .contact-field .contact-input .comment-area {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  form .indicators .contact-input .form-input {
+    width: 100%;
   }
 
   /* form .label-textarea {
