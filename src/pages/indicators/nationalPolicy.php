@@ -168,6 +168,7 @@
           <?php 
             if($_SESSION['userType'] == "admin"){
               $input_option = 1;
+              $indicator_table_name = "national_policy";
               include("../../components/differentValueSource.php");
             } 
           ?>
@@ -329,6 +330,7 @@
             <?php 
             if($_SESSION['userType'] == "admin"){
               $input_option = 2;
+              $indicator_table_name = "national_policy";
               include("../../components/differentValueSource.php");
             } 
           ?>
@@ -405,6 +407,7 @@
           <?php 
             if($_SESSION['userType'] == "admin"){
               $input_option = 3;
+              $indicator_table_name = "national_policy";
               include("../../components/differentValueSource.php");
             } 
           ?>

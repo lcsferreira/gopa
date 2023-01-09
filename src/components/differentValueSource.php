@@ -13,7 +13,7 @@
       echo "checked";
     }
     ?>
-    onblur="saveRadioValue('different-value-source-<?php echo $input_option?>',  '<?php echo $id ?>', 'national_policy_values_admin')">
+    onblur="saveRadioValue('different-value-source-<?php echo $input_option?>',  '<?php echo $id ?>', '<?php echo $indicator_table_name?>_values_admin')">
     <label for="no">No</label>
     <input type="radio" id="no" name="different-value-source-<?php echo $input_option?>" value="no" <?php 
     if($_SESSION['userType'] != "admin"){
@@ -23,6 +23,6 @@
       echo "checked";
     }
     ?>
-    onblur="saveRadioValue('different-value-source-<?php echo $input_option?>',  '<?php echo $id ?>', 'national_policy_values_admin')">
+    onblur="saveRadioValue('different-value-source-<?php echo $input_option?>',  '<?php echo $id ?>', '<?php echo $indicator_table_name?>_values_admin')">
   </div>
 </div>

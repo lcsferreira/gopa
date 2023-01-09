@@ -90,6 +90,13 @@
               onblur="saveRadioValue('national-surveys-admin',  '<?php echo $id ?>', 'national_surveillance_values_admin')"
               value="no">
           </div>
+          <?php 
+            if($_SESSION['userType'] == "admin"){
+              $input_option = 1;
+              $indicator_table_name = "national_surveillance";
+              include("../../components/differentValueSource.php");
+            } 
+          ?>
         </div>
         <div class="contact-field">
           <?php
@@ -128,6 +135,7 @@
               </div>
             </div>
             <?php
+              $diff_input = "1";
               $indicator_name = "national_surveys";
               $indicator_table_name = "national_surveillance";
               include("../../components/commentInput.php")
