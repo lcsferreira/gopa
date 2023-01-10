@@ -240,7 +240,7 @@
                     echo "checked";
                   }
                   ?>
-                  onblur="saveRadioValue('embbed-prevention',  '<?php echo $id ?>', 'national_policy_values_admin')">
+                  onblur="saveRadioValue('embbed-prevention',  '<?php echo $id ?>', 'national_policy_values_contact')">
                 <label for="no">No</label>
                 <input type="radio" id="no" name="embbed-prevention" value="no" <?php 
                   if($_SESSION['userType'] == "admin"){
@@ -250,7 +250,7 @@
                     echo "checked";
                   }
                   ?>
-                  onblur="saveRadioValue('embbed-prevention',  '<?php echo $id ?>', 'national_policy_values_admin')">
+                  onblur="saveRadioValue('embbed-prevention',  '<?php echo $id ?>', 'national_policy_values_contact')">
               </div>
             </div>
             <div class="form-input w-100" id="standalone-prevention-field">
@@ -267,7 +267,7 @@
                     echo "checked";
                   }
                 ?>
-                onblur="saveRadioValue('standalone-prevention',  '<?php echo $id ?>', 'national_policy_values_admin')">
+                onblur="saveRadioValue('standalone-prevention',  '<?php echo $id ?>', 'national_policy_values_contact')">
                 <label for="no">No</label>
                 <input type="radio" id="no" name="standalone-prevention" value="no" <?php
                   if($_SESSION['userType'] == "admin"){
@@ -277,7 +277,7 @@
                     echo "checked";
                   }
                 ?>
-                onblur="saveRadioValue('standalone-prevention',  '<?php echo $id ?>', 'national_policy_values_admin')">
+                onblur="saveRadioValue('standalone-prevention',  '<?php echo $id ?>', 'national_policy_values_contact')">
               </div>
             </div>
           </div>

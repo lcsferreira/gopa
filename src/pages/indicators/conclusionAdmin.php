@@ -10,6 +10,11 @@
   if(isset($_SESSION['edited'])){
     $edited = $_SESSION['edited'];
   }  
+
+  $sql = "SELECT indicators_step FROM countries WHERE id = $id"; 
+  $result = mysqli_query($connection, $sql);
+  $row = mysqli_fetch_assoc($result);
+  $indicators_step = $row['indicators_step'];
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -42,13 +47,18 @@
     <form>
       <div class="indicators">
         <div class="form-input-conclusion">
-          <?php if ($edited) {
-            echo "<div>
-            <label for='review'>Send to contact review</label>
-            <input type='checkbox' name='review' id='review' value='need-review'>
-            </div>";
+          <?php 
+          if($indicators_step=="waiting contact"){
+            echo "<div class='center'>The contact has not yet reviewed the indicators!</div>";
           }else{
-            echo "<div class='center'>You didn't make any adjustment!</div>";
+            if ($edited) {
+              echo "<div>
+              <label for='review'>Send to contact review</label>
+              <input type='checkbox' name='review' id='review' value='need-review'>
+              </div>";
+            }else{
+              echo "<div class='center'>You didn't make any adjustment!</div>";
+            }
           }
           ?>
           
@@ -59,7 +69,8 @@
           echo "onclick='document.location = `contact.php?id=".$id."`'";
           ?>>Back</button>
         <button class="btn-next" type="button"
-          onclick="sendToContactReview('<?php echo $id ?>')">Submit</button>
+          onclick="sendToContactReview('<?php echo $id ?>')" <?php if ($indicators_step == "waiting contact") {
+               echo "disabled"; }?>>Submit</button>
       </div>
     </form>
   </div>

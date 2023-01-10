@@ -17,6 +17,11 @@
     $is_main = $row['is_main'];
   }
 
+  $sql = "SELECT indicators_step FROM countries WHERE id = $country_id"; 
+  $result = mysqli_query($connection, $sql);
+  $row = mysqli_fetch_assoc($result);
+  $indicators_step = $row['indicators_step'];
+
   //get the 'edited' variable from localstorage and set it to a variable 
   if(isset($_SESSION['edited'])){
     $edited = true;
@@ -51,17 +56,21 @@
     <form>
       <div class="indicators">
         <div class="form-input-conclusion">
-          <?php 
+          <?php
+          if ($indicators_step == "waiting admin") {
+            echo "<div><p>Waiting for the admin to approve your adjustments!</p></div>";
+          }else{
             if($edited == true){
               echo "<div><label for='adjust'>Request further adjustments</label><input type='checkbox' name='adjust' id='adjust' value='adjust'></div>";
             }else if($is_main == 1){
-            echo "<div>
-                <label for='approve'>Approve</label>
-                <input type='checkbox' name='approve' id='approve' value='approve'>
+              echo "<div>
+              <label for='approve'>Approve</label>
+              <input type='checkbox' name='approve' id='approve' value='approve'>
               </div>";
             }else{
               echo "<div><p>You didn't make any adjustment on the indicators value!</p></div>";
             }
+          }
           ?>
         </div>
       </div>
@@ -69,7 +78,8 @@
         <button class="btn-back" type="button" <?php
           echo "onclick='document.location = `contact.php?id=".$country_id."`'";
           ?>>Back</button>
-        <button class="btn-next" type="button" onclick="saveStatus('<?php echo $country_id ?>')">Submit</button>
+        <button class="btn-next" type="button" onclick="saveStatus('<?php echo $country_id ?>')" <?php if ($indicators_step == "waiting admin") {
+               echo "disabled"; }?>>Submit</button>
       </div>
     </form>
   </div>
