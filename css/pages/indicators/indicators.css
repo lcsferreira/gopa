@@ -544,6 +544,10 @@ textarea::placeholder {
   display: block;
 }
 
+.center {
+  justify-content: center !important;
+}
+
 @media screen and (min-width: 1330px) {
   /* form .label-textarea {
     display: none;

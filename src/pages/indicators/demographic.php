@@ -67,7 +67,7 @@
                 echo "disabled ";
               }
               if($admin_values['country'] != null){
-                echo "value=" . $admin_values['country'];
+                echo "value='" . $admin_values['country']."'";
               }
             ?> name="country-admin" id="country-admin"
             onblur="saveValueByAdmin('country', '<?php echo $id ?>', 'demographic_values_admin')">
@@ -104,7 +104,7 @@
                 echo "disabled ";
               }
               if($admin_values['capital'] != null){
-                echo "value=" . $admin_values['capital'];
+                echo "value='" . $admin_values['capital']."'";
               }
             ?> name="capital-admin" id="capital-admin"
             onblur="saveValueByAdmin('capital', '<?php echo $id ?>', 'demographic_values_admin')">
@@ -143,7 +143,7 @@
                 echo "disabled ";
               }
               if($admin_values['total_population'] != null){
-                echo "value=" . $admin_values['total_population'];
+                echo "value='" . $admin_values['total_population']."'";
               }
             ?> name="total-population-admin" id="total-population-admin"
             onblur="saveValueByAdmin('total-population', '<?php echo $id ?>', 'demographic_values_admin')">
@@ -182,7 +182,7 @@
                 echo "disabled ";
               }
               if($admin_values['urban_population'] != null){
-                echo "value=" . $admin_values['urban_population'];
+                echo "value='" . $admin_values['urban_population']."'";
               }
             ?> name="urban-population-admin" id="urban-population-admin"
             onblur="saveValueByAdmin('urban-population', '<?php echo $id ?>', 'demographic_values_admin')">
@@ -221,7 +221,7 @@
                 echo "disabled ";
               }
               if($admin_values['life_expentacy'] != null){
-                echo "value=" . $admin_values['life_expentacy'];
+                echo "value='" . $admin_values['life_expentacy']."'";
               }
             ?> name="life-expentacy-admin" id="life-expentacy-admin"
             onblur="saveValueByAdmin('life-expentacy', '<?php echo $id ?>', 'demographic_values_admin')">
@@ -263,7 +263,7 @@
                 echo "disabled ";
               }
               if($admin_values['gini_index'] != null){
-                echo "value=" . $admin_values['gini_index'];
+                echo "value='" . $admin_values['gini_index']."'";
               }
             ?> name="gini-index-admin" id="gini-index-admin"
             onblur="saveValueByAdmin('gini-index', '<?php echo $id ?>', 'demographic_values_admin')">
@@ -303,7 +303,7 @@
                 echo "disabled ";
               }
               if($admin_values['human_index'] != null){
-                echo "value=" . $admin_values['human_index'];
+                echo "value='" . $admin_values['human_index']."'";
               }
             ?> name="human-index-admin" id="human-index-admin"
             onblur="saveValueByAdmin('human-index', '<?php echo $id ?>', 'demographic_values_admin')">
@@ -342,7 +342,7 @@
                 echo "disabled ";
               }
               if($admin_values['literacy_rate'] != null){
-                echo "value=" . $admin_values['literacy_rate'];
+                echo "value='" . $admin_values['literacy_rate']."'";
               }
             ?> name="literacy-rate-admin" id="literacy-rate-admin"
             onblur="saveValueByAdmin('literacy-rate', '<?php echo $id ?>', 'demographic_values_admin')">
@@ -383,7 +383,7 @@
                 echo "disabled ";
               }
               if($admin_values['deaths_diseases'] != null){
-                echo "value=" . $admin_values['deaths_diseases'];
+                echo "value='" . $admin_values['deaths_diseases']."'";
               }
             ?> name="deaths-diseases-admin" id="deaths-diseases-admin"
             onblur="saveValueByAdmin('deaths-diseases', '<?php echo $id ?>', 'demographic_values_admin')">

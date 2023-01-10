@@ -35,7 +35,7 @@
         </div>
       </form>
         
-      <button type="submit" id="login">Login</button>
+      <button type="button" id="login" onclick="clickLogin()">Login</button>
     </div>
     <div class="col-50">
       <img class="side-img" src="../../../assets/firstAccess.jpg" alt="gopa-img">

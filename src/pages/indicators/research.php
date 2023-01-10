@@ -65,7 +65,7 @@
                 echo "disabled ";
               } 
               if($admin_values['contribution'] != null){
-                echo "value=" . $admin_values['contribution'];
+                echo "value='" . $admin_values['contribution']."'";
               }
           ?> onblur="saveValueByAdmin('contribution', '<?php echo $id ?>', 'research_values_admin')">
         </div>

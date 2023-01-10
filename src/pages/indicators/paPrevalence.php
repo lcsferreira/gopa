@@ -67,7 +67,7 @@
                   echo "disabled ";
                 }
                 if($admin_values['both_sexes'] != null){
-                  echo "value=" . $admin_values['both_sexes'];
+                  echo "value='" . $admin_values['both_sexes']."'";
                 }
               ?> onblur="saveValueByAdmin('both-sexes', '<?php echo $id ?>', 'pa_prevalence_values_admin')"
                 name="both-sexes-admin" id="both-sexes-admin">
@@ -79,7 +79,7 @@
                   echo "disabled ";
                 }
                 if($admin_values['males'] != null){
-                  echo "value=" . $admin_values['males'];
+                  echo "value='" . $admin_values['males']."'";
                 }
               ?> onblur="saveValueByAdmin('males', '<?php echo $id ?>', 'pa_prevalence_values_admin')" name="males-admin"
                 id="males-admin">
@@ -91,7 +91,7 @@
                   echo "disabled ";
                 }
                 if($admin_values['females'] != null){
-                  echo "value=" . $admin_values['females'];
+                  echo "value='" . $admin_values['females']."'";
                 }
               ?> onblur="saveValueByAdmin('females', '<?php echo $id ?>', 'pa_prevalence_values_admin')" name="females-admin"
                 id="females-admin">
@@ -103,7 +103,7 @@
                   echo "disabled ";
                 }
                 if($admin_values['reference'] != null){
-                  echo "value=" . $admin_values['reference'];
+                  echo "value='" . $admin_values['reference']."'";
                 }
               ?> onblur="saveValueByAdmin('reference', '<?php echo $id ?>', 'pa_prevalence_values_admin')"
             name="reference-admin" id="reference-admin">
@@ -126,7 +126,7 @@
                     echo "disabled ";
                   }
                 if($contact_values['both_sexes'] != null){
-                  echo "value=" . $contact_values['both_sexes'];
+                  echo "value='" . $contact_values['both_sexes']."'";
                 }
                 ?> onblur="saveValueByContact('both-sexes', '<?php echo $id ?>', 'pa_prevalence_values_contact')"
                 name="both-sexes" id="both-sexes">
@@ -138,7 +138,7 @@
                   echo "disabled ";
                 }
                 if($contact_values['males'] != null){
-                  echo "value=" . $contact_values['males'];
+                  echo "value='" . $contact_values['males']."'";
                 }
                 ?> onblur="saveValueByContact('males', '<?php echo $id ?>', 'pa_prevalence_values_contact')" name="males"
                 id="males">
@@ -150,7 +150,7 @@
                   echo "disabled ";
                 }
                 if($contact_values['females'] != null){
-                  echo "value=" . $contact_values['females'];
+                  echo "value='" . $contact_values['females']."'";
                 }
                 ?> onblur="saveValueByContact('females', '<?php echo $id ?>', 'pa_prevalence_values_contact')"
                 name="females" id="females">
@@ -162,7 +162,7 @@
                   echo "disabled ";
                 }
                 if($contact_values['reference'] != null){
-                  echo "value=" . $contact_values['reference'];
+                  echo "value='" . $contact_values['reference']."'";
                 }
                 ?> onblur="saveValueByContact('reference', '<?php echo $id ?>', 'pa_prevalence_values_contact')"
             name="reference" id="reference">

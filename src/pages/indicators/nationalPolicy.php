@@ -98,7 +98,7 @@
                 echo "disabled ";
               } 
               if($admin_values['national_policy_titles'] != null){
-                echo "value=" . $admin_values['national_policy_titles'];
+                echo "value='" . $admin_values['national_policy_titles']."'";
               }
           ?> onblur="saveValueByAdmin('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_admin')">
           <label for="reference" class="mt-10">Reference</label>
@@ -107,7 +107,7 @@
                 echo "disabled ";
               } 
               if($admin_values['national_policy_reference'] != null){
-                echo "value=" . $admin_values['national_policy_reference'];
+                echo "value='" . $admin_values['national_policy_reference']."'";
               }
           ?>
             onblur="saveValueByAdmin('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_admin')">
@@ -212,7 +212,7 @@
                   echo "disabled ";
                 }
                 if($contact_values['national_policy_titles'] != null){
-                  echo "value=" . $contact_values['national_policy_titles'];
+                  echo "value='" . $contact_values['national_policy_titles']."'";
                 }
             ?>
               onblur="saveValueByContact('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_contact')">
@@ -222,7 +222,7 @@
                   echo "disabled ";
                 } 
                 if($contact_values['national_policy_reference'] != null){
-                  echo "value=" . $contact_values['national_policy_reference'];
+                  echo "value='" . $contact_values['national_policy_reference']."'";
                 }
             ?>
               onblur="saveValueByContact('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_contact')">
@@ -323,7 +323,7 @@
                 echo "disabled ";
               } 
               if($admin_values['national_recommendations_reference'] != null){
-                echo "value=" . $admin_values['national_recommendations_reference'];
+                echo "value='" . $admin_values['national_recommendations_reference']."'";
               }
           ?>
             onblur="saveValueByAdmin('national-recommendations-reference', '<?php echo $id ?>', 'national_recommendations_values_admin')">
@@ -373,7 +373,7 @@
                   echo "disabled ";
                 }
                 if($contact_values['national_recommendations_reference'] != null){
-                  echo "value=" . $contact_values['national_recommendations_reference'];
+                  echo "value=" . $contact_values['national_recommendations_reference']."'";
                 }
             ?>
               onblur="saveValueByContact('national-recommendations-reference', '<?php echo $id ?>', 'national_policy_values_contact')">
@@ -401,7 +401,7 @@
                 echo "disabled ";
               } 
               if($admin_values['policy_implementation'] != null){
-                echo "value=" . $admin_values['policy_implementation'];
+                echo "value='" . $admin_values['policy_implementation']."'";
               }
           ?> onblur="saveValueByAdmin('policy-implementation', '<?php echo $id ?>', 'national_policy_values_admin')">
           <?php 

@@ -6,7 +6,7 @@
       echo "disabled ";
     }
     if($contact_values[$indicator_name] != null){
-      echo "value=" . $contact_values[$indicator_name];
+      echo "value='" . $contact_values[$indicator_name] ."'";
     }
   ?> name="<?php echo $indicator_name ?>" onblur="saveValueByContact('<?php echo $indicator_name ?>', '<?php echo $id ?>', '<?php echo $indicator_table_name ?>')">
 </div>

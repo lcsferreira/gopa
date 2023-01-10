@@ -62,7 +62,7 @@
                 echo "disabled ";
               }
               if($admin_values['name_1'] != null){
-                echo "value=" . $admin_values['name_1'];
+                echo "value='" . $admin_values['name_1']."'";
               }
           ?> onblur="saveValueByAdmin('name-1', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
@@ -99,7 +99,7 @@
                 echo "disabled ";
               }
               if($admin_values['email_1'] != null){
-                echo "value=" . $admin_values['email_1'];
+                echo "value='" . $admin_values['email_1']."'";
               }
           ?> onblur="saveValueByAdmin('email-1', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
@@ -136,7 +136,7 @@
                 echo "disabled ";
               } 
               if($admin_values['institution_1'] != null){
-                echo "value=" . $admin_values['institution_1'];
+                echo "value='" . $admin_values['institution_1']."'";
               }
           ?> onblur="saveValueByAdmin('institution-1', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
@@ -173,7 +173,7 @@
                 echo "disabled ";
               } 
               if($admin_values['name_2'] != null){
-                echo "value=" . $admin_values['name_2'];
+                echo "value='" . $admin_values['name_2']."'";
               }
           ?> onblur="saveValueByAdmin('name-2', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
@@ -210,7 +210,7 @@
                 echo "disabled ";
               } 
               if($admin_values['email_2'] != null){
-                echo "value=" . $admin_values['email_2'];
+                echo "value='" . $admin_values['email_2']."'";
               }
           ?> onblur="saveValueByAdmin('email-2', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
@@ -247,7 +247,7 @@
                 echo "disabled ";
               } 
               if($admin_values['institution_2'] != null){
-                echo "value=" . $admin_values['institution_2'];
+                echo "value='" . $admin_values['institution_2']. "'";
               }
           ?> onblur="saveValueByAdmin('institution-2', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
@@ -284,7 +284,7 @@
                 echo "disabled ";
               } 
               if($admin_values['name_3'] != null){
-                echo "value=" . $admin_values['name_3'];
+                echo "value='" . $admin_values['name_3']."'";
               }
           ?> onblur="saveValueByAdmin('name-3', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
@@ -321,7 +321,7 @@
                 echo "disabled ";
               } 
               if($admin_values['email_3'] != null){
-                echo "value=" . $admin_values['email_3'];
+                echo "value='" . $admin_values['email_3']."'";
               }
           ?> onblur="saveValueByAdmin('email-3', '<?php echo $id ?>', 'contact_values_admin')">
         </div>
@@ -358,7 +358,7 @@
                 echo "disabled ";
               } 
               if($admin_values['institution_3'] != null){
-                echo "value=" . $admin_values['institution_3'];
+                echo "value='" . $admin_values['institution_3']."'";
               }
           ?> onblur="saveValueByAdmin('institution-3', '<?php echo $id ?>', 'contact_values_admin')">
         </div>

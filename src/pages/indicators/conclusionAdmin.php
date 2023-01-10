@@ -42,10 +42,16 @@
     <form>
       <div class="indicators">
         <div class="form-input-conclusion">
-          <div>
+          <?php if ($edited) {
+            echo "<div>
             <label for='review'>Send to contact review</label>
-            <input type='checkbox' name='review' id='review' value="need-review">
-          </div>
+            <input type='checkbox' name='review' id='review' value='need-review'>
+            </div>";
+          }else{
+            echo "<div class='center'>You didn't make any adjustment!</div>";
+          }
+          ?>
+          
         </div>
       </div>
       <div class="buttons">

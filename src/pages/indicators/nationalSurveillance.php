@@ -153,7 +153,7 @@
                 echo "disabled ";
               }
               if($admin_values['most_recent_year'] != null){
-                echo "value=" . $admin_values['most_recent_year'];
+                echo "value='" . $admin_values['most_recent_year']."'";
               }
           ?>>
         </div>
@@ -175,7 +175,7 @@
                   echo "disabled ";
                 }
                 if($contact_values['most_recent_year'] != null){
-                  echo "value=" . $contact_values['most_recent_year'];
+                  echo "value='" . $contact_values['most_recent_year']."'";
                 }
             ?>>
           </div>
@@ -197,7 +197,7 @@
                 echo "disabled ";
               }
               if($admin_values['next_year'] != null){
-                echo "value=" . $admin_values['next_year'];
+                echo "value='" . $admin_values['next_year']."'";
               }
           ?>>
         </div>
@@ -218,7 +218,7 @@
                   echo "disabled ";
                 }
                 if($contact_values['next_year'] != null){
-                  echo "value=" . $contact_values['next_year'];
+                  echo "value='" . $contact_values['next_year']."'";
                 }
                 ?>>
               </div>
@@ -241,7 +241,7 @@
                 echo "disabled ";
               }
               if($admin_values['survey_names'] != null){
-                echo "value=" . $admin_values['survey_names'];
+                echo "value='" . $admin_values['survey_names']."'";
               }
           ?> onblur="saveValueByAdmin('survey-names', '<?php echo $id ?>', 'national_surveillance_values_admin')">
         </div>
@@ -264,7 +264,7 @@
                     echo "disabled";
                   }
                   if($contact_values['survey_names'] != null){
-                    echo "value=" . $contact_values['survey_names'];
+                    echo "value='" . $contact_values['survey_names']."'";
                   }
               ?>>
             </div>
@@ -308,7 +308,7 @@
                 echo "disabled ";
               }
               if($admin_values['devices_used'] != null){
-                echo "value=" . $admin_values['devices_used'];
+                echo "value='" . $admin_values['devices_used']."'";
               }
           ?>
             onblur="saveValueByAdmin('devices-used', '<?php echo $id ?>', 'national_surveillance_values_admin')">
@@ -318,7 +318,7 @@
                 echo "disabled";
               }
               if($admin_values['estimates'] != null){
-                echo "value=" . $admin_values['estimates'];
+                echo "value='" . $admin_values['estimates']."'";
               }
           ?>
             onblur="saveValueByAdmin('estimates', '<?php echo $id ?>', 'national_surveillance_values_admin')">
@@ -361,7 +361,7 @@
                     echo "disabled";
                   }
                   if($contact_values['devices_used'] != null){
-                    echo "value=" . $contact_values['devices_used'];
+                    echo "value='" . $contact_values['devices_used']."'";
                   }
               ?>
                 onblur="saveValueByContact('devices-used', '<?php echo $id ?>', 'national_surveillance_values_contact')">
@@ -371,7 +371,7 @@
                     echo "disabled";
                   }
                   if($contact_values['estimates'] != null){
-                    echo "value=" . $contact_values['estimates'];
+                    echo "value='" . $contact_values['estimates']."'";
                   }
               ?>
                 onblur="saveValueByContact('estimates', '<?php echo $id ?>', 'national_surveillance_values_contact')">

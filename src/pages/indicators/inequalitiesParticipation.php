@@ -68,7 +68,7 @@
                   echo "disabled ";
                 }
                 if($admin_values['pa_activity_males'] != null){
-                  echo "value=" . $admin_values['pa_activity_males'];
+                  echo "value='" . $admin_values['pa_activity_males']."'";
                 }
               ?> onblur="saveValueByAdmin('pa-activity-males', '<?php echo $id ?>', 'inequalities_participation_values_admin')" name="pa-activity-males-admin" id="pa-activity-males-admin">
             </div>
@@ -79,7 +79,7 @@
                   echo "disabled ";
                 }
                 if($admin_values['pa_activity_females'] != null){
-                  echo "value=" . $admin_values['pa_activity_females'];
+                  echo "value='" . $admin_values['pa_activity_females']."'";
                 }
               ?> onblur="saveValueByAdmin('pa-activity-females', '<?php echo $id ?>', 'inequalities_participation_values_admin')" name="pa-activity-females-admin" id="pa-activity-females-admin">
             </div>
@@ -90,7 +90,7 @@
                   echo "disabled ";
                 }
                 if($admin_values['reference'] != null){
-                  echo "value=" . $admin_values['reference'];
+                  echo "value='" . $admin_values['reference']."'";
                 }
               ?> onblur="saveValueByAdmin('reference', '<?php echo $id ?>', 'inequalities_participation_values_admin')" name="reference-admin" id="reference-admin">
         </div>
@@ -114,7 +114,7 @@
                   echo "disabled ";
                 }
                 if($contact_values['pa_activity_males'] != null){
-                  echo "value=" . $contact_values['pa_activity_males'];
+                  echo "value='" . $contact_values['pa_activity_males']."'";
                 }
                 ?> name="males" id="males">
             </div>
@@ -125,7 +125,7 @@
                   echo "disabled ";
                 }
                 if($contact_values['pa_activity_females'] != null){
-                  echo "value=" . $contact_values['pa_activity_females'];
+                  echo "value='" . $contact_values['pa_activity_females']."'";
                 }
                 ?> name="females" id="females">
             </div>
@@ -136,7 +136,7 @@
                   echo "disabled ";
                 }
                 if($contact_values['reference'] != null){
-                  echo "value=" . $contact_values['reference'];
+                  echo "value='" . $contact_values['reference']."'";
                 }
                 ?> name="reference" id="reference">
           </div>
