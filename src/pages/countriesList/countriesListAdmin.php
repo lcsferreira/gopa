@@ -32,14 +32,47 @@
     ?>
     <div class="title-header">
       <h1>Countries List</h1>
-      <button class="btn-create" type="button" onclick="window.location.href='countryCreate.php'">
+      <form method="get" action="">
+        <select name="filter" id="filter">
+          <option value="" selected disabled hidden>Choose here</option>
+          <option value="all">All</option>
+          <option value="not started">Not Started</option>
+          <option value="waiting admin">Action Required</option>
+          <option value="waiting contact">Waiting</option>
+          <option value="approved">Approved</option>
+        </select>
+        <input class="btn-start" type="submit" name="submit" value="Filter"/>
+      </form>
+        <button class="btn-create" type="button" onclick="window.location.href='countryCreate.php'">
         Register Country
       </button>
       </button>
     </div>
     <div class="countries-list">
-      <?php 
-        $sql = "SELECT * FROM countries ORDER BY name ASC";
+      <?php
+        $filter = $_GET['filter'];
+        switch ($filter) {
+          case 'all':
+            $sql = "SELECT * FROM countries ORDER BY name ASC";
+            break;
+          case 'not started':
+            $sql = "SELECT * FROM countries WHERE indicators_step = 'not started' OR translation_step = 'not started' OR country_cards_step = 'not started' ORDER BY name ASC";
+            break;
+          case 'waiting admin':
+            $sql = "SELECT * FROM countries WHERE indicators_step = 'waiting admin' OR translation_step = 'waiting admin' OR country_cards_step = 'waiting admin' ORDER BY name ASC";
+            break;
+          case 'waiting contact':
+            $sql = "SELECT * FROM countries WHERE indicators_step = 'waiting contact' OR translation_step = 'waiting contact' OR country_cards_step = 'waiting contact' ORDER BY name ASC";
+            break;
+          case 'approved':
+            $sql = "SELECT * FROM countries WHERE indicators_step = 'approved' OR translation_step = 'approved' OR country_cards_step = 'approved' ORDER BY name ASC";
+            break;
+          default:
+            $sql = "SELECT * FROM countries ORDER BY name ASC";
+            break;
+        }
+      
+        // $sql = "SELECT * FROM countries ORDER BY name ASC";
         $result = mysqli_query($connection, $sql);
         $resultCheck = mysqli_num_rows($result);
     
@@ -112,7 +145,7 @@
           }
           echo "</div>";
         }else {
-          echo "<p>No country registered.</p>";
+          echo "<p>No country found.</p>";
         }
       ?>
     </div>

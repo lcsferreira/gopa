@@ -238,7 +238,11 @@
     </div>
     <div class="buttons">
       <button class="btn-back" type="button" <?php
-      echo "onclick='document.location = `../countriesList/countriesListContacts.php`'";
+      if($_SESSION['userType'] == 'admin'){
+        echo "onclick='document.location = `../countriesList/countriesListAdmin.php`'";
+      }else{
+        echo "onclick='document.location = `../countriesList/countriesListContacts.php`'";
+      }
       ?>>
         Back
       </button>
