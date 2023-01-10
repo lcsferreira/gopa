@@ -56,7 +56,7 @@
                     <div class='steps-list'>
                       <div class='step'>
                         <p>Indicators</p>
-                        <button type='button' class='step-start' onclick='document.location = `../indicators/progress.php?id=" . $row['id'] . "";
+                        <button title='Go to Indicators Step' type='button' class='step-start' onclick='document.location = `../indicators/progress.php?id=" . $row['id'] . "";
                         if($row['indicators_step'] == 'not started'){
                           echo "`' disabled><i class='fa fa-play-circle fa-2x gray'></i>";
                         }else if($row['indicators_step'] == 'waiting admin'){
@@ -70,7 +70,7 @@
                       </div>
                       <div class='step'>
                         <p>Translation</p>
-                        <button type='button' class='step-start' onclick='document.location = `../others/workInProgress.php`'>";
+                        <button title='Go to Translation Step' type='button' class='step-start' onclick='document.location = `../others/workInProgress.php`'>";
                         if($row['translation_step'] == 'not started'){
                           echo "<i class='fa fa-play-circle fa-2x gray'></i>";
                         }else if($row['translation_step'] == 'waiting admin'){
@@ -84,7 +84,7 @@
                       </div>
                       <div class='step'>
                         <p>Country Cards</p>
-                        <button type='button' class='step-start' onclick='document.location = `../others/workInProgress.php`'>";
+                        <button title='Go to Cards review Step' type='button' class='step-start' onclick='document.location = `../others/workInProgress.php`'>";
                         if($row['country_cards_step'] == 'not started'){
                           echo "<i class='fa fa-play-circle fa-2x gray'></i>";
                         }else if($row['country_cards_step'] == 'waiting admin'){
@@ -103,6 +103,11 @@
           echo "</div>";
         }
       ?>
+      <div class="buttons">
+        <button class="btn-back" type="button" <?php
+          echo "onclick='document.location = `../countriesList/introIndicators.php`'";
+          ?>>Back</button>
+      </div>
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>

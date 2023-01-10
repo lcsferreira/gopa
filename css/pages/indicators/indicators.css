@@ -548,6 +548,18 @@ textarea::placeholder {
   justify-content: center !important;
 }
 
+.w-60 {
+  width: 60%;
+}
+
+.intro ul {
+  list-style-type: decimal;
+}
+
+.intro-btn {
+  justify-content: flex-end !important;
+}
+
 @media screen and (min-width: 1330px) {
   /* form .label-textarea {
     display: none;

@@ -236,9 +236,16 @@
         </div>
       </div>
     </div>
-    <button class="btn-next" type="button" <?php
-        echo "onclick='document.location = `demographic.php?id=".$id."`'";
-      ?>>Next</button>
+    <div class="buttons">
+      <button class="btn-back" type="button" <?php
+      echo "onclick='document.location = `../countriesList/countriesListContacts.php`'";
+      ?>>
+        Back
+      </button>
+      <button class="btn-next" type="button" <?php
+      echo "onclick='document.location = `demographic.php?id=".$id."`'";
+    ?>>Next</button>
+    </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="../../js/countries/countryEdit.js"></script>

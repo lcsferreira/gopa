@@ -271,3 +271,34 @@ body {
   transition: 0.2s;
   padding: 7px 0px;
 }
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.btn-back {
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  width: 110px;
+  height: 35px;
+  border: 2px solid #03a9f4;
+  color: #03a9f4;
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btn-back:disabled {
+  opacity: 60%;
+  background-color: #8e9dae;
+  border: 1px solid white;
+  cursor: auto;
+}

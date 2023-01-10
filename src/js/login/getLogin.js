@@ -40,7 +40,8 @@ function login(email, password) {
       if (msg === "success admin") {
         window.location.href = "../countriesList/countriesListAdmin.php";
       } else {
-        window.location.href = "../countriesList/countriesListContacts.php";
+        // console.log("../countriesList/introIndicators.php");
+        window.location.href = "../countriesList/introIndicators.php";
       }
     } else {
       $("#login").html("Login");
