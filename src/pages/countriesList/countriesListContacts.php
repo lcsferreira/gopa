@@ -69,6 +69,20 @@
                         echo "</button>
                       </div>
                       <div class='step'>
+                        <p>Country Cards</p>
+                        <button title='Go to Cards review Step' type='button' class='step-start' onclick='document.location = `../cardUpload/cardUploadAdmin.php?id=". $row['id'] ."`'>";
+                        if($row['country_cards_step'] == 'not started'){
+                          echo "<i class='fa fa-play-circle fa-2x gray'></i>";
+                        }else if($row['country_cards_step'] == 'waiting admin'){
+                          echo "<i class='fa fa-clock-o fa-2x yellow'></i>";
+                        }else if($row['country_cards_step'] == 'waiting contact'){
+                          echo "<i class='fa fa-exclamation-circle fa-2x red'></i>";
+                        }else if($row['country_cards_step'] == 'approved'){
+                          echo "<i class='fa fa-check-circle fa-2x green'></i>";
+                        };
+                        echo "</button>
+                      </div>
+                      <div class='step' style='display: none'>
                         <p>Translation</p>
                         <button title='Go to Translation Step' type='button' class='step-start' onclick='document.location = `../others/workInProgress.php`'>";
                         if($row['translation_step'] == 'not started'){
@@ -78,20 +92,6 @@
                         }else if($row['translation_step'] == 'waiting contact'){
                           echo "<i class='fa fa-exclamation-circle fa-2x red'></i>";
                         }else if($row['translation_step'] == 'approved'){
-                          echo "<i class='fa fa-check-circle fa-2x green'></i>";
-                        };
-                        echo "</button>
-                      </div>
-                      <div class='step'>
-                        <p>Country Cards</p>
-                        <button title='Go to Cards review Step' type='button' class='step-start' onclick='document.location = `../others/workInProgress.php`'>";
-                        if($row['country_cards_step'] == 'not started'){
-                          echo "<i class='fa fa-play-circle fa-2x gray'></i>";
-                        }else if($row['country_cards_step'] == 'waiting admin'){
-                          echo "<i class='fa fa-clock-o fa-2x yellow'></i>";
-                        }else if($row['country_cards_step'] == 'waiting contact'){
-                          echo "<i class='fa fa-exclamation-circle fa-2x red'></i>";
-                        }else if($row['country_cards_step'] == 'approved'){
                           echo "<i class='fa fa-check-circle fa-2x green'></i>";
                         };
                         echo "</button>
