@@ -63,6 +63,7 @@
     <form>
       <div class="indicators">
         <div class="form-input">
+    
           <label for="groups">
             National physical activity policy/plan <span onclick="showModalInfo('pa-policy-year')"><i
                 class="fa fa-question-circle-o"></i></span>
@@ -102,7 +103,7 @@
               }
           ?> onblur="saveValueByAdmin('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_admin')">
           <label for="reference" class="mt-10">Reference</label>
-          <input type="text" name="reference-admin" id="national-policy-reference-admin" <?php
+          <input type="text" name="national-policy-reference-admin" id="national-policy-reference-admin" <?php
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
               } 
@@ -111,9 +112,9 @@
               }
           ?>
             onblur="saveValueByAdmin('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_admin')">
-          <div class="form-input" id="embbed-prevention-field-admin">
+          <div class="form-input w-fix" id="embbed-prevention-field-admin">
             <label for="radio-group" class="mt-10">
-              Embedded in an noncommunicable disease (NCD) for physical prevention plan
+              The policy/plan is for noncommunicable disease (NCD) prevention and Physical Activity is included
             </label>
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
@@ -124,8 +125,7 @@
                 if ($admin_values['embbed_prevention'] == 1) {
                   echo "checked";
                 }
-                ?>
-                onblur="saveRadioValue('embbed-prevention-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
+                ?>>
               <label for="no">No</label>
               <input type="radio" id="no" name="embbed-prevention-admin" value="no" <?php
                 if($_SESSION['userType'] != "admin"){
@@ -134,13 +134,12 @@
                 if ($admin_values['embbed_prevention'] == 0 && $admin_values['embbed_prevention'] != null) {
                   echo "checked";
                 }
-                ?>
-                onblur="saveRadioValue('embbed-prevention-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
+                ?>>
             </div>
           </div>
-          <div class="form-input" id="standalone-prevention-field-admin">
+          <div class="form-input w-fix" id="standalone-prevention-field-admin">
             <label for="radio-group">
-              Standalone for physical prevention plan? (i.e., exclusively dedicated to physical activity)
+              The policy/plan is standalone for Physical Activity (i.e., exclusively dedicated to physical activity)
             </label>
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
@@ -151,8 +150,7 @@
               if ($admin_values['standalone_prevention'] == 1) {
                 echo "checked";
               }
-              ?>
-              onblur="saveRadioValue('standalone-prevention-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
+              ?>>
               <label for="no">No</label>
               <input type="radio" id="no" name="standalone-prevention-admin" value="no" <?php 
               if($_SESSION['userType'] != "admin"){
@@ -161,8 +159,7 @@
               if ($admin_values['standalone_prevention'] == 0 && $admin_values['standalone_prevention'] != null) {
                 echo "checked";
               }
-              ?>
-              onblur="saveRadioValue('standalone-prevention-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
+              ?>>
             </div>
           </div>
           <?php 
@@ -207,7 +204,7 @@
               ?> onblur="saveRadioValue('national-policy',  '<?php echo $id ?>', 'national_policy_values_contact')">
             </div>
             <label for="national-policy-titles">Title(s)</label>
-            <input type="text" name="titles" id="national-policy-titles" <?php 
+            <input type="text" name="national-policy-titles" id="national-policy-titles" <?php 
                 if($_SESSION['userType'] == "admin"){
                   echo "disabled ";
                 }
@@ -217,7 +214,7 @@
             ?>
               onblur="saveValueByContact('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_contact')">
             <label for="national-policy-reference" class="mt-10">Reference</label>
-            <input type="text" name="reference" id="national-policy-reference" <?php
+            <input type="text" name="national-policy-reference" id="national-policy-reference" <?php
                 if($_SESSION['userType'] == "admin"){
                   echo "disabled ";
                 } 
@@ -228,7 +225,7 @@
               onblur="saveValueByContact('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_contact')">
             <div class="form-input w-100" id="embbed-prevention-field">
               <label for="radio-group" class="mt-10">
-                Embedded in an noncommunicable disease (NCD) for physical prevention plan
+                The policy/plan is for noncommunicable disease (NCD) prevention and Physical Activity is included
               </label>
               <div class="radio" id="radio-group">
                 <label for="yes">Yes</label>
@@ -239,8 +236,7 @@
                   if ($contact_values['embbed_prevention'] == 1) {
                     echo "checked";
                   }
-                  ?>
-                  onblur="saveRadioValue('embbed-prevention',  '<?php echo $id ?>', 'national_policy_values_contact')">
+                  ?>>
                 <label for="no">No</label>
                 <input type="radio" id="no" name="embbed-prevention" value="no" <?php 
                   if($_SESSION['userType'] == "admin"){
@@ -249,13 +245,12 @@
                   if ($contact_values['embbed_prevention'] == 0 && $contact_values['embbed_prevention'] != null) {
                     echo "checked";
                   }
-                  ?>
-                  onblur="saveRadioValue('embbed-prevention',  '<?php echo $id ?>', 'national_policy_values_contact')">
+                  ?>>
               </div>
             </div>
             <div class="form-input w-100" id="standalone-prevention-field">
               <label for="radio-group">
-                Standalone for physical prevention plan? (i.e., exclusively dedicated to physical activity)
+                The policy/plan is standalone for Physical Activity (i.e., exclusively dedicated to physical activity)
               </label>
               <div class="radio" id="radio-group">
                 <label for="yes">Yes</label>
@@ -266,8 +261,7 @@
                   if ($contact_values['standalone_prevention'] == 1) {
                     echo "checked";
                   }
-                ?>
-                onblur="saveRadioValue('standalone-prevention',  '<?php echo $id ?>', 'national_policy_values_contact')">
+                ?>>
                 <label for="no">No</label>
                 <input type="radio" id="no" name="standalone-prevention" value="no" <?php
                   if($_SESSION['userType'] == "admin"){
@@ -276,13 +270,12 @@
                   if ($contact_values['standalone_prevention'] == 0 && $contact_values['standalone_prevention'] != null) {
                     echo "checked";
                   }
-                ?>
-                onblur="saveRadioValue('standalone-prevention',  '<?php echo $id ?>', 'national_policy_values_contact')">
+                ?>>
               </div>
             </div>
           </div>
           <?php
-            $diff_input = "1";
+            $diff_input = 1;
             $indicator_name = "national_policy";
             $indicator_table_name = "national_policy";
             include("../../components/commentInput.php")
@@ -318,7 +311,7 @@
               onblur="saveRadioValue('national-recommendations-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
           </div>
           <label for="national-recommendation-reference-admin">Reference</label>
-          <input type="text" name="reference" id="national-recommendation-reference-admin" <?php
+          <input type="text" name="national-recommendation-reference-admin" id="national-recommendation-reference-admin" <?php
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
               } 
@@ -338,7 +331,7 @@
         <div class="contact-field">
           <?php
             $agreement_order = 2;
-            $indicator_name = "national-recommendations";
+            $indicator_name = "national_recommendations";
             $indicator_table_name = "national_policy";
             include("../../components/agreementInput.php") 
           ?>
@@ -368,7 +361,7 @@
                 onblur="saveRadioValue('national-recommendations',  '<?php echo $id ?>', 'national_policy_values_contact')">
             </div>
             <label for="reference">Reference</label>
-            <input type="text" name="reference" id="national-recommendations-reference" <?php 
+            <input type="text" name="national-recommendations-reference" id="national-recommendations-reference" <?php 
                 if($_SESSION['userType'] == "admin"){
                   echo "disabled ";
                 }
@@ -378,7 +371,9 @@
             ?>
               onblur="saveValueByContact('national-recommendations-reference', '<?php echo $id ?>', 'national_policy_values_contact')">
           </div>
+          
           <?php
+            $diff_input = 2;
             $indicator_name = "national_recommendations";
             $indicator_table_name = "national_policy";
             include("../../components/commentInput.php")
@@ -415,7 +410,7 @@
         <div class="contact-field">
           <?php
             $agreement_order = 3;
-            $indicator_name = "policy-implementation";
+            $indicator_name = "policy_implementation";
             $indicator_table_name = "national_policy";
             include("../../components/agreementInput.php") 
           ?>
@@ -431,6 +426,7 @@
             include("../../components/contactInput.php")
           ?>
           <?php
+            $diff_input = 3;
             $indicator_name = "policy_implementation";
             $indicator_table_name = "national_policy";
             include("../../components/commentInput.php")

@@ -1,4 +1,4 @@
-<div class="form-input" id="different-value-source-<?php echo $input_option?>">
+<div class="form-input diff" id="different-value-source-<?php echo $input_option?>">
   <p>Answer below, if you think there's a different data from the source and the contact need to review it.</p>
   <label for="radio-group">
     Different values from source?

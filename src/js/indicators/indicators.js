@@ -50,6 +50,8 @@ let page = urlSplit[urlSplit.length - 1];
 //split the page name before the ?
 let pageSplit = page.split(".");
 let table = pageSplit[0];
+//get the id from the url, get the value after the =
+let id = pageSplit[1].split("=")[1];
 
 $(document).ready(function () {
   hideAllDifferentInputOption();
@@ -69,6 +71,8 @@ function checkValues() {
       $("#" + input + "-indicator").css("display", "flex");
       if (table == "nationalPolicy") {
         showDifferentInputOption(index);
+        validateNationalPolicyPlan();
+        validateNationalPolicyPlanAdmin();
       }
     } else if (
       $("input[name=agreement-" + index + "]:checked").val() == "yes" ||
@@ -143,6 +147,10 @@ function saveComment(indicator, id, table) {
   postValue(indicator, $("#" + indicator + "-comments").val(), id, table);
 }
 
+function saveDiffData(indicator, id, table) {
+  postValue(indicator, $("#" + indicator).val(), id, table);
+}
+
 function postValue(indicator, value, id, table) {
   //replace the - by _ to match the database
   indicator = indicator.replaceAll("-", "_");
@@ -186,7 +194,10 @@ function showInput(agreement, input, id, table) {
   input = input.replaceAll("_", "-");
   if ($("input[name=" + agreement + "]:checked").val() == "no-edit") {
     $("#" + input + "-indicator").css("display", "flex");
-    postValue(input, 2, id, table + "_agreement");
+    postValue(input, 0, id, table + "_agreement");
+  } else if ($("input[name=" + agreement + "]:checked").val() == "no") {
+    $("#" + input + "-indicator").css("display", "flex");
+    postValue(input, 1, id, table + "_agreement");
   }
 }
 
@@ -194,11 +205,120 @@ function hideInput(agreement, input, id, table) {
   input = input.replaceAll("_", "-");
   if ($("input[name=" + agreement + "]:checked").val() == "yes") {
     $("#" + input + "-indicator").css("display", "none");
-    postValue(input, 1, id, table + "_agreement");
-  } else if ($("input[name=" + agreement + "]:checked").val() == "no") {
-    $("#" + input + "-indicator").css("display", "none");
-    postValue(input, 0, id, table + "_agreement");
+    postValue(input, 2, id, table + "_agreement");
   }
+}
+
+function validateNationalPolicyPlan() {
+  $("input[name=standalone-prevention]").on("click", function () {
+    if ($("input[name=standalone-prevention]:checked").val() == "yes") {
+      $("input[name=embbed-prevention][value='no']").prop("checked", true);
+      saveRadioValue(
+        "standalone-prevention",
+        id,
+        "national_policy_values_contact"
+      );
+      saveRadioValue("embbed-prevention", id, "national_policy_values_contact");
+    } else {
+      $("input[name=embbed-prevention][value='yes']").prop("checked", true);
+      saveRadioValue(
+        "standalone-prevention",
+        id,
+        "national_policy_values_contact"
+      );
+      saveRadioValue("embbed-prevention", id, "national_policy_values_contact");
+    }
+  });
+
+  $("input[name=embbed-prevention]").on("click", function () {
+    if ($("input[name=embbed-prevention]:checked").val() == "yes") {
+      $("input[name=standalone-prevention][value='no']").prop("checked", true);
+      saveRadioValue(
+        "standalone-prevention",
+        id,
+        "national_policy_values_contact"
+      );
+      saveRadioValue("embbed-prevention", id, "national_policy_values_contact");
+    } else {
+      $("input[name=standalone-prevention][value='yes']").prop("checked", true);
+      saveRadioValue(
+        "standalone-prevention",
+        id,
+        "national_policy_values_contact"
+      );
+      saveRadioValue("embbed-prevention", id, "national_policy_values_contact");
+    }
+  });
+}
+
+function validateNationalPolicyPlanAdmin() {
+  $("input[name=standalone-prevention-admin]").on("click", function () {
+    if ($("input[name=standalone-prevention-admin]:checked").val() == "yes") {
+      $("input[name=embbed-prevention-admin][value='no']").prop(
+        "checked",
+        true
+      );
+      saveRadioValue(
+        "standalone-prevention-admin",
+        id,
+        "national_policy_values_admin"
+      );
+      saveRadioValue(
+        "embbed-prevention-admin",
+        id,
+        "national_policy_values_admin"
+      );
+    } else {
+      $("input[name=embbed-prevention-admin][value='yes']").prop(
+        "checked",
+        true
+      );
+      saveRadioValue(
+        "standalone-prevention-admin",
+        id,
+        "national_policy_values_admin"
+      );
+      saveRadioValue(
+        "embbed-prevention-admin",
+        id,
+        "national_policy_values_admin"
+      );
+    }
+  });
+
+  $("input[name=embbed-prevention-admin]").on("click", function () {
+    if ($("input[name=embbed-prevention-admin]:checked").val() == "yes") {
+      $("input[name=standalone-prevention-admin][value='no']").prop(
+        "checked",
+        true
+      );
+      saveRadioValue(
+        "standalone-prevention-admin",
+        id,
+        "national_policy_values_admin"
+      );
+      saveRadioValue(
+        "embbed-prevention-admin",
+        id,
+        "national_policy_values_admin"
+      );
+    } else {
+      $("input[name=standalone-prevention-admin][value='yes']").prop(
+        "checked",
+        true
+      );
+      saveRadioValue(
+        "standalone-prevention-admin",
+        id,
+        "national_policy_values_admin"
+      );
+      saveRadioValue(
+        "embbed-prevention-admin",
+        id,
+        "national_policy_values_admin"
+      );
+    }
+  });
 }
 
 function showModalInfo(indicator) {

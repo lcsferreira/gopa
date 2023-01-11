@@ -560,6 +560,28 @@ textarea::placeholder {
   justify-content: flex-end !important;
 }
 
+.clarification {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  border: 2px solid #03a9f4;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.form-input.diff {
+  margin-top: 10px;
+  border: 2px solid #03a9f4;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.w-fix {
+  width: 371px;
+}
+
 @media screen and (min-width: 1330px) {
   /* form .label-textarea {
     display: none;
@@ -573,6 +595,10 @@ textarea::placeholder {
     align-self: flex-start;
     width: max-content;
     text-align: justify;
+  }
+
+  .w-fix {
+    width: 371px !important;
   }
 
   form .indicators .contact-field .contact-input {
