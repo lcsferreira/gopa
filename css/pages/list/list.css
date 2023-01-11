@@ -112,7 +112,7 @@ body {
 
 .list-object .steps-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 40%;
 }
@@ -166,6 +166,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 190px;
 }
 
 .info-detail p {

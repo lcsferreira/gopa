@@ -103,7 +103,9 @@
                       </div>
                       <div class='step'>
                         <p>Country Card English</p>
-                        <button type='button' class='step-start' onclick='document.location = `../cardUpload/cardUploadAdmin.php?id=". $row['id'] ."`'>";
+                        <button ";
+                        if ($row['indicators_step'] != 'approved') {
+                          echo "disabled ";} echo "type='button' class='step-start' onclick='document.location = `../cardUpload/cardUploadAdmin.php?id=". $row['id'] ."`'>";
                         if($row['country_cards_step'] == 'not started'){
                           echo "<i class='fa fa-play-circle fa-2x gray'></i>";
                         }else if($row['country_cards_step'] == 'waiting contact'){
