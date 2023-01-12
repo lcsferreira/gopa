@@ -18,7 +18,7 @@
   $sql = "SELECT * FROM cards_en WHERE id = $country_id";
   $result = mysqli_query($connection, $sql);
   $row = mysqli_fetch_assoc($result);
-  $file_path = $row['file_path'];
+
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -83,7 +83,7 @@
           <input class="btn-confirm" type="submit" value="Upload" <?php if ($_SESSION["userType"] == "admin") {
             echo " disabled";
           }?>>
-          <?php if ($file_path != null && $_SESSION["userType"] == "admin") {
+          <?php if ($_SESSION["userType"] == "admin") {
             echo "<a class='btn-confirm btn-download' href='https://work.globalphysicalactivityobservatory.com/uploads/files/".$file_path."' download='contact_comment'><i class='fa fa-download'></i> Download</a>";
           }?>
           <div id="msg-file-contact"></div>
@@ -106,8 +106,10 @@
           </div>
         </div>
         <input class="btn-confirm" type="button" value="Submit" <?php if ($_SESSION["userType"] == "admin") {
-            echo " disabled";
-          }?> onclick='submitValue()'>
+            echo "onclick='submitValueAdmin()'";
+        } else {
+            echo " onclick='submitValue()'";
+        }?>>
       </form>
     </div>
     <br>

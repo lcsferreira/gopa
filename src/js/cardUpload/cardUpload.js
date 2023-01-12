@@ -8,7 +8,7 @@ $(document).ready(function (e) {
       type: "POST",
       data: new FormData(this),
       contentType: false,
-      cache: true,
+      cache: false,
       processData: false,
       beforeSend: function () {
         $("#preview").fadeOut();
@@ -29,6 +29,7 @@ $(document).ready(function (e) {
       },
     });
   });
+
   $("#preview").ready(function () {
     let id = $("input[name=country_id]").val();
     getPDF(id);
@@ -93,14 +94,17 @@ function getPDF(id) {
 
 function makeThumb(page) {
   // draw page to fit into 96x96 canvas
-  var vp = page.getViewport(1);
+  var vp = page.getViewport({ scale: 1 });
   var canvas = document.createElement("canvas");
-  canvas.width = 700;
-  canvas.height = 410;
+  var scalesize = 1;
+  canvas.width = vp.width * scalesize;
+  canvas.height = vp.height * scalesize;
+
+  var scalesize = 1;
   var scale = Math.min(canvas.width / vp.width, canvas.height / vp.height);
   return page
     .render({
-      canvasContext: canvas.getContext("2d"),
+      canvasContext: canvas.getContext("2d", { willReadFrequently: true }),
       viewport: page.getViewport(scale),
     })
     .promise.then(function () {
