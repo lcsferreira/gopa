@@ -1,0 +1,7 @@
+/.vscode
+/config.php
+/assets
+/composer.json
+/composer.lock
+/vendor
+/uploads
