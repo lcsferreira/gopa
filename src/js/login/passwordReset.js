@@ -60,6 +60,7 @@ function postPassword() {
     let url = window.location.href;
     let urlClass = new URL(url);
     let id = urlClass.searchParams.get("id");
+    let userType = urlClass.searchParams.get("userType");
 
     if (password !== confirmPassword) {
       alert("Passwords do not match");
@@ -67,7 +68,7 @@ function postPassword() {
       let request = $.ajax({
         method: "POST",
         url: "../../ajaxQuerys/login/savePassword.php",
-        data: { id: id, password: password },
+        data: { id: id, password: password, userType: userType },
         dataType: "text",
         type: "post",
         contentType: "application/x-www-form-urlencoded",

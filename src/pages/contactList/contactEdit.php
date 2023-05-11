@@ -153,6 +153,11 @@
       <button class="btn-confirm" type="button" id="saveContact" >Confirm</button>
     </form>
   </div>
+  <footer>
+    <p><a target="_noblank" href="https://new.globalphysicalactivityobservatory.com/privacy-policy/">Privacy Policy</a>
+    ©  2023 GoPA. All rights reserved.
+  </p>
+  </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="../../js/contacts/contactEdit.js"></script>
   <script src="../../js/sidebarMenu.js"></script>

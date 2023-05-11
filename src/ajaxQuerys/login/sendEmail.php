@@ -16,9 +16,11 @@
   if(mysqli_num_rows($result) > 0 || mysqli_num_rows($result2) > 0){
     if(mysqli_num_rows($result) > 0){
       $id = $row['id'];
+      $userType = "admin";
     }
     else if(mysqli_num_rows($result2) > 0){
       $id = $row2['id'];
+      $userType = "contact";
     }
     //send the email
     $assunto = "Reset Password";
@@ -36,7 +38,7 @@
     <br><br>
       Please click in the <b>link below</b> to reset your password.
     <br><br>
-      <a href='http://work.globalphysicalactivityobservatory.com/src/pages/login/resetPassword.php?id=$id'>Reset Password</a>
+      <a href='http://work.globalphysicalactivityobservatory.com/src/pages/login/resetPassword.php?id=$id&userType=$userType'>Reset Password</a>
     <br><br>
       If you have any questions, please contact us at <a href='mailto: andrea.ramirez@globalphysicalactivityobservatory.com'>andrea.ramirez@globalphysicalactivityobservatory.com</a>
     ";
@@ -48,7 +50,6 @@
     } else {
       echo "error";
     }
-    echo "success";
   }else{
     echo "email does not exist";
   }

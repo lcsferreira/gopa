@@ -75,6 +75,7 @@
 
       <form id="form-contact" action="cardUploadContactTranslated.php" method="post" enctype="multipart/form-data">
         <div class="form-input">
+          <p>To ensure efficient review and identification of adjustments, please use a different color (e.g., red, yellow highlight) when requesting changes for the Country Card.</p>
           <label for="card-comments" class="label-textarea">If any adjustment, please indicate year of information and provide additional comments here: </label>
           <textarea placeholder="Add a comment..." name="comment" id="card-comments" cols="30" rows="5" class="comment" <?php if ($_SESSION["userType"] == "admin") {
             echo " disabled";
@@ -129,6 +130,11 @@
     <div id="err" class="error-msg"></div>
     <div id="msg" class="loading"></div>
   </div>
+  <footer>
+    <p><a target="_noblank" href="https://new.globalphysicalactivityobservatory.com/privacy-policy/">Privacy Policy</a>
+    ©  2023 GoPA. All rights reserved.
+  </p>
+  </footer>
 </body>
 
 </html>

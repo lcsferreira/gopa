@@ -12,14 +12,6 @@ body {
   margin: 0 auto;
 }
 
-.error-msg {
-  color: red !important;
-}
-
-.w-180 {
-  width: 180% !important;
-}
-
 .mt-10 {
   margin-top: 10px;
 }
@@ -125,7 +117,7 @@ form .indicators .contact-field .contact-input {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  flex-direction: column;
+  align-items: flex-end;
 }
 form .form-input p {
   color: #8e9dae;
@@ -182,7 +174,6 @@ form .indicators .contact-field .contact-input .comment-area {
 
 form .indicators .contact-field .contact-input .comment-area label {
   color: #8e9dae;
-  margin-top: 20px;
 }
 
 form .form-input label p,
@@ -566,7 +557,7 @@ textarea::placeholder {
 }
 
 .intro-btn {
-  justify-content: flex-end !important;
+  justify-content: space-between !important;
 }
 
 .clarification {

@@ -233,51 +233,100 @@
       </div>
       <div class="indicators">
         <div class="form-input">
-          <label for="survey-names-admin">
-            Surveys and instruments used to assess physical activity
-            (Names)
+          <label for="survey-tool-admin">
+            Surveillance tool (National survey, STEPS WHO, Eurobarometer, NHANES, NHIS, BRFSS, or other)
           </label>
-          <input type="text" name="survey-names" id="survey-names-admin" <?php 
+          <textarea style="height: 104px;" name="survey-tool" id="survey-tool-admin" <?php 
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
               }
-              if($admin_values['survey_names'] != null){
-                echo "value='" . $admin_values['survey_names']."'";
+          ?> onblur="saveValueByAdmin('survey-tool', '<?php echo $id ?>', 'national_surveillance_values_admin')"><?php 
+              if($admin_values['survey_tool'] != null){
+                echo $admin_values['survey_tool'];
               }
-          ?> onblur="saveValueByAdmin('survey-names', '<?php echo $id ?>', 'national_surveillance_values_admin')">
+          ?></textarea>
         </div>
         <div class="contact-field">
           <?php
             $agreement_order = 4;
-            $indicator_name = "survey_names";
+            $indicator_name = "survey_tool";
             $indicator_table_name = "national_surveillance";
             include("../../components/agreementInput.php") 
           ?>
-          <div class="contact-input" id="survey-names-indicator">
+          <div class="contact-input" id="survey-tool-indicator">
             <div class="form-input">
               <p>Provide the new information here: </p>
-              <label for="survey-names">
-                Surveys and instruments used to assess physical activity
-                (Names)
+              <label for="survey-tool">
+                Surveillance tool (National survey, STEPS WHO, Eurobarometer, NHANES, NHIS, BRFSS, or other)
               </label>
-              <input type="text" name="survey-names" id="survey-names"
-                onblur="saveValueByContact('survey-names', '<?php echo $id ?>', 'national_surveillance_values_contact')" <?php 
+              <textarea style="height: 104px;" name="survey-tool" id="survey-tool"
+                onblur="saveValueByContact('survey-tool', '<?php echo $id ?>', 'national_surveillance_values_contact')" <?php 
                   if($_SESSION['userType'] == "admin"){
                     echo "disabled ";
                   }
-                  if($contact_values['survey_names'] != null){
-                    echo "value='" . $contact_values['survey_names']."'";
+              ?>><?php 
+                  if($contact_values['survey_tool'] != null){
+                    echo $contact_values['survey_tool'];
                   }
-              ?>>
+              ?></textarea>
             </div>
             <?php
-              $indicator_name = "survey_names";
+              $indicator_name = "survey_tool";
               $indicator_table_name = "national_surveillance";
               include("../../components/commentInput.php")
             ?>
           </div>    
         </div>
       </div>
+
+      <div class="indicators">
+        <div class="form-input">
+          <label for="survey-instrument-admin">
+            Instrument (GPAQ, IPAQ, adapted GPAQ, RPAQ, short IPAQ, other)
+          </label>
+          <textarea style="height: 104px;" name="survey-instrument" id="survey-instrument-admin" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+          ?> onblur="saveValueByAdmin('survey-instrument', '<?php echo $id ?>', 'national_surveillance_values_admin')"><?php 
+              if($admin_values['survey_instrument'] != null){
+                echo $admin_values['survey_instrument'];
+              }
+          ?></textarea>
+        </div>
+        <div class="contact-field">
+          <?php
+            $agreement_order = 4;
+            $indicator_name = "survey_instrument";
+            $indicator_table_name = "national_surveillance";
+            include("../../components/agreementInput.php") 
+          ?>
+          <div class="contact-input" id="survey-instrument-indicator">
+            <div class="form-input">
+              <p>Provide the new information here: </p>
+              <label for="survey-instrument">
+                Instrument (GPAQ, IPAQ, adapted GPAQ, RPAQ, short IPAQ, other)
+              </label>
+              <textarea style="height:104px;" name="survey-instrument" id="survey-instrument"
+                onblur="saveValueByContact('survey-instrument', '<?php echo $id ?>', 'national_surveillance_values_contact')" <?php 
+                  if($_SESSION['userType'] == "admin"){
+                    echo "disabled ";
+                  }
+              ?>><?php 
+                  if($contact_values['survey_instrument'] != null){
+                    echo $contact_values['survey_instrument'];
+                  }
+              ?></textarea>
+            </div>
+            <?php
+              $indicator_name = "survey_instrument";
+              $indicator_table_name = "national_surveillance";
+              include("../../components/commentInput.php")
+            ?>
+          </div>    
+        </div>
+      </div>
+
       <div class="indicators">
         <div class="form-input">
           <label for="objective-measures-admin">
@@ -397,6 +446,11 @@
       </div>
     </form>
   </div>
+  <footer>
+    <p><a target="_noblank" href="https://new.globalphysicalactivityobservatory.com/privacy-policy/">Privacy Policy</a>
+    ©  2023 GoPA. All rights reserved.
+  </p>
+  </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="../../js/indicators/indicators.js"></script>
   <script src="../../js/sidebarMenu.js"></script>

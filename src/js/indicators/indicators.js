@@ -130,9 +130,6 @@ function checkEmbbedAndStandaloneInputs() {
   }
 }
 
-//on unload
-
-//function to check if the values of the inputs inside the .contact-inputs div are empty
 function showDifferentInputOption(index, input) {
   input = input.replaceAll("-", "_");
   $("#different-value-source-" + index).css("display", "flex");

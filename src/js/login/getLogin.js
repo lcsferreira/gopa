@@ -41,7 +41,7 @@ function login(email, password) {
         window.location.href = "../countriesList/countriesListAdmin.php";
       } else {
         // console.log("../countriesList/introIndicators.php");
-        window.location.href = "../countriesList/introIndicators.php";
+        window.location.href = "../others/manual.php";
       }
     } else {
       $("#login").html("Login");

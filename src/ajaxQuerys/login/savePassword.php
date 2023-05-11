@@ -6,9 +6,9 @@
   $userType = $_POST['userType'];
   //update admin password where id = $id
   if($userType == "contact"){
-    $sql = "UPDATE contacts SET password = ? WHERE id = '$id'";
+    $sql = "UPDATE contacts SET password = ? WHERE id = $id";
   }else if($userType == "admin"){
-    $sql = "UPDATE admin SET password = ? WHERE id = '$id'";
+    $sql = "UPDATE admin SET password = ? WHERE id = $id";
   }
   $stmt = mysqli_prepare($connection, $sql);
   $password = md5($_POST['password']);
@@ -24,5 +24,4 @@
   mysqli_stmt_close($stmt);
 
   mysqli_close($connection);
-  
 ?>

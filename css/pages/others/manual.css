@@ -1,0 +1,131 @@
+body {
+  background-color: #f5fafd;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5fafd;
+  max-width: 80vw;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.pdf-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 70px;
+  margin-top: 35px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title h1 {
+  color: #222b34;
+  font-size: 40px;
+  text-align: center;
+}
+
+.title p {
+  width: 70%;
+  color: #8e9dae;
+  font-size: 16px;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  width: 90vw;
+  margin-top: 60px;
+}
+
+.pdf-doc {
+  width: 900px;
+}
+
+a.button {
+  text-decoration: none;
+  background-color: #222b34;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+hr {
+  width: 90%;
+  border: 1px solid #e6e6e6;
+  margin-top: 40px;
+}
+
+object {
+  margin-bottom: 20px;
+}
+
+.videos-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.btn-next {
+  background-color: #03a9f4;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  width: 110px;
+  height: 35px;
+  border: none;
+  border-radius: 4px;
+  padding: 0;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.btn-next:disabled {
+  opacity: 60%;
+  background-color: #8e9dae;
+  border: 1px solid white;
+  cursor: auto;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 100px;
+  width: 100%;
+}
+
+.btn-back {
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  width: 110px;
+  height: 35px;
+  border: 2px solid #03a9f4;
+  color: #03a9f4;
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btn-back:disabled {
+  opacity: 60%;
+  background-color: #8e9dae;
+  border: 1px solid white;
+  cursor: auto;
+}

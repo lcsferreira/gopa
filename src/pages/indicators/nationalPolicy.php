@@ -105,24 +105,26 @@
             ?> onclick="saveRadioValue('national-policy-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
           </div>
           <label for="national-policy-titles-admin">Title(s)</label>
-          <input type="text" name="national-policy-titles-admin" id="national-policy-titles-admin" <?php
+          <textarea style="height: 104px;" name="national-policy-titles-admin" id="national-policy-titles-admin" <?php
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
               } 
+          ?> onblur="saveValueByAdmin('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_admin')"><?php 
               if($admin_values['national_policy_titles'] != null){
-                echo "value='" . $admin_values['national_policy_titles']."'";
+                echo $admin_values['national_policy_titles'];
               }
-          ?> onblur="saveValueByAdmin('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_admin')">
+          ?></textarea>
           <label for="reference" class="mt-10">Reference</label>
-          <input type="text" name="national-policy-reference-admin" id="national-policy-reference-admin" <?php
+          <textarea style="height: 104px;" name="national-policy-reference-admin" id="national-policy-reference-admin" <?php
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
               } 
-              if($admin_values['national_policy_reference'] != null){
-                echo "value='" . $admin_values['national_policy_reference']."'";
-              }
           ?>
-            onblur="saveValueByAdmin('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_admin')">
+            onblur="saveValueByAdmin('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_admin')"><?php 
+              if($admin_values['national_policy_reference'] != null){
+                echo $admin_values['national_policy_reference'];
+              }
+          ?></textarea>
           <div class="form-input w-fix" id="embbed-prevention-field-admin">
             <label for="radio-group" class="mt-10">
               The policy/plan is for noncommunicable disease (NCD) prevention and Physical Activity is included
@@ -216,25 +218,27 @@
               ?> onclick="saveRadioValue('national-policy',  '<?php echo $id ?>', 'national_policy_values_contact')">
             </div>
             <label for="national-policy-titles">Title(s)</label>
-            <input type="text" name="national-policy-titles" id="national-policy-titles" <?php 
+            <textarea style="height: 104px;" name="national-policy-titles" id="national-policy-titles" <?php 
                 if($_SESSION['userType'] == "admin"){
                   echo "disabled ";
                 }
-                if($contact_values['national_policy_titles'] != null){
-                  echo "value='" . $contact_values['national_policy_titles']."'";
-                }
             ?>
-              onblur="saveValueByContact('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_contact')">
+              onblur="saveValueByContact('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_contact')"><?php 
+                if($_SESSION['userType'] != "admin"){
+                  echo $contact_values['national_policy_titles'];
+                }
+              ?></textarea>
             <label for="national-policy-reference" class="mt-10">Reference</label>
-            <input type="text" name="national-policy-reference" id="national-policy-reference" <?php
+            <textarea style="height: 104px;" name="national-policy-reference" id="national-policy-reference" <?php
                 if($_SESSION['userType'] == "admin"){
                   echo "disabled ";
                 } 
-                if($contact_values['national_policy_reference'] != null){
-                  echo "value='" . $contact_values['national_policy_reference']."'";
-                }
             ?>
-              onblur="saveValueByContact('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_contact')">
+              onblur="saveValueByContact('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_contact')"><?php 
+                if($_SESSION['userType'] != "admin"){
+                  echo $contact_values['national_policy_reference'];
+                }
+              ?></textarea>
             <div class="form-input w-100" id="embbed-prevention-field">
               <label for="radio-group" class="mt-10">
                 The policy/plan is for noncommunicable disease (NCD) prevention and Physical Activity is included
@@ -477,6 +481,11 @@
       </div>
     </form>
   </div>
+  <footer>
+    <p><a target="_noblank" href="https://new.globalphysicalactivityobservatory.com/privacy-policy/">Privacy Policy</a>
+    ©  2023 GoPA. All rights reserved.
+  </p>
+  </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="../../js/indicators/indicators.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
