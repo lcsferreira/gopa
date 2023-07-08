@@ -146,16 +146,15 @@
       <div class="indicators">
         <div class="form-input">
           <label for="most-recent-year-admin">Most recent (Year)</label>
-          <input type="text" name="most-recent-year-admin"
+          <textarea style="height: 104px;"name="most-recent-year-admin"
             onblur="saveValueByAdmin('most-recent-year', '<?php echo $id ?>', 'national_surveillance_values_admin')"
             id="most-recent-year-admin" <?php 
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
-              }
-              if($admin_values['most_recent_year'] != null){
-                echo "value='" . $admin_values['most_recent_year']."'";
-              }
-          ?>>
+              }  
+          ?>><?php if($admin_values['most_recent_year'] != null){
+            echo $admin_values['most_recent_year'];
+          }?></textarea>
         </div>
         <div class="contact-field">
           <?php
@@ -168,16 +167,15 @@
           <div class="form-input">
           <p>Provide the new information here: </p>
             <label for="most-recent-year">Most recent (Year)</label>
-            <input type="text"
+            <textarea style="height: 104px;" 
               onblur="saveValueByContact('most-recent-year', '<?php echo $id ?>', 'national_surveillance_values_contact')"
               name="most-recent-year" id="most-recent-year" <?php 
                 if($_SESSION['userType'] == "admin"){
                   echo "disabled ";
                 }
-                if($contact_values['most_recent_year'] != null){
-                  echo "value='" . $contact_values['most_recent_year']."'";
-                }
-            ?>>
+            ?>><?php if($contact_values['most_recent_year'] != null){
+              echo $contact_values['most_recent_year'];
+            }?></textarea>
           </div>
             <?php
               $indicator_name = "most_recent_year";
@@ -190,16 +188,15 @@
       <div class="indicators">
         <div class="form-input">
           <label for="next-year-admin">Next (Year)</label>
-          <input type="text" name="next-year-admin"
+          <textarea style="height: 104px;" name="next-year-admin"
             onblur="saveValueByAdmin('next-year', '<?php echo $id ?>', 'national_surveillance_values_admin')"
             id="next-year-admin" <?php 
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
               }
-              if($admin_values['next_year'] != null){
-                echo "value='" . $admin_values['next_year']."'";
-              }
-          ?>>
+          ?>><?php if($admin_values['next_year'] != null){
+            echo $admin_values['next_year'];
+          }?></textarea>
         </div>
         <div class="contact-field">
           <?php
@@ -212,16 +209,15 @@
             <div class="form-input">
               <p>Provide the new information here: </p>
               <label for="next-year">Next (Year)</label>
-              <input type="text" name="next-year"
+              <textarea style="height: 104px;" name="next-year"
               onblur="saveValueByContact('next-year', '<?php echo $id ?>', 'national_surveillance_values_contact')"
               id="next-year" <?php 
                 if($_SESSION['userType'] == "admin"){
                   echo "disabled ";
                 }
-                if($contact_values['next_year'] != null){
-                  echo "value='" . $contact_values['next_year']."'";
-                }
-                ?>>
+                ?>><?php if($contact_values['next_year'] != null){
+                  echo $contact_values['next_year'];
+                }?></textarea>
               </div>
             <?php
               $indicator_name = "next_year";
@@ -296,7 +292,7 @@
         </div>
         <div class="contact-field">
           <?php
-            $agreement_order = 4;
+            $agreement_order = 5;
             $indicator_name = "survey_instrument";
             $indicator_table_name = "national_surveillance";
             include("../../components/agreementInput.php") 
@@ -326,7 +322,6 @@
           </div>    
         </div>
       </div>
-
       <div class="indicators">
         <div class="form-input">
           <label for="objective-measures-admin">
@@ -354,15 +349,27 @@
               onblur="saveRadioValue('objective-measures-admin',  '<?php echo $id ?>', 'national_surveillance_values_admin')">
           </div>
           <label for="devices-used">Devices that were used (Name)</label>
-          <input type="text" name="devices-used-admin" id="devices-used-admin" <?php 
+          <textarea style="height: 104px;" name="devices-used-admin" id="devices-used-admin" <?php 
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
               }
+          ?>
+            onblur="saveValueByAdmin('devices-used', '<?php echo $id ?>', 'national_surveillance_values_admin')"><?php 
               if($admin_values['devices_used'] != null){
-                echo "value='" . $admin_values['devices_used']."'";
+                echo $admin_values['devices_used'];
+              }
+          ?></textarea>
+          <label for="devices-used-reference">Reference</label>
+          <textarea style="height: 104px;" name="devices-used-reference-admin" id="devices-used-reference-admin" <?php 
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
               }
           ?>
-            onblur="saveValueByAdmin('devices-used', '<?php echo $id ?>', 'national_surveillance_values_admin')">
+            onblur="saveValueByAdmin('devices-used-reference', '<?php echo $id ?>', 'national_surveillance_values_admin')"><?php 
+              if($admin_values['devices_used_reference'] != null){
+                echo $admin_values['devices_used_reference'];
+              }
+          ?></textarea>
           <label for="estimates" class="mt-10">Objectively measured physical activity prevalence estimates (minutes)</label>
           <input type="number" name="estimates-admin" id="estimates-admin" <?php 
               if($_SESSION['userType'] != "admin"){
@@ -375,7 +382,7 @@
         </div>
         <div class="contact-field">
           <?php
-            $agreement_order = 5;
+            $agreement_order = 6;
             $indicator_name = "objective_measures";
             $indicator_table_name = "national_surveillance";
             include("../../components/agreementInput.php") 
@@ -407,15 +414,27 @@
                   onblur="saveRadioValue('objective-measures',  '<?php echo $id ?>', 'national_surveillance_values_contact')">
               </div>
               <label for="devices-used">Devices that were used (Name)</label>
-              <input type="text" name="devices-used" id="devices-used" <?php 
+              <textarea style="height: 104px;" name="devices-used" id="devices-used" <?php 
                   if($_SESSION['userType'] == "admin"){
                     echo "disabled ";
                   }
+              ?>
+                onblur="saveValueByContact('devices-used', '<?php echo $id ?>', 'national_surveillance_values_contact')"><?php 
                   if($contact_values['devices_used'] != null){
-                    echo "value='" . $contact_values['devices_used']."'";
+                    echo $contact_values['devices_used'];
+                  }
+              ?></textarea>
+              <label for="devices-used-reference">Reference</label>
+              <textarea style="height: 104px;" name="devices-used-reference" id="devices-used-reference" <?php 
+                  if($_SESSION['userType'] == "admin"){
+                    echo "disabled ";
                   }
               ?>
-                onblur="saveValueByContact('devices-used', '<?php echo $id ?>', 'national_surveillance_values_contact')">
+                onblur="saveValueByContact('devices-used-reference', '<?php echo $id ?>', 'national_surveillance_values_contact')"><?php 
+                  if($contact_values['devices_used_reference'] != null){
+                    echo $contact_values['devices_used_reference'];
+                  }
+              ?></textarea>
               <label for="estimates" class="mt-10">Objectively measured physical activity prevalence estimates (minutes)</label>
               <input type="number" name="estimates" id="estimates" <?php 
                   if($_SESSION['userType'] == "admin"){

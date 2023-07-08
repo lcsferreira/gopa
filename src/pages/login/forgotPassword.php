@@ -26,6 +26,11 @@
         </div>
       </form> 
       <button type="button" id="sendEmail">Send Email</button>
+      <footer>
+        <p><a target="_noblank" href="https://new.globalphysicalactivityobservatory.com/privacy-policy/">Privacy Policy</a>
+        ©  2023 GoPA. All rights reserved.
+        </p>
+      </footer>
     </div>
     <div class="col-50">
       <img class="side-img" src="../../../assets/firstAccess.jpg" alt="gopa-img">

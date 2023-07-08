@@ -29,58 +29,57 @@
         ?> >Next</button>
     </div>
     <div class="pdf-container">
-      <div class="title">
-        <h1>Manual</h1>
-        <p>Detailed instructions for navigating this system and completing the Country Card review and approval process can be found here</p>
-      </div>
       <div class="pdf-doc">
-      <object data="../../../assets/WorkflowGoPAManual.pdf" type="application/pdf" width="100%" height="500px"></object>
+        <div class="title">
+          <h1>Manual</h1>
+          <p>Detailed instructions for navigating this system and completing the Country Card review and approval process can be found here</p>
+        </div>
+        <object data="../../../assets/WorkflowGoPAManual.pdf" type="application/pdf" width="100%" height="60%"></object>
         <a class="button" href="../../../assets/WorkflowGoPAManual.pdf" target="_blank">View</a>
-        <a class="button" download="../../../assets/WorkflowGoPAManual.pdf">Download</a>
+        <a class="button" href="../../../assets/WorkflowGoPAManual.pdf" download>Download</a>
       </div>
-    </div>
-    <hr>
-    <div class="videos-container">
-      <div class="title">
-        <h1>Videos</h1>
-        <p>Here you can find some videos that will help you to use the application.</p>
-      <div class="video-content">
-        <h2>1. How to log in</h2>
-        <video width="700" controls>
-          <source  src="../../../assets/videos/VIDEO 1_How to log in.mp4" type="video/mp4">
-        </video>
+      <div class="videos-container">
+        <div class="title">
+          <h1>Videos</h1>
+        </div>
+        <div class="video-content">
+          <h2>1. How to log in</h2>
+          <video width="100%" controls>
+            <source  src="../../../assets/videos/VIDEO 1_How to log in.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-content">
+          <h2>2. Review steps</h2>
+          <video width="100%" controls>
+            <source  src="../../../assets/videos/VIDEO 2_Overview of review steps.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-content">
+          <h2>3. Indicators review</h2>
+          <video width="100%" controls>
+            <source  src="../../../assets/videos/VIDEO 3_Indicators_ review step.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-content">
+          <h2>4. Country card english version</h2>
+          <video width="100%" controls>
+            <source  src="../../../assets/videos/VIDEO 4_Country Card English version step.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-content">
+          <h2>5. Translation</h2>
+          <video width="100%" controls>
+            <source  src="../../../assets/videos/VIDEO 5_Translation step.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-content">
+          <h2>6. Country card translated version</h2>
+          <video width="100%" controls>
+            <source  src="../../../assets/videos/VIDEO 6_Country Card translated version step.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
-      <div class="video-content">
-        <h2>2. Review steps</h2>
-        <video width="700" controls>
-          <source  src="../../../assets/videos/VIDEO 2_Overview of review steps.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="video-content">
-        <h2>3. Indicators review</h2>
-        <video width="700" controls>
-          <source  src="../../../assets/videos/VIDEO 3_Indicators_ review step.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="video-content">
-        <h2>4. Country card english version</h2>
-        <video width="700" controls>
-          <source  src="../../../assets/videos/VIDEO 4_Country Card English version step.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="video-content">
-        <h2>5. Translation</h2>
-        <video width="700" controls>
-          <source  src="../../../assets/videos/VIDEO 5_Translation step.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="video-content">
-        <h2>6. Country card translated version</h2>
-        <video width="700" controls>
-          <source  src="../../../assets/videos/VIDEO 6_Country Card translated version step.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
+    </div>  
   </div>
   <footer>
     <p><a target="_noblank" href="https://new.globalphysicalactivityobservatory.com/privacy-policy/">Privacy Policy</a>

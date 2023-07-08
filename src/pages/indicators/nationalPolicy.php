@@ -342,17 +342,21 @@
             ?>
               onclick="saveRadioValue('national-recommendations-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
           </div>
-          <label for="national-recommendations-reference-admin">Reference</label>
-          <input type="text" name="national-recommendations-reference-admin" id="national-recommendations-reference-admin" <?php
+          <label for="national-recommendations-titles-admin">Title(s)</label>
+          <textarea style="height: 104px;" name="national-recommendations-titles-admin" id="national-recommendations-titles-admin" <?php
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
-              } 
-              if($admin_values['national_recommendations_reference'] != null){
-                echo "value='" . $admin_values['national_recommendations_reference']."'";
               }
           ?>
-            onblur="saveValueByAdmin('national-recommendations-reference', '<?php echo $id ?>', 'national_policy_values_admin')">
-            <?php 
+            onblur="saveValueByAdmin('national-recommendations-titles', '<?php echo $id ?>', 'national_policy_values_admin')"><?php if($admin_values['national_recommendations_titles'] != null){ echo $admin_values['national_recommendations_titles'];}?></textarea>
+          <label for="national-recommendations-reference-admin">Reference</label>
+          <textarea style="height: 104px;" name="national-recommendations-reference-admin" id="national-recommendations-reference-admin" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+          ?>
+            onblur="saveValueByAdmin('national-recommendations-reference', '<?php echo $id ?>', 'national_policy_values_admin')"><?php if($admin_values['national_recommendations_reference'] != null){ echo $admin_values['national_recommendations_reference'];}?></textarea>
+          <?php 
             if($_SESSION['userType'] == "admin"){
               $input_option = 2;
               $indicator_name = "national_recommendations";
@@ -390,16 +394,24 @@
               ?>
                 onclick="saveRadioValue('national-recommendations',  '<?php echo $id ?>', 'national_policy_values_contact')">
             </div>
-            <label for="reference">Reference</label>
-            <input type="text" name="national-recommendations-reference" id="national-recommendations-reference" <?php 
+            <label for="national-recommendations-titles">Title(s)</label>
+            <textarea style="height: 104px;" name="national-recommendations-titles" id="national-recommendations-titles" <?php 
                 if($_SESSION['userType'] == "admin"){
                   echo "disabled ";
                 }
-                if($contact_values['national_recommendations_reference'] != null){
-                  echo "value=" . $contact_values['national_recommendations_reference']."'";
+            ?>
+              onblur="saveValueByContact('national-recommendations-titles', '<?php echo $id ?>', 'national_policy_values_contact')"><?php if($contact_values['national_recommendations_titles'] != null){
+                  echo $contact_values['national_recommendations_titles'];
+                }?></textarea>
+            <label for="reference">Reference</label>
+            <textarea style="height: 104px;" name="national-recommendations-reference" id="national-recommendations-reference" <?php 
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
                 }
             ?>
-              onblur="saveValueByContact('national-recommendations-reference', '<?php echo $id ?>', 'national_policy_values_contact')">
+              onblur="saveValueByContact('national-recommendations-reference', '<?php echo $id ?>', 'national_policy_values_contact')"><?php if($contact_values['national_recommendations_reference'] != null){
+                  echo $contact_values['national_recommendations_reference'];
+                }?></textarea>
           </div>
           <?php
             $indicator_name = "national_recommendations";

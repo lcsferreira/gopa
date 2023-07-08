@@ -22,7 +22,6 @@
         <img class="logo" src="../../../assets/gopa-logo.svg" alt="gopa-logo">
       </div>
       <p>Enter with your credentials to login with your account</p>
-
       <form class="forms" method="POST">
         <div class="form-input">
           <label for="email">Email</label>
@@ -36,11 +35,17 @@
       </form>
         
       <button type="button" id="login" onclick="clickLogin()">Login</button>
+      <footer>
+        <p><a target="_noblank" href="https://new.globalphysicalactivityobservatory.com/privacy-policy/">Privacy Policy</a>
+        ©  2023 GoPA. All rights reserved.
+        </p>
+      </footer>
     </div>
     <div class="col-50">
       <img class="side-img" src="../../../assets/firstAccess.jpg" alt="gopa-img">
     </div>
   </div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="../../js/login/getLogin.js"></script>
 </body>

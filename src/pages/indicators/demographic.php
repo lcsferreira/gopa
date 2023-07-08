@@ -411,6 +411,162 @@
           </div>
         </div>
       </div>
+      
+      <div class="indicators">
+        <div class="form-input">
+          <label for="risk-of-premature-admin">
+            % Risk of premature NCD mortality
+          </label>
+          <input type="number" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['risk_of_premature'] != null){
+                echo "value='" . $admin_values['risk_of_premature']."'";
+              }
+            ?> name="risk-of-premature-admin" id="risk-of-premature-admin"
+            onblur="saveValueByAdmin('risk-of-premature', '<?php echo $id ?>', 'demographic_values_admin')">
+        </div>
+        <div class="contact-field">
+          <?php
+            $agreement_order = 10;
+            $indicator_name = "risk_of_premature";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
+          <div class="contact-input" id="risk-of-premature-indicator">
+            <?php
+              $indicator_type = "number";
+              $indicator_title = "% Risk of premature NCD mortality";
+              $indicator_name = "risk_of_premature";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "risk_of_premature";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
+          </div>
+        </div>
+      </div>
+
+      <div class="indicators">
+        <div class="form-input">
+          <label for="human-capital-admin">
+            Human capital index
+          </label>
+          <input type="number" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['human_capital'] != null){
+                echo "value='" . $admin_values['human_capital']."'";
+              }
+            ?> name="human-capital-admin" id="human-capital-admin"
+            onblur="saveValueByAdmin('human-capital', '<?php echo $id ?>', 'demographic_values_admin')">
+        </div>
+        <div class="contact-field">
+          <?php
+            $agreement_order = 11;
+            $indicator_name = "human_capital";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
+          <div class="contact-input" id="human-capital-indicator">
+            <?php
+              $indicator_type = "number";
+              $indicator_title = "Human capital index";
+              $indicator_name = "human_capital";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "human_capital";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
+          </div>
+        </div>
+      </div>
+
+      <div class="indicators">
+        <div class="form-input">
+          <label for="democracy-admin">
+            Democracy index 
+          </label>
+          <input type="number" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['democracy'] != null){
+                echo "value='" . $admin_values['democracy']."'";
+              }
+            ?> name="democracy-admin" id="democracy-admin"
+            onblur="saveValueByAdmin('democracy', '<?php echo $id ?>', 'demographic_values_admin')">
+        </div>
+        <div class="contact-field">
+          <?php
+            $agreement_order = 12;
+            $indicator_name = "democracy";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
+          <div class="contact-input" id="democracy-indicator">
+            <?php
+              $indicator_type = "number";
+              $indicator_title = "Democracy index";
+              $indicator_name = "democracy";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "democracy";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
+          </div>
+        </div>
+      </div>
+
+      <div class="indicators">
+        <div class="form-input">
+          <label for="tax-burden-admin">% Tax burden
+          </label>
+          <input type="number" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['tax_burden'] != null){
+                echo "value='" . $admin_values['tax_burden']."'";
+              }
+            ?> name="tax-burden-admin" id="tax-burden-admin"
+            onblur="saveValueByAdmin('tax-burden', '<?php echo $id ?>', 'demographic_values_admin')">
+        </div>
+        <div class="contact-field">
+          <?php
+            $agreement_order = 13;
+            $indicator_name = "tax_burden";
+            $indicator_table_name = "demographic";
+            include("../../components/agreementInput.php") 
+          ?>
+          <div class="contact-input" id="tax-burden-indicator">
+            <?php
+              $indicator_type = "number";
+              $indicator_title = "Deaths due to non-communicable diseases (%)";
+              $indicator_name = "tax_burden";
+              $indicator_table_name = "demographic_values_contact";
+              include("../../components/contactInput.php")
+            ?>
+            <?php
+              $indicator_name = "tax_burden";
+              $indicator_table_name = "demographic";
+              include("../../components/commentInput.php")
+            ?>
+          </div>
+        </div>
+      </div>
+
       <div class="buttons">
         <button class="btn-back" type="button" <?php
         echo "onclick='document.location = `progress.php?id=".$id."`'";

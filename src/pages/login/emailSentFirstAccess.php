@@ -21,6 +21,11 @@
       <div style="margin-top: 20px; color: #03a9f4">
         <i class="fa fa-check-circle fa-4x"></i>
       </div>
+      <footer>
+        <p><a target="_noblank" href="https://new.globalphysicalactivityobservatory.com/privacy-policy/">Privacy Policy</a>
+        ©  2023 GoPA. All rights reserved.
+        </p>
+      </footer>
     </div>
     <div class="col-50">
       <img class="side-img" src="../../../assets/firstAccess.jpg" alt="gopa-img">
