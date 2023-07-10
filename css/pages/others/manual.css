@@ -20,7 +20,7 @@ body {
   gap: 50px;
   margin-top: 35px;
   width: 100%;
-  max-height: 95vh;
+  max-height: 120vh;
 }
 
 .title {
@@ -28,12 +28,14 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 20px 0 20px 0;
 }
 
 .title h1 {
   color: #222b34;
   font-size: 40px;
   text-align: center;
+  margin: 0;
 }
 
 .title p {
@@ -41,6 +43,7 @@ body {
   color: #8e9dae;
   font-size: 16px;
   text-align: center;
+  margin: 0 0 20px 0;
 }
 
 .content {
@@ -54,6 +57,7 @@ body {
 
 .pdf-doc {
   width: 50%;
+  height: fit-content;
 }
 
 a.button {
@@ -66,6 +70,7 @@ a.button {
 
 object {
   margin-bottom: 20px;
+  height: 325px;
 }
 
 .videos-container {

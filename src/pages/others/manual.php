@@ -30,13 +30,19 @@
     </div>
     <div class="pdf-container">
       <div class="pdf-doc">
-        <div class="title">
+        <div class="title" style="margin: 0 0 20px 0 !important">
           <h1>Manual</h1>
           <p>Detailed instructions for navigating this system and completing the Country Card review and approval process can be found here</p>
         </div>
         <object data="../../../assets/WorkflowGoPAManual.pdf" type="application/pdf" width="100%" height="60%"></object>
         <a class="button" href="../../../assets/WorkflowGoPAManual.pdf" target="_blank">View</a>
         <a class="button" href="../../../assets/WorkflowGoPAManual.pdf" download>Download</a>
+        <div class="title">
+          <h1>Manual in spanish</h1>
+        </div>
+        <object data="../../../assets/WorkflowTercerSetCountryCardsGoPA.pdf" type="application/pdf" width="100%" height="60%"></object>
+        <a class="button" href="../../../assets/WorkflowTercerSetCountryCardsGoPA.pdf" target="_blank">View</a>
+        <a class="button" href="../../../assets/WorkflowTercerSetCountryCardsGoPA.pdf" download>Download</a>
       </div>
       <div class="videos-container">
         <div class="title">
