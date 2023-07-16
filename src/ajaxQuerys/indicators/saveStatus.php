@@ -48,7 +48,7 @@
         <br>
           Dear Admin,
         <br><br>
-          ".$country_name." Contact has completed a step for the Country Cards 2024 Workflow on".$date.". You may view their responses here.
+          ".$country_name." Contact has completed a step for the Country Cards 2024 Workflow on ".$date.". You may view their responses <a href='http://work.globalphysicalactivityobservatory.com/src/pages/login/login.php'>here</a>.
         <br><br>
           Please click in the <b>link below</b> to enter the 2024 GoPA! Country Cards Workflow.
         <br><br>
