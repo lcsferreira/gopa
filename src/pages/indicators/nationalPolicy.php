@@ -76,7 +76,7 @@
       <div class="indicators">
         <div class="form-input">
           <label for="groups">
-            National physical activity policy/plan <span onclick="showModalInfo('pa-policy-year')"><i
+            National physical activity policy/plan <span onclick="showModalInfo('national-pa-policy')"><i
                 class="fa fa-question-circle-o"></i></span>
             <p>
               Physical activity plan created and endorsed by the government. The plan should not only endorse the
@@ -104,30 +104,73 @@
               }
             ?> onclick="saveRadioValue('national-policy-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
           </div>
-          <label for="national-policy-titles-admin">Title(s)</label>
-          <textarea style="height: 104px;" name="national-policy-titles-admin" id="national-policy-titles-admin" <?php
+
+          <label for="national-policy-titles-1-admin">Title</label>
+          <input type="text" <?php
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
-              } 
-          ?> onblur="saveValueByAdmin('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_admin')"><?php 
-              if($admin_values['national_policy_titles'] != null){
-                echo $admin_values['national_policy_titles'];
               }
-          ?></textarea>
+              if($admin_values['national_policy_titles_1'] != null){
+                echo "value='" . $admin_values['national_policy_titles_1']."'";
+              }
+            ?> name="national-policy-titles-1-admin" id="national-policy-titles-1-admin"
+            onblur="saveValueByAdmin('national-policy-titles-1', '<?php echo $id ?>', 'national_policy_values_admin')">
           <label for="reference" class="mt-10">Reference</label>
-          <textarea style="height: 104px;" name="national-policy-reference-admin" id="national-policy-reference-admin" <?php
+          <input type="text" <?php
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
-              } 
-          ?>
-            onblur="saveValueByAdmin('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_admin')"><?php 
-              if($admin_values['national_policy_reference'] != null){
-                echo $admin_values['national_policy_reference'];
               }
-          ?></textarea>
+              if($admin_values['national_policy_reference_1'] != null){
+                echo "value='" . $admin_values['national_policy_reference_1']."'";
+              }
+            ?> name="national-policy-reference-1-admin" id="national-policy-reference-1-admin"
+            onblur="saveValueByAdmin('national-policy-reference-1', '<?php echo $id ?>', 'national_policy_values_admin')">
+
+          <label for="national-policy-titles-2-admin" class="mt-10">Title</label>
+          <input type="text" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['national_policy_titles_2'] != null){
+                echo "value='" . $admin_values['national_policy_titles_2']."'";
+              }
+            ?> name="national-policy-titles-2-admin" id="national-policy-titles-2-admin"
+            onblur="saveValueByAdmin('national-policy-titles-2', '<?php echo $id ?>', 'national_policy_values_admin')">
+          <label for="reference" class="mt-10">Reference</label>
+          <input type="text" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['national_policy_reference_2'] != null){
+                echo "value='" . $admin_values['national_policy_reference_2']."'";
+              }
+            ?> name="national-policy-reference-2-admin" id="national-policy-reference-2-admin"
+            onblur="saveValueByAdmin('national-policy-reference-2', '<?php echo $id ?>', 'national_policy_values_admin')">
+
+          <label for="national-policy-titles-3-admin" class="mt-10">Title</label>
+          <input type="text" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['national_policy_titles_3'] != null){
+                echo "value='" . $admin_values['national_policy_titles_3']."'";
+              }
+            ?> name="national-policy-titles-3-admin" id="national-policy-titles-3-admin"
+            onblur="saveValueByAdmin('national-policy-titles-3', '<?php echo $id ?>', 'national_policy_values_admin')">
+          <label for="reference" class="mt-10">Reference</label>
+          <input type="text" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['national_policy_reference_3'] != null){
+                echo "value='" . $admin_values['national_policy_reference_3']."'";
+              }
+            ?> name="national-policy-reference-3-admin" id="national-policy-reference-3-admin"
+            onblur="saveValueByAdmin('national-policy-reference-3', '<?php echo $id ?>', 'national_policy_values_admin')">
           <div class="form-input w-fix" id="embbed-prevention-field-admin">
             <label for="radio-group" class="mt-10">
-              The policy/plan is for noncommunicable disease (NCD) prevention and Physical Activity is included
+              The policy/plan is for noncommunicable disease (NCD) prevention and Physical Activity is included <span onclick="showModalInfo('national-pa-policy')"><i
+                class="fa fa-question-circle-o"></i></span>
             </label>
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
@@ -152,7 +195,8 @@
           </div>
           <div class="form-input w-fix" id="standalone-prevention-field-admin">
             <label for="radio-group">
-              The policy/plan is standalone for Physical Activity (i.e., exclusively dedicated to physical activity)
+              The policy/plan is standalone for Physical Activity (i.e., exclusively dedicated to physical activity) <span onclick="showModalInfo('national-pa-policy')"><i
+                class="fa fa-question-circle-o"></i></span>
             </label>
             <div class="radio" id="radio-group">
               <label for="yes">Yes</label>
@@ -217,28 +261,69 @@
                 }
               ?> onclick="saveRadioValue('national-policy',  '<?php echo $id ?>', 'national_policy_values_contact')">
             </div>
-            <label for="national-policy-titles">Title(s)</label>
-            <textarea style="height: 104px;" name="national-policy-titles" id="national-policy-titles" <?php 
-                if($_SESSION['userType'] == "admin"){
-                  echo "disabled ";
-                }
-            ?>
-              onblur="saveValueByContact('national-policy-titles', '<?php echo $id ?>', 'national_policy_values_contact')"><?php 
-                if($_SESSION['userType'] != "admin"){
-                  echo $contact_values['national_policy_titles'];
-                }
-              ?></textarea>
+            <label for="national-policy-titles-1">Title</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if($contact_values['national_policy_titles_1'] != null){
+                echo "value='" . $contact_values['national_policy_titles_1']."'";
+              }
+            ?> name="national-policy-titles-1" id="national-policy-titles-1"
+            onblur="saveValueByContact('national-policy-titles-1', '<?php echo $id ?>', 'national_policy_values_contact')">
             <label for="national-policy-reference" class="mt-10">Reference</label>
-            <textarea style="height: 104px;" name="national-policy-reference" id="national-policy-reference" <?php
-                if($_SESSION['userType'] == "admin"){
-                  echo "disabled ";
-                } 
-            ?>
-              onblur="saveValueByContact('national-policy-reference', '<?php echo $id ?>', 'national_policy_values_contact')"><?php 
-                if($_SESSION['userType'] != "admin"){
-                  echo $contact_values['national_policy_reference'];
-                }
-              ?></textarea>
+            <input type="text" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if($contact_values['national_policy_reference_1'] != null){
+                echo "value='" . $contact_values['national_policy_reference_1']."'";
+              }
+            ?> name="national-policy-reference-1" id="national-policy-reference-1"
+            onblur="saveValueByContact('national-policy-reference-1', '<?php echo $id ?>', 'national_policy_values_contact')">
+
+            <label for="national-policy-titles-2" class="mt-10">Title</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if($contact_values['national_policy_titles_2'] != null){
+                echo "value='" . $contact_values['national_policy_titles_2']."'";
+              }
+            ?> name="national-policy-titles-2" id="national-policy-titles-2"
+            onblur="saveValueByContact('national-policy-titles-2', '<?php echo $id ?>', 'national_policy_values_contact')">
+            <label for="national-policy-reference" class="mt-10">Reference</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if($contact_values['national_policy_reference_2'] != null){
+                echo "value='" . $contact_values['national_policy_reference_2']."'";
+              }
+            ?> name="national-policy-reference-2" id="national-policy-reference-2"
+            onblur="saveValueByContact('national-policy-reference-2', '<?php echo $id ?>', 'national_policy_values_contact')">
+
+            <label for="national-policy-titles-3" class="mt-10">Title</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if($contact_values['national_policy_titles_3'] != null){
+                echo "value='" . $contact_values['national_policy_titles_3']."'";
+              }
+            ?> name="national-policy-titles-3" id="national-policy-titles-3"
+            onblur="saveValueByContact('national-policy-titles-3', '<?php echo $id ?>', 'national_policy_values_contact')">
+            <label for="national-policy-reference" class="mt-10">Reference</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if($contact_values['national_policy_reference_3'] != null){
+                echo "value='" . $contact_values['national_policy_reference_3']."'";
+              }
+            ?> name="national-policy-reference-3" id="national-policy-reference-3"
+            onblur="saveValueByContact('national-policy-reference-3', '<?php echo $id ?>', 'national_policy_values_contact')">
+
             <div class="form-input w-100" id="embbed-prevention-field">
               <label for="radio-group" class="mt-10">
                 The policy/plan is for noncommunicable disease (NCD) prevention and Physical Activity is included
@@ -342,20 +427,68 @@
             ?>
               onclick="saveRadioValue('national-recommendations-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
           </div>
-          <label for="national-recommendations-titles-admin">Title(s)</label>
-          <textarea style="height: 104px;" name="national-recommendations-titles-admin" id="national-recommendations-titles-admin" <?php
+          <label for="national-recommendations-titles-1-admin">Title</label>
+            <input type="text" <?php
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
               }
-          ?>
-            onblur="saveValueByAdmin('national-recommendations-titles', '<?php echo $id ?>', 'national_policy_values_admin')"><?php if($admin_values['national_recommendations_titles'] != null){ echo $admin_values['national_recommendations_titles'];}?></textarea>
-          <label for="national-recommendations-reference-admin">Reference</label>
-          <textarea style="height: 104px;" name="national-recommendations-reference-admin" id="national-recommendations-reference-admin" <?php
+              if($admin_values['national_recommendations_titles_1'] != null){
+                echo "value='" . $admin_values['national_recommendations_titles_1']."'";
+              }
+            ?> name="national-recommendations-titles-1-admin" id="national-recommendations-titles-1-admin"
+            onblur="saveValueByAdmin('national-recommendations-titles-1', '<?php echo $id ?>', 'national_policy_values_admin')">
+            <label for="national-recommendations-reference-1-admin" class="mt-10">Reference</label>
+            <input type="text" <?php
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
               }
-          ?>
-            onblur="saveValueByAdmin('national-recommendations-reference', '<?php echo $id ?>', 'national_policy_values_admin')"><?php if($admin_values['national_recommendations_reference'] != null){ echo $admin_values['national_recommendations_reference'];}?></textarea>
+              if($admin_values['national_recommendations_reference_1'] != null){
+                echo "value='" . $admin_values['national_recommendations_reference_1']."'";
+              }
+            ?> name="national-recommendations-reference-1-admin" id="national-recommendations-reference-1-admin"
+            onblur="saveValueByAdmin('national-recommendations-reference-1', '<?php echo $id ?>', 'national_policy_values_admin')">
+
+            <label for="national-recommendations-titles-2-admin" class="mt-10">Title</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['national_recommendations_titles_2'] != null){
+                echo "value='" . $admin_values['national_recommendations_titles_2']."'";
+              }
+            ?> name="national-recommendations-titles-2-admin" id="national-recommendations-titles-2-admin"
+            onblur="saveValueByAdmin('national-recommendations-titles-2', '<?php echo $id ?>', 'national_policy_values_admin')">
+            <label for="national-recommendations-reference-2-admin" class="mt-10">Reference</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['national_recommendations_reference_2'] != null){
+                echo "value='" . $admin_values['national_recommendations_reference_2']."'";
+              }
+            ?> name="national-recommendations-reference-2-admin" id="national-recommendations-reference-2-admin"
+            onblur="saveValueByAdmin('national-recommendations-reference-2', '<?php echo $id ?>', 'national_policy_values_admin')">
+
+            <label for="national-recommendations-titles-3-admin" class="mt-10">Title</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['national_recommendations_titles_3'] != null){
+                echo "value='" . $admin_values['national_recommendations_titles_3']."'";
+              }
+            ?> name="national-recommendations-titles-3-admin" id="national-recommendations-titles-3-admin"
+            onblur="saveValueByAdmin('national-recommendations-titles-3', '<?php echo $id ?>', 'national_policy_values_admin')">
+            <label for="national-recommendations-reference-3-admin" class="mt-10">Reference</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] != "admin"){
+                echo "disabled ";
+              }
+              if($admin_values['national_recommendations_reference_3'] != null){
+                echo "value='" . $admin_values['national_recommendations_reference_3']."'";
+              }
+            ?> name="national-recommendations-reference-3-admin" id="national-recommendations-reference-3-admin"
+            onblur="saveValueByAdmin('national-recommendations-reference-3', '<?php echo $id ?>', 'national_policy_values_admin')">
           <?php 
             if($_SESSION['userType'] == "admin"){
               $input_option = 2;
@@ -394,24 +527,68 @@
               ?>
                 onclick="saveRadioValue('national-recommendations',  '<?php echo $id ?>', 'national_policy_values_contact')">
             </div>
-            <label for="national-recommendations-titles">Title(s)</label>
-            <textarea style="height: 104px;" name="national-recommendations-titles" id="national-recommendations-titles" <?php 
-                if($_SESSION['userType'] == "admin"){
-                  echo "disabled ";
-                }
-            ?>
-              onblur="saveValueByContact('national-recommendations-titles', '<?php echo $id ?>', 'national_policy_values_contact')"><?php if($contact_values['national_recommendations_titles'] != null){
-                  echo $contact_values['national_recommendations_titles'];
-                }?></textarea>
-            <label for="reference">Reference</label>
-            <textarea style="height: 104px;" name="national-recommendations-reference" id="national-recommendations-reference" <?php 
-                if($_SESSION['userType'] == "admin"){
-                  echo "disabled ";
-                }
-            ?>
-              onblur="saveValueByContact('national-recommendations-reference', '<?php echo $id ?>', 'national_policy_values_contact')"><?php if($contact_values['national_recommendations_reference'] != null){
-                  echo $contact_values['national_recommendations_reference'];
-                }?></textarea>
+            <label for="national-recommendations-titles-1">Title</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if($contact_values['national_recommendations_titles_1'] != null){
+                echo "value='" . $contact_values['national_recommendations_titles_1']."'";
+              }
+            ?> name="national-recommendations-titles-1" id="national-recommendations-titles-1"
+            onblur="saveValueByContact('national-recommendations-titles-1', '<?php echo $id ?>', 'national_policy_values_contact')">
+            <label for="national-recommendations-reference" class="mt-10">Reference</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if($contact_values['national_recommendations_reference_1'] != null){
+                echo "value='" . $contact_values['national_recommendations_reference_1']."'";
+              }
+            ?> name="national-recommendations-reference-1" id="national-recommendations-reference-1"
+            onblur="saveValueByContact('national-recommendations-reference-1', '<?php echo $id ?>', 'national_policy_values_contact')">
+
+            <label for="national-recommendations-titles-2" class="mt-10">Title</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if($contact_values['national_recommendations_titles_2'] != null){
+                echo "value='" . $contact_values['national_recommendations_titles_2']."'";
+              }
+            ?> name="national-recommendations-titles-2" id="national-recommendations-titles-2"
+            onblur="saveValueByContact('national-recommendations-titles-2', '<?php echo $id ?>', 'national_policy_values_contact')">
+            <label for="national-recommendations-reference" class="mt-10">Reference</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if($contact_values['national_recommendations_reference_2'] != null){
+                echo "value='" . $contact_values['national_recommendations_reference_2']."'";
+              }
+            ?> name="national-recommendations-reference-2" id="national-recommendations-reference-2"
+            onblur="saveValueByContact('national-recommendations-reference-2', '<?php echo $id ?>', 'national_policy_values_contact')">
+
+            <label for="national-recommendations-titles-3" class="mt-10">Title</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if($contact_values['national_recommendations_titles_3'] != null){
+                echo "value='" . $contact_values['national_recommendations_titles_3']."'";
+              }
+            ?> name="national-recommendations-titles-3" id="national-recommendations-titles-3"
+            onblur="saveValueByContact('national-recommendations-titles-3', '<?php echo $id ?>', 'national_policy_values_contact')">
+            <label for="national-recommendations-reference" class="mt-10">Reference</label>
+            <input type="text" <?php
+              if($_SESSION['userType'] == "admin"){
+                echo "disabled ";
+              }
+              if($contact_values['national_recommendations_reference_3'] != null){
+                echo "value='" . $contact_values['national_recommendations_reference_3']."'";
+              }
+            ?> name="national-recommendations-reference-3" id="national-recommendations-reference-3"
+            onblur="saveValueByContact('national-recommendations-reference-3', '<?php echo $id ?>', 'national_policy_values_contact')">
           </div>
           <?php
             $indicator_name = "national_recommendations";

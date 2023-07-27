@@ -64,5 +64,20 @@
   },
   "national-guidelines": {
     "body": "<p>The GoPA! Policy Inventory version 3.0 will be used to determine whether each of the 217 world countries have national physical activity guidelines.</p><p>Reference: Klepac Pogrmilovic, B., Ramirez Varela, A., Pratt, M. et al. National physical activity and sedentary behaviour policies in 76 countries: availability, comprehensiveness, implementation, and effectiveness. Int J Behav Nutr Phys Act 17, 116 (2020). <a href='https://doi.org/10.1186/s12966-020-01022-6' target='_blank'>https://doi.org/10.1186/s12966-020-01022-6</a></p></p>"
+  },
+  "national-pa-policy": {
+    "body": "<p>Physical activity policy is indicated by the totality of formal written policies, unwritten formal statements, written standards and guidelines, formal procedures, and informal policies (or lack thereof) that may directly or indirectly affect community- or population-level physical activity.</p><p>Defined by: - Klepac Pogrmilovic, B., O’Sullivan, G., Milton, K. et al. The development of the Comprehensive Analysis of Policy on Physical Activity (CAPPA) framework. Int J Behav Nutr Phys Act 16, 60 (2019). <a href='https://doi.org/10.1186/s12966-019-0822-5' target='_blank'>https://doi.org/10.1186/s12966-019-0822-5</a></p><p>The GoPA! Policy Directory (based on the Country Cards, Policy Inventory, and other public documents gathered by GoPA!) will be used to determine whether each of the 217 world countries has a physical activity policy/plan. The policy documents published in 2018 and beyond, as well as materials published prior to 2018 but covering the time period through 2018 (valid/enforced/current/applicable document), will be included in the 2024 Country Cards (third set).</p><p>How was this country classified?</p><p>According to the GoPA! Country Capacity for Physical Activity Promotion, the country will either be classified as having a standalone PA policy plan (i.e., exclusive for physical activity), an NCDs policy/plan integrating PA, or having no policy at all. Consequently, the country will be categorized as:</p><ol><li>Having a standalone PA policy/plan if at least one record of such a policy/plan appears in the documents retrieved for the country;</li><li>Having an NCDs policy or plan that includes PA if all the documents retrieved were NCDs policies/plans that included PA and there was no standalone policy/plan record;</li><li>Not having a PA policy if neither a standalone policy/plan nor an NCDs policy/plan including PA could be located.</li></ol>"
+  },
+  "risk-preamture-disease": {
+    "body": "<p>World Health Organization - Noncommunicable Diseases Progress Monitor 2022</p><p>Probability (%) of dying between ages 30 and 70 years from the four main noncommunicable diseases (cardiovascular diseases, cancer, diabetes or chronic respiratory diseases).</p><p>Most recent data – available year 2019</p><p><a href='https://www.who.int/publications/i/item/9789240047761' target='_blank'>https://www.who.int/publications/i/item/9789240047761</a></p><p>Cook Islands:</p><p><a href='https://www.iccp-portal.org/system/files/plans/COK_B3_s21_TMO_NCDPlan_21%20June%20Final%20NCD.pdf' target='_blank'>https://www.iccp-portal.org/system/files/plans/COK_B3_s21_TMO_NCDPlan_21%20June%20Final%20NCD.pdf</a></p>"
+  },
+  "democracy-index": {
+    "body": "<p>The Economist Intelligence Unit</p><p>Most recent data – available year 2022</p><a href='https://www.eiu.com/n/campaigns/democracy-index-2022/' target='_blank'>https://www.eiu.com/n/campaigns/democracy-index-2022/</a></p>"
+  },
+  "tax-burden": {
+    "body": "<p>The Economist Intelligence Unit </p><p>Most recent data – available year 2023</p><a href='https://www.heritage.org/index/explore' target='_blank'>https://www.heritage.org/index/explore</a></p>"
+  },
+  "human-capital": {
+    "body": "<p>United Nations E-Government Survey 2022</p><p>Most recent data – available year 2021</p><a target='_blank' href='https://publicadministration.un.org/egovkb/en-us/Reports/UN-E-Government-Survey-2022'>https://publicadministration.un.org/egovkb/en-us/Reports/UN-E-Government-Survey-2022</a></p>"
   }
 }

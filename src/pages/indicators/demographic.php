@@ -415,7 +415,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="risk-of-premature-admin">
-            % Risk of premature NCD mortality
+            % Risk of premature non-communicable disease mortality <span onclick="showModalInfo('risk-preamture-disease')"><i
+                class="fa fa-question-circle-o"></i></span>
           </label>
           <input type="number" <?php
               if($_SESSION['userType'] != "admin"){
@@ -437,7 +438,7 @@
           <div class="contact-input" id="risk-of-premature-indicator">
             <?php
               $indicator_type = "number";
-              $indicator_title = "% Risk of premature NCD mortality";
+              $indicator_title = "% Risk of premature non-communicable disease mortality";
               $indicator_name = "risk_of_premature";
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
@@ -454,7 +455,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="human-capital-admin">
-            Human capital index
+            Human capital index <span onclick="showModalInfo('human-capital')"><i
+                class="fa fa-question-circle-o"></i></span>
           </label>
           <input type="number" <?php
               if($_SESSION['userType'] != "admin"){
@@ -493,7 +495,8 @@
       <div class="indicators">
         <div class="form-input">
           <label for="democracy-admin">
-            Democracy index 
+            Democracy index <span onclick="showModalInfo('democracy-index')"><i
+                class="fa fa-question-circle-o"></i></span>
           </label>
           <input type="number" <?php
               if($_SESSION['userType'] != "admin"){
@@ -531,7 +534,8 @@
 
       <div class="indicators">
         <div class="form-input">
-          <label for="tax-burden-admin">% Tax burden
+          <label for="tax-burden-admin">% Tax burden <span onclick="showModalInfo('tax-burden')"><i
+                class="fa fa-question-circle-o"></i></span>
           </label>
           <input type="number" <?php
               if($_SESSION['userType'] != "admin"){
