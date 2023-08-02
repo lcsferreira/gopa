@@ -417,6 +417,7 @@
           <label for="risk-of-premature-admin">
             % Risk of premature non-communicable disease mortality <span onclick="showModalInfo('risk-preamture-disease')"><i
                 class="fa fa-question-circle-o"></i></span>
+                <p>Probability of dying between ages 30 and 70 years from the four main noncommunicable diseases (cardiovascular diseases, cancer, diabetes or chronic respiratory diseases)</p>
           </label>
           <input type="number" <?php
               if($_SESSION['userType'] != "admin"){
@@ -457,6 +458,7 @@
           <label for="human-capital-admin">
             Human capital index <span onclick="showModalInfo('human-capital')"><i
                 class="fa fa-question-circle-o"></i></span>
+                <p>Captures where countries stand in terms of four components defined by the United Nations: adult literacy; combined primary, secondary and tertiary gross enrolment ratios; expected years of schooling; and average years of schooling. </p>
           </label>
           <input type="number" <?php
               if($_SESSION['userType'] != "admin"){
@@ -497,6 +499,7 @@
           <label for="democracy-admin">
             Democracy index <span onclick="showModalInfo('democracy-index')"><i
                 class="fa fa-question-circle-o"></i></span>
+                <p>Weighted average of 60 items defined by the Economist Intelligence Unit covering civil liberties, pluralism, and political culture</p>
           </label>
           <input type="number" <?php
               if($_SESSION['userType'] != "admin"){
@@ -536,6 +539,7 @@
         <div class="form-input">
           <label for="tax-burden-admin">% Tax burden <span onclick="showModalInfo('tax-burden')"><i
                 class="fa fa-question-circle-o"></i></span>
+                <p>A composite measure defined by the Heritage Foundation that reflects marginal tax rates on both personal and corporate income and the overall level of taxation (including direct and indirect taxes imposed by all levels of government) as a percentage of gross domestic product (GDP).</p>
           </label>
           <input type="number" <?php
               if($_SESSION['userType'] != "admin"){
