@@ -431,3 +431,151 @@ function closeModalDisplay() {
     document.getElementById("main").style.pointerEvents = "auto";
   });
 }
+
+function insertData(id, title, reference, inc) {
+  // Your insert logic here
+  console.log("Inserting data:", id, title, reference);
+
+  let request = $.ajax({
+    method: "POST",
+    url: "../../ajaxQuerys/indicators/saveTitleReference.php",
+    data: { id_country: id, title: title, reference: reference, inc: inc },
+    dataType: "text",
+    type: "post",
+    contentType: "application/x-www-form-urlencoded",
+  });
+
+  request.done(function (data) {
+    console.log("Data inserted successfully");
+  });
+}
+
+function deleteData(id, inc) {
+  // Código para deletar dados aqui
+  console.log("Deleting data:", id, inc);
+
+  let request = $.ajax({
+    method: "POST",
+    url: "../../ajaxQuerys/indicators/deleteTitleReference.php",
+    data: { id_country: id, inc: inc },
+    dataType: "text",
+    type: "post",
+    contentType: "application/x-www-form-urlencoded",
+  });
+
+  request.done(function (data) {
+    //refresh the page
+    location.reload();
+  });
+}
+
+function insertDataContact(id, title, reference, inc) {
+  // Your insert logic here
+  console.log("Inserting data:", id, title, reference);
+
+  let request = $.ajax({
+    method: "POST",
+    url: "../../ajaxQuerys/indicators/saveTitleReferenceContact.php",
+    data: { id_country: id, title: title, reference: reference, inc: inc },
+    dataType: "text",
+    type: "post",
+    contentType: "application/x-www-form-urlencoded",
+  });
+
+  request.done(function (data) {
+    console.log("Data inserted successfully");
+  });
+}
+
+function deleteDataContact(id, inc) {
+  // Código para deletar dados aqui
+  console.log("Deleting data:", id, inc);
+
+  let request = $.ajax({
+    method: "POST",
+    url: "../../ajaxQuerys/indicators/deleteTitleReferenceContact.php",
+    data: { id_country: id, inc: inc },
+    dataType: "text",
+    type: "post",
+    contentType: "application/x-www-form-urlencoded",
+  });
+
+  request.done(function (data) {
+    //refresh the page
+    location.reload();
+  });
+}
+
+function insertGuidelineData(id, title, reference, inc) {
+  // Your insert logic here
+  console.log("Inserting data:", id, title, reference);
+
+  let request = $.ajax({
+    method: "POST",
+    url: "../../ajaxQuerys/indicators/saveTitleReferenceGuideline.php",
+    data: { id_country: id, title: title, reference: reference, inc: inc },
+    dataType: "text",
+    type: "post",
+    contentType: "application/x-www-form-urlencoded",
+  });
+
+  request.done(function (data) {
+    console.log("Data inserted successfully");
+  });
+}
+
+function deleteGuidelineData(id, inc) {
+  // Código para deletar dados aqui
+  console.log("Deleting data:", id, inc);
+
+  let request = $.ajax({
+    method: "POST",
+    url: "../../ajaxQuerys/indicators/deleteTitleReferenceGuideline.php",
+    data: { id_country: id, inc: inc },
+    dataType: "text",
+    type: "post",
+    contentType: "application/x-www-form-urlencoded",
+  });
+
+  request.done(function (data) {
+    //refresh the page
+    location.reload();
+  });
+}
+
+function insertGuidelineContactData(id, title, reference, inc) {
+  // Your insert logic here
+  console.log("Inserting data:", id, title, reference);
+
+  let request = $.ajax({
+    method: "POST",
+    url: "../../ajaxQuerys/indicators/saveTitleReferenceGuidelineContact.php",
+    data: { id_country: id, title: title, reference: reference, inc: inc },
+    dataType: "text",
+    type: "post",
+    contentType: "application/x-www-form-urlencoded",
+  });
+
+  request.done(function (data) {
+    console.log("Data inserted successfully");
+  });
+}
+
+function deleteGuidelineContactData(id, inc) {
+  // Código para deletar dados aqui
+  console.log("Deleting data:", id, inc);
+
+  let request = $.ajax({
+    method: "POST",
+    url: "../../ajaxQuerys/indicators/deleteTitleReferenceGuidelineContact.php",
+    data: { id_country: id, inc: inc },
+    dataType: "text",
+    type: "post",
+    contentType: "application/x-www-form-urlencoded",
+  });
+
+  request.done(function (data) {
+    //refresh the page
+    location.reload();
+  });
+}

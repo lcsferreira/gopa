@@ -656,6 +656,59 @@ textarea::placeholder {
   color: red !important;
 }
 
+.add-button {
+  background-color: #0288d1;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 20%;
+  width: min-content;
+}
+.add-button::before {
+  content: "+";
+  margin-right: 10px;
+}
+
+.delete-button {
+  background-color: #ff0000;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  width: 40px;
+  align-self: flex-end;
+}
+
+.add-button[disabled] {
+  background-color: #0289d155;
+  cursor: not-allowed;
+}
+
+.delete-button[disabled] {
+  background-color: #ff00005d; /* Cor de fundo quando desabilitado */
+  cursor: not-allowed; /* Cursor de "não permitido" */
+}
+
+.title-reference {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
 @media screen and (max-width: 1330px) {
   form .indicators .form-input,
   .indicator-image {

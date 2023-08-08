@@ -3,6 +3,11 @@
   include "../../components/header.php";                 
 ?>
 <?php
+  function insertData($id, $title, $reference){
+    include_once "../../../config/connection.php";
+    $sql = "CALL InsertWithIncrement($id, $title, $reference)";
+    $result = mysqli_query($connection, $sql);
+  }
   //get id from url
   $id = $_GET['id'];
   //select the country of the id
@@ -25,6 +30,38 @@
   $sql = "SELECT * FROM national_policy_agreement WHERE id = $id";
   $result = mysqli_query($connection, $sql);
   $agreement_values = mysqli_fetch_assoc($result);
+
+  $sql = "SELECT inc, title, reference FROM national_policy_titles_reference_admin WHERE id_country = $id";
+  $result = mysqli_query($connection, $sql);
+  $national_policy_titles_reference_admin = []; // Inicializa um array vazio
+
+  while ($row = mysqli_fetch_assoc($result)) {
+      $national_policy_titles_reference_admin[] = $row; // Adiciona cada linha ao array
+  }
+
+  $sql = "SELECT inc, title, reference FROM national_policy_titles_reference_contact WHERE id_country = $id";
+  $result = mysqli_query($connection, $sql);
+  $national_policy_titles_reference_contact = []; // Inicializa um array vazio
+
+  while ($row = mysqli_fetch_assoc($result)) {
+      $national_policy_titles_reference_contact[] = $row; // Adiciona cada linha ao array
+  }
+
+  $sql = "SELECT inc, title, reference FROM national_guideline_titles_reference_admin WHERE id_country = $id";
+  $result = mysqli_query($connection, $sql);
+  $national_guideline_titles_reference_admin = []; // Inicializa um array vazio
+
+  while ($row = mysqli_fetch_assoc($result)) {
+      $national_guideline_titles_reference_admin[] = $row; // Adiciona cada linha ao array
+  }
+
+  $sql = "SELECT inc, title, reference FROM national_guideline_titles_reference_contact WHERE id_country = $id";
+  $result = mysqli_query($connection, $sql);
+  $national_guideline_titles_reference_contact = []; // Inicializa um array vazio
+
+  while ($row = mysqli_fetch_assoc($result)) {
+      $national_guideline_titles_reference_contact[] = $row; // Adiciona cada linha ao array
+  }
 ?>
 <?php
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== true){
@@ -105,68 +142,27 @@
             ?> onclick="saveRadioValue('national-policy-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
           </div>
 
-          <label for="national-policy-titles-1-admin">Title</label>
-          <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled ";
-              }
-              if($admin_values['national_policy_titles_1'] != null){
-                echo "value='" . $admin_values['national_policy_titles_1']."'";
-              }
-            ?> name="national-policy-titles-1-admin" id="national-policy-titles-1-admin"
-            onblur="saveValueByAdmin('national-policy-titles-1', '<?php echo $id ?>', 'national_policy_values_admin')">
-          <label for="reference" class="mt-10">Reference</label>
-          <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled ";
-              }
-              if($admin_values['national_policy_reference_1'] != null){
-                echo "value='" . $admin_values['national_policy_reference_1']."'";
-              }
-            ?> name="national-policy-reference-1-admin" id="national-policy-reference-1-admin"
-            onblur="saveValueByAdmin('national-policy-reference-1', '<?php echo $id ?>', 'national_policy_values_admin')">
-
-          <label for="national-policy-titles-2-admin" class="mt-10">Title</label>
-          <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled ";
-              }
-              if($admin_values['national_policy_titles_2'] != null){
-                echo "value='" . $admin_values['national_policy_titles_2']."'";
-              }
-            ?> name="national-policy-titles-2-admin" id="national-policy-titles-2-admin"
-            onblur="saveValueByAdmin('national-policy-titles-2', '<?php echo $id ?>', 'national_policy_values_admin')">
-          <label for="reference" class="mt-10">Reference</label>
-          <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled ";
-              }
-              if($admin_values['national_policy_reference_2'] != null){
-                echo "value='" . $admin_values['national_policy_reference_2']."'";
-              }
-            ?> name="national-policy-reference-2-admin" id="national-policy-reference-2-admin"
-            onblur="saveValueByAdmin('national-policy-reference-2', '<?php echo $id ?>', 'national_policy_values_admin')">
-
-          <label for="national-policy-titles-3-admin" class="mt-10">Title</label>
-          <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled ";
-              }
-              if($admin_values['national_policy_titles_3'] != null){
-                echo "value='" . $admin_values['national_policy_titles_3']."'";
-              }
-            ?> name="national-policy-titles-3-admin" id="national-policy-titles-3-admin"
-            onblur="saveValueByAdmin('national-policy-titles-3', '<?php echo $id ?>', 'national_policy_values_admin')">
-          <label for="reference" class="mt-10">Reference</label>
-          <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled ";
-              }
-              if($admin_values['national_policy_reference_3'] != null){
-                echo "value='" . $admin_values['national_policy_reference_3']."'";
-              }
-            ?> name="national-policy-reference-3-admin" id="national-policy-reference-3-admin"
-            onblur="saveValueByAdmin('national-policy-reference-3', '<?php echo $id ?>', 'national_policy_values_admin')">
+          <?php foreach ($national_policy_titles_reference_admin as $row): ?>
+            <div class="title-reference">
+              <label for="titulos[]">Title</label>
+              <input type="text" id='title_<?php echo "1" ?>' name="titulos[]" value='<?php echo $row['title']; ?>' placeholder="Title" onBlur="insertData(<?php echo $id; ?>, this.value, document.getElementById('reference_<?php echo $row['inc']; ?>').value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] != "admin"){
+                echo " disabled";
+              } ?>>
+              <label for="referencias[]">Reference</label>
+              <input type="text" id="reference_<?php echo $row['inc']; ?>" name="referencias[]" value="<?php echo $row['reference']; ?>" placeholder="Reference" onBlur="insertData(<?php echo $id; ?>, document.getElementById('title_<?php echo $row['inc']; ?>').value, this.value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] != "admin"){
+                echo " disabled";
+              } ?>>
+              <button <?php if($_SESSION['userType'] != "admin"){
+                echo "style='display: none;'";
+              } ?> type="button" class="delete-button" onclick="deleteData(<?php echo $id; ?>, <?php echo $row['inc']; ?>)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </div>
+          <?php endforeach; ?>
+          
+          <div id="novos_campos"></div>
+          <button type="button" class="add-button" id="adicionar_campo" <?php if($_SESSION['userType'] != "admin"){
+                echo "style='display: none;'";
+              } ?>>Add policy</button>
+          
           <div class="form-input w-fix" id="embbed-prevention-field-admin">
             <label for="radio-group" class="mt-10">
               The policy/plan is for noncommunicable disease (NCD) prevention and Physical Activity is included <span onclick="showModalInfo('national-pa-policy')"><i
@@ -261,68 +257,27 @@
                 }
               ?> onclick="saveRadioValue('national-policy',  '<?php echo $id ?>', 'national_policy_values_contact')">
             </div>
-            <label for="national-policy-titles-1">Title</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['national_policy_titles_1'] != null){
-                echo "value='" . $contact_values['national_policy_titles_1']."'";
-              }
-            ?> name="national-policy-titles-1" id="national-policy-titles-1"
-            onblur="saveValueByContact('national-policy-titles-1', '<?php echo $id ?>', 'national_policy_values_contact')">
-            <label for="national-policy-reference" class="mt-10">Reference</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['national_policy_reference_1'] != null){
-                echo "value='" . $contact_values['national_policy_reference_1']."'";
-              }
-            ?> name="national-policy-reference-1" id="national-policy-reference-1"
-            onblur="saveValueByContact('national-policy-reference-1', '<?php echo $id ?>', 'national_policy_values_contact')">
 
-            <label for="national-policy-titles-2" class="mt-10">Title</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['national_policy_titles_2'] != null){
-                echo "value='" . $contact_values['national_policy_titles_2']."'";
-              }
-            ?> name="national-policy-titles-2" id="national-policy-titles-2"
-            onblur="saveValueByContact('national-policy-titles-2', '<?php echo $id ?>', 'national_policy_values_contact')">
-            <label for="national-policy-reference" class="mt-10">Reference</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['national_policy_reference_2'] != null){
-                echo "value='" . $contact_values['national_policy_reference_2']."'";
-              }
-            ?> name="national-policy-reference-2" id="national-policy-reference-2"
-            onblur="saveValueByContact('national-policy-reference-2', '<?php echo $id ?>', 'national_policy_values_contact')">
-
-            <label for="national-policy-titles-3" class="mt-10">Title</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['national_policy_titles_3'] != null){
-                echo "value='" . $contact_values['national_policy_titles_3']."'";
-              }
-            ?> name="national-policy-titles-3" id="national-policy-titles-3"
-            onblur="saveValueByContact('national-policy-titles-3', '<?php echo $id ?>', 'national_policy_values_contact')">
-            <label for="national-policy-reference" class="mt-10">Reference</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['national_policy_reference_3'] != null){
-                echo "value='" . $contact_values['national_policy_reference_3']."'";
-              }
-            ?> name="national-policy-reference-3" id="national-policy-reference-3"
-            onblur="saveValueByContact('national-policy-reference-3', '<?php echo $id ?>', 'national_policy_values_contact')">
+            <?php foreach ($national_policy_titles_reference_contact as $row): ?>
+            <div class="title-reference">
+              <label for="titulos[]">Title</label>
+              <input type="text" id='contact_title_<?php echo "1" ?>' name="titulos[]" value='<?php echo $row['title']; ?>' placeholder="Title" onBlur="insertDataContact(<?php echo $id; ?>, this.value, document.getElementById('contact_reference_<?php echo $row['inc']; ?>').value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] == "admin"){
+                echo " disabled";
+              } ?>>
+              <label for="referencias[]">Reference</label>
+              <input type="text" id="contact_reference_<?php echo $row['inc']; ?>" name="referencias[]" value="<?php echo $row['reference']; ?>" placeholder="Reference" onBlur="insertDataContact(<?php echo $id; ?>, document.getElementById('contact_title_<?php echo $row['inc']; ?>').value, this.value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] == "admin"){
+                echo " disabled";
+              } ?>>
+              <button <?php if($_SESSION['userType'] == "admin"){
+                echo "style='display: none;'";
+              } ?> type="button" class="delete-button" onclick="deleteDataContact(<?php echo $id; ?>, <?php echo $row['inc']; ?>)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </div>
+          <?php endforeach; ?>
+          
+          <div id="novos_campos_contact"></div>
+          <button type="button" class="add-button" id="adicionar_campo_contact" <?php if($_SESSION['userType'] == "admin"){
+                echo "style='display: none;'";
+              } ?>>Add policy</button>
 
             <div class="form-input w-100" id="embbed-prevention-field">
               <label for="radio-group" class="mt-10">
@@ -427,68 +382,26 @@
             ?>
               onclick="saveRadioValue('national-recommendations-admin',  '<?php echo $id ?>', 'national_policy_values_admin')">
           </div>
-          <label for="national-recommendations-titles-1-admin">Title</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled ";
-              }
-              if($admin_values['national_recommendations_titles_1'] != null){
-                echo "value='" . $admin_values['national_recommendations_titles_1']."'";
-              }
-            ?> name="national-recommendations-titles-1-admin" id="national-recommendations-titles-1-admin"
-            onblur="saveValueByAdmin('national-recommendations-titles-1', '<?php echo $id ?>', 'national_policy_values_admin')">
-            <label for="national-recommendations-reference-1-admin" class="mt-10">Reference</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled ";
-              }
-              if($admin_values['national_recommendations_reference_1'] != null){
-                echo "value='" . $admin_values['national_recommendations_reference_1']."'";
-              }
-            ?> name="national-recommendations-reference-1-admin" id="national-recommendations-reference-1-admin"
-            onblur="saveValueByAdmin('national-recommendations-reference-1', '<?php echo $id ?>', 'national_policy_values_admin')">
-
-            <label for="national-recommendations-titles-2-admin" class="mt-10">Title</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled ";
-              }
-              if($admin_values['national_recommendations_titles_2'] != null){
-                echo "value='" . $admin_values['national_recommendations_titles_2']."'";
-              }
-            ?> name="national-recommendations-titles-2-admin" id="national-recommendations-titles-2-admin"
-            onblur="saveValueByAdmin('national-recommendations-titles-2', '<?php echo $id ?>', 'national_policy_values_admin')">
-            <label for="national-recommendations-reference-2-admin" class="mt-10">Reference</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled ";
-              }
-              if($admin_values['national_recommendations_reference_2'] != null){
-                echo "value='" . $admin_values['national_recommendations_reference_2']."'";
-              }
-            ?> name="national-recommendations-reference-2-admin" id="national-recommendations-reference-2-admin"
-            onblur="saveValueByAdmin('national-recommendations-reference-2', '<?php echo $id ?>', 'national_policy_values_admin')">
-
-            <label for="national-recommendations-titles-3-admin" class="mt-10">Title</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled ";
-              }
-              if($admin_values['national_recommendations_titles_3'] != null){
-                echo "value='" . $admin_values['national_recommendations_titles_3']."'";
-              }
-            ?> name="national-recommendations-titles-3-admin" id="national-recommendations-titles-3-admin"
-            onblur="saveValueByAdmin('national-recommendations-titles-3', '<?php echo $id ?>', 'national_policy_values_admin')">
-            <label for="national-recommendations-reference-3-admin" class="mt-10">Reference</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] != "admin"){
-                echo "disabled ";
-              }
-              if($admin_values['national_recommendations_reference_3'] != null){
-                echo "value='" . $admin_values['national_recommendations_reference_3']."'";
-              }
-            ?> name="national-recommendations-reference-3-admin" id="national-recommendations-reference-3-admin"
-            onblur="saveValueByAdmin('national-recommendations-reference-3', '<?php echo $id ?>', 'national_policy_values_admin')">
+          <?php foreach ($national_guideline_titles_reference_admin as $row): ?>
+            <div class="title-reference">
+              <label for="titulos[]">Title</label>
+              <input type="text" id='guideline_title_<?php echo "1" ?>' name="titulos[]" value='<?php echo $row['title']; ?>' placeholder="Title" onBlur="insertGuidelineData(<?php echo $id; ?>, this.value, document.getElementById('guideline_reference_<?php echo $row['inc']; ?>').value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] != "admin"){
+                echo " disabled";
+              } ?>>
+              <label for="referencias[]">Reference</label>
+              <input type="text" id="guideline_reference_<?php echo $row['inc']; ?>" name="referencias[]" value="<?php echo $row['reference']; ?>" placeholder="Reference" onBlur="insertGuidelineData(<?php echo $id; ?>, document.getElementById('guideline_title_<?php echo $row['inc']; ?>').value, this.value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] != "admin"){
+                echo " disabled";
+              } ?>>
+              <button <?php if($_SESSION['userType'] != "admin"){
+                echo "style='display: none;'";
+              } ?> type="button" class="delete-button" onclick="deleteGuidelineData(<?php echo $id; ?>, <?php echo $row['inc']; ?>)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </div>
+          <?php endforeach; ?>
+          
+          <div id="novos_campos_guideline"></div>
+          <button type="button" class="add-button" id="adicionar_campo_guideline" <?php if($_SESSION['userType'] != "admin"){
+                echo "style='display: none;'";
+              } ?>>Add guideline</button>
           <?php 
             if($_SESSION['userType'] == "admin"){
               $input_option = 2;
@@ -517,6 +430,9 @@
                 if ($contact_values['national_recommendations'] == 1) {
                   echo "checked";
                 }
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                }
               ?>
                 onclick="saveRadioValue('national-recommendations',  '<?php echo $id ?>', 'national_policy_values_contact')">
               <label for="no">No</label>
@@ -524,71 +440,32 @@
                 if ($contact_values['national_recommendations'] == 0 && $contact_values['national_recommendations'] != null) {
                   echo "checked";
                 }
+                if($_SESSION['userType'] == "admin"){
+                  echo "disabled ";
+                }
               ?>
                 onclick="saveRadioValue('national-recommendations',  '<?php echo $id ?>', 'national_policy_values_contact')">
             </div>
-            <label for="national-recommendations-titles-1">Title</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['national_recommendations_titles_1'] != null){
-                echo "value='" . $contact_values['national_recommendations_titles_1']."'";
-              }
-            ?> name="national-recommendations-titles-1" id="national-recommendations-titles-1"
-            onblur="saveValueByContact('national-recommendations-titles-1', '<?php echo $id ?>', 'national_policy_values_contact')">
-            <label for="national-recommendations-reference" class="mt-10">Reference</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['national_recommendations_reference_1'] != null){
-                echo "value='" . $contact_values['national_recommendations_reference_1']."'";
-              }
-            ?> name="national-recommendations-reference-1" id="national-recommendations-reference-1"
-            onblur="saveValueByContact('national-recommendations-reference-1', '<?php echo $id ?>', 'national_policy_values_contact')">
-
-            <label for="national-recommendations-titles-2" class="mt-10">Title</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['national_recommendations_titles_2'] != null){
-                echo "value='" . $contact_values['national_recommendations_titles_2']."'";
-              }
-            ?> name="national-recommendations-titles-2" id="national-recommendations-titles-2"
-            onblur="saveValueByContact('national-recommendations-titles-2', '<?php echo $id ?>', 'national_policy_values_contact')">
-            <label for="national-recommendations-reference" class="mt-10">Reference</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['national_recommendations_reference_2'] != null){
-                echo "value='" . $contact_values['national_recommendations_reference_2']."'";
-              }
-            ?> name="national-recommendations-reference-2" id="national-recommendations-reference-2"
-            onblur="saveValueByContact('national-recommendations-reference-2', '<?php echo $id ?>', 'national_policy_values_contact')">
-
-            <label for="national-recommendations-titles-3" class="mt-10">Title</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['national_recommendations_titles_3'] != null){
-                echo "value='" . $contact_values['national_recommendations_titles_3']."'";
-              }
-            ?> name="national-recommendations-titles-3" id="national-recommendations-titles-3"
-            onblur="saveValueByContact('national-recommendations-titles-3', '<?php echo $id ?>', 'national_policy_values_contact')">
-            <label for="national-recommendations-reference" class="mt-10">Reference</label>
-            <input type="text" <?php
-              if($_SESSION['userType'] == "admin"){
-                echo "disabled ";
-              }
-              if($contact_values['national_recommendations_reference_3'] != null){
-                echo "value='" . $contact_values['national_recommendations_reference_3']."'";
-              }
-            ?> name="national-recommendations-reference-3" id="national-recommendations-reference-3"
-            onblur="saveValueByContact('national-recommendations-reference-3', '<?php echo $id ?>', 'national_policy_values_contact')">
+              <?php foreach ($national_guideline_titles_reference_contact as $row): ?>
+                <div class="title-reference">
+                  <label for="titulos[]">Title</label>
+                  <input type="text" id='guideline_contact_title_<?php echo "1" ?>' name="titulos[]" value='<?php echo $row['title']; ?>' placeholder="Title" onBlur="insertGuidelineContactData(<?php echo $id; ?>, this.value, document.getElementById('guideline_contact_reference_<?php echo $row['inc']; ?>').value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] == "admin"){
+                    echo "disabled";
+                  } ?>>
+                  <label for="referencias[]">Reference</label>
+                  <input type="text" id="guideline_contact_reference_<?php echo $row['inc']; ?>" name="referencias[]" value="<?php echo $row['reference']; ?>" placeholder="Reference" onBlur="insertGuidelineContactData(<?php echo $id; ?>, document.getElementById('guideline_contact_title_<?php echo $row['inc']; ?>').value, this.value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] == "admin"){
+                    echo "disabled";
+                  } ?>>
+                  <button <?php if($_SESSION['userType'] == "admin"){
+                    echo "style='display: none;'";
+                  } ?> type="button" class="delete-button" onclick="deleteGuidelineContactData(<?php echo $id; ?>, <?php echo $row['inc']; ?>)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                </div>
+              <?php endforeach; ?>
+          
+            <div id="novos_campos_guideline"></div>
+            <button type="button" class="add-button" id="adicionar_campo_guideline" <?php if($_SESSION['userType'] == "admin"){
+                  echo "style='display: none;'";
+                } ?>>Add guideline</button>
           </div>
           <?php
             $indicator_name = "national_recommendations";
@@ -678,6 +555,215 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="../../js/indicators/indicators.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
+  <script>
+    document.getElementById("adicionar_campo").addEventListener("click", function() {
+      var existingTitleInputs = document.querySelectorAll('input[id^="title_"]');
+      var newTitleId = existingTitleInputs.length + 1;
+      var novosCampos = document.getElementById("novos_campos");
+      var newFieldContainer = document.createElement("div");
+      newFieldContainer.className = "title-reference";
+
+      var newLabelTitle = document.createElement("label");
+      newLabelTitle.setAttribute("for", "novos_titulos[]");
+      newLabelTitle.textContent = "Title";
+
+      var newInputTitle = document.createElement("input");
+      newInputTitle.type = "text";
+      newInputTitle.name = "novos_titulos[]";
+      newInputTitle.placeholder = "Title";
+      newInputTitle.id = "title_" + newTitleId;
+      newInputTitle.onblur = function() {
+          insertData(<?php echo $id; ?>, this.value, document.getElementById("reference_" + newTitleId).value, newTitleId);
+      };
+
+      var newLabelReference = document.createElement("label");
+      newLabelReference.setAttribute("for", "novas_referencias[]");
+      newLabelReference.textContent = "Reference";
+
+      var newInputReference = document.createElement("input");
+      newInputReference.type = "text";
+      newInputReference.name = "novas_referencias[]";
+      newInputReference.placeholder = "Reference";
+      newInputReference.id = "reference_" + newTitleId;
+      newInputReference.onblur = function() {
+          insertData(<?php echo $id; ?>, document.getElementById('title_'+newTitleId).value, this.value, newTitleId);
+      };
+
+      var newDeleteButton = document.createElement("button");
+      newDeleteButton.type = "button";
+      newDeleteButton.className = "delete-button";
+      newDeleteButton.onclick = function() {
+          deleteData(<?php echo $id; ?>, newTitleId);
+      };
+      var newDeleteIcon = document.createElement("i");
+      newDeleteIcon.className = "fa fa-trash";
+      newDeleteButton.appendChild(newDeleteIcon);
+
+      newFieldContainer.appendChild(newLabelTitle);
+      newFieldContainer.appendChild(newInputTitle);
+      newFieldContainer.appendChild(newLabelReference);
+      newFieldContainer.appendChild(newInputReference);
+      newFieldContainer.appendChild(newDeleteButton);
+
+      novosCampos.appendChild(newFieldContainer);
+    });
+
+    document.getElementById("adicionar_campo_guideline").addEventListener("click", function() {
+      var existingTitleInputs = document.querySelectorAll('input[id^="guideline_title_"]');
+      var newTitleId = existingTitleInputs.length + 1;
+      var novosCampos = document.getElementById("novos_campos_guideline");
+      var newFieldContainer = document.createElement("div");
+      newFieldContainer.className = "title-reference";
+
+      var newLabelTitle = document.createElement("label");
+      newLabelTitle.setAttribute("for", "novos_titulos_guideline[]");
+      newLabelTitle.textContent = "Title";
+
+      var newInputTitle = document.createElement("input");
+      newInputTitle.type = "text";
+      newInputTitle.name = "novos_titulos_guideline[]";
+      newInputTitle.placeholder = "Title";
+      newInputTitle.id = "guideline_title_" + newTitleId;
+      newInputTitle.onblur = function() {
+          insertGuidelineData(<?php echo $id; ?>, this.value, document.getElementById("guideline_reference_" + newTitleId).value, newTitleId);
+      };
+
+      var newLabelReference = document.createElement("label");
+      newLabelReference.setAttribute("for", "novas_referencias_guideline[]");
+      newLabelReference.textContent = "Reference";
+
+      var newInputReference = document.createElement("input");
+      newInputReference.type = "text";
+      newInputReference.name = "novas_referencias_guideline[]";
+      newInputReference.placeholder = "Reference";
+      newInputReference.id = "guideline_reference_" + newTitleId;
+      newInputReference.onblur = function() {
+          insertGuidelineData(<?php echo $id; ?>, document.getElementById('guideline_title_'+newTitleId).value, this.value, newTitleId);
+      };
+
+      var newDeleteButton = document.createElement("button");
+      newDeleteButton.type = "button";
+      newDeleteButton.className = "delete-button";
+      newDeleteButton.onclick = function() {
+          deleteGuidelineData(<?php echo $id; ?>, newTitleId);
+      };
+      var newDeleteIcon = document.createElement("i");
+      newDeleteIcon.className = "fa fa-trash";
+      newDeleteButton.appendChild(newDeleteIcon);
+
+      newFieldContainer.appendChild(newLabelTitle);
+      newFieldContainer.appendChild(newInputTitle);
+      newFieldContainer.appendChild(newLabelReference);
+      newFieldContainer.appendChild(newInputReference);
+      newFieldContainer.appendChild(newDeleteButton);
+
+      novosCampos.appendChild(newFieldContainer);
+    });
+
+    document.getElementById("adicionar_campo_contact").addEventListener("click", function() {
+      var existingTitleInputs = document.querySelectorAll('input[id^="contact_title_"]');
+      var newTitleId = existingTitleInputs.length + 1;
+      var novosCampos = document.getElementById("novos_campos_contact");
+      var newFieldContainer = document.createElement("div");
+      newFieldContainer.className = "title-reference";
+
+      var newLabelTitle = document.createElement("label");
+      newLabelTitle.setAttribute("for", "novos_titulos_contact[]");
+      newLabelTitle.textContent = "Title";
+
+      var newInputTitle = document.createElement("input");
+      newInputTitle.type = "text";
+      newInputTitle.name = "novos_titulos_contact[]";
+      newInputTitle.placeholder = "Title";
+      newInputTitle.id = "contact_title_" + newTitleId;
+      newInputTitle.onblur = function() {
+          insertDataContact(<?php echo $id; ?>, this.value, document.getElementById("contact_reference_" + newTitleId).value, newTitleId);
+      };
+
+      var newLabelReference = document.createElement("label");
+      newLabelReference.setAttribute("for", "novas_referencias_contact[]");
+      newLabelReference.textContent = "Reference";
+
+      var newInputReference = document.createElement("input");
+      newInputReference.type = "text";
+      newInputReference.name = "novas_referencias_contact[]";
+      newInputReference.placeholder = "Reference";
+      newInputReference.id = "contact_reference_" + newTitleId;
+      newInputReference.onblur = function() {
+          insertDataContact(<?php echo $id; ?>, document.getElementById('contact_title_'+newTitleId).value, this.value, newTitleId);
+      };
+
+      var newDeleteButton = document.createElement("button");
+      newDeleteButton.type = "button";
+      newDeleteButton.className = "delete-button";
+      newDeleteButton.onclick = function() {
+          deleteDataContact(<?php echo $id; ?>, newTitleId);
+      };
+      var newDeleteIcon = document.createElement("i");
+      newDeleteIcon.className = "fa fa-trash";
+      newDeleteButton.appendChild(newDeleteIcon);
+
+      newFieldContainer.appendChild(newLabelTitle);
+      newFieldContainer.appendChild(newInputTitle);
+      newFieldContainer.appendChild(newLabelReference);
+      newFieldContainer.appendChild(newInputReference);
+      newFieldContainer.appendChild(newDeleteButton);
+
+      novosCampos.appendChild(newFieldContainer);
+    });
+
+    document.getElementById("adicionar_campo_guideline_contact").addEventListener("click", function() {
+      var existingTitleInputs = document.querySelectorAll('input[id^="guideline_contact_title_"]');
+      var newTitleId = existingTitleInputs.length + 1;
+      var novosCampos = document.getElementById("novos_campos_guideline_contact");
+      var newFieldContainer = document.createElement("div");
+      newFieldContainer.className = "title-reference";
+
+      var newLabelTitle = document.createElement("label");
+      newLabelTitle.setAttribute("for", "novos_titulos_guideline_contact[]");
+      newLabelTitle.textContent = "Title";
+
+      var newInputTitle = document.createElement("input");
+      newInputTitle.type = "text";
+      newInputTitle.name = "novos_titulos_guideline_contact[]";
+      newInputTitle.placeholder = "Title";
+      newInputTitle.id = "guideline_contact_title_" + newTitleId;
+      newInputTitle.onblur = function() {
+          insertGuidelineContactData(<?php echo $id; ?>, this.value, document.getElementById("guideline_contact_reference_" + newTitleId).value, newTitleId);
+      };
+
+      var newLabelReference = document.createElement("label");
+      newLabelReference.setAttribute("for", "novas_referencias_guideline_contact[]");
+      newLabelReference.textContent = "Reference";
+
+      var newInputReference = document.createElement("input");
+      newInputReference.type = "text";
+      newInputReference.name = "novas_referencias_guideline_contact[]";
+      newInputReference.placeholder = "Reference";
+      newInputReference.id = "guideline_contact_reference_" + newTitleId;
+      newInputReference.onblur = function() {
+          insertGuidelineContactData(<?php echo $id; ?>, document.getElementById('guideline_contact_title_'+newTitleId).value, this.value, newTitleId);
+      };
+
+      var newDeleteButton = document.createElement("button");
+      newDeleteButton.type = "button";
+      newDeleteButton.className = "delete-button";
+      newDeleteButton.onclick = function() {
+          deleteGuidelineContactData(<?php echo $id; ?>, newTitleId);
+      };
+      var newDeleteIcon = document.createElement("i");
+      newDeleteIcon.className = "fa fa-trash";
+      newDeleteButton.appendChild(newDeleteIcon);
+
+      newFieldContainer.appendChild(newLabelTitle);
+      newFieldContainer.appendChild(newInputTitle);
+      newFieldContainer.appendChild(newLabelReference);
+      newFieldContainer.appendChild(newInputReference);
+      newFieldContainer.appendChild(newDeleteButton);
+
+      novosCampos.appendChild(newFieldContainer);
+    });
+  </script>
 </body>
 
 </html>
