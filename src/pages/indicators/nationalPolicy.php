@@ -487,7 +487,7 @@
           include("../../components/diffDataSource.php");
         }
       ?>
-      <div class="indicators">
+      <!-- <div class="indicators">
         <div class="form-input">
           <label for="policy-implementation-admin">
             Level of policy implementation <span class="new">*new*</span> <span onclick="showModalInfo('policy-implementation')"><i
@@ -536,7 +536,7 @@
           ?>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="buttons">
         <button class="btn-back" type="button" <?php
           echo "onclick='document.location = `nationalSurveillance.php?id=".$id."`'";
