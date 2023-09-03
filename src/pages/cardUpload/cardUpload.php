@@ -2,6 +2,21 @@
   $title = "Country Cards";                   
   include "../../components/header.php";                 
 ?>
+<?php 
+  function getThumbnail($path, $country) {
+    if (is_dir($path)) {
+        $files = scandir($path);
+        
+        foreach ($files as $file) {
+            if ($file != "." && $file != ".." && strpos($file, $country) === 0 && pathinfo($file, PATHINFO_EXTENSION) === "png") {
+                return $file; // Retorna o primeiro arquivo encontrado
+            }
+        }
+    }
+    
+    return null; // Retorna null se nenhum arquivo for encontrado
+  }
+?>
 <?php
   $country_id = $_GET['id'];
   $sql = "SELECT country_cards_step_en FROM countries WHERE id = $country_id";
@@ -60,13 +75,21 @@
             echo " hidden";
           }?>>
           <input type="hidden" name="country_id" value='<?php echo $country_id?>'>
-          <label for="uploadPDF">Click to upload a file</label>
-          <input id="uploadPDF" type="file" accept="file/*" name="cardPDF" class="add-btn" <?php if ($_SESSION["userType"] != "admin") {
+          <label for="pdfFile">Click to upload a file</label>
+          <input name="pdfFile" id="pdfFile" type="file" accept="file/*" class="add-btn" <?php if ($_SESSION["userType"] != "admin") {
             echo " disabled";
           }?>/>
           <input class="btn-confirm a-center" type="submit" value="Upload">
         </div>
-        <div id="preview">No card uploaded.</div>
+        <div id="preview">
+          <?php if($row['has_card']== 0){
+            echo "<input type='hidden' name='has_card' value='0'>";
+          }else{
+            echo "<input type='hidden' name='has_card' value='1'>";
+            echo "<input type='hidden' name='card_thumbnail' value='".getThumbnail("../../../uploads/card_english/",$country_id)."'>";
+          }
+          ?>
+        </div>
         <br>
         <a class="btn-confirm btn-download" href="https://work.globalphysicalactivityobservatory.com/uploads/card_english/<?php echo $country_id?>.pdf" download="country_card_en" <?php if($row['has_card']== 0){
               echo " style='display: none'";
@@ -92,7 +115,7 @@
           }?>>
           <p style="color: #03a9f4; font-weight: bold;">You can only upload files of 10MB size!</p>
           <?php if ($_SESSION["userType"] == "admin") {
-            echo "<a class='btn-confirm btn-download mt-10' href='https://work.globalphysicalactivityobservatory.com/uploads/files/".$country_id."' download='contact_comment'"; if($row['has_contact_file']== 0){
+            echo "<a class='btn-confirm btn-download mt-10' href='https://work.globalphysicalactivityobservatory.com/uploads/files/".$country_id.".pdf' download='contact_comment'"; if($row['has_contact_file']== 0){
               echo " style='display: none'";
             }echo "><i class='fa fa-download'></i> Download</a>";
           }?>

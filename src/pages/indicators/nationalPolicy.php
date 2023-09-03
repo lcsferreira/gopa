@@ -462,8 +462,8 @@
                 </div>
               <?php endforeach; ?>
           
-            <div id="novos_campos_guideline"></div>
-            <button type="button" class="add-button" id="adicionar_campo_guideline" <?php if($_SESSION['userType'] == "admin"){
+            <div id="novos_campos_guideline_contact"></div>
+            <button type="button" class="add-button" id="adicionar_campo_guideline_contact" <?php if($_SESSION['userType'] == "admin"){
                   echo "style='display: none;'";
                 } ?>>Add guideline</button>
           </div>

@@ -162,8 +162,8 @@
             $indicator_table_name = "research";
             include("../../components/agreementInput.php") 
           ?>
-          <div class="contact-input" id="pa-quintiles-indicator">
-            <div class="form-input">
+          <div class="contact-input" id="pa-quintiles-indicator" style="margin-top: 2em">
+            <!-- <div class="form-input">
               <p>Provide the new information here: </p>
               <div class="radio" id="radio-group">
                 <label for="q1">Q1</label>
@@ -212,7 +212,7 @@
                   }
                 ?> onclick="saveRadioValue2('pa-quintiles', '<?php echo $id ?>', 'research_values_contact')">
               </div>
-            </div>
+            </div> -->
             <?php
               $indicator_name = "pa_quintiles";
               $indicator_table_name = "research";

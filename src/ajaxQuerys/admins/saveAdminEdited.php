@@ -28,7 +28,7 @@ $is_active = $_POST['is_active'];
       //send email to admin
       //get the id of the admin that was just inserted
       // firstAccess.php?id='$admin_id'
-      $assunto = "Action Required";
+      $assunto = "Action Required -  GoPA! Country Contact registration instructions - new GoPA! data review and Country Card approval system";
     
       $headers  = 'MIME-Version: 1.0' . "\r\n";
       $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";

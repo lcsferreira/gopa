@@ -391,3 +391,13 @@ canvas {
   transition: 0.2s;
   padding: 7px 0px;
 }
+
+#preview {
+  margin-top: 3em;
+}
+
+.thumbnail-image {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}

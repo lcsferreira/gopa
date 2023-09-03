@@ -119,7 +119,7 @@
                 <select name='country' id='country'>
                 ";
               
-                  $sql = "SELECT id, name FROM countries";
+                  $sql = "SELECT id, name FROM countries ORDER BY name ASC";
                   $selectedCountry = mysqli_query($connection, $sql);
                   //form a new select option with all of our countries from DB
                   foreach($selectedCountry as $countryOption){

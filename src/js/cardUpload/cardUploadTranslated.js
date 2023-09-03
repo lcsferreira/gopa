@@ -33,8 +33,18 @@ $(document).ready(function (e) {
   });
 
   $("#preview").ready(function () {
-    let id = $("input[name=country_id]").val();
-    getPDF(id);
+    const thumbnailDiv = document.getElementById("preview");
+    //get the value of the input hidden field
+    const thumbnailPath = $("input[name=card_thumbnail]").val();
+
+    const value = $("input[name=has_card]").val();
+
+    //if the card is not uploaded yet, show a text instead of the thumbnail
+    if (value == 0) {
+      thumbnailDiv.innerHTML = `<p>Upload the card to see the preview</p>`;
+    } else {
+      thumbnailDiv.innerHTML = `<img class='thumbnail-image' src="../../../uploads/card_translated/${thumbnailPath}" alt="Thumbnail">`;
+    }
   });
 
   $("#form-contact").on("submit", function (e) {

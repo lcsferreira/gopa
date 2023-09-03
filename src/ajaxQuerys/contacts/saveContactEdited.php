@@ -64,7 +64,7 @@
     //get the id of the contact that was just inserted
     // firstAccess.php?id='$contact_id'
 
-    $assunto = "Action Required";
+    $assunto = "Action Required -  GoPA! Country Contact registration instructions - new GoPA! data review and Country Card approval system";
   
     $headers  = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";

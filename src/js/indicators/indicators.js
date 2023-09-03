@@ -12,6 +12,10 @@ let agreementInputs = {
     "human-index",
     "literacy-rate",
     "deaths-diseases",
+    "risk-of-premature",
+    "human-capital",
+    "democracy",
+    "tax-burden",
   ],
   paPrevalence: ["pa-prevalence"],
   nationalSurveillance: [
