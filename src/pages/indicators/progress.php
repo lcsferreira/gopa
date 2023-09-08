@@ -14,7 +14,7 @@
 
   $indicators_progress = array(0, 0, 0, 0, 0, 0, 0);
 
-  $max_total_indicators = array(13, 1, 6, 2, 2, 3, 3);
+  $max_total_indicators = array(12, 1, 6, 2, 2, 3, 3);
 
   //get indicators_step from country table
   $sql = "SELECT indicators_step FROM countries WHERE id = $id";
@@ -92,8 +92,18 @@
 <body>
   <div class="container" id="main">
     <div class="title mt-50">
-      <h1>Progress of the Indicators</h1>
-      <p>The review and completion of the data for the Country Card may be tracked here:</p>
+      <h1>Progress of the Dashboard indicators</h1>
+      <p>Welcome to our dashboard! Here, you can monitor the indicators' review progress. <br/>Keep in mind that achieving 100% completion requires a collaborative process:</p>
+    </div>
+    <div>
+      <ul >
+        <li style="color: #8e9dae; font-weight: bold">Enter new information and comments as needed.</li>
+        <li style="color: #8e9dae; font-weight: bold">The GoPA team will review your input.</li>
+        <li style="color:#8e9dae; font-weight: bold"> We will send the data back to you for your final confirmation.</li>
+        <li style="color: #8e9dae; font-weight: bold"> Only when you approve all information as correct will the indicator reach 100% completion.</li>
+      </ul>
+      <p style="color: #8e9dae;">Thank you for your cooperation in maintaining accurate data. We are here to support you every step of the way!</p>
+      <p style="color: #8e9dae; text-align: center">Explore the dashboard now!</p>
     </div>
     <div class="progress">
       <div class="indicator-progress">

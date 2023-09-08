@@ -145,7 +145,7 @@
           <?php foreach ($national_policy_titles_reference_admin as $row): ?>
             <div class="title-reference">
               <label for="titulos[]">Title</label>
-              <input type="text" id='title_<?php echo "1" ?>' name="titulos[]" value='<?php echo $row['title']; ?>' placeholder="Title" onBlur="insertData(<?php echo $id; ?>, this.value, document.getElementById('reference_<?php echo $row['inc']; ?>').value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] != "admin"){
+              <input type="text" id='title_<?php echo $row['inc']; ?>' name="titulos[]" value='<?php echo $row['title']; ?>' placeholder="Title" onBlur="insertData(<?php echo $id; ?>, this.value, document.getElementById('reference_<?php echo $row['inc']; ?>').value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] != "admin"){
                 echo " disabled";
               } ?>>
               <label for="referencias[]">Reference</label>
@@ -261,7 +261,7 @@
             <?php foreach ($national_policy_titles_reference_contact as $row): ?>
             <div class="title-reference">
               <label for="titulos[]">Title</label>
-              <input type="text" id='contact_title_<?php echo "1" ?>' name="titulos[]" value='<?php echo $row['title']; ?>' placeholder="Title" onBlur="insertDataContact(<?php echo $id; ?>, this.value, document.getElementById('contact_reference_<?php echo $row['inc']; ?>').value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] == "admin"){
+              <input type="text" id='contact_title_<?php echo $row['inc']; ?>' name="titulos[]" value='<?php echo $row['title']; ?>' placeholder="Title" onBlur="insertDataContact(<?php echo $id; ?>, this.value, document.getElementById('contact_reference_<?php echo $row['inc']; ?>').value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] == "admin"){
                 echo " disabled";
               } ?>>
               <label for="referencias[]">Reference</label>
@@ -385,7 +385,7 @@
           <?php foreach ($national_guideline_titles_reference_admin as $row): ?>
             <div class="title-reference">
               <label for="titulos[]">Title</label>
-              <input type="text" id='guideline_title_<?php echo "1" ?>' name="titulos[]" value='<?php echo $row['title']; ?>' placeholder="Title" onBlur="insertGuidelineData(<?php echo $id; ?>, this.value, document.getElementById('guideline_reference_<?php echo $row['inc']; ?>').value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] != "admin"){
+              <input type="text" id='guideline_title_<?php echo $row['inc']; ?>' name="titulos[]" value='<?php echo $row['title']; ?>' placeholder="Title" onBlur="insertGuidelineData(<?php echo $id; ?>, this.value, document.getElementById('guideline_reference_<?php echo $row['inc']; ?>').value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] != "admin"){
                 echo " disabled";
               } ?>>
               <label for="referencias[]">Reference</label>
@@ -449,7 +449,7 @@
               <?php foreach ($national_guideline_titles_reference_contact as $row): ?>
                 <div class="title-reference">
                   <label for="titulos[]">Title</label>
-                  <input type="text" id='guideline_contact_title_<?php echo "1" ?>' name="titulos[]" value='<?php echo $row['title']; ?>' placeholder="Title" onBlur="insertGuidelineContactData(<?php echo $id; ?>, this.value, document.getElementById('guideline_contact_reference_<?php echo $row['inc']; ?>').value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] == "admin"){
+                  <input type="text" id='guideline_contact_title_<?php $row['inc']; ?>' name="titulos[]" value='<?php echo $row['title']; ?>' placeholder="Title" onBlur="insertGuidelineContactData(<?php echo $id; ?>, this.value, document.getElementById('guideline_contact_reference_<?php echo $row['inc']; ?>').value, <?php echo $row['inc']; ?>)" <?php if($_SESSION['userType'] == "admin"){
                     echo "disabled";
                   } ?>>
                   <label for="referencias[]">Reference</label>
@@ -559,6 +559,7 @@
     document.getElementById("adicionar_campo").addEventListener("click", function() {
       var existingTitleInputs = document.querySelectorAll('input[id^="title_"]');
       var newTitleId = existingTitleInputs.length + 1;
+      console.log(newTitleId);
       var novosCampos = document.getElementById("novos_campos");
       var newFieldContainer = document.createElement("div");
       newFieldContainer.className = "title-reference";
@@ -586,6 +587,7 @@
       newInputReference.placeholder = "Reference";
       newInputReference.id = "reference_" + newTitleId;
       newInputReference.onblur = function() {
+          console.log(newTitleId);
           insertData(<?php echo $id; ?>, document.getElementById('title_'+newTitleId).value, this.value, newTitleId);
       };
 

@@ -50,7 +50,7 @@ if($_FILES['pdfFile']['size'] !=0)
       $imagick->setImageFormat('png'); 
       // $imagick->setResolution(3000, 2000); // Resolução em DPI (dots per inch)
       // $imagick->thumbnailImage(500, 500, true); // Redimensionar para Full HD
-      $imagick->writeImage($thumbnailFile. date("Y-m-d-H-i-s") . '.png');
+      $imagick->writeImage($thumbnailFile."-". date("Y-m-d-H-i-s") . '.png');
 
       echo $country_id;
     }

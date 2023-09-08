@@ -535,7 +535,7 @@
         </div>
       </div>
 
-      <div class="indicators">
+      <!-- <div class="indicators">
         <div class="form-input">
           <label for="tax-burden-admin">% Tax burden <span class="new">*new*</span> <span onclick="showModalInfo('tax-burden')"><i
                 class="fa fa-question-circle-o"></i></span>
@@ -561,7 +561,7 @@
           <div class="contact-input" id="tax-burden-indicator">
             <?php
               $indicator_type = "number";
-              $indicator_title = "Deaths due to non-communicable diseases (%)";
+              $indicator_title = "% Tax burden";
               $indicator_name = "tax_burden";
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
@@ -573,7 +573,7 @@
             ?>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="buttons">
         <button class="btn-back" type="button" <?php

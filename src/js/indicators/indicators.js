@@ -159,7 +159,13 @@ function saveValueByContact(indicator, id, table) {
   if (indicator == "additional-contact") {
     postValue(indicator, $("#" + indicator).val(), id, table);
   } else {
-    postValue(indicator, $("input[name=" + indicator + "]").val(), id, table);
+    const value = $("#" + indicator).val();
+    console.log(value);
+    if (value) {
+      postValue(indicator, value, id, table);
+    } else {
+      postValue(indicator, $("input[name=" + indicator + "]").val(), id, table);
+    }
   }
 }
 

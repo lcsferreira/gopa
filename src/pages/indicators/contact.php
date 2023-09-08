@@ -83,7 +83,7 @@
               include("../../components/contactInput.php")
             ?>
             <?php
-              $indicator_name = "name-1";
+              $indicator_name = "name_1";
               $indicator_table_name = "contact";
               include("../../components/commentInput.php")
             ?>
@@ -120,7 +120,7 @@
               include("../../components/contactInput.php")
             ?>
             <?php
-              $indicator_name = "email-1";
+              $indicator_name = "email_1";
               $indicator_table_name = "contact";
               include("../../components/commentInput.php")
             ?>
@@ -157,7 +157,7 @@
               include("../../components/contactInput.php")
             ?>
             <?php
-              $indicator_name = "institution-1";
+              $indicator_name = "institution_1";
               $indicator_table_name = "contact";
               include("../../components/commentInput.php")
             ?> 
@@ -194,7 +194,7 @@
               include("../../components/contactInput.php")
             ?>
             <?php
-              $indicator_name = "name-2";
+              $indicator_name = "name_2";
               $indicator_table_name = "contact";
               include("../../components/commentInput.php")
             ?>
@@ -231,7 +231,7 @@
               include("../../components/contactInput.php")
             ?>
             <?php
-              $indicator_name = "email-2";
+              $indicator_name = "email_2";
               $indicator_table_name = "contact";
               include("../../components/commentInput.php")
             ?>
@@ -268,7 +268,7 @@
               include("../../components/contactInput.php")
             ?>
             <?php
-              $indicator_name = "institution-2";
+              $indicator_name = "institution_2";
               $indicator_table_name = "contact";
               include("../../components/commentInput.php")
             ?>
@@ -305,7 +305,7 @@
               include("../../components/contactInput.php")
             ?>
             <?php
-              $indicator_name = "name-3";
+              $indicator_name = "name_3";
               $indicator_table_name = "contact";
               include("../../components/commentInput.php")
             ?>
@@ -342,7 +342,7 @@
               include("../../components/contactInput.php")
             ?>
             <?php
-              $indicator_name = "email-3";
+              $indicator_name = "email_3";
               $indicator_table_name = "contact";
               include("../../components/commentInput.php")
             ?>

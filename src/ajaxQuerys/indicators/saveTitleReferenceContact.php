@@ -7,23 +7,6 @@
   $reference = $_POST['reference'];
   $inc = $_POST['inc'];
 
-  //check if the value is all blank spaces
-  if($title != NULL){
-    if(preg_match('/^\s*$/', $title)){
-      $title = NULL;
-    }
-  }else if($title == ""){
-    $title = NULL;
-  }
-
-  //check if the value is all blank spaces
-  if($reference != NULL){
-    if(preg_match('/^\s*$/', $reference)){
-      $reference = NULL;
-    }
-  }else if($reference == ""){
-    $reference = NULL;
-  }
 
   //check if inc is zero an set it to null
   if($inc == 0){
@@ -31,6 +14,9 @@
   } else if($inc == ""){
     $inc = NULL;
   }
+
+  $title = mysqli_real_escape_string($connection, $title);
+  $reference = mysqli_real_escape_string($connection, $reference);
 
   //update table with the value
   $sql = "CALL insertWithIncrementContact($id_country, '$title', '$reference', $inc)";

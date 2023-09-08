@@ -3,8 +3,43 @@
   include "../../components/header.php";                 
 ?>
 <?php
+function verifica($country_id, $connection) {
+  $indicadores = array(
+      "contact",
+      "demographic",
+      "national_policy",
+      "national_surveillance",
+      "pa_prevalence",
+      "pa_promotion",
+      "research"
+  );
+  foreach ($indicadores as $indicador) {
+      $result = $connection->query("SHOW COLUMNS FROM $indicador"."_agreement");
+      $columns = array();
+      while ($row = $result->fetch_assoc()) {
+          $columns[] = $row['Field'];
+      }
+      foreach ($columns as $column) {
+          $sql = "
+                  SELECT a.$column
+                  FROM $indicador"."_agreement a
+                  JOIN $indicador"."_values_contact vc ON a.id = vc.id
+                  WHERE (a.$column  = 0 OR a.$column  = 1) AND vc.$column IS NULL AND a.id = $country_id;
+               ";
+           $result2 = $connection->query($sql);
+          if ($result2->num_rows > 0) {
+              return true;
+          }
+      }
+  }
+  return false;
+}
+?>
+<?php
   //get id from url
   $country_id = $_GET['id'];
+
+  // $has_null = verifica($country_id, $connection);
   
   //get the userType from the session
   $userType = $_SESSION['userType'];
@@ -23,25 +58,31 @@
   $indicators_step = $row['indicators_step'];
 
   $indicators_steps = array("demographic", "pa_prevalence", "national_surveillance", "national_policy", "research", "pa_promotion", "contact");
-  $all_steps_checked = "false";
+  $all_steps_checked = false;
   //foreach indicators step, get the agreement table and check if the values are different from null
   foreach ($indicators_steps as $step) {
     //select row from demographic_values_contacct table
     $sql = "SELECT * FROM " . $step . "_agreement WHERE id = $country_id";
     $result = mysqli_query($connection, $sql);
     $row = mysqli_fetch_assoc($result);
-    //for each row except id, check if the value is not null or zero
-    foreach($row as $key => $value){
-      if($key != "id" && $value == null){
-        if($step == "contact" && ($key != "name_1" || $key != "email_1" || $key != "institution_1")){
-          $all_steps_checked = "true";
-          break;
-        }else{
-          $all_steps_checked = "false";
-          break; 
-        }
-      }else{
-        $all_steps_checked = "true";
+
+    if ($step === "contact") {
+      foreach ($row as $key => $value) {
+          if ($key !== "id" && ($key === "name_1" || $key === "email_1" || $key === "institution_1")) {
+              if ($value === null || $value === 0) {
+                  $all_steps_checked = false; // Definir como falso se encontrar um valor inválido
+                  break; // Interromper o loop interno
+              }
+          }
+      }
+    }else{
+      foreach ($row as $key => $value) {
+          if ($key !== "id" && ($value === null || $value === 0)) {
+              $all_steps_checked = false; // Definir como falso se encontrar um valor inválido
+              break; // Interromper o loop interno
+          }else{
+            $all_steps_checked = true;
+          }
       }
     }
 
@@ -84,7 +125,7 @@
       <h1>Conclusion</h1>
       <p>If you are ready to provide your review of the indicators, click the submit button.</p>
       <?php
-          if($all_steps_checked == "false"){
+          if($all_steps_checked == false){
             echo "<p style='color: red;'>You can't submit the indicators because you haven't checked all the indicators.</p>";
           }
       
@@ -95,7 +136,7 @@
         <button class="btn-back" type="button" <?php
           echo "onclick='document.location = `contact.php?id=".$country_id."`'";
           ?>>Back</button>
-        <button class="btn-next" type="button" onclick="confirmation('<?php echo $country_id ?>')" <?php if ($indicators_step == "waiting admin" || $is_main == 0 || $all_steps_checked == "false") {
+        <button class="btn-next" type="button" onclick="confirmation('<?php echo $country_id ?>')" <?php if ($indicators_step == "waiting admin" || $is_main == 0 || $all_steps_checked == false) {
                echo "disabled"; }?>>Submit</button>
       </div>
     </form>
