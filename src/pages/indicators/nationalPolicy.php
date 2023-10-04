@@ -428,20 +428,20 @@
               <label for="yes">Yes</label>
               <input type="radio" id="yes" name="national-recommendations" value="yes" <?php 
                 if ($contact_values['national_recommendations'] == 1) {
-                  echo "checked";
+                  echo " checked ";
                 }
                 if($_SESSION['userType'] == "admin"){
-                  echo "disabled ";
+                  echo " disabled ";
                 }
               ?>
                 onclick="saveRadioValue('national-recommendations',  '<?php echo $id ?>', 'national_policy_values_contact')">
               <label for="no">No</label>
               <input type="radio" id="no" name="national-recommendations" value="no" <?php 
                 if ($contact_values['national_recommendations'] == 0 && $contact_values['national_recommendations'] != null) {
-                  echo "checked";
+                  echo " checked ";
                 }
                 if($_SESSION['userType'] == "admin"){
-                  echo "disabled ";
+                  echo " disabled ";
                 }
               ?>
                 onclick="saveRadioValue('national-recommendations',  '<?php echo $id ?>', 'national_policy_values_contact')">

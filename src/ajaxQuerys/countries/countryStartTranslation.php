@@ -4,6 +4,16 @@
   //get id from the request
   $country_id = $_POST['id'];
 
+  //select the name from the country where the id is equal to the id from the request
+  $sql = "SELECT name FROM countries WHERE id = $country_id";
+  $stmt = mysqli_prepare($connection, $sql);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_bind_result($stmt, $country_name);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+
+
   //update countries table of value translation_step to 'waiting_contact' where id = $_POST['id']
   $sql = "UPDATE countries SET translation_step = 'waiting contact' WHERE id = ".$_POST['id'];
   $stmt = mysqli_prepare($connection, $sql);
@@ -37,7 +47,7 @@
       
         $mensagem = "
         <br>
-          Dear Country Contact,
+          Dear ".$country_name." Contact,
         <br><br>
           For the Third set of Country Cards 2024, if your country has a native language that is not English, you will be asked to work with us to produce a translated version. Please log into the workflow in order to begin the <b>translation.</b>
         <br><br>

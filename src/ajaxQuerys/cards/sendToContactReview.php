@@ -5,6 +5,15 @@
   //get id from the request
   $country_id = $_POST['id'];
 
+  //select the name from the country where the id is equal to the id from the request
+  $sql = "SELECT name FROM countries WHERE id = $country_id";
+  $stmt = mysqli_prepare($connection, $sql);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_bind_result($stmt, $country_name);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+
   //update the country table where the id is equal to the id from the request and set the indicators_step to wainting_contact
   $sql = "UPDATE countries SET country_cards_step_en = 'waiting contact' WHERE id = $country_id";
   $stmt = mysqli_prepare($connection, $sql);
@@ -40,7 +49,7 @@
       
         $mensagem = "
         <br>
-          Dear Country Contact,
+        Dear ".$country_name." Contact,
         <br><br>
           For the Third set of Country Cards 2024, <b>we have updated the GoPA! Country Card in English.</b> Please log into the workflow in order to review it, make any adjustments, and approve it.
         <br><br>
