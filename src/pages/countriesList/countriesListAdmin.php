@@ -49,6 +49,9 @@
       </button>
       </button>
     </div>
+    <div>
+      <p class="info"><a href='https://work.globalphysicalactivityobservatory.com/src/pages/others/countries_list_info.php' target='_blank'>Click Here</a> to view the infromation of the country from the countries that have approved the indicators.</p>
+    </div>
     <div class="countries-list">
       <?php
         $filter = $_GET['filter'];
