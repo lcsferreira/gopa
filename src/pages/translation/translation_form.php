@@ -31,6 +31,35 @@
         $user = 1;
     }
 
+    // Processar o formulário quando o botão for clicado
+    if (isset($_POST["language"])) {
+        $selected_language = $_POST["language"];
+    
+        // Cria a lista de colunas s1 a s57
+        $columns = implode(', ', array_map(function ($i) {
+            return "s" . ($i + 1);
+        }, range(1, 56)));
+
+        //if the country already has data, delete it
+        $sql = "DELETE FROM translations WHERE country_id = ".$country_id;
+        $result = $connection->query($sql);
+    
+        // Consulta para copiar dados
+        $copy_sql = "INSERT INTO translations (country_id, id, $columns) 
+                        SELECT $country_id, 0, $columns 
+                        FROM language_translations 
+                        WHERE language = '$selected_language' limit 1";
+
+        $result = $connection->query($copy_sql);
+
+        // if ($conn->query($copy_sql) === TRUE) {
+        //     echo "<p>Dados copiados com sucesso!</p>";
+        // } else {
+        //     echo "<p>Erro ao copiar dados</p>";
+        // }
+    }
+
+
     $sql = "SELECT * FROM translations WHERE country_id = ".$country_id;
     $result = $connection->query($sql);
     if ($result->num_rows > 0) {
@@ -122,6 +151,10 @@
             echo "<script>window.location.href = '../countriesList/countriesListContacts.php?id=".$country_id."';</script>";
         }
     }
+    // Consulta para obter as opções do select
+    $sql = "SELECT DISTINCT language FROM language_translations order by language";
+    $result1 = $connection->query($sql);
+
     $sql = "SELECT * FROM translations WHERE country_id = ".$country_id;
     $result = $connection->query($sql);
     $row = $result->fetch_assoc();
@@ -135,6 +168,22 @@
                 <h1>Translation</h1>
                 <p>Please translate the following sentences to your country’s native language.</p>
             </div>
+            <form method="post" action="" style="flex-direction: row; gap: 30px">
+                <label for="language">Language:</label>
+                <select name="language" id="language" <?php if ($user == 0) echo "disabled";?>>
+                    <?php
+                    if ($result1->num_rows > 0) {
+                        while ($row1 = $result1->fetch_assoc()) {
+                            echo "<option value='" . $row1["language"] . "'>" . $row1["language"] . "</option>";
+                        }
+                    }
+                    //default empty option
+                    echo "<option value='' selected>Select</option>";
+                    
+                    ?>
+                </select>
+                <button class="btn-confirm" type="submit" name="copy_data" <?php if ($user == 0) echo "disabled";?>>Use as Default Language</button>
+            </form>
             <div class="forms-container">
                 <form method="post" id="form" >
                     <table border="0">
