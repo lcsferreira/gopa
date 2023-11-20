@@ -89,13 +89,13 @@
               $indicator_table_name = "research_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "contribution";
-              $indicator_table_name = "research";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "contribution";
+          $indicator_table_name = "research";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -213,16 +213,18 @@
                 ?> onclick="saveRadioValue2('pa-quintiles', '<?php echo $id ?>', 'research_values_contact')">
               </div>
             </div> -->
-            <?php
-              $indicator_name = "pa_quintiles";
-              $indicator_table_name = "research";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "pa_quintiles";
+          $indicator_table_name = "research";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
-        <div class="form-input">
+        <div class="form-input" style="
+    width: 45%;
+">
           <label for="groups">
             Gender inequalities in physical activity research <span class="new">*new*</span> <span onclick="showModalInfo('gender-inequalities')"><i
                 class="fa fa-question-circle-o"></i></span>

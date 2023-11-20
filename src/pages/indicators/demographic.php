@@ -87,13 +87,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "country";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "country";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -124,13 +124,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "capital";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "capital";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -163,13 +163,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "total_population";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "total_population";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -202,13 +202,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "urban_population";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "urban_population";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -241,13 +241,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "life_expentacy";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "life_expentacy";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -283,13 +283,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "gini_index";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>  
         </div>
+        <?php
+          $indicator_name = "gini_index";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -323,13 +323,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "human_index";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "human_index";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -362,13 +362,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "literacy_rate";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "literacy_rate";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -403,13 +403,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "deaths_diseases";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "deaths_diseases";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       
       <div class="indicators">
@@ -444,13 +444,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "risk_of_premature";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "risk_of_premature";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div>
 
       <div class="indicators">
@@ -485,13 +485,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "human_capital";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "human_capital";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div>
 
       <div class="indicators">
@@ -526,13 +526,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "democracy";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "democracy";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div>
 
       <!-- <div class="indicators">
@@ -566,13 +566,13 @@
               $indicator_table_name = "demographic_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "tax_burden";
-              $indicator_table_name = "demographic";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "tax_burden";
+          $indicator_table_name = "demographic";
+          include("../../components/commentInput.php")
+        ?>
       </div> -->
 
       <div class="buttons">

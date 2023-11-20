@@ -134,14 +134,14 @@
                 onblur="saveRadioValue('national-surveys',  '<?php echo $id ?>', 'national_surveillance_values_contact')">
               </div>
             </div>
-            <?php
-              $diff_input = "1";
-              $indicator_name = "national_surveys";
-              $indicator_table_name = "national_surveillance";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $diff_input = "1";
+          $indicator_name = "national_surveys";
+          $indicator_table_name = "national_surveillance";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -177,13 +177,13 @@
               echo $contact_values['most_recent_year'];
             }?></textarea>
           </div>
-            <?php
-              $indicator_name = "most_recent_year";
-              $indicator_table_name = "national_surveillance";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "most_recent_year";
+          $indicator_table_name = "national_surveillance";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -219,13 +219,13 @@
                   echo $contact_values['next_year'];
                 }?></textarea>
               </div>
-            <?php
-              $indicator_name = "next_year";
-              $indicator_table_name = "national_surveillance";
-              include("../../components/commentInput.php")
-            ?>
             </div>
           </div>
+          <?php
+            $indicator_name = "next_year";
+            $indicator_table_name = "national_surveillance";
+            include("../../components/commentInput.php")
+          ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -266,13 +266,13 @@
                   }
               ?></textarea>
             </div>
-            <?php
-              $indicator_name = "survey_tool";
-              $indicator_table_name = "national_surveillance";
-              include("../../components/commentInput.php")
-            ?>
           </div>    
         </div>
+        <?php
+          $indicator_name = "survey_tool";
+          $indicator_table_name = "national_surveillance";
+          include("../../components/commentInput.php")
+        ?>
       </div>
 
       <div class="indicators">
@@ -314,13 +314,13 @@
                   }
               ?></textarea>
             </div>
-            <?php
-              $indicator_name = "survey_instrument";
-              $indicator_table_name = "national_surveillance";
-              include("../../components/commentInput.php")
-            ?>
           </div>    
         </div>
+        <?php
+          $indicator_name = "survey_instrument";
+          $indicator_table_name = "national_surveillance";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -446,13 +446,13 @@
               ?>
                 onblur="saveValueByContact('estimates', '<?php echo $id ?>', 'national_surveillance_values_contact')"> -->
             </div>
-            <?php
-              $indicator_name = "objective_measures";
-              $indicator_table_name = "national_surveillance";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "objective_measures";
+          $indicator_table_name = "national_surveillance";
+          include("../../components/commentInput.php")
+        ?>
       </div>
 
       <div class="buttons">

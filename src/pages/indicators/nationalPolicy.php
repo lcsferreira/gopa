@@ -330,13 +330,13 @@
               </div>
             </div>
           </div>
-          <?php
-            $indicator_name = "national_policy";
-            $indicator_table_name = "national_policy";
-            include("../../components/commentInput.php")
-          ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "national_policy";
+          $indicator_table_name = "national_policy";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <?php 
         if($_SESSION['userType']=='contact' && $admin_values['different_value_source_2'] == 1){
@@ -467,13 +467,13 @@
                   echo "style='display: none;'";
                 } ?>>Add guideline</button>
           </div>
-          <?php
-            $indicator_name = "national_recommendations";
-            $indicator_table_name = "national_policy";
-            include("../../components/commentInput.php")
-          ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "national_recommendations";
+          $indicator_table_name = "national_policy";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <?php 
         if($_SESSION['userType']=='contact' && $admin_values['different_value_source_3'] == 1){
@@ -529,13 +529,13 @@
             $indicator_table_name = "national_policy_values_contact";
             include("../../components/contactInput.php")
           ?>
-          <?php
-            $indicator_name = "policy_implementation";
-            $indicator_table_name = "national_policy";
-            include("../../components/commentInput.php")
-          ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "policy_implementation";
+          $indicator_table_name = "national_policy";
+          include("../../components/commentInput.php")
+        ?>
       </div> -->
       <div class="buttons">
         <button class="btn-back" type="button" <?php

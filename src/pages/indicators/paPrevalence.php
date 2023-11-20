@@ -168,16 +168,18 @@
                 ?> onblur="saveValueByContact('reference', '<?php echo $id ?>', 'pa_prevalence_values_contact')"
             name="reference" id="reference">
           </div>
-            <?php
-              $indicator_name = "pa_prevalence";
-              $indicator_table_name = "pa_prevalence";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "pa_prevalence";
+          $indicator_table_name = "pa_prevalence";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
-        <div class="indicator-image">
+        <div class="indicator-image" style="
+    width: 45%;
+">
           <label for="country">Gender Inequalities in Physical Activity Prevalence <span class="new">*new*</span> <span onclick="showModalInfo('pa-inequalities')"><i
                 class="fa fa-question-circle-o"></i></span>
             <p> Gender inequalities in physical activity prevalence will be determined using the physical activity prevalence estimates by sex and will be assessed with classical methods for equity analysis such as equiplots. Below is an illustration of how the equiplot will be shown. The prevalence estimates will be used to compute the inequality, therefore we invite you to review them or correct them. Once all country-specific data is completed, the regional and worldwide parts of the equiplot will be computed.

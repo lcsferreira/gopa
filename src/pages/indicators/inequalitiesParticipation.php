@@ -140,16 +140,18 @@
                 }
                 ?> name="reference" id="reference">
           </div>
-          <?php
-            $indicator_name = "pa-activity";
-            $indicator_table_name = "inequalities_participation";
-            include("../../components/commentInput.php")
-          ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "pa-activity";
+          $indicator_table_name = "inequalities_participation";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
-        <div class="indicator-image">
+        <div class="indicator-image" style="
+    width: 45%;
+">
           <label for="country">Inequalities in adult's physical activity participation <span class="new">*new*</span> <span onclick="showModalInfo('pa-inequalities')"><i
                 class="fa fa-question-circle-o"></i></span>
             <p> Inequalities in adults’ physical activity participation will be determined using the physical activity prevalence estimates by sex and will be assessed with classical methods for equity analysis such as equiplots. Below is an illustration of how the equiplot will be shown. The prevalence estimates will be used to compute the inequality, therefore we invite you to review them or correct them.

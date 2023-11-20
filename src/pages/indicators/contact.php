@@ -82,13 +82,13 @@
               $indicator_table_name = "contact_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "name_1";
-              $indicator_table_name = "contact";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "name_1";
+          $indicator_table_name = "contact";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -119,13 +119,13 @@
               $indicator_table_name = "contact_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "email_1";
-              $indicator_table_name = "contact";
-              include("../../components/commentInput.php")
-            ?>
           </div>    
         </div>
+        <?php
+          $indicator_name = "email_1";
+          $indicator_table_name = "contact";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -156,13 +156,13 @@
               $indicator_table_name = "contact_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "institution_1";
-              $indicator_table_name = "contact";
-              include("../../components/commentInput.php")
-            ?> 
           </div>
         </div>
+        <?php
+          $indicator_name = "institution_1";
+          $indicator_table_name = "contact";
+          include("../../components/commentInput.php")
+        ?> 
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -193,13 +193,13 @@
               $indicator_table_name = "contact_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "name_2";
-              $indicator_table_name = "contact";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "name_2";
+          $indicator_table_name = "contact";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -230,13 +230,13 @@
               $indicator_table_name = "contact_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "email_2";
-              $indicator_table_name = "contact";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "email_2";
+          $indicator_table_name = "contact";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -267,13 +267,13 @@
               $indicator_table_name = "contact_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "institution_2";
-              $indicator_table_name = "contact";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "institution_2";
+          $indicator_table_name = "contact";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -304,13 +304,13 @@
               $indicator_table_name = "contact_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "name_3";
-              $indicator_table_name = "contact";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "name_3";
+          $indicator_table_name = "contact";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -341,13 +341,13 @@
               $indicator_table_name = "contact_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "email_3";
-              $indicator_table_name = "contact";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "email_3";
+          $indicator_table_name = "contact";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -378,13 +378,13 @@
               $indicator_table_name = "contact_values_contact";
               include("../../components/contactInput.php")
             ?>
-            <?php
-              $indicator_name = "institution_3";
-              $indicator_table_name = "contact";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "institution_3";
+          $indicator_table_name = "contact";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators" style="justify-content: center;">
          <div class="contact-field">

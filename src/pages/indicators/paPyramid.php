@@ -53,7 +53,9 @@
     </div>
     <form>
       <div class="indicators">
-        <div class="form-input">
+        <div class="form-input" style="
+    width: 45%;
+">
           <label for="pyramid-image">
             Physical activity promotion capacity pyramids
             <p>
@@ -118,13 +120,13 @@
             include("../../components/agreementInput.php") 
           ?>
           <div class="contact-input" id="research-indicator">
-            <?php
-              $indicator_name = "research";
-              $indicator_table_name = "pa_promotion";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "research";
+          $indicator_table_name = "pa_promotion";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -190,13 +192,13 @@
             include("../../components/agreementInput.php") 
           ?>
           <div class="contact-input" id="policy-indicator">
-            <?php
-              $indicator_name = "policy";
-              $indicator_table_name = "pa_promotion";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "policy";
+          $indicator_table_name = "pa_promotion";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="indicators">
         <div class="form-input">
@@ -242,13 +244,13 @@
             include("../../components/agreementInput.php") 
           ?>
           <div class="contact-input" id="surveillance-indicator">
-            <?php
-              $indicator_name = "surveillance";
-              $indicator_table_name = "pa_promotion";
-              include("../../components/commentInput.php")
-            ?>
           </div>
         </div>
+        <?php
+          $indicator_name = "surveillance";
+          $indicator_table_name = "pa_promotion";
+          include("../../components/commentInput.php")
+        ?>
       </div>
       <div class="buttons">
         <button class="btn-back" type="button" <?php

@@ -60,11 +60,12 @@ form {
 
 form .indicators {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  gap: 5rem;
   align-items: center;
   flex-direction: row;
   margin-top: 30px;
-  width: 100%;
+  width: 95%;
   border-bottom: 1px solid #8e9dae;
   padding-bottom: 15px;
 }
@@ -101,7 +102,7 @@ form .form-input,
 
 form .indicators .form-input,
 .indicator-image {
-  width: 371px;
+  width: 100%;
   text-align: justify;
 }
 
@@ -110,7 +111,7 @@ form .indicators .contact-field {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  width: 65%;
+  width: 100%;
 }
 
 form .indicators .contact-field .contact-input {
@@ -163,16 +164,16 @@ form .form-input .radio-agreement input {
 }
 
 form .indicators .contact-input .form-input {
-  width: 45%;
+  width: 100%;
 }
 
-form .indicators .contact-field .contact-input .comment-area {
+form .indicators .comment-area {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 80%;
 }
 
-form .indicators .contact-field .contact-input .comment-area label {
+form .indicators .comment-area label {
   color: #8e9dae;
 }
 
