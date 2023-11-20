@@ -171,7 +171,7 @@
                 echo "checked";
               }
             ?> onclick="saveCheckboxValue('policy_type',  '<?php echo $id ?>', 'pa_promotion_values_admin')">
-            <label for='policy_type'>Implementation</label>
+            <label for='policy_type'>Implementation plan</label>
             <input type='checkbox' id='policy_type' name='policy_type' value='implementation' <?php 
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";

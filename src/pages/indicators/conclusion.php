@@ -136,8 +136,7 @@ function verifica($country_id, $connection) {
         <button class="btn-back" type="button" <?php
           echo "onclick='document.location = `contact.php?id=".$country_id."`'";
           ?>>Back</button>
-        <button class="btn-next" type="button" onclick="confirmation('<?php echo $country_id ?>')" <?php if ($indicators_step == "waiting admin" || $is_main == 0 || $all_steps_checked == false) {
-               echo "disabled"; }?>>Submit</button>
+        <button class="btn-next" type="button" onclick="confirmation('<?php echo $country_id ?>')" <?php if ($indicators_step == "waiting admin" || $is_main == 0 || $all_steps_checked == false) {echo " disabled"; }?>>Submit</button>
       </div>
     </form>
   </div>

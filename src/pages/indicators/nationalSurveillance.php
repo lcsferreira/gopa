@@ -370,7 +370,7 @@
                 echo $admin_values['devices_used_reference'];
               }
           ?></textarea>
-          <label for="estimates" class="mt-10">Objectively measured physical activity prevalence estimates (minutes)</label>
+          <!-- <label for="estimates" class="mt-10">Objectively measured physical activity prevalence estimates (minutes)</label>
           <input type="number" name="estimates-admin" id="estimates-admin" <?php 
               if($_SESSION['userType'] != "admin"){
                 echo "disabled ";
@@ -378,7 +378,7 @@
               if($admin_values['estimates'] != null){
                 echo "value='" . $admin_values['estimates']."'";
               }
-          ?> onblur="saveValueByAdmin('estimates', '<?php echo $id ?>', 'national_surveillance_values_admin')">
+          ?> onblur="saveValueByAdmin('estimates', '<?php echo $id ?>', 'national_surveillance_values_admin')"> -->
         </div>
         <div class="contact-field">
           <?php
@@ -435,7 +435,7 @@
                     echo $contact_values['devices_used_reference'];
                   }
               ?></textarea>
-              <label for="estimates" class="mt-10">Objectively measured physical activity prevalence estimates (minutes)</label>
+              <!-- <label for="estimates" class="mt-10">Objectively measured physical activity prevalence estimates (minutes)</label>
               <input type="number" name="estimates" id="estimates" <?php 
                   if($_SESSION['userType'] == "admin"){
                     echo "disabled ";
@@ -444,7 +444,7 @@
                     echo "value='" . $contact_values['estimates']."'";
                   }
               ?>
-                onblur="saveValueByContact('estimates', '<?php echo $id ?>', 'national_surveillance_values_contact')">
+                onblur="saveValueByContact('estimates', '<?php echo $id ?>', 'national_surveillance_values_contact')"> -->
             </div>
             <?php
               $indicator_name = "objective_measures";
