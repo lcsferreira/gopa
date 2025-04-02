@@ -44,6 +44,11 @@ if(mysqli_num_rows($result) > 0){
     $_SESSION['id'] = $row2['id'];
     $_SESSION['loggedin'] = true;
     $_SESSION['userType'] = "contact";
+    //update last logged in timestamp in contact table
+    $last_logged_in = date('Y-m-d H:i:s');
+    $sql3 = "UPDATE contacts SET last_logged_in = '$last_logged_in' WHERE id = ".$row2['id'];
+    mysqli_query($connection, $sql3);
+    
     echo "success contact";
   }else{
     echo "Wrong password";

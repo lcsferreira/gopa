@@ -58,25 +58,28 @@
           <label for="uploadPDF">Click to upload a file</label>
           <input id="uploadPDF" type="file" accept="file/*" name="cardPDF" class="add-btn" <?php if ($_SESSION["userType"] != "admin") {
             echo " disabled";
-          }?>/>
+          }?> />
         </div>
         <input class="btn-confirm a-center" type="submit" value="Upload" <?php if ($_SESSION["userType"] != "admin") {
             echo " disabled";
           }?>>
         <div id="preview">No card uploaded.</div>
         <br>
-        <a class="btn-confirm btn-download" href="https://work.globalphysicalactivityobservatory.com/uploads/card_english/<?php echo $country_id?>.pdf" download="country_card_en" <?php if($row['has_card']== 0){
+        <a class="btn-confirm btn-download"
+          href="https://work.globalphysicalactivityobservatory.com/uploads/card_english/<?php echo $country_id?>.pdf"
+          download="country_card_en" <?php if($row['has_card']== 0){
               echo " style='display: none'";
             } ?>><i class="fa fa-download"></i> Download</a>
       </form>
 
       <form id="form-contact" action="cardUploadContact.php" method="post" enctype="multipart/form-data">
         <div class="form-input">
-          <p>To ensure efficient review and identification of adjustments, please use a different color (e.g., red, yellow highlight) when requesting changes for the Country Card.</p>
-          <label for="card-comments" class="label-textarea">If any adjustment, please indicate year of information and provide additional comments here: </label>
-          <textarea placeholder="Add a comment..." name="comment" id="card-comments" cols="30" rows="5" class="comment" <?php if ($_SESSION["userType"] == "admin") {
-            echo " disabled";
-          }?> onblur='saveComment()'>
+          <p>To ensure efficient review and identification of adjustments, please use a different color (e.g., red,
+            yellow highlight) when requesting changes for the Country Card.</p>
+          <label for="card-comments" class="label-textarea">If any adjustment, please indicate year of information and
+            provide additional comments here: </label>
+          <textarea placeholder="Add a comment..." name="comment" id="card-comments" cols="30" rows="5" class="comment"
+            onblur='saveComment()'>
             <?php echo $row['comment']?>  
         </textarea>
         </div>
@@ -96,9 +99,6 @@
           }?>
           <div id="msg-file-contact"></div>
         </div>
-        <div style="width: 65%">
-          <p>Feel free to include audio with your feedback by sending it to the following WhatsApp number: +57 320 8071534. (Recordings may be submitted in English, Portuguese, or Spanish)</p>
-        </div>
         <div class="form-checkbox">
           <?php if ($_SESSION["userType"] == "admin") {
             echo " <div>
@@ -115,24 +115,24 @@
             <input type='radio' name='status' id='status' value='approve'>
             </div>";
           }
-          ?>   
-          </div>
+          ?>
         </div>
-        <input class="btn-confirm" type="button" value="Submit" <?php if ($_SESSION["userType"] == "admin") {
+    </div>
+    <input class="btn-confirm" type="button" value="Submit" <?php if ($_SESSION["userType"] == "admin") {
             echo "onclick='submitValueAdmin()'";
         } else {
             echo " onclick='submitValue()'";
         }?>>
-      </form>
-    </div>
-    <br>
-    <div id="err" class="error-msg"></div>
-    <div id="msg"></div>
+    </form>
+  </div>
+  <br>
+  <div id="err" class="error-msg"></div>
+  <div id="msg"></div>
   </div>
   <footer>
     <p><a target="_noblank" href="https://new.globalphysicalactivityobservatory.com/privacy-policy/">Privacy Policy</a>
-    ©  2023 GoPA. All rights reserved.
-  </p>
+      © 2023 GoPA. All rights reserved.
+    </p>
   </footer>
 </body>
 

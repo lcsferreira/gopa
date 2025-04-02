@@ -392,6 +392,78 @@ canvas {
   padding: 7px 0px;
 }
 
+.modal-consent {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 25%;
+  width: 425px;
+  height: 425px;
+  padding: 30px;
+  overflow: auto;
+  background-color: white;
+  border: 1px solid #8e9dae;
+  border-radius: 15px;
+  -webkit-box-shadow: 5px 5px 0px 100vw rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 0px 100vw rgba(0, 0, 0, 0.3);
+}
+.modal-consent .modal-header {
+  color: #0288d1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-consent .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-evenly;
+  font-size: 16px;
+}
+.modal-consent .modal-body {
+  color: #8e9dae;
+  text-align: justify;
+}
+
+.modal-consent .modal-body h3 {
+  color: #0288d1;
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+}
+.modal-consent .modal-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 85%;
+  padding-bottom: 30px;
+}
+.modal-consent .modal-footer .btn-confirm {
+  width: 100%;
+  background-color: #0288d1;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 7px 0px;
+}
+
+.modal-consent .modal-footer .btn-cancel {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #0288d1;
+  margin-top: 14px;
+  border-radius: 3px;
+  color: #0288d1;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 7px 0px;
+}
+
 #preview {
   margin-top: 3em;
 }

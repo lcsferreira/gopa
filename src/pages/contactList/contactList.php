@@ -35,6 +35,8 @@
       <button class="btn-create" type="button" onclick="window.location.href='contactCreate.php'">
         Create Contact
       </button>
+      <button class="btn-download" type="button">
+        Download Contacts list
       </button>
     </div>
     <div class="contact-list">
@@ -84,9 +86,15 @@
   </div>
   <footer>
     <p><a target="_noblank" href="https://new.globalphysicalactivityobservatory.com/privacy-policy/">Privacy Policy</a>
-    ©  2023 GoPA. All rights reserved.
-  </p>
+      © 2023 GoPA. All rights reserved.
+    </p>
   </footer>
+  <script>
+  const downloadBtn = document.querySelector('.btn-download');
+  downloadBtn.addEventListener('click', () => {
+    window.location.href = '../../ajaxQuerys/contacts/downloadContacts.php';
+  });
+  </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="../../js/sidebarMenu.js"></script>
   <script src="../../js/contacts/contactDelete.js"></script>

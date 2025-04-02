@@ -1,5 +1,6 @@
 /.vscode
 /config.php
+/email_config.php
 /assets
 /composer.json
 /composer.lock

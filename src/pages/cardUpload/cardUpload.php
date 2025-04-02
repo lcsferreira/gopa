@@ -71,14 +71,14 @@
     </div>
     <div class="forms-container">
       <form id="form" action="ajaxUpload.php" method="post" enctype="multipart/form-data">
-        <div class='form-file'  <?php if ($_SESSION["userType"] != "admin") {
+        <div class='form-file' <?php if ($_SESSION["userType"] != "admin") {
             echo " hidden";
           }?>>
           <input type="hidden" name="country_id" value='<?php echo $country_id?>'>
           <label for="pdfFile">Click to upload a file</label>
           <input name="pdfFile" id="pdfFile" type="file" accept="file/*" class="add-btn" <?php if ($_SESSION["userType"] != "admin") {
             echo " disabled";
-          }?>/>
+          }?> />
           <input class="btn-confirm a-center" type="submit" value="Upload">
         </div>
         <div id="preview">
@@ -91,18 +91,21 @@
           ?>
         </div>
         <br>
-        <a class="btn-confirm btn-download" href="https://work.globalphysicalactivityobservatory.com/uploads/card_english/<?php echo $country_id?>.pdf" download="country_card_en" <?php if($row['has_card']== 0){
+        <a class="btn-confirm btn-download"
+          href="https://work.globalphysicalactivityobservatory.com/uploads/card_english/<?php echo $country_id?>.pdf"
+          download="country_card_en" <?php if($row['has_card']== 0){
               echo " style='display: none'";
             } ?>><i class="fa fa-download"></i> Download</a>
       </form>
 
       <form id="form-contact" action="cardUploadContact.php" method="post" enctype="multipart/form-data">
         <div class="form-input">
-          <p>To ensure efficient review and identification of adjustments, please use a different color (e.g., red, yellow highlight) when requesting changes for the Country Card.</p>
-          <label for="card-comments" class="label-textarea">If any adjustment, please indicate year of information and provide additional comments here: </label>
-          <textarea placeholder="Add a comment..." name="comment" id="card-comments" cols="30" rows="5" class="comment" <?php if ($_SESSION["userType"] == "admin") {
-            echo " disabled";
-          }?> onblur='saveComment()'><?php echo $row['comment']?></textarea>
+          <p>To ensure efficient review and identification of adjustments, please use a different color (e.g., red,
+            yellow highlight) when requesting changes for the Country Card.</p>
+          <label for="card-comments" class="label-textarea">If any adjustment, please indicate year of information and
+            provide additional comments here: </label>
+          <textarea placeholder="Add a comment..." name="comment" id="card-comments" cols="30" rows="5" class="comment"
+            onblur='saveComment()'><?php echo $row['comment']?></textarea>
         </div>
         <div class='form-file'>
           <input type="hidden" name="country_id" value='<?php echo $country_id?>'>
@@ -115,10 +118,30 @@
           }?>>
           <p style="color: #03a9f4; font-weight: bold;">You can only upload files of 10MB size!</p>
           <?php if ($_SESSION["userType"] == "admin") {
-            echo "<a class='btn-confirm btn-download mt-10' href='https://work.globalphysicalactivityobservatory.com/uploads/files/".$country_id.".pdf' download='contact_comment'"; if($row['has_contact_file']== 0){
-              echo " style='display: none'";
-            }echo "><i class='fa fa-download'></i> Download</a>";
-          }?>
+    // Lista de extensões de arquivos suportadas
+    $supported_extensions = ['pdf', 'docx', 'png', 'jpg'];
+    
+    // Variável para armazenar o link do arquivo encontrado
+    $file_link = null;
+    
+    // Verifica qual arquivo existe
+    foreach ($supported_extensions as $extension) {
+        $file_path = "https://work.globalphysicalactivityobservatory.com/uploads/files/" . $country_id . "." . $extension;
+        
+        // Usa get_headers para verificar se o arquivo existe no servidor
+        $headers = @get_headers($file_path);
+        if($headers && strpos($headers[0], '200')) {
+            $file_link = $file_path;
+            break;  // Para o loop se o arquivo for encontrado
+        }
+    }
+
+    // Se o arquivo foi encontrado, exibe o botão de download
+    if ($file_link && $row['has_contact_file'] == 1) {
+        echo "<a class='btn-confirm btn-download mt-10' href='" . $file_link . "' download='contact_comment'>
+                <i class='fa fa-download'></i> Download</a>";
+    }
+}?>
           <div id="msg-file-contact"></div>
         </div>
         <div class="form-checkbox">
@@ -137,24 +160,24 @@
             <input type='radio' name='status' id='status' value='approve'>
             </div>";
           }
-          ?>   
-          </div>
+          ?>
         </div>
-        <input class="btn-confirm" type="button" value="Submit" <?php if ($_SESSION["userType"] == "admin") {
+    </div>
+    <input class="btn-confirm" type="button" value="Submit" <?php if ($_SESSION["userType"] == "admin") {
             echo "onclick='submitValueAdmin()'";
         } else {
             echo " onclick='submitValue()'";
         }?>>
-      </form>
-    </div>
-    <br>
-    <div id="err" class="error-msg"></div>
-    <div id="msg" class="loading"></div>
+    </form>
+  </div>
+  <br>
+  <div id="err" class="error-msg"></div>
+  <div id="msg" class="loading"></div>
   </div>
   <footer>
     <p><a target="_noblank" href="https://new.globalphysicalactivityobservatory.com/privacy-policy/">Privacy Policy</a>
-    ©  2023 GoPA. All rights reserved.
-  </p>
+      © 2023 GoPA. All rights reserved.
+    </p>
   </footer>
 </body>
 

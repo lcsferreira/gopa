@@ -33,6 +33,25 @@ function putCountry() {
     } else {
       translation_step = null;
     }
+    let indicators_step = "not started";
+    let country_cards_step = "not started";
+    let country_cards_step_en = "not started";
+
+    if (need_translation) {
+      indicators_step = document.getElementById("indicators_step").value;
+      translation_step = document.getElementById("translation_step").value;
+      country_cards_step = document.getElementById("country_cards_step").value;
+      country_cards_step_en = document.getElementById(
+        "country_cards_step_en"
+      ).value;
+    } else {
+      indicators_step = document.getElementById("indicators_step").value;
+      translation_step = null;
+      country_cards_step = null;
+      country_cards_step_en = document.getElementById(
+        "country_cards_step_en"
+      ).value;
+    }
 
     let payload = {
       id: id,
@@ -41,6 +60,9 @@ function putCountry() {
       region: region,
       need_translation: need_translation,
       translation_step: translation_step,
+      indicators_step: indicators_step,
+      country_cards_step: country_cards_step,
+      country_cards_step_en: country_cards_step_en,
     };
 
     console.log(payload);

@@ -1,5 +1,12 @@
 <?php
-  include_once "../../../config.php"
+  include_once "../../../config.php";
+  include '../../../email_config.php';
+  use PHPMailer\PHPMailer\PHPMailer;
+  use PHPMailer\PHPMailer\Exception;
+
+  require '../../../PHPMailer/src/Exception.php';
+  require '../../../PHPMailer/src/PHPMailer.php';
+  require '../../../PHPMailer/src/SMTP.php';
 ?>
 <?php
 
@@ -25,37 +32,34 @@ $is_active = $_POST['is_active'];
   if(mysqli_stmt_affected_rows($stmt) > 0){
     //if is_active = 1 and password is null, send email to admin
     if($is_active == 1 && $password == null){
-      //send email to admin
-      //get the id of the admin that was just inserted
-      // firstAccess.php?id='$admin_id'
-      $assunto = "Action Required -  GoPA! Country Contact registration instructions - new GoPA! data review and Country Card approval system";
-    
-      $headers  = 'MIME-Version: 1.0' . "\r\n";
-      $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-      $headers .= 'From: Workflow GoPA <info@globalphysicalactivityobservatory.com>'. "\r\n";
-      $headers .= 'Reply-To: info@globalphysicalactivityobservatory.com'. "\r\n";
-      $headers .= "X-Priority: 1\r\n";
-      $headers .= 'X-Mailer: PHP/' . phpversion();
-    
-      $mensagem = "
-      <br>
-        This is an authomatic activation message for Administrators.
-      <br><br>
-        Please click in the <b>link below</b> to login in the GoPA Workflow.
-      <br><br>
-        <a href='http://work.globalphysicalactivityobservatory.com/src/pages/login/firstAccess.php?id=$id&userType=admin'>First access registration</a>
-      <br><br>
-        If you have any questions, please contact us at <a href='mailto: andrea.ramirez@globalphysicalactivityobservatory.com'>andrea.ramirez@globalphysicalactivityobservatory.com</a>
-      ";
-    
-      $enviaremail = mail($email, $assunto, $mensagem, $headers);
-    
-      if($enviaremail){
-        $mgm = "E-MAIL ENVIADO COM SUCESSO!";
+      try{
+        $mail = new PHPMailer(true);
+        $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+        $mail->isSMTP();
+        $mail->Host = $dreamhost;
+        $mail->SMTPAuth = true;
+        $mail->Username = $host_username;
+        $mail->Password = $host_password;
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = $host_port;
+        $mail->setFrom($host_username, 'GoPA! Workflow');
+        $mail->addAddress($email);
+        $mail->isHTML(true);
+        $mail->Subject = 'Action Required -  GoPA! Country Contact registration instructions - new GoPA! data review and Country Card approval system';
+        $mail->Body = "
+        <br>
+          This is an authomatic activation message for Administrators.
+        <br><br>
+          Please click in the <b>link below</b> to login in the GoPA Workflow.
+        <br><br>
+          <a href='http://work.globalphysicalactivityobservatory.com/src/pages/login/firstAccess.php?id=$id&userType=admin'>First access registration</a>
+        <br><br>
+          If you have any questions, please contact us at <a href='mailto: andrea.ramirez@globalphysicalactivityobservatory.com'>andrea.ramirez@globalphysicalactivityobservatory.com</a>
+        ";
+        $mail->send();
         echo "success!";
-      } else {
-        $mgm = "ERRO AO ENVIAR E-MAIL!";
-        echo $mgm;
+      } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
       }
     
 
