@@ -240,9 +240,10 @@ if ($is_ajax) {
           }
         ?>
       </select>
-      <button class="btn-confirm" type="submit" name="copy_data" <?php if ($user == 0) echo "disabled";?>>Use as Default
-        Language</button>
-      <?php if ($user == 0) echo "<button class='btn-back' type='button' onclick='document.location = `export_translation_csv.php?country_id=".$country_id."`'>Export CSV</button>";?>
+      <button class="btn-confirm" type="submit" name="copy_data" <?php if ($user == 0) echo "disabled";?>>Use as Default Language</button>
+      <?php if ($user == 0) {
+        echo "<button class='btn-back' type='button' onclick='document.location = `export_translation_csv.php?country_id=".$country_id."&delimiter=auto`'>Export CSV</button>";
+      } ?>
     </form>
 
     <div class="forms-container">
