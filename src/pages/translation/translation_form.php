@@ -38,8 +38,8 @@ function saveTranslation($connection, $country_id, $field, $value) {
 // Função para enviar email de notificação
 function sendNotificationEmail($connection, $country_id, $country_name) {
   global $dreamhost, $host_username, $host_password, $host_port;
-  
-  $admin_emails = ["lucas.simoes.ferreira@gmail.com"];
+  $admin_emails = ["julianamegru@gmail.com", "aravamd@gmail.com"];
+  // $admin_emails = ["lucas.simoes.ferreira@gmail.com"];
   date_default_timezone_set('America/Bogota');
   $date = date('m/d/Y h:i:s a', time());
   
